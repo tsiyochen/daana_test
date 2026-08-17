@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>療程概覽｜蒔恩診所 SheAnd Daan Clinic</title><meta name="description" content="蒔恩診所療程概覽。以破壞、修復、新生為核心，分為養膚、輪廓抗老與玻尿酸三類。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+TC:wght@200;300;400&family=Noto+Serif+TC:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EDE4; --stone:#FBF8F3; --oak:#CBB9A3; --travertine:#E5DACB;
+  --taupe:#8C7C6A; --taupe-deep:#6B5D4E; --ink:#2A2521;
+  --rose:#B58C86; --rose-soft:#E4CFCA; --rose-pale:#F1E3DF;
+  --grey:#7C7975; --grey-deep:#46443F;
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
+  --en:"Cormorant Garamond",serif; --util:"Jost",sans-serif;
+  --gut:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.95;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* pills */
+.pill{display:inline-block;font-family:var(--serif);font-weight:300;font-size:clamp(15px,1.8vw,21px);
+ letter-spacing:.22em;padding:11px 30px;border-radius:999px;background:var(--rose-pale);color:var(--ink)}
+.pill.solid{background:var(--rose);color:#FBF8F3}
+.pill.line{background:none;border:1px solid rgba(251,248,243,.72);color:#FBF8F3}
+.pill.dark{background:var(--ink);color:#FBF8F3}
+.pill.sm{font-family:var(--util);font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:7px 18px}
+
+/* nav */
+.tabs{position:sticky;top:0;z-index:60;display:flex;justify-content:center;align-items:center;
+ gap:clamp(14px,3vw,42px);padding:15px var(--gut);background:rgba(243,237,228,.94);backdrop-filter:blur(12px)}
+.tabs a{font-family:var(--util);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe-deep);white-space:nowrap}
+.tabs a.on{border:1px solid var(--ink);border-radius:999px;padding:7px 19px;color:var(--ink)}
+.brandmark{position:absolute;left:var(--gut);font-family:var(--serif);font-size:16px;letter-spacing:.3em}
+@media(max-width:820px){.brandmark{display:none}}
+
+/* bleed */
+.bleed{position:relative;min-height:min(92vh,800px);display:flex;overflow:hidden;
+ background:linear-gradient(155deg,var(--grey) 0%,#8E8B86 45%,var(--grey-deep) 100%)}
+.bleed.warm{background:linear-gradient(155deg,#DCCDBE 0%,#B9A48C 58%,#8C7C6A 100%)}
+.bleed.pale{background:linear-gradient(150deg,#F4EFEA 0%,#E7DBD4 100%)}
+.bleed.short{min-height:min(64vh,540px)}
+.bleed>img{position:absolute;inset:0;z-index:0}
+.scrim{position:absolute;inset:0;z-index:1}
+.scrim.bottom{background:linear-gradient(to top,rgba(38,35,32,.68),rgba(38,35,32,.2) 52%,rgba(38,35,32,.05))}
+.scrim.all{background:rgba(38,35,32,.36)}
+.bleed .inner{position:relative;z-index:2;width:100%;padding:clamp(38px,7vw,90px) var(--gut);
+ display:flex;flex-direction:column;justify-content:flex-end;gap:20px}
+.bleed .inner.mid{justify-content:center;align-items:center;text-align:center}
+.onimg{color:#FBF8F3;max-width:30em}
+.onimg h1,.onimg h2{font-family:var(--serif);font-weight:200;font-size:clamp(29px,4.2vw,54px);
+ line-height:1.44;letter-spacing:.12em;margin:0;color:#FBF8F3}
+.onimg p{font-size:15px;line-height:2.1;color:rgba(251,248,243,.88);margin:0}
+.onimg .em{color:#F1E3DF}
+.ph-note{position:absolute;bottom:11px;right:14px;z-index:3;font-family:var(--util);font-size:9.5px;
+ letter-spacing:.18em;text-transform:uppercase;color:rgba(251,248,243,.5)}
+.bleed.pale .ph-note{color:rgba(42,37,33,.38)}
+
+/* duo */
+.duo{display:grid;grid-template-columns:1fr 1fr;min-height:min(82vh,690px)}
+.duo.flip .pad{order:2}
+.duo .pad{padding:clamp(42px,6vw,86px) var(--gut);display:flex;flex-direction:column;justify-content:center;gap:20px;background:var(--stone)}
+.duo .pad.rose{background:var(--rose-pale)}
+.duo .pad p{font-size:15px;line-height:2.15;color:var(--taupe-deep);max-width:30em;margin:0}
+.duo .media{position:relative;overflow:hidden;background:linear-gradient(150deg,#DCCDBE,#B9A48C 55%,#8C7C6A)}
+.duo .media.cool{background:linear-gradient(150deg,#8E8B86,#5C5954 60%,#3E3B37)}
+.duo .media>img{position:absolute;inset:0}
+.floatcap{position:absolute;z-index:2;right:clamp(16px,3vw,38px);bottom:clamp(16px,3vw,38px);
+ max-width:17em;font-size:13px;line-height:1.95;color:#FBF8F3;text-align:right}
+
+/* radial */
+.radial{position:relative;min-height:min(94vh,840px);overflow:hidden;
+ background:linear-gradient(160deg,#6E6B67,#514E49 55%,#3A3833)}
+.radial>img{position:absolute;inset:0;z-index:0}
+.radial .rin{position:relative;z-index:2;min-height:inherit;display:grid;place-items:center;padding:clamp(38px,7vw,88px) var(--gut)}
+.ring{width:clamp(180px,25vw,278px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(251,248,243,.55);display:grid;place-items:center;text-align:center}
+.ring span{font-family:var(--serif);font-weight:300;font-size:clamp(17px,2.1vw,25px);letter-spacing:.2em;color:#FBF8F3;line-height:1.7}
+.callouts{position:absolute;inset:0;z-index:3;pointer-events:none}
+.co{position:absolute;font-size:13px;line-height:1.9;color:rgba(251,248,243,.92);max-width:13em}
+.co.tl{top:21%;left:7%} .co.tr{top:18%;right:7%;text-align:right}
+.co.bl{bottom:23%;left:7%} .co.br{bottom:20%;right:7%;text-align:right}
+
+/* sections */
+.sec{padding:clamp(50px,7vw,100px) var(--gut);text-align:center}
+.sec.left{text-align:left}
+.sec.rose{background:var(--rose-pale)}
+.sec.stone{background:var(--stone)}
+.sec.trav{background:var(--travertine)}
+.sec h2{font-family:var(--serif);font-weight:200;font-size:clamp(25px,3.1vw,38px);line-height:1.55;letter-spacing:.09em;margin:.5em 0 0}
+.body{font-size:15px;line-height:2.15;color:var(--taupe-deep);max-width:34em;margin:20px auto 0}
+.sec.left .body{margin-left:0}
+.body+.body{margin-top:14px}
+.note{font-size:12px;color:var(--taupe-deep);max-width:46em;margin:26px auto 0;line-height:1.95}
+.sec.left .note{margin-left:0}
+.btn{display:inline-block;margin-top:28px;font-size:12.5px;letter-spacing:.24em;padding:15px 38px;
+ border-radius:999px;background:var(--rose);color:#FBF8F3;transition:.3s}
+.btn:hover{background:var(--ink)}
+.btn.ghost{background:none;border:1px solid var(--ink);color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#FBF8F3}
+.wrap{max-width:1120px;margin:0 auto}
+
+/* phase panels */
+.phase3{display:grid;grid-template-columns:3fr 11fr 14fr;gap:3px;margin-top:clamp(30px,4vw,52px)}
+.phase3>div{position:relative;min-height:clamp(300px,38vw,430px);overflow:hidden;display:flex;
+ align-items:flex-end;padding:clamp(20px,2.4vw,32px)}
+.phase3>div:nth-child(1){background:linear-gradient(160deg,#8E8B86,#5C5954)}
+.phase3>div:nth-child(2){background:linear-gradient(160deg,#C4B4A3,#9A8874)}
+.phase3>div:nth-child(3){background:linear-gradient(160deg,#EFE4DA,#D6C4B4)}
+.phase3 .pi{position:relative;z-index:2;color:#FBF8F3}
+.phase3>div:nth-child(3) .pi{color:var(--ink)}
+.phase3 .day{font-family:var(--util);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.phase3 .zh{font-family:var(--serif);font-weight:300;font-size:clamp(20px,2.3vw,27px);letter-spacing:.24em;margin:8px 0 2px}
+.phase3 .en{font-family:var(--en);font-style:italic;font-size:15px;opacity:.7;margin-bottom:10px}
+.phase3 p{font-size:13px;line-height:1.95;margin:0;opacity:.88}
+
+/* rings row */
+.rings{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(28px,4vw,48px);justify-items:center}
+.ringsm{width:clamp(120px,15vw,170px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(42,37,33,.28);
+ display:grid;place-items:center;text-align:center;margin-right:clamp(-24px,-2.4vw,-14px)}
+.ringsm .en{font-family:var(--en);font-style:italic;font-size:16px;color:var(--rose)}
+.ringsm .zh{font-family:var(--serif);font-size:13.5px;letter-spacing:.18em;margin-top:3px}
+.cyc4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,26px);margin-top:clamp(22px,3vw,36px);text-align:left}
+.cyc4 .c{border-top:1px solid rgba(42,37,33,.16);padding-top:15px}
+.cyc4 p{font-size:13px;line-height:1.95;color:var(--taupe-deep);margin:8px 0 0}
+.cyc4 h4{font-family:var(--serif);font-weight:300;font-size:16px;letter-spacing:.14em;margin:0}
+
+/* tiles / cards */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:clamp(9px,1.3vw,14px);margin-top:clamp(22px,3vw,36px)}
+.tile{background:var(--stone);border:1px solid rgba(42,37,33,.12);padding:26px 16px;border-radius:6px;
+ font-family:var(--serif);font-size:16px;letter-spacing:.12em;text-align:center;transition:.3s}
+.tile:hover{background:var(--rose);color:#FBF8F3;border-color:var(--rose)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);margin-top:clamp(24px,3vw,40px)}
+.pcard{position:relative;min-height:clamp(320px,34vw,440px);overflow:hidden;display:flex;align-items:flex-end;
+ padding:clamp(20px,2.4vw,30px);background:linear-gradient(160deg,#DCCDBE,#A8927B)}
+.pcard:nth-child(2){background:linear-gradient(160deg,#8E8B86,#4E4B47)}
+.pcard:nth-child(3){background:linear-gradient(160deg,#E9D9D3,#BE9C95)}
+.pcard>img{position:absolute;inset:0;z-index:0}
+.pcard .ci{position:relative;z-index:2;color:#FBF8F3}
+.pcard:nth-child(3) .ci{color:var(--ink)}
+.pcard .ci h3{font-family:var(--serif);font-weight:200;font-size:clamp(21px,2.4vw,28px);letter-spacing:.16em;margin:10px 0 4px}
+.pcard .ci .en{font-family:var(--en);font-style:italic;font-size:15px;opacity:.78}
+.pcard .ci p{font-size:13px;line-height:1.95;margin:11px 0 0;opacity:.9;max-width:22em}
+.docs{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.5vw,18px);margin-top:clamp(24px,3vw,40px)}
+.doc .pic{aspect-ratio:3/4;margin-bottom:12px;background:linear-gradient(155deg,#DCCDBE,#A8927B);position:relative;overflow:hidden}
+.doc .pic>img{position:absolute;inset:0}
+.doc h4{font-family:var(--serif);font-weight:300;font-size:16px;letter-spacing:.16em;margin:5px 0 3px}
+.doc .role{font-family:var(--util);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+.doc p{font-size:12px;color:var(--taupe-deep);margin:0;line-height:1.85}
+.jgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px);margin-top:clamp(24px,3vw,40px);text-align:left}
+.jc{border-top:1px solid rgba(42,37,33,.16);padding-top:18px}
+.jc .meta{font-family:var(--util);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.jc h4{font-family:var(--serif);font-weight:300;font-size:17.5px;line-height:1.65;letter-spacing:.06em;margin:11px 0 9px}
+.jc p{font-size:13px;color:var(--taupe-deep);line-height:1.95;margin:0}
+
+/* steps / table / faq / lists */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.8vw,24px);margin-top:clamp(26px,3.5vw,44px);text-align:left}
+.step{border-top:1px solid rgba(42,37,33,.2);padding-top:15px}
+.step .no{font-family:var(--en);font-size:20px;color:var(--rose)}
+.step h4{font-family:var(--serif);font-weight:300;font-size:15.5px;letter-spacing:.1em;margin:5px 0 7px}
+.step p{font-size:12.5px;line-height:1.9;color:var(--taupe-deep);margin:0}
+.tblwrap{overflow-x:auto;margin-top:clamp(22px,3vw,34px);border-top:1px solid var(--ink);text-align:left}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:14px 13px;border-bottom:1px solid rgba(42,37,33,.14);vertical-align:top;line-height:1.85}
+th{font-family:var(--util);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:400;white-space:nowrap}
+td:first-child{font-family:var(--serif);font-size:14.5px;letter-spacing:.1em;white-space:nowrap}
+.ul{list-style:none;padding:0;margin:0;display:grid;gap:12px;text-align:left}
+.ul li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.95;color:var(--taupe-deep)}
+.ul li::before{content:"";position:absolute;left:0;top:.85em;width:10px;height:1px;background:var(--rose)}
+.ul li b{font-weight:400;color:var(--ink)}
+.faq{max-width:52em;margin:clamp(22px,3vw,34px) auto 0;text-align:left}
+details{border-bottom:1px solid rgba(42,37,33,.16)}
+summary{cursor:pointer;list-style:none;padding:19px 34px 19px 0;position:relative;font-family:var(--serif);font-size:16px;letter-spacing:.07em;line-height:1.7}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;border-right:1px solid var(--rose);border-bottom:1px solid var(--rose);transform:translateY(-70%) rotate(45deg);transition:transform .3s}
+details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+details .ans{padding:0 0 20px;font-size:14px;line-height:2.05;color:var(--taupe-deep)}
+.diagram{max-width:720px;margin:clamp(24px,3vw,38px) auto 0}
+.dlabel{font-family:var(--util);font-size:10px;letter-spacing:.16em;text-transform:uppercase;fill:#6B5D4E}
+.dnum{font-family:var(--util);font-size:9.5px;letter-spacing:.1em;fill:#B58C86}
+.gal2{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(10px,1.4vw,16px);margin-top:clamp(24px,3vw,40px)}
+.gal2 .g{position:relative;overflow:hidden;min-height:180px;background:linear-gradient(150deg,#DCCDBE,#A8927B)}
+.gal2 .g>img{position:absolute;inset:0}
+.gal2 .side{display:grid;grid-template-rows:1fr 1fr;gap:clamp(10px,1.4vw,16px)}
+.reviewed{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding:24px var(--gut);background:var(--ink);color:rgba(251,248,243,.66);font-size:12.5px}
+.reviewed b{font-weight:400;color:var(--paper)}
+footer{background:var(--ink);color:rgba(251,248,243,.42);font-size:11px;line-height:1.9;padding:38px var(--gut)}
+footer .mark{font-family:var(--serif);font-size:16px;letter-spacing:.3em;color:var(--paper);margin-bottom:6px}
+footer .en{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,248,243,.5);margin-bottom:16px}
+
+@media(max-width:900px){
+  .duo{grid-template-columns:1fr} .duo.flip .pad{order:0}
+  .duo .media{min-height:60vw;order:-1}
+  .phase3{grid-template-columns:1fr} .phase3>div{min-height:280px}
+  .rings,.cyc4,.grid3,.jgrid,.steps{grid-template-columns:1fr 1fr}
+  .rings{justify-items:center} .ringsm{margin-right:0}
+  .docs{grid-template-columns:repeat(3,1fr)}
+  .co{position:static;max-width:none;text-align:left!important}
+  .callouts{position:static;display:grid;gap:15px;margin-top:30px}
+  .bleed{min-height:80vh}
+}
+@media(max-width:560px){
+  .tiles,.grid3,.jgrid,.steps,.cyc4{grid-template-columns:1fr}
+  .rings{grid-template-columns:1fr 1fr}
+  .docs{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+<style>
+#pxbar{position:fixed;z-index:9999;bottom:16px;left:50%;transform:translateX(-50%);
+ display:flex;align-items:center;gap:6px;max-width:calc(100vw - 20px)}
+#pxab,#pxnav{display:flex;gap:2px;background:rgba(42,37,33,.94);backdrop-filter:blur(10px);
+ border-radius:999px;padding:5px;box-shadow:0 6px 28px rgba(42,37,33,.3);
+ font-family:"Noto Sans TC",sans-serif;font-weight:300}
+#pxnav{overflow-x:auto}
+#pxbar a{color:rgba(251,248,243,.6);font-size:12px;letter-spacing:.1em;padding:8px 14px;
+ border-radius:999px;white-space:nowrap;text-decoration:none;transition:.25s}
+#pxbar a:hover{color:#FBF8F3}
+#pxbar a.cur{background:#FBF8F3;color:#2A2521}
+#pxab a.cur{background:#B58C86;color:#FBF8F3}
+#pxab a{font-family:Jost,sans-serif;letter-spacing:.18em;font-size:11.5px;padding:8px 15px}
+@media(max-width:560px){#pxbar a{font-size:11px;padding:7px 10px}#pxbar{gap:4px}}
+@media print{#pxbar{display:none}}
+</style>
+</head><body>
+<div style="background:#2A2521;color:#F3EDE4;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 20px;text-align:center">風格方向 B · 滿版攝影 · 文案為草稿，須經醫師審閱</div>
+<nav class="tabs"><span class="brandmark">蒔恩</span><a href="index-b.html">首頁</a><a href="treatments-b.html" class="on">療程</a><a href="category-b.html">養膚</a><a href="shine-b.html">水光針</a><a href="pico-b.html">皮秒</a></nav>
+
+<section class="bleed short warm">
+  <img src="images/treatments-hero.jpg" alt="" onerror="this.style.display='none'">
+  <div class="scrim bottom"></div>
+  <div class="inner">
+    <span class="pill">療 程 概 覽</span>
+    <div class="onimg"><h1>皮膚會自己更新<br>我們給它一個訊號</h1></div>
+  </div>
+  <span class="ph-note">滿版人像 · 暖調</span>
+</section>
+
+<section class="sec rose">
+  <span class="pill solid">破 壞 · 修 復 · 新 生</span>
+  <p class="body">療程做的不是「加上什麼」，而是給皮膚一個明確的訊號，讓它自己走完修復與新生的流程。欄寬對應各階段的實際長度。</p>
+  <div class="wrap"><div class="phase3"><div><div class="pi"><div class="day">Day 0 – 3</div><div class="zh">破壞</div><div class="en">Disrupt</div><p>以可控的能量或微創方式給予刺激，啟動皮膚的修復訊號。此階段常見泛紅、緊繃或輕微腫脹，屬預期中的反應。</p></div></div><div><div class="pi"><div class="day">Day 3 – 14</div><div class="zh">修復</div><div class="en">Repair</div><p>發炎反應逐步消退，纖維細胞開始活化、新的膠原蛋白進入生成階段。這段時間的保濕與防曬，決定了修復的品質。</p></div></div><div><div class="pi"><div class="day">Day 14 – 28</div><div class="zh">新生</div><div class="en">Renew</div><p>角質層完成一輪更新，膚況趨於穩定。此時的狀態，才是這次療程真正的落點；接著進入下一個循環的評估。</p></div></div></div></div>
+  <p class="note">上述天數為皮膚生理週期的一般範圍，用於說明機轉，非療效承諾。個人的反應時間與恢復狀況因年齡、膚況與生活習慣而異，實際安排由醫師面診評估。</p>
+</section>
+
+<section class="sec"><div class="wrap">
+  <span class="pill">Skin&nbsp;Cycle</span>
+  <h2>同一條週期，我們陪你走完</h2>
+  <p class="body">上面那 28 天是皮膚在做的事，這四段是我們在做的事。兩者對齊，所以回訪不是重新開始，而是接續。</p>
+  <div class="rings"><div class="ringsm"><div><div class="en">Diagnostic</div><div class="zh">面診評估</div></div></div><div class="ringsm"><div><div class="en">Treat</div><div class="zh">療程施作</div></div></div><div class="ringsm"><div><div class="en">Support</div><div class="zh">居家照護</div></div></div><div class="ringsm"><div><div class="en">Renew</div><div class="zh">回訪微調</div></div></div></div><div class="cyc4"><div class="c"><h4>面診評估</h4><p>讀取當下的膚況與週期位置，確認這次真正需要處理的是什麼。</p></div><div class="c"><h4>療程施作</h4><p>依評估結果選擇項目與強度，用臨床流程啟動皮膚自身的更新。</p></div><div class="c"><h4>居家照護</h4><p>療程之間的日常延續了結果，也讓皮膚在回訪之間維持穩定。</p></div><div class="c"><h4>回訪微調</h4><p>約六週後回來比較差異，再往前調整下一輪的內容與間隔。</p></div></div>
+  <p class="note">為什麼是六週而不是四週：皮膚完成一輪更新約需 28 天，我們額外保留約兩週讓膚況穩定，再進行下一次評估。實際間隔由醫師面診評估。</p>
+</div></section>
+
+<section class="sec left"><div class="wrap">
+  <span class="pill">養　膚</span>
+  <h2>Skin Cultivation</h2>
+  <p class="body">處理膚況的底盤 —— 保水度、清潔、色素與膚質。重點不在單次強度，而在規律。</p>
+  <div class="tiles"><a class="tile" href="#">雷射</a><a class="tile" href="shine-b.html">水光針</a><a class="tile" href="#">麗珠蘭</a><a class="tile" href="#">Dermapen</a><a class="tile" href="#">HIFU booster</a><a class="tile" href="#">水飛梭</a><a class="tile" href="#">機能點滴</a><a class="tile" href="#">杏仁酸煥膚</a></div>
+</div></section>
+<section class="sec left stone"><div class="wrap">
+  <span class="pill solid">輪　廓　抗　老</span>
+  <h2>Contour &amp; Firming</h2>
+  <p class="body">隨年齡改變的是支撐與位置。這一類處理作用層次與方向，不是把外觀改成另一種樣子。</p>
+  <div class="tiles"><a class="tile" href="#">電波</a><a class="tile" href="#">音波</a><a class="tile" href="#">逆時針</a><a class="tile" href="#">肉毒</a></div>
+</div></section>
+<section class="sec left"><div class="wrap">
+  <span class="pill">玻　尿　酸</span>
+  <h2>Filler</h2>
+  <p class="body">針對體積流失與線條的調整。材質、劑量與注射層次由醫師依臉部比例逐一評估。</p>
+  <div class="tiles"><a class="tile" href="#">瑞斯朗</a><a class="tile" href="#">eptq</a><a class="tile" href="#">艾麗斯</a></div>
+</div></section>
+<section class="sec trav">
+  <span class="pill dark">預 約 諮 詢</span>
+  <p class="body">是否適合、需要幾次、間隔多久，均因個人膚況與體質而異，須由醫師親自面診評估後決定。</p>
+  <a class="btn" href="#">線上預約</a>
+</section>
+
+<div class="reviewed">
+  <span>本頁內容由 <b>○○○ 醫師</b>（皮膚科專科醫師，專科證號 ○○○○）審閱</span>
+  <span>發布 2026.09.01 ｜ 最後更新 2026.09.01</span>
+</div>
+<footer>
+  <div class="mark">蒔恩診所</div><div class="en">SheAnd Daan Clinic</div>
+  本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。<br>
+  蒔恩診所｜台北市大安區 ○○路 ○ 號｜衛生局核准字號 ○○○○
+</footer><div id="pxbar"><div id="pxab" aria-label="風格方向切換"><a href="treatments.html">A</a><a href="treatments-b.html" class="cur">B</a></div><nav id="pxnav" aria-label="頁面切換"><a href="index-b.html">首頁</a><a href="treatments-b.html" class="cur">療程</a><a href="category-b.html">養膚</a><a href="shine-b.html">水光針</a><a href="pico-b.html">皮秒</a></nav></div>
+</body></html>
