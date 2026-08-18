@@ -3,7 +3,8 @@
 風格 A（暖中性 · 左右分割）  index.html / treatments.html / category.html / shine.html / pico.html / doctors.html
 風格 B（滿版攝影 · 霧霜玫瑰）index-b.html / treatments-b.html / category-b.html / shine-b.html / pico-b.html / doctors-b.html
 
-頁首為六項站台導覽（關於蒔恩｜養膚計畫｜療程項目｜醫師團隊｜空間｜衛教專欄），A / B 一致。
+頁首為五項站台導覽（關於蒔恩｜養膚計畫｜療程項目｜醫師團隊｜美學視野），A / B 一致。
+「空間」不列於導覽，內容併在關於蒔恩與首頁的空間區塊。
 底部深色列是提案用的跳頁工具，非網站導覽：左側 A|B 切換風格（會停在同一個頁面），右側切換樣張頁面。
 所有頁面已設 noindex，不會被 Google 收錄。
 
