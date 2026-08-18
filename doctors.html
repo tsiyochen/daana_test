@@ -188,12 +188,15 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
   .dcred{grid-template-columns:1fr;gap:16px}
 }
 </style>
-</head><body>
-<div class="propbar">視覺提案 v1 · 醫師團隊頁模板 · 文案為草稿，原廠認證清單須經法規確認</div>
+<style>
+/* 錨點跳轉時避開 sticky header */
+#about,#rhythm,#treatments,#doctors,#journal,#space,#visit{scroll-margin-top:96px}
+</style></head><body>
+<div class="propbar">視覺提案 v1 · 醫師團隊頁模板，原廠認證清單須經法規確認</div>
 <header><div class="nav">
   <div class="brand"><span class="zh">蒔恩</span><span class="en">SheAnd</span></div>
   <nav class="menu">
-    <a href="#">關於蒔恩</a><a href="#">養膚計畫</a>
+    <a href="index.html#about">關於蒔恩</a><a href="index.html#rhythm">養膚計畫</a>
     <a href="treatments.html">療程項目</a><a href="doctors.html" class="on">醫師團隊</a>
     <a href="journal-botox.html">美學視野</a>
   </nav>

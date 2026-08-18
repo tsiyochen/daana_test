@@ -271,9 +271,12 @@ text-transform:none;color:var(--ink)}
 .bleed .inner>.pill,.inner>.pill{align-self:flex-start}
 /* 亮部照片下的可讀性：加強底部遮罩並給標題描邊陰影 */
 .bleed .onimg h1{text-shadow:0 2px 22px rgba(38,35,32,.6)}
+</style><style>
+/* 錨點跳轉時避開 sticky tabs（手機換行會變高）*/
+#about,#rhythm{scroll-margin-top:clamp(64px,13vh,116px)}
 </style></head><body>
-<div style="background:#2A2521;color:#F3EDE4;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 20px;text-align:center">風格方向 B · 文章頁 · 文案為草稿，須經醫師審閱</div>
-<nav class="tabs"><a class="brandmark" href="index-b.html">蒔恩</a><a href="#">關於蒔恩</a><a href="#">養膚計畫</a><a href="treatments-b.html">療程項目</a><a href="doctors-b.html">醫師團隊</a><a href="journal-botox-b.html" class="on">美學視野</a></nav>
+<div style="background:#2A2521;color:#F3EDE4;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 20px;text-align:center">風格方向 B · 文章頁</div>
+<nav class="tabs"><a class="brandmark" href="index-b.html">蒔恩</a><a href="index-b.html#about">關於蒔恩</a><a href="index-b.html#rhythm">養膚計畫</a><a href="treatments-b.html">療程項目</a><a href="doctors-b.html">醫師團隊</a><a href="journal-botox-b.html" class="on">美學視野</a></nav>
 
 <section class="ahero">
   <span class="pill">輪 廓 抗 老</span>
