@@ -4,7 +4,9 @@ B 風格的照片插槽 —— 把 jpg 放進這個資料夾即可自動顯示�
                 cat1.jpg cat2.jpg cat3.jpg   三類療程代表圖
                 doc1~doc5.jpg       首頁醫師形象照橫排（3:4 直式）
                 space-3.jpg         療程室
-療程概覽        treatments-hero.jpg 已放入（1024x430）※ 實際為冷調，與規格的暖調不同
+療程概覽        treatments-hero.jpg 已放入（1024x430）
+                原檔為冷調（青綠手套／頭套佔比大），已做降綠偏暖調色，
+                原檔備份在專案外層「treatments-hero-原檔備份.jpg」
 養膚分類        category-side.jpg   療程過程（冷調）
                 choose-scene.jpg   療程情境（深色）
 醫師團隊        doc-jeff.jpg        Jeff 醫師（已放入，900x1200）
