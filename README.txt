@@ -8,6 +8,6 @@
 
 GitHub Pages：把本資料夾內的所有檔案與 images 資料夾上傳到 repo 根目錄，
               Settings → Pages → Branch: main / root → Save
-Netlify：整個資料夾拖到 https://app.netlify.com/drop
+
 
 B 風格的照片請放進 images/（詳見 images/README.txt）。
