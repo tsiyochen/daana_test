@@ -144,6 +144,17 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 @media(max-width:560px){#pxbar a{font-size:11px;padding:7px 10px}#pxbar{gap:4px}}
 @media print{#pxbar{display:none}}
 </style>
+<style>
+/* 手機導覽選單（≤960px）*/
+@media(max-width:960px){
+  .nav{flex-wrap:wrap}
+  .burger{display:block;min-width:44px;min-height:44px;line-height:1;padding:10px;margin:-10px -6px -10px 0}
+  .menu{display:none;flex-direction:column;gap:0;width:100%;order:5;margin-top:14px;padding-top:6px;border-top:1px solid var(--line)}
+  .menu.open{display:flex}
+  .menu a{padding:15px 2px;font-size:15px;letter-spacing:.12em;border-bottom:1px solid var(--line)}
+  .menu a:last-child{border-bottom:0}
+}
+</style>
 </head><body>
 <div class="propbar">視覺提案 v1 · 療程細節頁模板 · 文案為草稿，須經醫師審閱</div>
 <header><div class="nav">
@@ -277,4 +288,26 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
     蒔恩診所｜台北市大安區 ○○路 ○ 號｜衛生局核准字號 ○○○○
   </div>
 </footer><div id="pxbar"><div id="pxab" aria-label="風格方向切換"><a href="shine.html" class="cur">A</a><a href="shine-b.html">B</a></div><nav id="pxnav" aria-label="頁面切換"><a href="index.html">首頁</a><a href="treatments.html">療程</a><a href="category.html">養膚</a><a href="shine.html" class="cur">水光針</a><a href="pico.html">皮秒</a></nav></div>
+<script>
+(function(){
+  var b=document.querySelector('.burger'), m=document.querySelector('.menu');
+  if(!b||!m) return;
+  b.setAttribute('aria-expanded','false');
+  b.setAttribute('aria-controls','sitemenu');
+  m.id='sitemenu';
+  function set(open){
+    m.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',String(open));
+    b.innerHTML=open?'&#215;':'&#9776;';
+    b.setAttribute('aria-label',open?'關閉選單':'開啟選單');
+  }
+  b.addEventListener('click',function(e){e.stopPropagation();set(!m.classList.contains('open'));});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
+  document.addEventListener('click',function(e){
+    if(m.classList.contains('open')&&!m.contains(e.target)&&e.target!==b)set(false);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  window.addEventListener('resize',function(){if(window.innerWidth>960)set(false);});
+})();
+</script>
 </body></html>
