@@ -4,8 +4,8 @@
 <meta name="googlebot" content="noindex,nofollow">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jeff 醫師｜麻醉專科・醫師團隊｜蒔恩診所</title>
-<meta name="description" content="蒔恩診所 Jeff 醫師，麻醉專科醫師，台大醫學系畢業，專長輪廓線條修飾、拉提與雷射療程。">
+<title>醫師團隊｜蒔恩診所 SheAnd</title>
+<meta name="description" content="蒔恩診所醫師團隊，台北大安區。各科專科醫師依個人膚況評估，陪你走完每一段養膚循環。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@200;300;400&display=swap" rel="stylesheet">
@@ -156,111 +156,123 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 }
 </style>
 <style>
-/* ---- 醫師個人頁 ---- */
-.dochero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);align-items:center;
-  padding:clamp(34px,4.5vw,70px) var(--gut) clamp(40px,5vw,80px)}
-.dochero h1{font-family:var(--serif);font-weight:200;font-size:clamp(32px,4.6vw,58px);line-height:1.42;letter-spacing:.11em;margin:0}
-.dochero .copy{display:flex;flex-direction:column;gap:18px}
-.dochero .portrait{aspect-ratio:3/4;overflow:hidden;background:var(--travertine)}
-.dochero .portrait img{width:100%;height:100%;object-fit:cover;display:block}
-.spec{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
-.spec span{font-size:13.5px;letter-spacing:.06em;color:var(--ink);background:var(--stone);
-  border:1px solid var(--line);border-radius:999px;padding:9px 17px}
-.credgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,66px);margin-top:clamp(24px,3vw,40px)}
-.credgrid h3{margin-bottom:16px}
-.credlist{list-style:none;padding:0;margin:0}
-.credlist li{position:relative;padding:11px 0 11px 20px;font-size:14.5px;line-height:1.85;
-  color:var(--taupe-deep);border-bottom:1px solid var(--line)}
-.credlist li:last-child{border-bottom:0}
-.credlist li::before{content:"";position:absolute;left:2px;top:20px;width:5px;height:1px;background:var(--oak)}
-.credlist li b{font-weight:400;color:var(--ink)}
+/* ---- 醫師團隊頁 ---- */
+.dochead{padding:clamp(34px,4.5vw,68px) var(--gut) clamp(10px,1.6vw,22px);max-width:52em}
+.dochead h1{font-family:var(--serif);font-weight:200;font-size:clamp(30px,4.2vw,52px);
+  line-height:1.42;letter-spacing:.11em;margin:14px 0 0}
+.docrow{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(26px,4vw,60px);
+  align-items:start;padding:clamp(34px,4.5vw,64px) var(--gut);border-top:1px solid var(--line)}
+.docrow.flip{grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
+.docrow.flip .dpic{order:2}
+.dpic{aspect-ratio:3/4;overflow:hidden;background:var(--travertine);position:relative}
+.dpic img{width:100%;height:100%;object-fit:cover;display:block}
+.dpic .ph{width:100%;height:100%;margin:0;aspect-ratio:auto}
+.dname{font-family:var(--serif);font-weight:200;font-size:clamp(24px,3vw,36px);
+  letter-spacing:.1em;margin:8px 0 6px}
+.dtitle{font-family:var(--en);font-style:italic;font-size:clamp(14px,1.5vw,18px);color:var(--taupe);letter-spacing:.05em}
+.dsay{font-size:15px;line-height:2.05;color:var(--taupe-deep);margin:18px 0 0;max-width:32em}
+.dtag{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.dtag span{font-size:13px;letter-spacing:.05em;color:var(--ink);background:var(--stone);
+  border:1px solid var(--line);border-radius:999px;padding:8px 15px}
+.dcred{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,38px);margin-top:26px}
+.dcred h4{font-family:var(--util);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--taupe);margin:0 0 10px}
+.dcred ul{list-style:none;padding:0;margin:0}
+.dcred li{font-size:13.5px;line-height:1.9;color:var(--taupe-deep);padding:6px 0 6px 15px;position:relative}
+.dcred li::before{content:"";position:absolute;left:0;top:15px;width:5px;height:1px;background:var(--oak)}
+.dcred li b{font-weight:400;color:var(--ink)}
 @media(max-width:900px){
-  .dochero{grid-template-columns:1fr;gap:26px}
-  .dochero .portrait{max-width:420px}
-  .credgrid{grid-template-columns:1fr;gap:26px}
+  .docrow,.docrow.flip{grid-template-columns:1fr;gap:22px}
+  .docrow.flip .dpic{order:0}
+  .dpic{max-width:340px}
+  .dcred{grid-template-columns:1fr;gap:16px}
 }
 </style>
 </head><body>
-<div class="propbar">視覺提案 v1 · 醫師個人頁模板 · 文案為草稿，原廠認證清單須經法規確認</div>
+<div class="propbar">視覺提案 v1 · 醫師團隊頁模板 · 文案為草稿，原廠認證清單須經法規確認</div>
 <header><div class="nav">
   <div class="brand"><span class="zh">蒔恩</span><span class="en">SheAnd</span></div>
   <nav class="menu">
     <a href="#">關於蒔恩</a><a href="#">養膚計畫</a>
-    <a href="treatments.html">療程項目</a><a href="doctor-jeff.html" class="on">醫師團隊</a>
+    <a href="treatments.html">療程項目</a><a href="doctors.html" class="on">醫師團隊</a>
     <a href="#">空間</a><a href="#">衛教專欄</a>
   </nav>
   <a class="book" href="#visit">預約諮詢</a>
   <button class="burger" aria-label="開啟選單">☰</button>
 </div></header>
-<div class="crumb">首頁<span>/</span>醫師團隊<span>/</span>Jeff 醫師</div>
+<div class="crumb">首頁<span>/</span>醫師團隊</div>
 
-<section class="dochero">
-  <div class="copy">
-    <div class="eyebrow">Our Doctors · 醫師團隊</div>
-    <h1>Jeff 醫師</h1>
-    <div class="en-name">Anesthesiologist · Aesthetic Physician</div>
-    <p class="lede">麻醉專科出身，<br>所以更在意你在療程中的感受。</p>
-    <div><a class="btn solid" href="#visit">預約面診</a></div>
-  </div>
-  <div class="portrait"><img src="images/doc-jeff.jpg" alt="蒔恩診所 Jeff 醫師" width="900" height="1200"></div>
+<section class="dochead">
+  <div class="eyebrow">Our Doctors · 醫師團隊</div>
+  <h1>同一位醫師，看著你的每一次變化</h1>
+  <p class="lede" style="margin-top:18px">養膚是一段長時間的關係。我們希望你每次回來，面對的是同一位理解你膚況變化的醫師。</p>
 </section>
 
-<section class="section on-stone">
-  <div class="eyebrow">Approach · 看診理念</div>
-  <h2 class="h2">先把人放鬆下來，療程才做得細</h2>
-  <p class="body" style="margin-top:16px">在成為醫美醫師之前，Jeff 醫師的訓練背景是麻醉科 —— 一個整天在處理「病人舒不舒服」的科別。這段經歷讓他在面對療程時，習慣把兩件事放在一起看：要達成的效果，以及過程中你的身體會經歷什麼。</p>
-  <p class="body" style="margin-top:14px">因此在面診時，他會花時間確認你的緊張來源與疼痛耐受度，再決定施作的節奏與分次安排。療程的舒適度不只影響當下，也決定你願不願意規律回來 —— 而規律，正是養膚真正發生作用的前提。</p>
-  <p class="note">實際適用療程、次數與間隔，仍須經醫師親自面診評估後決定。</p>
-</section>
 
-<section class="section">
-  <div class="eyebrow">Expertise · 擅長療程</div>
-  <h2 class="h2">主要處理的範圍</h2>
-  <div class="spec">
-    <span>舒眠電音波</span><span>臉部線條修飾</span><span>輪廓固定</span>
-    <span>筋膜拉提</span><span>眼周細紋調理</span><span>鼻及下巴型態調整</span>
-    <span>埋線拉提</span><span>肉毒各區治療</span><span>皮秒雷射</span>
-  </div>
-  <p class="note">以上為醫師擅長之處置範圍，非療效保證。是否適合須由醫師依個人膚況與健康狀態評估。</p>
-</section>
-
-<section class="section on-stone">
-  <div class="eyebrow">Credentials · 學經歷與資格</div>
-  <h2 class="h2">訓練背景</h2>
-  <div class="credgrid">
-    <div>
-      <h3 class="h3">學經歷</h3>
-      <ul class="credlist">
-        <li><b>台灣大學醫學系</b> 畢業</li>
-        <li><b>台大醫院</b> 不分科住院醫師</li>
-        <li><b>林口長庚紀念醫院</b> 麻醉科主治醫師</li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="h3">專業資格</h3>
-      <ul class="credlist">
-        <li><b>麻醉專科醫師</b>（專科證號 ○○○○）</li>
-        <li>鳳凰電波 原廠認證醫師</li>
-        <li>PLT 凍晶 原廠認證醫師</li>
-        <li>Sculptra 原廠認證醫師</li>
-        <li>Ellansé 原廠認證醫師</li>
-        <li>Vivabella 原廠認證醫師</li>
-        <li>Letybo 保提拉 原廠認證醫師</li>
-        <li>Juvederm 喬雅登 玻尿酸認證醫師</li>
-        <li>Croma 玻尿酸 原廠認證訓練醫師</li>
-        <li>皮秒暨各式雷射淡斑美肌治療</li>
-        <li>微整型針劑填充治療</li>
-      </ul>
+<article class="docrow">
+  <div class="dpic"><img src="images/doc-jeff.jpg" alt="蒔恩診所 Jeff 醫師" width="900" height="1200"></div>
+  <div>
+    <div class="eyebrow">Physician</div>
+    <h2 class="dname">Jeff 醫師</h2>
+    <div class="dtitle">Anesthesiologist · Aesthetic Physician</div>
+    <p class="dsay">麻醉專科出身，所以更在意你在療程中的感受。面診時會先確認你的緊張來源與疼痛耐受度，再決定施作的節奏與分次安排。</p>
+    <div class="dtag"><span>舒眠電音波</span><span>臉部線條修飾</span><span>輪廓固定</span><span>筋膜拉提</span><span>眼周細紋調理</span><span>鼻及下巴型態調整</span><span>埋線拉提</span><span>肉毒各區治療</span><span>皮秒雷射</span></div>
+    <div class="dcred">
+      <div><h4>學經歷</h4><ul><li><b>台灣大學醫學系</b> 畢業</li><li><b>台大醫院</b> 不分科住院醫師</li><li><b>林口長庚紀念醫院</b> 麻醉科主治醫師</li></ul></div>
+      <div><h4>專業資格</h4><ul><li><b>麻醉專科醫師</b>（專科證號 ○○○○）</li><li>鳳凰電波 原廠認證醫師</li><li>PLT 凍晶 原廠認證醫師</li><li>Sculptra 原廠認證醫師</li><li>Ellansé 原廠認證醫師</li><li>Vivabella 原廠認證醫師</li><li>Letybo 保提拉 原廠認證醫師</li><li>Juvederm 喬雅登 玻尿酸認證醫師</li><li>Croma 玻尿酸 原廠認證訓練醫師</li><li>皮秒暨各式雷射淡斑美肌治療</li><li>微整型針劑填充治療</li></ul></div>
     </div>
   </div>
-  <p class="note">專科證號與各項原廠認證之正式名稱、字號與有效期間，上線前須逐項核對並補齊。</p>
-</section>
+</article>
+
+<article class="docrow flip">
+  <div class="dpic"><div class="ph pic" data-label="醫師形象照"></div></div>
+  <div>
+    <div class="eyebrow">Director</div>
+    <h2 class="dname">○○○ 醫師</h2>
+    <div class="dtitle">Dermatologist</div>
+    <p class="dsay">此處放醫師的一段自述，說明看診時最在意的事。約兩到三行，語氣與品牌一致。</p>
+    <div class="dtag"><span>○○○</span><span>○○○</span><span>○○○</span><span>○○○</span><span>○○○</span></div>
+    <div class="dcred">
+      <div><h4>學經歷</h4><ul><li><b>○○大學醫學系</b> 畢業</li><li><b>○○醫院</b> 住院醫師</li><li><b>○○醫院</b> 主治醫師</li></ul></div>
+      <div><h4>專業資格</h4><ul><li><b>○○專科醫師</b>（專科證號 ○○○○）</li><li>○○ 原廠認證醫師</li><li>○○ 原廠認證醫師</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="docrow">
+  <div class="dpic"><div class="ph pic" data-label="醫師形象照"></div></div>
+  <div>
+    <div class="eyebrow">Physician</div>
+    <h2 class="dname">○○○ 醫師</h2>
+    <div class="dtitle">Plastic Surgeon</div>
+    <p class="dsay">此處放醫師的一段自述，說明看診時最在意的事。約兩到三行，語氣與品牌一致。</p>
+    <div class="dtag"><span>○○○</span><span>○○○</span><span>○○○</span><span>○○○</span><span>○○○</span></div>
+    <div class="dcred">
+      <div><h4>學經歷</h4><ul><li><b>○○大學醫學系</b> 畢業</li><li><b>○○醫院</b> 住院醫師</li><li><b>○○醫院</b> 主治醫師</li></ul></div>
+      <div><h4>專業資格</h4><ul><li><b>○○專科醫師</b>（專科證號 ○○○○）</li><li>○○ 原廠認證醫師</li><li>○○ 原廠認證醫師</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="docrow flip">
+  <div class="dpic"><div class="ph pic" data-label="醫師形象照"></div></div>
+  <div>
+    <div class="eyebrow">Physician</div>
+    <h2 class="dname">○○○ 醫師</h2>
+    <div class="dtitle">Family Physician</div>
+    <p class="dsay">此處放醫師的一段自述，說明看診時最在意的事。約兩到三行，語氣與品牌一致。</p>
+    <div class="dtag"><span>○○○</span><span>○○○</span><span>○○○</span><span>○○○</span><span>○○○</span></div>
+    <div class="dcred">
+      <div><h4>學經歷</h4><ul><li><b>○○大學醫學系</b> 畢業</li><li><b>○○醫院</b> 住院醫師</li><li><b>○○醫院</b> 主治醫師</li></ul></div>
+      <div><h4>專業資格</h4><ul><li><b>○○專科醫師</b>（專科證號 ○○○○）</li><li>○○ 原廠認證醫師</li><li>○○ 原廠認證醫師</li></ul></div>
+    </div>
+  </div>
+</article>
 
 <div class="reviewed">
-  <span>本頁內容由 <b>Jeff 醫師</b>（麻醉專科醫師，專科證號 ○○○○）審閱</span>
+  <span>本頁醫師資料由 <b>各該醫師</b> 本人確認，專科證號待補</span>
   <span>發布 2026.09.01 ｜ 最後更新 2026.09.01</span>
 </div>
-
 <section class="cta" id="visit">
   <div class="eyebrow">Book · 預約</div>
   <h2 class="h2">先來面診，再決定要不要開始</h2>
@@ -278,7 +290,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
     本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。<br>
     蒔恩診所｜台北市大安區 ○○路 ○ 號｜衛生局核准字號 ○○○○
   </div>
-</footer><div id="pxbar"><div id="pxab" aria-label="風格方向切換"><a href="doctor-jeff.html" class="cur">A</a><a href="doctor-jeff-b.html">B</a></div><nav id="pxnav" aria-label="頁面切換"><a href="index.html">首頁</a><a href="treatments.html">療程</a><a href="category.html">養膚</a><a href="shine.html">水光針</a><a href="pico.html">皮秒</a><a href="doctor-jeff.html" class="cur">醫師</a></nav></div>
+</footer><div id="pxbar"><div id="pxab" aria-label="風格方向切換"><a href="doctors.html" class="cur">A</a><a href="doctors-b.html">B</a></div><nav id="pxnav" aria-label="頁面切換"><a href="index.html">首頁</a><a href="treatments.html">療程</a><a href="category.html">養膚</a><a href="shine.html">水光針</a><a href="pico.html">皮秒</a><a href="doctors.html" class="cur">醫師</a></nav></div>
 <script>
 (function(){
   var b=document.querySelector('.burger'), m=document.querySelector('.menu');
