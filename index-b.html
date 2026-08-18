@@ -235,6 +235,10 @@ text-transform:none;color:var(--ink)}
 .tabs a{font-size:10.5px;letter-spacing:.13em}
 .tabs a.on{padding:6px 14px}
 }
+</style><style>/* 修正：.inner 為 column flex，膠囊標籤預設 stretch 會被拉成整條 */
+.bleed .inner>.pill,.inner>.pill{align-self:flex-start}
+/* 亮部照片下的可讀性：加強底部遮罩並給標題描邊陰影 */
+.bleed .onimg h1{text-shadow:0 2px 22px rgba(38,35,32,.6)}
 </style></head><body>
 <div style="background:#2A2521;color:#F3EDE4;font-family:Jost,sans-serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 20px;text-align:center">風格方向 B · 滿版攝影 · 文案為草稿，須經醫師審閱</div>
 <nav class="tabs"><a class="brandmark" href="index-b.html">蒔恩</a><a href="#">關於蒔恩</a><a href="#">養膚計畫</a><a href="treatments-b.html">療程項目</a><a href="doctors-b.html">醫師團隊</a><a href="journal-botox-b.html">美學視野</a></nav>
