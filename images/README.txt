@@ -2,11 +2,13 @@ B 風格的照片插槽 —— 把 jpg 放進這個資料夾即可自動顯示�
 
 首頁            hero-portrait.jpg   滿版人像特寫（冷調高對比）
                 cat1.jpg cat2.jpg cat3.jpg   三類療程代表圖
-                doc1~doc5.jpg       醫師形象照（3:4 直式）
+                doc1~doc5.jpg       首頁醫師形象照橫排（3:4 直式）
                 space-3.jpg         療程室
 療程概覽        treatments-hero.jpg 滿版人像（暖調）
 養膚分類        category-side.jpg   療程過程（冷調）
                 choose-scene.jpg   療程情境（深色）
+醫師團隊        doc-jeff.jpg        Jeff 醫師（已放入，900x1200）
+                其餘 3 位為版型佔位，補照片時比照 3:4 裁切後放入
 水光針 / 皮秒   side-shine.jpg  fit-shine.jpg  care-shine.jpg
                 side-pico.jpg   fit-pico.jpg   care-pico.jpg
 
