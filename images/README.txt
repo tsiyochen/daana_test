@@ -1,6 +1,6 @@
 B 風格的照片插槽 —— 把 jpg 放進這個資料夾即可自動顯示，檔名要完全一致。
 
-首頁            hero-portrait.jpg   滿版人像特寫（冷調高對比）
+首頁            hero-portrait.jpg   已放入（黑白高對比側臉，1920x1288 / 142KB）
                 cat1.jpg cat2.jpg cat3.jpg   三類療程代表圖
                 doc1~doc5.jpg       首頁醫師形象照橫排（3:4 直式）
                 space-3.jpg         療程室
@@ -18,3 +18,4 @@ B 風格的照片插槽 —— 把 jpg 放進這個資料夾即可自動顯示�
 搜尋關鍵字：skincare closeup / beauty portrait black and white /
            facial treatment / spa minimal / clinic interior
 找不到檔案時會自動退回漸層色塊，不會壞掉。
+照片載入成功後，右下角的插槽規格標籤會自動隱藏。
