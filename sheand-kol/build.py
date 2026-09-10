@@ -217,9 +217,13 @@ def _apply(rows):
             elif part[0] == "label":
                 LABELS[part[1]] = val
             elif part[0] == "page":
-                pl = plans.get(part[1])
-                if pl is not None:
-                    pl[part[2]] = val.replace(SEP, "\n")
+                # 檔名含 "."（experience.html），要取中間全部、欄位取最後一段
+                fname, field = ".".join(part[1:-1]), part[-1]
+                pl = plans.get(fname)
+                if pl is None:
+                    print(f"  ⚠ 找不到頁面 {fname}，略過 {key}")
+                    continue
+                pl[field] = val.replace(SEP, "\n")
             else:
                 continue
             n += 1
