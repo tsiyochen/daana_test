@@ -108,7 +108,7 @@ PLANS = [
     ),
 ]
 
-BRAND = dict(intro="", address="台北市大安區 ○○路 ○ 號")
+BRAND = dict(intro="", address="台北市大安區 ○○路 ○ 號", phone="0987167852")
 
 # ═══════════════════════════════════════════════════════
 #  品牌故事 —— 皮膚更新週期
@@ -296,6 +296,10 @@ def treatment_block(key, only_in_this_plan=False):
       </div>
     </article>"""
 
+def contact_line():
+    parts = [BRAND.get("address", ""), BRAND.get("phone", "")]
+    return "　・　".join(html.escape(p) for p in parts if p)
+
 def story_html():
     cards = "".join(f"""
       <article class="stage">
@@ -378,7 +382,7 @@ def build(plan):
         tx_head="各項療程能做到什麼" if is_pkg else "可以體驗的項目",
         main_section=package_section(plan, shared) if is_pkg else pick_section(plan),
         intro=paras(BRAND["intro"], "品牌簡介 2–3 段"),
-        address=html.escape(BRAND["address"]),
+        contact=contact_line(),
         blocks=blocks,
         story_lead=html.escape(STORY_LEAD),
         stages=story_html(),
@@ -633,7 +637,7 @@ p:last-child{{margin-bottom:0}}
 
 <div class="end">
   <p class="m">sheand</p>
-  <p class="a">{address}</p>
+  <p class="a">{contact}</p>
 </div>
 
 </body>
