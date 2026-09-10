@@ -110,6 +110,35 @@ PLANS = [
 
 BRAND = dict(intro="", address="台北市大安區 ○○路 ○ 號", phone="0987167852")
 
+
+# ═══════════════════════════════════════════════════════
+#  版面上的固定文字 —— 區塊標題、說明句、欄位標題
+# ═══════════════════════════════════════════════════════
+LABELS = dict(
+    intro_eyebrow="Introduction",
+    intro_head="關於蒔恩",
+    cultivation_eyebrow="Skin Cultivation",
+    cultivation_head="什麼是養膚",
+    pkg_eyebrow="Package",
+    pkg_lede_tail="。以下項目各一次，由醫師依面診結果安排順序與間隔。",
+    tx_eyebrow_pkg="Treatments",
+    tx_head_pkg="各項療程能做到什麼",
+    tx_eyebrow_exp="Menu",
+    tx_head_exp="可以體驗的項目",
+    tx_lede="以下說明每個項目的作用層次與適合處理的狀況。"
+            "實際適用性、次數與間隔，均須經醫師面診評估後決定。",
+    space_eyebrow="The Space",
+    space_head="診所空間",
+    space_lede="微水泥的牆、洞石的地、淺色木質與弧形的線條。我們刻意讓空間安靜下來。",
+    f_principle="主要原理",
+    f_effect="主要功效",
+    f_steps="療程步驟",
+    f_info="療程資訊",
+    f_duration="治療時間",
+    f_recovery="恢復期",
+    f_pain="痛感程度",
+)
+
 # ═══════════════════════════════════════════════════════
 #  品牌故事 —— 皮膚更新週期
 # ═══════════════════════════════════════════════════════
@@ -185,6 +214,8 @@ def _apply(rows):
                     t[f] = int(val or 0)
                 else:
                     t[f] = val
+            elif part[0] == "label":
+                LABELS[part[1]] = val
             elif part[0] == "page":
                 pl = plans.get(part[1])
                 if pl is not None:
@@ -250,12 +281,13 @@ def pain_meter(level, label):
             f'{html.escape(label)}</dd>')
 
 def steps_html(steps):
+    L = LABELS
     if not steps:
         return ""
     items = "".join(
         f'<li><span class="sn">{html.escape(n)}</span>'
         f'<span class="sd">{html.escape(t)}</span></li>' for n, t in steps)
-    return ('<div class="field"><h4>療程步驟</h4>'
+    return (f'<div class="field"><h4>{L["f_steps"]}</h4>'
             f'<ol class="steps">{items}</ol></div>')
 
 def suits_html(title, rows):
@@ -268,6 +300,7 @@ def suits_html(title, rows):
             f'{cap}<table class="suits"><tbody>{trs}</tbody></table></div>')
 
 def treatment_block(key, only_in_this_plan=False):
+    L = LABELS
     t = TREATMENTS[key]
     tag = ('　<span class="only">本方案限定</span>' if only_in_this_plan else "")
     extra = list_or_slot(t["benefits"], "") if t["benefits"] else ""
@@ -281,17 +314,17 @@ def treatment_block(key, only_in_this_plan=False):
         <div class="cat">{html.escape(t['cat'])}{tag}</div>
       </div>
       <div>
-        <div class="field"><h4>主要原理</h4>
+        <div class="field"><h4>{L['f_principle']}</h4>
           {paras(t['principle'], f"{t['name']}：主要原理")}{pextra}</div>
-        <div class="field"><h4>主要功效</h4>
+        <div class="field"><h4>{L['f_effect']}</h4>
           {paras(t['effect'], f"{t['name']}：主要功效")}{extra}</div>
         {steps_html(t.get('steps'))}
         {suits_html(t.get('suits_title'), t.get('suits'))}
-        <div class="field"><h4>療程資訊</h4>
+        <div class="field"><h4>{L['f_info']}</h4>
           <dl class="spec">
-            {spec_cell('治療時間', t['duration'])}
-            {spec_cell('恢復期', t['recovery'])}
-            <div><dt>痛感程度</dt>{pain_meter(t['pain'], t['pain_label'])}</div>
+            {spec_cell(LABELS['f_duration'], t['duration'])}
+            {spec_cell(LABELS['f_recovery'], t['recovery'])}
+            <div><dt>{L['f_pain']}</dt>{pain_meter(t['pain'], t['pain_label'])}</div>
           </dl></div>
       </div>
     </article>"""
@@ -347,9 +380,9 @@ def package_section(plan, shared):
         f'<li><span class="dot"></span>{html.escape(TREATMENTS[k]["name"])}'
         f'<em>×1</em></li>' for k in plan["items"])
     return f'''<section class="sec on-white"><div class="wrap">
-  <div class="eyebrow">Package</div>
+  <div class="eyebrow">{html.escape(LABELS["pkg_eyebrow"])}</div>
   <h2 class="h2">{html.escape(plan["title"])}</h2>
-  <p class="lede">{html.escape(plan["sub"])}。以下項目各一次，由醫師依面診結果安排順序與間隔。</p>
+  <p class="lede">{html.escape(plan["sub"] + LABELS["pkg_lede_tail"])}</p>
   <ul class="items">{li}</ul>
   <div style="margin-top:26px;max-width:620px">{paras(plan["positioning"], "方案定位一句話／適合誰")}</div>
 </div></section>
@@ -359,8 +392,8 @@ def package_section(plan, shared):
 def pick_section(plan):
     """體驗頁專用：不揭露套餐結構，改為邀請挑選"""
     return f'''<section class="sec on-white"><div class="wrap">
-  <div class="eyebrow">Skin Cultivation</div>
-  <h2 class="h2">什麼是養膚</h2>
+  <div class="eyebrow">{html.escape(LABELS["cultivation_eyebrow"])}</div>
+  <h2 class="h2">{html.escape(LABELS["cultivation_head"])}</h2>
   <div style="max-width:40em">{paras(plan.get("intro_text", ""), "養膚概念說明 2–3 段：為什麼是規律而不是單次")}</div>
 </div></section>
 
@@ -378,8 +411,14 @@ def build(plan):
     return TEMPLATE.format(
         title=html.escape(plan["title"]),
         head_desc=html.escape(plan.get("desc", "")),
-        tx_eyebrow="Treatments" if is_pkg else "Menu",
-        tx_head="各項療程能做到什麼" if is_pkg else "可以體驗的項目",
+        tx_eyebrow=html.escape(LABELS["tx_eyebrow_pkg" if is_pkg else "tx_eyebrow_exp"]),
+        tx_head=html.escape(LABELS["tx_head_pkg" if is_pkg else "tx_head_exp"]),
+        L_intro_eyebrow=html.escape(LABELS["intro_eyebrow"]),
+        L_intro_head=html.escape(LABELS["intro_head"]),
+        L_tx_lede=html.escape(LABELS["tx_lede"]),
+        L_space_eyebrow=html.escape(LABELS["space_eyebrow"]),
+        L_space_head=html.escape(LABELS["space_head"]),
+        L_space_lede=html.escape(LABELS["space_lede"]),
         main_section=package_section(plan, shared) if is_pkg else pick_section(plan),
         intro=paras(BRAND["intro"], "品牌簡介 2–3 段"),
         contact=contact_line(),
@@ -613,8 +652,8 @@ p:last-child{{margin-bottom:0}}
 </section>
 
 <section class="sec on-cream"><div class="wrap">
-  <div class="eyebrow">Introduction</div>
-  <h2 class="h2">關於蒔恩</h2>
+  <div class="eyebrow">{L_intro_eyebrow}</div>
+  <h2 class="h2">{L_intro_head}</h2>
   <div class="intro-body">{intro}</div>
   <p class="lede story-lead">{story_lead}</p>
   {stages}
@@ -623,15 +662,15 @@ p:last-child{{margin-bottom:0}}
 {main_section}<section class="sec on-cream"><div class="wrap">
   <div class="eyebrow">{tx_eyebrow}</div>
   <h2 class="h2">{tx_head}</h2>
-  <p class="lede">以下說明每個項目的作用層次與適合處理的狀況。實際適用性、次數與間隔，均須經醫師面診評估後決定。</p>
+  <p class="lede">{L_tx_lede}</p>
   <div style="margin-top:clamp(28px,4vw,48px)">{blocks}
   </div>
 </div></section>
 
 <section class="sec on-white"><div class="wrap">
-  <div class="eyebrow">The Space</div>
-  <h2 class="h2">診所空間</h2>
-  <p class="lede">微水泥的牆、洞石的地、淺色木質與弧形的線條。我們刻意讓空間安靜下來。</p>
+  <div class="eyebrow">{L_space_eyebrow}</div>
+  <h2 class="h2">{L_space_head}</h2>
+  <p class="lede">{L_space_lede}</p>
   {gallery}
 </div></section>
 

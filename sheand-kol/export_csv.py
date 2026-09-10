@@ -39,6 +39,8 @@ add("brand.intro", "全站", "品牌", "品牌簡介",
     B.BRAND["intro"], f"關於蒔恩底下那段。2–3 段，段落之間用 {SEP} 分開")
 add("brand.address", "全站", "品牌", "頁尾地址",
     B.BRAND["address"], "頁面最底下那行")
+add("brand.phone", "全站", "品牌", "頁尾電話",
+    B.BRAND.get("phone", ""), "顯示在地址右邊，中間用間隔點分開")
 add("story.lead", "全站", "品牌故事", "引言",
     B.STORY_LEAD, "三張卡片上方那一句")
 
@@ -80,6 +82,34 @@ for key, t in B.TREATMENTS.items():
         add(f"tx.{key}.steps", "療程", n, "療程步驟",
             join(f"{a}:{b}" for a, b in t["steps"]),
             f"格式「第一步:內容」，步驟之間用 {SEP} 分開")
+
+
+# ── 版面固定文字 ────────────────────────────────────────
+LABEL_NOTE = {
+    "intro_eyebrow":      "「關於蒔恩」上方的英文小字",
+    "intro_head":         "區塊標題",
+    "cultivation_eyebrow":"「什麼是養膚」上方的英文小字（只有體驗頁）",
+    "cultivation_head":   "區塊標題（只有體驗頁）",
+    "pkg_eyebrow":        "方案區塊上方的英文小字（只有套餐頁）",
+    "pkg_lede_tail":      "接在副標後面那段（只有套餐頁）",
+    "tx_eyebrow_pkg":     "療程區塊英文小字（套餐頁）",
+    "tx_head_pkg":        "療程區塊標題（套餐頁）",
+    "tx_eyebrow_exp":     "療程區塊英文小字（體驗頁）",
+    "tx_head_exp":        "療程區塊標題（體驗頁）",
+    "tx_lede":            "療程區塊標題底下那段說明",
+    "space_eyebrow":      "「診所空間」上方的英文小字",
+    "space_head":         "區塊標題",
+    "space_lede":         "診所空間標題底下那段",
+    "f_principle":        "療程欄位標題",
+    "f_effect":           "療程欄位標題",
+    "f_steps":            "療程欄位標題",
+    "f_info":             "療程欄位標題",
+    "f_duration":         "療程資訊裡的小標",
+    "f_recovery":         "療程資訊裡的小標",
+    "f_pain":             "療程資訊裡的小標",
+}
+for k, note in LABEL_NOTE.items():
+    add(f"label.{k}", "版面文字", "固定文字", k, B.LABELS.get(k, ""), note)
 
 # ── 三個頁面 ───────────────────────────────────────────
 for p in B.PLANS:

@@ -1,6 +1,6 @@
 ﻿key,分類,項目,欄位,內容,說明
-brand.intro,全站,品牌,品牌簡介,,關於蒔恩底下那段。2–3 段，段落之間用 ｜ 分開
-brand.address,全站,品牌,頁尾地址,台北市大安區 ○○路 ○ 號,頁面最底下那行
+brand.intro,全站,品牌,品牌簡介,舒適的空間，讓你放鬆的氛圍,關於蒔恩底下那段。2–3 段，段落之間用 ｜ 分開
+brand.address,全站,品牌,頁尾地址,台北市大安區新生南路二段2號7樓,頁面最底下那行
 brand.phone,全站,品牌,頁尾電話,0987167852,顯示在地址右邊，中間用間隔點分開
 story.lead,全站,品牌故事,引言,品牌以「皮膚更新週期」作為核心敘事。,三張卡片上方那一句
 story.1.zh,全站,品牌故事 01,階段名稱,破壞,例如：破壞
@@ -16,10 +16,11 @@ space.1.label,診所空間,照片 1,圖說,諮詢區,壓在照片左下角的字
 space.2.label,診所空間,照片 2,圖說,櫃檯,壓在照片左下角的字。照片本身要換的話要另外給檔案
 space.3.label,診所空間,照片 3,圖說,療程室,壓在照片左下角的字。照片本身要換的話要另外給檔案
 space.4.label,診所空間,照片 4,圖說,接待區,壓在照片左下角的字。照片本身要換的話要另外給檔案
+space.5.label,診所空間,照片 5,圖說,大門,壓在照片左下角的字。照片本身要換的話要另外給檔案
 tx.water.name,療程,基礎水光,名稱,基礎水光,
 tx.water.en,療程,基礎水光,英文,Skin Booster,斜體小字
 tx.water.cat,療程,基礎水光,分類標籤,保濕・亮膚,綠色小圓角標籤
-tx.water.principle,療程,基礎水光,主要原理,將透明質酸等營養物質注入皮膚,一句話，12–15 字最好看
+tx.water.principle,療程,基礎水光,主要原理,將營養劑等營養物質注入皮膚,一句話，12–15 字最好看
 tx.water.principle_points,療程,基礎水光,原理補充,使用儀器自動化施打，有的機型搭配負壓吸附技術，能將皮膚輕輕吸起後，多個微針同時均勻注射。｜速度快、痛感低、注射深度可調整，施打劑量更精準，修復期短。,條列，用 ｜ 分開。留空就不顯示
 tx.water.effect,療程,基礎水光,主要功效,深層保濕、提升皮膚彈性,一句話
 tx.water.benefits,療程,基礎水光,功效補充,,條列，用 ｜ 分開。留空就不顯示
@@ -46,7 +47,7 @@ tx.dermapen.principle_points,療程,Dermapen,原理補充,,條列，用 ｜ 分�
 tx.dermapen.effect,療程,Dermapen,主要功效,淡化痘疤與細紋、改善毛孔,一句話
 tx.dermapen.benefits,療程,Dermapen,功效補充,,條列，用 ｜ 分開。留空就不顯示
 tx.dermapen.duration,療程,Dermapen,治療時間,15分鐘,例如：15分鐘
-tx.dermapen.recovery,療程,Dermapen,恢復期,,例如：沒有
+tx.dermapen.recovery,療程,Dermapen,恢復期,非常輕微（短暫紅腫）,例如：沒有
 tx.dermapen.pain,療程,Dermapen,痛感等級,1,0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆
 tx.dermapen.pain_label,療程,Dermapen,痛感說明,輕微,圓點旁邊的字。留空整欄會顯示「待填」
 tx.hydra.name,療程,海飛秀,名稱,海飛秀,
@@ -61,6 +62,27 @@ tx.hydra.recovery,療程,海飛秀,恢復期,沒有,例如：沒有
 tx.hydra.pain,療程,海飛秀,痛感等級,0,0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆
 tx.hydra.pain_label,療程,海飛秀,痛感說明,無,圓點旁邊的字。留空整欄會顯示「待填」
 tx.hydra.steps,療程,海飛秀,療程步驟,第一步:溫和清潔去角質｜第二步:深層吸附髒污與粉刺｜第三步:精華導入與肌膚修護,格式「第一步:內容」，步驟之間用 ｜ 分開
+label.intro_eyebrow,版面文字,固定文字,intro_eyebrow,Introduction,「關於蒔恩」上方的英文小字
+label.intro_head,版面文字,固定文字,intro_head,關於蒔恩,區塊標題
+label.cultivation_eyebrow,版面文字,固定文字,cultivation_eyebrow,Skin Cultivation,「什麼是養膚」上方的英文小字（只有體驗頁）
+label.cultivation_head,版面文字,固定文字,cultivation_head,什麼是養膚,區塊標題（只有體驗頁）
+label.pkg_eyebrow,版面文字,固定文字,pkg_eyebrow,Package,方案區塊上方的英文小字（只有套餐頁）
+label.pkg_lede_tail,版面文字,固定文字,pkg_lede_tail,。以下項目各一次，由醫師依面診結果安排順序與間隔。,接在副標後面那段（只有套餐頁）
+label.tx_eyebrow_pkg,版面文字,固定文字,tx_eyebrow_pkg,Treatments,療程區塊英文小字（套餐頁）
+label.tx_head_pkg,版面文字,固定文字,tx_head_pkg,各項療程能做到什麼,療程區塊標題（套餐頁）
+label.tx_eyebrow_exp,版面文字,固定文字,tx_eyebrow_exp,Menu,療程區塊英文小字（體驗頁）
+label.tx_head_exp,版面文字,固定文字,tx_head_exp,可以體驗的項目,療程區塊標題（體驗頁）
+label.tx_lede,版面文字,固定文字,tx_lede,以下說明每個項目的作用層次與適合處理的狀況。實際適用性、次數與間隔，均須經醫師面診評估後決定。,療程區塊標題底下那段說明
+label.space_eyebrow,版面文字,固定文字,space_eyebrow,The Space,「診所空間」上方的英文小字
+label.space_head,版面文字,固定文字,space_head,診所空間,區塊標題
+label.space_lede,版面文字,固定文字,space_lede,微水泥的牆、洞石的地、淺色木質與弧形的線條。我們刻意讓空間安靜下來。,診所空間標題底下那段
+label.f_principle,版面文字,固定文字,f_principle,主要原理,療程欄位標題
+label.f_effect,版面文字,固定文字,f_effect,主要功效,療程欄位標題
+label.f_steps,版面文字,固定文字,f_steps,療程步驟,療程欄位標題
+label.f_info,版面文字,固定文字,f_info,療程資訊,療程欄位標題
+label.f_duration,版面文字,固定文字,f_duration,治療時間,療程資訊裡的小標
+label.f_recovery,版面文字,固定文字,f_recovery,恢復期,療程資訊裡的小標
+label.f_pain,版面文字,固定文字,f_pain,痛感程度,療程資訊裡的小標
 page.plan-01.html.title,頁面,套餐頁 01（4 項）,頁面標題,養膚體驗套餐,封面那行大字
 page.plan-01.html.sub,頁面,套餐頁 01（4 項）,副標,一季的養膚體驗,方案區塊的說明開頭
 page.plan-01.html.positioning,頁面,套餐頁 01（4 項）,方案定位,我們認為，養好一個肌膚是讓自己變美的關鍵，當你的皮膚養好，後續的各種療程才能更好。｜用這養膚套餐，找到你自己最喜歡的養膚模式。,項目清單下方那段。用 ｜ 分段
