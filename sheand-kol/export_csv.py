@@ -128,6 +128,16 @@ for p in B.PLANS:
             (p.get("intro_text") or "").replace("\n", SEP),
             f"體驗頁專屬。用 {SEP} 分段")
 
+# ── 只保留 experience.html 用得到的列 ──────────────────
+DROP = {
+    # 只有套餐頁會用到的版面文字
+    "label.pkg_eyebrow", "label.pkg_lede_tail",
+    "label.tx_eyebrow_pkg", "label.tx_head_pkg",
+}
+rows = [r for r in rows
+        if r["key"] not in DROP
+        and not r["key"].startswith("page.plan-")]
+
 out = pathlib.Path(__file__).parent / "content.csv"
 with out.open("w", encoding="utf-8-sig", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=["key", "分類", "項目", "欄位", "內容", "說明"])
