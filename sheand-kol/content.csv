@@ -1,0 +1,70 @@
+﻿key,分類,項目,欄位,內容,說明
+brand.intro,全站,品牌,品牌簡介,,關於蒔恩底下那段。2–3 段，段落之間用 ｜ 分開
+brand.address,全站,品牌,頁尾地址,台北市大安區 ○○路 ○ 號,頁面最底下那行
+story.lead,全站,品牌故事,引言,品牌以「皮膚更新週期」作為核心敘事。,三張卡片上方那一句
+story.1.zh,全站,品牌故事 01,階段名稱,破壞,例如：破壞
+story.1.en,全站,品牌故事 01,英文,Disrupt,例如：Disrupt
+story.1.body,全站,品牌故事 01,說明,以可控能量或微創方式給予刺激，啟動皮膚修復訊號。此階段常見泛紅、緊繃或輕微腫脹，屬預期中的反應。,卡片內文
+story.2.zh,全站,品牌故事 02,階段名稱,修復,例如：破壞
+story.2.en,全站,品牌故事 02,英文,Repair,例如：Disrupt
+story.2.body,全站,品牌故事 02,說明,發炎反應逐步消退，纖維細胞開始活化、新的膠原蛋白進入生成階段。這段時間的保濕與防曬，決定了修復的品質。,卡片內文
+story.3.zh,全站,品牌故事 03,階段名稱,新生,例如：破壞
+story.3.en,全站,品牌故事 03,英文,Renew,例如：Disrupt
+story.3.body,全站,品牌故事 03,說明,角質層完成一輪更新，膚況趨於穩定。此時的狀態，才是這次療程真正的落點；接著進入下一個循環。,卡片內文
+space.1.label,診所空間,照片 1,圖說,諮詢區,壓在照片左下角的字。照片本身要換的話要另外給檔案
+space.2.label,診所空間,照片 2,圖說,櫃檯,壓在照片左下角的字。照片本身要換的話要另外給檔案
+space.3.label,診所空間,照片 3,圖說,療程室,壓在照片左下角的字。照片本身要換的話要另外給檔案
+space.4.label,診所空間,照片 4,圖說,接待區,壓在照片左下角的字。照片本身要換的話要另外給檔案
+tx.water.name,療程,基礎水光,名稱,基礎水光,
+tx.water.en,療程,基礎水光,英文,Skin Booster,斜體小字
+tx.water.cat,療程,基礎水光,分類標籤,保濕・亮膚,綠色小圓角標籤
+tx.water.principle,療程,基礎水光,主要原理,將透明質酸等營養物質注入皮膚,一句話，12–15 字最好看
+tx.water.principle_points,療程,基礎水光,原理補充,使用儀器自動化施打，有的機型搭配負壓吸附技術，能將皮膚輕輕吸起後，多個微針同時均勻注射。｜速度快、痛感低、注射深度可調整，施打劑量更精準，修復期短。,條列，用 ｜ 分開。留空就不顯示
+tx.water.effect,療程,基礎水光,主要功效,深層保濕、提升皮膚彈性,一句話
+tx.water.benefits,療程,基礎水光,功效補充,,條列，用 ｜ 分開。留空就不顯示
+tx.water.duration,療程,基礎水光,治療時間,15分鐘,例如：15分鐘
+tx.water.recovery,療程,基礎水光,恢復期,輕微(細小針孔及瘀青),例如：沒有
+tx.water.pain,療程,基礎水光,痛感等級,1,0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆
+tx.water.pain_label,療程,基礎水光,痛感說明,輕微,圓點旁邊的字。留空整欄會顯示「待填」
+tx.pico.name,療程,皮秒蜂巢雷射,名稱,皮秒蜂巢雷射,
+tx.pico.en,療程,皮秒蜂巢雷射,英文,Picosecond Laser,斜體小字
+tx.pico.cat,療程,皮秒蜂巢雷射,分類標籤,膚色・毛孔,綠色小圓角標籤
+tx.pico.principle,療程,皮秒蜂巢雷射,主要原理,利用超短脈衝雷射擊碎色素,一句話，12–15 字最好看
+tx.pico.principle_points,療程,皮秒蜂巢雷射,原理補充,,條列，用 ｜ 分開。留空就不顯示
+tx.pico.effect,療程,皮秒蜂巢雷射,主要功效,淡化色斑、細紋、改善膚色,一句話
+tx.pico.benefits,療程,皮秒蜂巢雷射,功效補充,,條列，用 ｜ 分開。留空就不顯示
+tx.pico.duration,療程,皮秒蜂巢雷射,治療時間,15-30分鐘,例如：15分鐘
+tx.pico.recovery,療程,皮秒蜂巢雷射,恢復期,輕微（例如短暫紅腫）,例如：沒有
+tx.pico.pain,療程,皮秒蜂巢雷射,痛感等級,1,0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆
+tx.pico.pain_label,療程,皮秒蜂巢雷射,痛感說明,輕微,圓點旁邊的字。留空整欄會顯示「待填」
+tx.dermapen.name,療程,Dermapen,名稱,Dermapen,
+tx.dermapen.en,療程,Dermapen,英文,Microneedling,斜體小字
+tx.dermapen.cat,療程,Dermapen,分類標籤,膚質・紋理,綠色小圓角標籤
+tx.dermapen.principle,療程,Dermapen,主要原理,以微針刺激膠原與彈性蛋白再生,一句話，12–15 字最好看
+tx.dermapen.principle_points,療程,Dermapen,原理補充,,條列，用 ｜ 分開。留空就不顯示
+tx.dermapen.effect,療程,Dermapen,主要功效,淡化痘疤與細紋、改善毛孔,一句話
+tx.dermapen.benefits,療程,Dermapen,功效補充,,條列，用 ｜ 分開。留空就不顯示
+tx.dermapen.duration,療程,Dermapen,治療時間,15分鐘,例如：15分鐘
+tx.dermapen.recovery,療程,Dermapen,恢復期,,例如：沒有
+tx.dermapen.pain,療程,Dermapen,痛感等級,1,0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆
+tx.dermapen.pain_label,療程,Dermapen,痛感說明,輕微,圓點旁邊的字。留空整欄會顯示「待填」
+tx.hydra.name,療程,海飛秀,名稱,海飛秀,
+tx.hydra.en,療程,海飛秀,英文,HydraFacial,斜體小字
+tx.hydra.cat,療程,海飛秀,分類標籤,清潔・導入,綠色小圓角標籤
+tx.hydra.principle,療程,海飛秀,主要原理,30分鐘完成深層清潔與精華導入,一句話，12–15 字最好看
+tx.hydra.principle_points,療程,海飛秀,原理補充,,條列，用 ｜ 分開。留空就不顯示
+tx.hydra.effect,療程,海飛秀,主要功效,深層清潔毛孔、補水與提亮膚色,一句話
+tx.hydra.benefits,療程,海飛秀,功效補充,,條列，用 ｜ 分開。留空就不顯示
+tx.hydra.duration,療程,海飛秀,治療時間,30分鐘,例如：15分鐘
+tx.hydra.recovery,療程,海飛秀,恢復期,沒有,例如：沒有
+tx.hydra.pain,療程,海飛秀,痛感等級,0,0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆
+tx.hydra.pain_label,療程,海飛秀,痛感說明,無,圓點旁邊的字。留空整欄會顯示「待填」
+tx.hydra.steps,療程,海飛秀,療程步驟,第一步:溫和清潔去角質｜第二步:深層吸附髒污與粉刺｜第三步:精華導入與肌膚修護,格式「第一步:內容」，步驟之間用 ｜ 分開
+page.plan-01.html.title,頁面,套餐頁 01（4 項）,頁面標題,養膚體驗套餐,封面那行大字
+page.plan-01.html.sub,頁面,套餐頁 01（4 項）,副標,一季的養膚體驗,方案區塊的說明開頭
+page.plan-01.html.positioning,頁面,套餐頁 01（4 項）,方案定位,我們認為，養好一個肌膚是讓自己變美的關鍵，當你的皮膚養好，後續的各種療程才能更好。｜用這養膚套餐，找到你自己最喜歡的養膚模式。,項目清單下方那段。用 ｜ 分段
+page.plan-02.html.title,頁面,套餐頁 02（5 項）,頁面標題,養膚體驗套餐,封面那行大字
+page.plan-02.html.sub,頁面,套餐頁 02（5 項）,副標,一季的養膚體驗,方案區塊的說明開頭
+page.plan-02.html.positioning,頁面,套餐頁 02（5 項）,方案定位,我們認為，養好一個肌膚是讓自己變美的關鍵，當你的皮膚養好，後續的各種療程才能更好。｜用這養膚套餐，找到你自己最喜歡的養膚模式。,項目清單下方那段。用 ｜ 分段
+page.experience.html.title,頁面,體驗頁（第一波合作）,頁面標題,養膚體驗,封面那行大字
+page.experience.html.intro_text,頁面,體驗頁（第一波合作）,什麼是養膚,,體驗頁專屬。用 ｜ 分段

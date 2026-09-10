@@ -1,0 +1,43 @@
+name: 從 Google Sheet 重建頁面
+
+# 每 15 分鐘抓一次 Sheet；也可以在 Actions 分頁手動按一下
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "sheand-kol/build.py"
+      - "sheand-kol/images/**"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安裝相依套件
+        run: pip install pillow
+
+      - name: 重建三頁
+        working-directory: sheand-kol
+        run: python3 build.py
+
+      - name: 有變動才 commit
+        run: |
+          if [ -n "$(git status --porcelain sheand-kol)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add sheand-kol
+            git commit -m "自動重建：內容更新自 Google Sheet"
+            git push
+          else
+            echo "內容沒有變動，跳過"
+          fi
