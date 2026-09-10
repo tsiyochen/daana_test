@@ -134,6 +134,7 @@ SPACE = [
     dict(src="images/space-2.jpg", label="櫃檯"),
     dict(src="images/space-3.jpg", label="療程室"),
     dict(src="images/space-4.jpg", label="接待區"),
+    dict(src="images/space-5.jpg", label="大門"),
 ]
 
 # ═══════════════════════════════════════════════════════
@@ -493,6 +494,7 @@ p:last-child{{margin-bottom:0}}
   margin-top:clamp(26px,3.5vw,44px)}}
 .sp{{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden;
   border-radius:7px;background:var(--cream)}}
+.gal .sp:last-child:nth-child(odd){{grid-column:1 / -1;aspect-ratio:21/9}}
 .sp img{{width:100%;height:100%;object-fit:cover;display:block}}
 .sp figcaption{{position:absolute;left:13px;bottom:11px;z-index:2;
   font-family:var(--util);font-size:10px;letter-spacing:.2em;
