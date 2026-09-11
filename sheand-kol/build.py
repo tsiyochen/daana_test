@@ -80,7 +80,7 @@ TREATMENTS = {
 PLANS = [
     dict(
         file="plan-01.html", no="01", kind="package",
-        desc="蒔恩診所養膚體驗套餐內容與各項療程說明。",
+        desc="蒔恩美學診所養膚體驗套餐內容與各項療程說明。",
         title="養膚體驗套餐",
         sub="一季的養膚體驗",
         items=["water", "pico", "dermapen", "hydra"],
@@ -89,7 +89,7 @@ PLANS = [
     ),
     dict(
         file="plan-02.html", no="02", kind="package",
-        desc="蒔恩診所養膚體驗套餐內容與各項療程說明。",
+        desc="蒔恩美學診所養膚體驗套餐內容與各項療程說明。",
         title="養膚體驗套餐",
         sub="一季的養膚體驗",
         items=["water", "pico", "dermapen", "hydra", "hifu_eye"],
@@ -99,7 +99,7 @@ PLANS = [
     # ── 第一波合作用：不揭露套餐結構，讓 KOL 自己挑 ──
     dict(
         file="experience.html", no="", kind="experience",
-        desc="蒔恩診所養膚體驗：從皮膚的更新週期出發，說明各項療程的作用與適合處理的狀況。",
+        desc="蒔恩美學診所養膚體驗：從皮膚的更新週期出發，說明各項療程的作用與適合處理的狀況。",
         title="養膚體驗",
         sub="",
         items=["water", "pico", "dermapen", "hydra"],
