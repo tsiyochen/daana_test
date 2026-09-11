@@ -333,6 +333,10 @@ def treatment_block(key, only_in_this_plan=False):
       </div>
     </article>"""
 
+def logo_svg(name):
+    f = pathlib.Path(__file__).parent / "images" / name
+    return f.read_text(encoding="utf-8") if f.exists() else ""
+
 def contact_line():
     parts = [BRAND.get("address", ""), BRAND.get("phone", "")]
     return "　・　".join(html.escape(p) for p in parts if p)
@@ -371,7 +375,7 @@ def space_html():
         uri = embed(p["src"])
         if uri:
             cells += (f'\n      <figure class="sp">'
-                      f'<img src="{uri}" alt="蒔恩診所{html.escape(p["label"])}">'
+                      f'<img src="{uri}" alt="蒔恩美學診所{html.escape(p["label"])}">'
                       f'<figcaption>{html.escape(p["label"])}</figcaption></figure>')
         else:
             cells += (f'\n      <figure class="sp empty">'
@@ -426,6 +430,8 @@ def build(plan):
         main_section=package_section(plan, shared) if is_pkg else pick_section(plan),
         intro=paras(BRAND["intro"], "品牌簡介 2–3 段"),
         contact=contact_line(),
+        logo=logo_svg("logo-primary.svg"),
+        logo_end=logo_svg("logo-primary.svg"),
         blocks=blocks,
         story_lead=html.escape(STORY_LEAD),
         stages=story_html(),
@@ -439,7 +445,7 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="googlebot" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title}｜蒔恩診所 SheAnd</title>
+<title>{title}｜蒔恩美學診所 SHE AND</title>
 <meta name="description" content="{head_desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -447,12 +453,14 @@ TEMPLATE = """<!DOCTYPE html>
 <style>
 :root{{
   /* ── 品牌色（目測自 CI 圖，待設計師正式 HEX 校正）── */
-  --sage-pale:#C2D4CF;
-  --sage:#8FAFA2;
-  --sage-deep:#5E7D71;
-  --cream:#F1ECE6;
-  --cream-warm:#F8F5F1;
-  --clay:#D2907A;
+  /* 官方色票（來自 蒔恩 LOGO 完稿_260911.pdf）*/
+  --sage-pale:#BCCFC9;   /* C31 M13 Y22 K0 */
+  --sage:#8CAAA0;        /* C51 M26 Y38 K0 */
+  --cream:#F3ECE6;       /* C6 M9 Y10 K0  */
+  --clay:#E39782;        /* C13 M51 Y44 K0 */
+  /* 以上四色推導，非官方 */
+  --sage-deep:#5B7A70;
+  --cream-warm:#F9F4EF;
   --ink:#33322F;
   --ink-soft:#6B6862;
   --line:rgba(51,50,47,.13);
@@ -492,10 +500,10 @@ p:last-child{{margin-bottom:0}}
   width:min(62vw,620px);aspect-ratio:1;border-radius:50%;
   background:rgba(255,255,255,.11)}}
 .cover>*{{position:relative;z-index:2}}
-.mark{{font-family:var(--en);font-weight:300;font-size:clamp(46px,8.5vw,104px);
-  line-height:1;margin:0}}
-.mark-sub{{font-family:var(--util);font-size:clamp(10px,1.3vw,12px);
-  letter-spacing:.62em;text-transform:uppercase;margin:12px 0 0;opacity:.92}}
+.logo{{width:clamp(220px,30vw,360px);color:#fff}}
+.logo svg{{width:100%;height:auto;display:block}}
+.logo-end{{width:clamp(170px,20vw,230px);margin:0 auto;color:rgba(255,255,255,.88)}}
+.logo-end svg{{width:100%;height:auto;display:block}}
 .cover .tag{{display:inline-block;align-self:flex-start;font-family:var(--util);
   font-size:11px;letter-spacing:.24em;text-transform:uppercase;
   border:1px solid rgba(255,255,255,.55);border-radius:999px;
@@ -615,14 +623,13 @@ p:last-child{{margin-bottom:0}}
 
 .end{{background:var(--ink);color:rgba(255,255,255,.72);
   padding:clamp(30px,3.6vw,48px) var(--gut);text-align:center}}
-.end .m{{font-family:var(--en);font-size:30px;line-height:1;margin:0}}
+
 .end .a{{font-family:var(--util);font-size:10.5px;letter-spacing:.24em;
   text-transform:uppercase;margin:14px 0 0;opacity:.72}}
 
 @media(max-width:820px){{
   .cover{{min-height:auto;padding:clamp(46px,13vw,68px) var(--gut)}}
-  .mark{{font-size:clamp(38px,12vw,54px)}}
-  .mark-sub{{letter-spacing:.42em;margin-top:9px}}
+  .logo{{width:min(76vw,260px)}}
   .cover h1{{font-size:clamp(21px,5.6vw,28px);margin-top:24px}}
   .cover::after{{width:min(80vw,320px);right:-22%;bottom:-16%}}
   .tx{{grid-template-columns:1fr;gap:16px}}
@@ -650,8 +657,7 @@ p:last-child{{margin-bottom:0}}
 <body>
 
 <section class="cover">
-  <p class="mark">sheand</p>
-  <p class="mark-sub">Daan Clinic</p>
+  <div class="logo">{logo}</div>
   <h1>{title}</h1>
 </section>
 
@@ -679,7 +685,7 @@ p:last-child{{margin-bottom:0}}
 </div></section>
 
 <div class="end">
-  <p class="m">sheand</p>
+  <div class="logo-end">{logo_end}</div>
   <p class="a">{contact}</p>
 </div>
 
