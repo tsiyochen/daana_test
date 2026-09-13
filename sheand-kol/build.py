@@ -269,6 +269,11 @@ def spec_cell(term, value):
     v = html.escape(value) if value else '<span class="tbd">待填</span>'
     return f"<div><dt>{term}</dt><dd>{v}</dd></div>"
 
+def label_paras(text):
+    """版面文字：支援用 ｜ 分段，同事照說明打的分隔符號才會生效"""
+    parts = [x.strip() for x in str(text).replace(SEP, "\n").split("\n") if x.strip()]
+    return "".join(f"<p>{html.escape(x)}</p>" for x in parts)
+
 def paras(text, label):
     """多段文字；空值顯示插槽"""
     if not text:
@@ -423,10 +428,10 @@ def build(plan):
         tx_head=html.escape(LABELS["tx_head_pkg" if is_pkg else "tx_head_exp"]),
         L_intro_eyebrow=html.escape(LABELS["intro_eyebrow"]),
         L_intro_head=html.escape(LABELS["intro_head"]),
-        L_tx_lede=html.escape(LABELS["tx_lede"]),
+        L_tx_lede=label_paras(LABELS["tx_lede"]),
         L_space_eyebrow=html.escape(LABELS["space_eyebrow"]),
         L_space_head=html.escape(LABELS["space_head"]),
-        L_space_lede=html.escape(LABELS["space_lede"]),
+        L_space_lede=label_paras(LABELS["space_lede"]),
         main_section=package_section(plan, shared) if is_pkg else pick_section(plan),
         intro=paras(BRAND["intro"], "品牌簡介 2–3 段"),
         contact=contact_line(),
@@ -480,6 +485,8 @@ img{{max-width:100%;display:block}}
 .h2{{font-family:var(--serif);font-weight:200;font-size:clamp(23px,3vw,36px);
   line-height:1.55;letter-spacing:.09em;margin:14px 0 0}}
 .lede{{font-size:15px;line-height:2.1;color:var(--ink-soft);max-width:40em;margin:16px 0 0}}
+.lede p{{margin:0 0 8px}}
+.lede p:last-child{{margin-bottom:0}}
 .sec{{padding:clamp(46px,6vw,92px) var(--gut)}}
 .wrap{{max-width:1080px;margin:0 auto}}
 p{{margin:0 0 16px}}
@@ -672,7 +679,7 @@ p:last-child{{margin-bottom:0}}
 {main_section}<section class="sec on-cream"><div class="wrap">
   <div class="eyebrow">{tx_eyebrow}</div>
   <h2 class="h2">{tx_head}</h2>
-  <p class="lede">{L_tx_lede}</p>
+  <div class="lede">{L_tx_lede}</div>
   <div style="margin-top:clamp(28px,4vw,48px)">{blocks}
   </div>
 </div></section>
@@ -680,7 +687,7 @@ p:last-child{{margin-bottom:0}}
 <section class="sec on-white"><div class="wrap">
   <div class="eyebrow">{L_space_eyebrow}</div>
   <h2 class="h2">{L_space_head}</h2>
-  <p class="lede">{L_space_lede}</p>
+  <div class="lede">{L_space_lede}</div>
   {gallery}
 </div></section>
 
