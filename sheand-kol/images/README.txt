@@ -1,15 +1,29 @@
-診所空間照片插槽 —— 放進這個資料夾即可自動顯示，檔名要完全一致。
+照片插槽 —— 放進這個資料夾即可自動顯示，檔名要完全一致。
 
+【診所空間】
 space-1.jpg   諮詢區
 space-2.jpg   櫃檯
 space-3.jpg   療程室
-space-4.jpg   接待區
+space-4.jpg   休息區
 space-5.jpg   大門（奇數張時會自動跨滿兩欄）
 
-treatment-1.jpg / treatment-2.jpg  療程實拍，目前未使用
+【療程儀器】去背透明圖，顯示在療程名稱右邊
+device-water.webp      基礎水光
+device-pico.webp       皮秒蜂巢雷射
+device-dermapen.webp   Dermapen
+device-hydra.webp      海飛秀
 
-格式一律用 JPEG，不要用 PNG —— 同一張照片 PNG 會大 10 倍以上。
-建議 16:10 橫式、1400px 寬以內、壓到 200KB 內。
-圖說在 Google Sheet 的 space.N.label 那幾列改。
-照片本身要換的話，把新檔案放進來蓋掉舊的，然後重跑 build.py。
+【Logo】
+logo-primary.svg  SHE AND + 蒔恩美學診所（封面與頁尾用）
+logo-en.svg       SHE AND + DAAN CLINIC
+logo-mark.svg     單獨字標
+
+--- 規格 ---
+空間照：JPEG、16:10 橫式、1400px 內、200KB 內
+儀器照：WebP 去背、520px 內、30KB 內
+        原檔若為黑底或白底，交給我處理去背，不要自己用小畫家塗白
+
+檔案大小很重要——所有照片都會內嵌進 HTML，
+目前四張儀器照合計僅 81KB，五張空間照約 350KB。
+
 原檔備份在上一層的 _原檔備份/。

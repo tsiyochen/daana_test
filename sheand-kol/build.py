@@ -19,7 +19,7 @@ import html, pathlib
 #   pain      痛感程度 1–3（0 = 未填）, pain_label 文字
 TREATMENTS = {
     "water": dict(
-        device="device-water.jpg", name="基礎水光", en="Skin Booster", cat="保濕・亮膚",
+        device="device-water.webp", name="基礎水光", en="Skin Booster", cat="保濕・亮膚",
         principle="將透明質酸等營養物質注入皮膚",
         principle_points=[
             "使用儀器自動化施打，有的機型搭配負壓吸附技術，"
@@ -32,7 +32,7 @@ TREATMENTS = {
         pain=1, pain_label="輕微",
     ),
     "pico": dict(
-        device="device-pico.jpg", name="皮秒蜂巢雷射", en="Picosecond Laser", cat="膚色・毛孔",
+        device="device-pico.webp", name="皮秒蜂巢雷射", en="Picosecond Laser", cat="膚色・毛孔",
         principle="利用超短脈衝雷射擊碎色素",
         effect="淡化色斑、細紋、改善膚色",
         benefits=[],
@@ -41,7 +41,7 @@ TREATMENTS = {
         pain=1, pain_label="輕微",
     ),
     "dermapen": dict(
-        device="device-dermapen.jpg", name="Dermapen", en="Microneedling", cat="膚質・紋理",
+        device="device-dermapen.webp", name="Dermapen", en="Microneedling", cat="膚質・紋理",
         principle="以微針刺激膠原與彈性蛋白再生",
         effect="淡化痘疤與細紋、改善毛孔",
         benefits=[],
@@ -49,7 +49,7 @@ TREATMENTS = {
         pain=1, pain_label="輕微",
     ),
     "hydra": dict(
-        device="device-hydra.jpg", name="海飛秀", en="HydraFacial", cat="清潔・導入",
+        device="device-hydra.webp", name="海飛秀", en="HydraFacial", cat="清潔・導入",
         principle="30分鐘完成深層清潔與精華導入",
         effect="深層清潔毛孔、補水與提亮膚色",
         benefits=[],
@@ -68,7 +68,7 @@ TREATMENTS = {
         #        ("暗沉膚色",   "均勻膚色、提亮整體肌膚光澤")],
     ),
     "hifu_eye": dict(
-        device="device-hifu.jpg", name="海芙音波眼周保養", en="HIFU · Eye Area", cat="緊緻・眼周",
+        device="device-hifu.webp", name="海芙音波眼周保養", en="HIFU · Eye Area", cat="緊緻・眼周",
         principle="", effect="", benefits=[],
         duration="", recovery="", pain=0, pain_label="",
     ),
@@ -315,7 +315,7 @@ def treatment_block(key, only_in_this_plan=False):
     extra = list_or_slot(t["benefits"], "") if t["benefits"] else ""
     pextra = (list_or_slot(t["principle_points"], "")
               if t.get("principle_points") else "")
-    dev = embed("images/" + t["device"]) if t.get("device") else None
+    dev = embed("images/" + t["device"], max_w=520) if t.get("device") else None
     devcol = (f'<div class="dev"><img src="{dev}" alt="{html.escape(t["name"])}儀器"></div>'
               if dev else "")
     cls = "tx has-dev" if dev else "tx"
@@ -361,23 +361,32 @@ def story_html():
     return f'<div class="stages">{cards}\n    </div>'
 
 def embed(path, max_w=1100, quality=82):
-    """壓縮後轉成 data URI，讓 HTML 可單獨帶著走（不依賴 images/ 資料夾）"""
+    """壓縮後轉成 data URI，讓 HTML 可單獨帶著走（不依賴 images/ 資料夾）。
+    有透明度的圖（去背儀器照）維持 WebP，其餘轉 JPEG。"""
     f = pathlib.Path(__file__).parent / path
     if not f.exists():
         return None
     import io, base64
     try:
         from PIL import Image
-        im = Image.open(f).convert("RGB")
+        im = Image.open(f)
+        has_alpha = im.mode in ("RGBA", "LA") or "transparency" in im.info
         if im.width > max_w:
             im = im.resize((max_w, round(im.height * max_w / im.width)),
                            Image.LANCZOS)
         buf = io.BytesIO()
-        im.save(buf, "JPEG", quality=quality, optimize=True, progressive=True)
+        if has_alpha:
+            im.convert("RGBA").save(buf, "WEBP", quality=quality, method=6)
+            mime = "image/webp"
+        else:
+            im.convert("RGB").save(buf, "JPEG", quality=quality,
+                                   optimize=True, progressive=True)
+            mime = "image/jpeg"
         data = buf.getvalue()
     except ImportError:
         data = f.read_bytes()
-    return "data:image/jpeg;base64," + base64.b64encode(data).decode()
+        mime = "image/webp" if f.suffix == ".webp" else "image/jpeg"
+    return f"data:{mime};base64," + base64.b64encode(data).decode()
 
 def space_html():
     cells = ""
@@ -651,7 +660,16 @@ p:last-child{{margin-bottom:0}}
   .cover h1{{font-size:clamp(21px,5.6vw,28px);margin-top:24px}}
   .cover::after{{width:min(80vw,320px);right:-22%;bottom:-16%}}
   .tx,.tx.has-dev{{grid-template-columns:1fr;gap:16px}}
-  .dev{{max-width:190px}}
+  .dev{{max-width:190px;justify-self:start}}
+  /* 平板與大尺寸手機：名稱與儀器照並排，說明另起一行 */
+  .tx.has-dev{{grid-template-columns:1fr auto;align-items:center}}
+  .tx.has-dev>*:last-child{{grid-column:1 / -1}}
+  .tx.has-dev .dev{{max-width:150px;justify-self:end}}
+}}
+@media(max-width:430px){{
+  .tx.has-dev{{grid-template-columns:1fr}}
+  .tx.has-dev>*:last-child{{grid-column:auto}}
+  .tx.has-dev .dev{{max-width:170px;justify-self:start}}
   .spec{{grid-template-columns:1fr}}
   .steps{{grid-template-columns:1fr}}
   .suits th{{width:38%}}
