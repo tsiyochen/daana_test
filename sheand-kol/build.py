@@ -737,7 +737,11 @@ if __name__ == "__main__":
     here = pathlib.Path(__file__).parent
     for plan in PLANS:
         out = here / plan["file"]
-        out.write_text(build(plan), encoding="utf-8")
+        html_out = build(plan)
+        out.write_text(html_out, encoding="utf-8")
+        # 體驗頁同時輸出成 index.html，讓網域根目錄直接就是這一頁
+        if plan["file"] == "experience.html":
+            (here / "index.html").write_text(html_out, encoding="utf-8")
         n = build(plan).count('class="slot"')
         print(f"✓ {plan['file']}　{plan['title']}　"
               f"{len(plan['items'])} 項療程　待填 {n} 處")
