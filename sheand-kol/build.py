@@ -730,6 +730,81 @@ p:last-child{{margin-bottom:0}}
 </html>
 """
 
+
+# ═══════════════════════════════════════════════════════
+#  首頁（建置中）—— 黑白人像滿版，與官網設計方向一致
+# ═══════════════════════════════════════════════════════
+HOME_TPL = """<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>蒔恩美學診所 SHE AND</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Noto+Sans+TC:wght@200;300&display=swap" rel="stylesheet">
+<style>
+*{{box-sizing:border-box}}
+body{{margin:0;min-height:100svh;position:relative;overflow:hidden;
+  background:#1C1E1D;color:#fff;
+  font-family:"Noto Sans TC",sans-serif;font-weight:300;
+  -webkit-font-smoothing:antialiased}}
+.bg{{position:absolute;inset:0;z-index:0}}
+.bg img{{width:100%;height:100%;object-fit:cover;object-position:58% 30%;
+  display:block;filter:grayscale(1) contrast(1.06)}}
+.scrim{{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(20,22,21,.86) 0%,rgba(20,22,21,.55) 42%,
+    rgba(20,22,21,.2) 66%,rgba(20,22,21,.62) 100%)}}
+.wrap{{position:relative;z-index:2;min-height:100svh;display:flex;
+  flex-direction:column;justify-content:space-between;
+  padding:clamp(30px,5vw,64px) clamp(24px,5vw,72px)}}
+.logo{{width:clamp(200px,26vw,300px);color:#fff}}
+.logo svg{{width:100%;height:auto;display:block}}
+.mid{{max-width:30em}}
+.mid h1{{font-family:"Noto Sans TC",sans-serif;font-weight:200;
+  font-size:clamp(24px,4.2vw,46px);line-height:1.6;letter-spacing:.12em;margin:0}}
+.tag{{display:inline-block;font-family:Jost,sans-serif;font-size:10.5px;
+  letter-spacing:.3em;text-transform:uppercase;color:#E39782;
+  border:1px solid rgba(227,151,130,.5);border-radius:999px;
+  padding:8px 20px;margin-bottom:clamp(20px,3vw,30px)}}
+.foot{{font-size:13px;letter-spacing:.06em;color:rgba(255,255,255,.66);line-height:2}}
+.foot a{{color:inherit;text-decoration:none}}
+@media(max-width:760px){{
+  .bg img{{object-position:56% 24%}}
+  .scrim{{background:linear-gradient(180deg,rgba(20,22,21,.62) 0%,
+    rgba(20,22,21,.3) 40%,rgba(20,22,21,.86) 100%)}}
+  .mid{{max-width:none}}
+}}
+</style>
+</head>
+<body>
+  <div class="bg"><img src="{hero}" alt=""></div>
+  <div class="scrim"></div>
+  <div class="wrap">
+    <div class="logo">{logo}</div>
+    <div class="mid">
+      <span class="tag">Coming Soon</span>
+      <h1>網站建置中<br>好的膚況值得等待</h1>
+    </div>
+    <div class="foot">
+      {address}<br>
+      <a href="tel:{phone_raw}">{phone}</a>
+    </div>
+  </div>
+</body>
+</html>
+"""
+
+def build_home():
+    return HOME_TPL.format(
+        hero=embed("images/hero-portrait.jpg", max_w=1500, quality=82) or "",
+        logo=logo_svg("logo-primary.svg"),
+        address=html.escape(BRAND["address"]),
+        phone=html.escape(BRAND.get("phone", "")),
+        phone_raw=html.escape(BRAND.get("phone", "").replace("-", "")),
+    )
+
 if __name__ == "__main__":
     n = load_content()
     if n:
@@ -743,9 +818,13 @@ if __name__ == "__main__":
             shutil.rmtree(d)
         d.mkdir()
 
-    # 靜態檔（首頁、_headers、robots.txt）原樣複製進 dist
+    # 靜態檔（_headers、robots.txt）原樣複製進 dist
     for f in (here / "static").iterdir():
+        if f.name == "index.html":
+            continue
         shutil.copy2(f, dist / f.name)
+    # 首頁改由程式產生
+    (dist / "index.html").write_text(build_home(), encoding="utf-8")
 
     PUBLIC = {"experience.html"}    # 只有這頁對外
     for plan in PLANS:
