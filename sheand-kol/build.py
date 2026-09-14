@@ -735,13 +735,14 @@ if __name__ == "__main__":
     if n:
         print(f"  套用 {n} 個欄位")
     here = pathlib.Path(__file__).parent
+    # 輸出成乾淨網址：/experience/、/plan-01/ …
+    # 根目錄的 index.html 是官網建置中的暫時頁，不由這支產生
     for plan in PLANS:
-        out = here / plan["file"]
         html_out = build(plan)
-        out.write_text(html_out, encoding="utf-8")
-        # 體驗頁同時輸出成 index.html，讓網域根目錄直接就是這一頁
-        if plan["file"] == "experience.html":
-            (here / "index.html").write_text(html_out, encoding="utf-8")
-        n = build(plan).count('class="slot"')
-        print(f"✓ {plan['file']}　{plan['title']}　"
+        slug = plan["file"].replace(".html", "")
+        d = here / slug
+        d.mkdir(exist_ok=True)
+        (d / "index.html").write_text(html_out, encoding="utf-8")
+        n = html_out.count('class="slot"')
+        print(f"✓ {slug}/　{plan['title']}　"
               f"{len(plan['items'])} 項療程　待填 {n} 處")
