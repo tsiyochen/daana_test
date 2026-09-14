@@ -667,9 +667,9 @@ p:last-child{{margin-bottom:0}}
   .tx.has-dev .dev{{max-width:150px;justify-self:end}}
 }}
 @media(max-width:430px){{
-  .tx.has-dev{{grid-template-columns:1fr}}
-  .tx.has-dev>*:last-child{{grid-column:auto}}
-  .tx.has-dev .dev{{max-width:170px;justify-self:start}}
+  /* 窄螢幕仍與名稱並排，只把照片縮小 */
+  .tx.has-dev .dev{{max-width:118px}}
+  .tx.has-dev{{gap:12px}}
   .spec{{grid-template-columns:1fr}}
   .steps{{grid-template-columns:1fr}}
   .suits th{{width:38%}}
