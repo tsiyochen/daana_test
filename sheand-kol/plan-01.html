@@ -126,6 +126,12 @@ p:last-child{margin-bottom:0}
 .tx{border-top:1px solid var(--line);padding:clamp(26px,3.4vw,44px) 0;
   display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);
   gap:clamp(18px,3vw,52px);align-items:start}
+.tx.has-dev{grid-template-columns:minmax(0,2.6fr) minmax(0,2.4fr) minmax(0,7fr);
+  gap:clamp(14px,2.4vw,36px)}
+.dev{align-self:center;aspect-ratio:1/1;display:flex;
+  align-items:center;justify-content:center}
+.dev img{max-width:100%;max-height:100%;width:auto;height:auto;
+  display:block;mix-blend-mode:multiply}
 .tx:first-of-type{border-top:0}
 .tx h3{font-family:var(--serif);font-weight:300;font-size:clamp(19px,2.3vw,27px);
   letter-spacing:.08em;margin:0;line-height:1.5}
@@ -194,7 +200,8 @@ p:last-child{margin-bottom:0}
   .logo{width:min(76vw,260px)}
   .cover h1{font-size:clamp(21px,5.6vw,28px);margin-top:24px}
   .cover::after{width:min(80vw,320px);right:-22%;bottom:-16%}
-  .tx{grid-template-columns:1fr;gap:16px}
+  .tx,.tx.has-dev{grid-template-columns:1fr;gap:16px}
+  .dev{max-width:190px}
   .spec{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .suits th{width:38%}
@@ -261,11 +268,12 @@ p:last-child{margin-bottom:0}
   <div class="lede"><p>以下說明每個項目的作用層次與適合處理的狀況。</p><p>實際適用性、次數與間隔，均須經醫師面診評估後決定。</p></div>
   <div style="margin-top:clamp(28px,4vw,48px)">
     <article class="tx">
-      <div>
+      <div class="txname">
         <h3>基礎水光</h3>
         <div class="en">Skin Booster</div>
         <div class="cat">保濕・亮膚</div>
       </div>
+      
       <div>
         <div class="field"><h4>主要原理</h4>
           <p>將營養劑等營養物質注入皮膚</p><ul class="bul"><li>使用儀器自動化施打，應用負壓吸附技術，能將皮膚輕輕吸起後，多個微針同時均勻注射。</li><li>速度快、痛感低、注射深度可調整，施打劑量更精準，修復期短。</li></ul></div>
@@ -282,11 +290,12 @@ p:last-child{margin-bottom:0}
       </div>
     </article>
     <article class="tx">
-      <div>
+      <div class="txname">
         <h3>皮秒蜂巢雷射</h3>
         <div class="en">Picosecond Laser</div>
         <div class="cat">膚色・毛孔</div>
       </div>
+      
       <div>
         <div class="field"><h4>主要原理</h4>
           <p>利用超短脈衝雷射擊碎色素</p></div>
@@ -303,11 +312,12 @@ p:last-child{margin-bottom:0}
       </div>
     </article>
     <article class="tx">
-      <div>
+      <div class="txname">
         <h3>Dermapen</h3>
         <div class="en">Microneedling</div>
         <div class="cat">膚質・紋理</div>
       </div>
+      
       <div>
         <div class="field"><h4>主要原理</h4>
           <p>以微針刺激膠原與彈性蛋白再生</p></div>
@@ -324,11 +334,12 @@ p:last-child{margin-bottom:0}
       </div>
     </article>
     <article class="tx">
-      <div>
+      <div class="txname">
         <h3>海飛秀</h3>
         <div class="en">HydraFacial</div>
         <div class="cat">清潔・導入</div>
       </div>
+      
       <div>
         <div class="field"><h4>主要原理</h4>
           <p>30分鐘完成深層清潔與精華導入</p></div>

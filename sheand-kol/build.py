@@ -19,7 +19,7 @@ import html, pathlib
 #   pain      痛感程度 1–3（0 = 未填）, pain_label 文字
 TREATMENTS = {
     "water": dict(
-        name="基礎水光", en="Skin Booster", cat="保濕・亮膚",
+        device="device-water.jpg", name="基礎水光", en="Skin Booster", cat="保濕・亮膚",
         principle="將透明質酸等營養物質注入皮膚",
         principle_points=[
             "使用儀器自動化施打，有的機型搭配負壓吸附技術，"
@@ -32,7 +32,7 @@ TREATMENTS = {
         pain=1, pain_label="輕微",
     ),
     "pico": dict(
-        name="皮秒蜂巢雷射", en="Picosecond Laser", cat="膚色・毛孔",
+        device="device-pico.jpg", name="皮秒蜂巢雷射", en="Picosecond Laser", cat="膚色・毛孔",
         principle="利用超短脈衝雷射擊碎色素",
         effect="淡化色斑、細紋、改善膚色",
         benefits=[],
@@ -41,7 +41,7 @@ TREATMENTS = {
         pain=1, pain_label="輕微",
     ),
     "dermapen": dict(
-        name="Dermapen", en="Microneedling", cat="膚質・紋理",
+        device="device-dermapen.jpg", name="Dermapen", en="Microneedling", cat="膚質・紋理",
         principle="以微針刺激膠原與彈性蛋白再生",
         effect="淡化痘疤與細紋、改善毛孔",
         benefits=[],
@@ -49,7 +49,7 @@ TREATMENTS = {
         pain=1, pain_label="輕微",
     ),
     "hydra": dict(
-        name="海飛秀", en="HydraFacial", cat="清潔・導入",
+        device="device-hydra.jpg", name="海飛秀", en="HydraFacial", cat="清潔・導入",
         principle="30分鐘完成深層清潔與精華導入",
         effect="深層清潔毛孔、補水與提亮膚色",
         benefits=[],
@@ -68,7 +68,7 @@ TREATMENTS = {
         #        ("暗沉膚色",   "均勻膚色、提亮整體肌膚光澤")],
     ),
     "hifu_eye": dict(
-        name="海芙音波眼周保養", en="HIFU · Eye Area", cat="緊緻・眼周",
+        device="device-hifu.jpg", name="海芙音波眼周保養", en="HIFU · Eye Area", cat="緊緻・眼周",
         principle="", effect="", benefits=[],
         duration="", recovery="", pain=0, pain_label="",
     ),
@@ -315,13 +315,18 @@ def treatment_block(key, only_in_this_plan=False):
     extra = list_or_slot(t["benefits"], "") if t["benefits"] else ""
     pextra = (list_or_slot(t["principle_points"], "")
               if t.get("principle_points") else "")
+    dev = embed("images/" + t["device"]) if t.get("device") else None
+    devcol = (f'<div class="dev"><img src="{dev}" alt="{html.escape(t["name"])}儀器"></div>'
+              if dev else "")
+    cls = "tx has-dev" if dev else "tx"
     return f"""
-    <article class="tx">
-      <div>
+    <article class="{cls}">
+      <div class="txname">
         <h3>{html.escape(t['name'])}</h3>
         <div class="en">{html.escape(t['en'])}</div>
         <div class="cat">{html.escape(t['cat'])}{tag}</div>
       </div>
+      {devcol}
       <div>
         <div class="field"><h4>{L['f_principle']}</h4>
           {paras(t['principle'], f"{t['name']}：主要原理")}{pextra}</div>
@@ -571,6 +576,12 @@ p:last-child{{margin-bottom:0}}
 .tx{{border-top:1px solid var(--line);padding:clamp(26px,3.4vw,44px) 0;
   display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);
   gap:clamp(18px,3vw,52px);align-items:start}}
+.tx.has-dev{{grid-template-columns:minmax(0,2.6fr) minmax(0,2.4fr) minmax(0,7fr);
+  gap:clamp(14px,2.4vw,36px)}}
+.dev{{align-self:center;aspect-ratio:1/1;display:flex;
+  align-items:center;justify-content:center}}
+.dev img{{max-width:100%;max-height:100%;width:auto;height:auto;
+  display:block;mix-blend-mode:multiply}}
 .tx:first-of-type{{border-top:0}}
 .tx h3{{font-family:var(--serif);font-weight:300;font-size:clamp(19px,2.3vw,27px);
   letter-spacing:.08em;margin:0;line-height:1.5}}
@@ -639,7 +650,8 @@ p:last-child{{margin-bottom:0}}
   .logo{{width:min(76vw,260px)}}
   .cover h1{{font-size:clamp(21px,5.6vw,28px);margin-top:24px}}
   .cover::after{{width:min(80vw,320px);right:-22%;bottom:-16%}}
-  .tx{{grid-template-columns:1fr;gap:16px}}
+  .tx,.tx.has-dev{{grid-template-columns:1fr;gap:16px}}
+  .dev{{max-width:190px}}
   .spec{{grid-template-columns:1fr}}
   .steps{{grid-template-columns:1fr}}
   .suits th{{width:38%}}

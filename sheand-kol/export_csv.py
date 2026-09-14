@@ -78,6 +78,9 @@ for key, t in B.TREATMENTS.items():
         "0=無 1=輕微 2=中等 3=較明顯。控制圓點亮幾顆")
     add(f"tx.{key}.pain_label","療程", n, "痛感說明", t["pain_label"],
         "圓點旁邊的字。留空整欄會顯示「待填」")
+    add(f"tx.{key}.device", "療程", n, "儀器照檔名",
+        t.get("device", ""),
+        "放進 images/ 的檔名，例如 device-water.jpg。留空就不顯示照片")
     if t.get("steps"):
         add(f"tx.{key}.steps", "療程", n, "療程步驟",
             join(f"{a}:{b}" for a, b in t["steps"]),
