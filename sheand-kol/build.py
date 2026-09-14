@@ -521,9 +521,13 @@ p:last-child{{margin-bottom:0}}
   width:min(62vw,620px);aspect-ratio:1;border-radius:50%;
   background:rgba(255,255,255,.11)}}
 .cover>*{{position:relative;z-index:2}}
-.logo{{width:clamp(220px,30vw,360px);color:#fff}}
+.logo{{width:clamp(220px,30vw,360px);color:#fff;display:block;
+  transition:opacity .25s}}
+.logo:hover{{opacity:.78}}
 .logo svg{{width:100%;height:auto;display:block}}
-.logo-end{{width:clamp(170px,20vw,230px);margin:0 auto;color:rgba(255,255,255,.88)}}
+.logo-end{{width:clamp(170px,20vw,230px);margin:0 auto;
+  color:rgba(255,255,255,.88);display:block;transition:opacity .25s}}
+.logo-end:hover{{opacity:.72}}
 .logo-end svg{{width:100%;height:auto;display:block}}
 .cover .tag{{display:inline-block;align-self:flex-start;font-family:var(--util);
   font-size:11px;letter-spacing:.24em;text-transform:uppercase;
@@ -694,7 +698,7 @@ p:last-child{{margin-bottom:0}}
 <body>
 
 <section class="cover">
-  <div class="logo">{logo}</div>
+  <a class="logo" href="/" aria-label="回到首頁">{logo}</a>
   <h1>{title}</h1>
 </section>
 
@@ -722,7 +726,7 @@ p:last-child{{margin-bottom:0}}
 </div></section>
 
 <div class="end">
-  <div class="logo-end">{logo_end}</div>
+  <a class="logo-end" href="/" aria-label="回到首頁">{logo_end}</a>
   <p class="a">{contact}</p>
 </div>
 
@@ -782,7 +786,7 @@ body{{margin:0;min-height:100svh;position:relative;overflow:hidden;
   <div class="bg"><img src="{hero}" alt=""></div>
   <div class="scrim"></div>
   <div class="wrap">
-    <div class="logo">{logo}</div>
+    <a class="logo" href="/" aria-label="回到首頁">{logo}</a>
     <div class="mid">
       <span class="tag">Coming Soon</span>
       <h1>網站建置中<br>好的膚況值得等待</h1>
