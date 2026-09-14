@@ -1,0 +1,10 @@
+{
+  // 蒔恩美學診所 —— 靜態站部署設定
+  // 只有 sheand-kol/dist 底下的檔案會上線，
+  // 其餘（build.py、content.csv、preview/、官網提案站）都不會被部署。
+  "name": "sheandclinic",
+  "compatibility_date": "2026-09-14",
+  "assets": {
+    "directory": "./sheand-kol/dist"
+  }
+}
