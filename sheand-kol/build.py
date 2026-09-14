@@ -735,14 +735,27 @@ if __name__ == "__main__":
     if n:
         print(f"  套用 {n} 個欄位")
     here = pathlib.Path(__file__).parent
-    # 輸出成乾淨網址：/experience/、/plan-01/ …
-    # 根目錄的 index.html 是官網建置中的暫時頁，不由這支產生
+    import shutil
+    dist = here / "dist"           # ← Cloudflare 輸出目錄，只放該公開的
+    preview = here / "preview"     # ← 內部預覽，不部署
+    for d in (dist, preview):
+        if d.exists():
+            shutil.rmtree(d)
+        d.mkdir()
+
+    # 靜態檔（首頁、_headers、robots.txt）原樣複製進 dist
+    for f in (here / "static").iterdir():
+        shutil.copy2(f, dist / f.name)
+
+    PUBLIC = {"experience.html"}    # 只有這頁對外
     for plan in PLANS:
         html_out = build(plan)
         slug = plan["file"].replace(".html", "")
-        d = here / slug
+        target = dist if plan["file"] in PUBLIC else preview
+        d = target / slug
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(html_out, encoding="utf-8")
         n = html_out.count('class="slot"')
-        print(f"✓ {slug}/　{plan['title']}　"
+        where = "dist" if target is dist else "preview"
+        print(f"✓ {where}/{slug}/　{plan['title']}　"
               f"{len(plan['items'])} 項療程　待填 {n} 處")
