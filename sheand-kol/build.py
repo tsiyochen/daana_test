@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-季度養膚方案頁產生器
+季度蘊膚方案頁產生器
 
 改資料只要動下面的 TREATMENTS 與 PLANS，然後執行：
     python3 build.py
@@ -80,31 +80,31 @@ TREATMENTS = {
 PLANS = [
     dict(
         file="plan-01.html", no="01", kind="package",
-        desc="蒔恩美學診所養膚體驗套餐內容與各項療程說明。",
-        title="養膚體驗套餐",
-        sub="一季的養膚體驗",
+        desc="蒔恩美學診所蘊膚體驗套餐內容與各項療程說明。",
+        title="蘊膚體驗套餐",
+        sub="一季的蘊膚體驗",
         items=["water", "pico", "dermapen", "hydra"],
         positioning="我們認為，養好一個肌膚是讓自己變美的關鍵，當你的皮膚養好，後續的各種療程才能更好。\n"
-                     "用這養膚套餐，找到你自己最喜歡的養膚模式。",
+                     "用這蘊膚套餐，找到你自己最喜歡的蘊膚模式。",
     ),
     dict(
         file="plan-02.html", no="02", kind="package",
-        desc="蒔恩美學診所養膚體驗套餐內容與各項療程說明。",
-        title="養膚體驗套餐",
-        sub="一季的養膚體驗",
+        desc="蒔恩美學診所蘊膚體驗套餐內容與各項療程說明。",
+        title="蘊膚體驗套餐",
+        sub="一季的蘊膚體驗",
         items=["water", "pico", "dermapen", "hydra", "hifu_eye"],
         positioning="我們認為，養好一個肌膚是讓自己變美的關鍵，當你的皮膚養好，後續的各種療程才能更好。\n"
-                     "用這養膚套餐，找到你自己最喜歡的養膚模式。",
+                     "用這蘊膚套餐，找到你自己最喜歡的蘊膚模式。",
     ),
     # ── 第一波合作用：不揭露套餐結構，讓 KOL 自己挑 ──
     dict(
         file="experience.html", no="", kind="experience",
-        desc="蒔恩美學診所養膚體驗：從皮膚的更新週期出發，說明各項療程的作用與適合處理的狀況。",
-        title="養膚體驗",
+        desc="蒔恩美學診所蘊膚體驗：從皮膚的更新週期出發，說明各項療程的作用與適合處理的狀況。",
+        title="蘊膚體驗",
         sub="",
         items=["water", "pico", "dermapen", "hydra"],
         positioning="",
-        intro_text="",   # 什麼是養膚：2–3 段
+        intro_text="",   # 什麼是蘊膚：2–3 段
     ),
 ]
 
@@ -118,7 +118,7 @@ LABELS = dict(
     intro_eyebrow="Introduction",
     intro_head="關於蒔恩",
     cultivation_eyebrow="Skin Cultivation",
-    cultivation_head="什麼是養膚",
+    cultivation_head="什麼是蘊膚",
     pkg_eyebrow="Package",
     pkg_lede_tail="。以下項目各一次，由醫師依面診結果安排順序與間隔。",
     tx_eyebrow_pkg="Treatments",
@@ -412,7 +412,7 @@ def pick_section(plan):
     return f'''<section class="sec on-white"><div class="wrap">
   <div class="eyebrow">{html.escape(LABELS["cultivation_eyebrow"])}</div>
   <h2 class="h2">{html.escape(LABELS["cultivation_head"])}</h2>
-  <div style="max-width:40em">{paras(plan.get("intro_text", ""), "養膚概念說明 2–3 段：為什麼是規律而不是單次")}</div>
+  <div style="max-width:40em">{paras(plan.get("intro_text", ""), "蘊膚概念說明 2–3 段：為什麼是規律而不是單次")}</div>
 </div></section>
 
 '''

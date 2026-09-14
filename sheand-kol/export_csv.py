@@ -91,7 +91,7 @@ for key, t in B.TREATMENTS.items():
 LABEL_NOTE = {
     "intro_eyebrow":      "「關於蒔恩」上方的英文小字",
     "intro_head":         "區塊標題",
-    "cultivation_eyebrow":"「什麼是養膚」上方的英文小字（只有體驗頁）",
+    "cultivation_eyebrow":"「什麼是蘊膚」上方的英文小字（只有體驗頁）",
     "cultivation_head":   "區塊標題（只有體驗頁）",
     "pkg_eyebrow":        "方案區塊上方的英文小字（只有套餐頁）",
     "pkg_lede_tail":      "接在副標後面那段（只有套餐頁）",
@@ -127,7 +127,7 @@ for p in B.PLANS:
             p["positioning"].replace("\n", SEP),
             f"項目清單下方那段。用 {SEP} 分段")
     else:
-        add(f"page.{f}.intro_text", "頁面", label, "什麼是養膚",
+        add(f"page.{f}.intro_text", "頁面", label, "什麼是蘊膚",
             (p.get("intro_text") or "").replace("\n", SEP),
             f"體驗頁專屬。用 {SEP} 分段")
 
