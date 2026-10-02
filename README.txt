@@ -1,3 +1,6 @@
+【2026-10-02】目前網站只展示「蘊膚體驗」頁（index.html 與 treatments.html 內容相同）。
+原本 14 頁視覺提案已從 main 移除，完整備份在分支 proposal-v2-backup，需要時可還原。
+
 蒔恩 SheAnd 官網視覺提案 v2 — 14 頁（A / B 兩種風格各 7 頁）
 
 風格 A（暖中性 · 左右分割）  index.html / treatments.html / category.html / shine.html / pico.html / doctors.html / journal-botox.html

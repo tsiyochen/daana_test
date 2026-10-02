@@ -1,298 +1,383 @@
-<!DOCTYPE html>
-<html lang="zh-Hant"><head><meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>療程概覽｜蒔恩診所 SheAnd Daan Clinic</title>
-<meta name="description" content="蒔恩診所療程概覽。以破壞、修復、新生為核心，分為養膚、輪廓抗老與玻尿酸三類，依皮膚的更新週期安排療程與回訪。">
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>蘊膚體驗｜蒔恩美學診所 SHE AND</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F3EDE4; --stone:#FBF8F3; --travertine:#E5DACB; --oak:#CBB9A3;
-  --taupe:#8C7C6A; --taupe-deep:#6B5D4E; --ink:#2A2521; --line:rgba(42,37,33,.14);
+  --bg:#EDEDEB; --paper:#F6F5F2; --white:#FFFFFF;
+  --sage:#8CAAA0; --sage-deep:#5B7A70; --sage-mist:#C7D4D0;
+  --clay:#E39782; --clay-soft:#F3D9D0;
+  --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
   --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
   --en:"Cormorant Garamond",serif; --util:"Jost",sans-serif;
-  --gut:clamp(20px,5vw,72px);
+  --gut:clamp(16px,6vw,96px); --max:1240px;
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.95;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
-svg{width:100%;height:auto;display:block}
-.eyebrow{font-family:var(--util);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--taupe)}
-.h2{font-family:var(--serif);font-weight:200;font-size:clamp(26px,3.3vw,42px);line-height:1.5;letter-spacing:.08em;margin:.45em 0 0}
-.body{font-size:15px;line-height:2.1;color:var(--taupe-deep);max-width:36em}
-.body+.body{margin-top:14px}
-.note{font-size:12.5px;color:var(--taupe-deep);margin-top:26px;max-width:48em}
-.section{padding:clamp(52px,7vw,108px) var(--gut)}
-.wrap{max-width:1120px;margin:0 auto}
-.propbar{background:var(--ink);color:var(--paper);font-family:var(--util);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px var(--gut);text-align:center}
-header{position:sticky;top:0;z-index:50;background:rgba(243,237,228,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:17px var(--gut)}
-.brand{display:flex;align-items:baseline;gap:12px}
-.brand .zh{font-family:var(--serif);font-weight:300;font-size:19px;letter-spacing:.3em}
-.brand .en{font-family:var(--en);font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe)}
-.menu{display:flex;gap:28px;font-size:13.5px;letter-spacing:.14em}
-.menu a{padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .3s}
-.menu a:hover,.menu a.on{border-color:var(--ink)}
-.book{font-size:12.5px;letter-spacing:.2em;border:1px solid var(--ink);border-radius:999px;padding:9px 22px;transition:.3s}
-.book:hover{background:var(--ink);color:var(--paper)}
-.burger{display:none;font-size:20px;background:none;border:0;color:var(--ink);cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.en-title{font-family:var(--en);font-weight:300;color:var(--sage);font-size:clamp(56px,9vw,128px);line-height:1;letter-spacing:-.01em}
+.eyebrow{font-family:var(--util);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay)}
+.h-zh{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3vw,34px);letter-spacing:.12em;line-height:1.6}
+.lede{color:var(--ink-soft);font-size:15px;max-width:34em}
+section{padding:clamp(80px,11vw,150px) 0}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(237,237,235,.92);backdrop-filter:blur(8px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{font-family:var(--en);font-size:30px;color:var(--ink);line-height:1}
+.logo small{display:block;font-family:var(--util);font-size:15px;letter-spacing:.32em;line-height:1.2}
+.logo small+small{font-family:var(--serif);font-size:11px;letter-spacing:.5em}
+.nav ul{display:flex;gap:44px;list-style:none;font-size:13px;letter-spacing:.18em}
+.nav ul a.on{color:var(--sage-deep);border-bottom:1px solid var(--sage)}
+.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;padding:10px 26px;font-size:13px;letter-spacing:.2em;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.btn.ghost{background:#F6EFEB;color:var(--clay)}
+@media (max-width:860px){.nav ul{display:none}}
 
 /* hero */
-.hero{padding:clamp(52px,7vw,104px) var(--gut) clamp(34px,4vw,56px)}
-.hero h1{font-family:var(--serif);font-weight:200;font-size:clamp(32px,4.6vw,58px);line-height:1.45;letter-spacing:.11em;margin:.4em 0 0}
-.hero .lede{font-size:15.5px;line-height:2.2;color:var(--taupe-deep);max-width:30em;margin-top:22px}
+.hero{background:var(--bg);padding:0;overflow:hidden}
+.hero .wrap{max-width:none;padding-right:0;padding-left:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:min(78vh,760px);gap:40px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,56px);letter-spacing:.24em;margin:18px 0 26px}
+.hero .en-title{font-size:clamp(64px,10vw,140px)}
+.hero p{color:var(--ink-soft);max-width:26em}
+.hero-img{align-self:stretch;position:relative}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.02)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:60px;padding-right:var(--gut)}.hero-img{height:360px;margin:0 calc(var(--gut)*-1)}}
 
-/* concept — dark */
-.concept{background:var(--ink);color:var(--paper)}
-.concept .h2,.concept h3{color:var(--paper)}
-.concept .body{color:rgba(251,248,243,.72)}
-.concept .eyebrow{color:rgba(251,248,243,.55)}
-.concept .note{color:rgba(251,248,243,.48)}
-.circles{display:flex;justify-content:center;align-items:center;gap:0;margin:clamp(34px,5vw,60px) 0 0;flex-wrap:wrap}
-.circ{width:clamp(150px,20vw,224px);aspect-ratio:1;border-radius:50%;
-  border:1px solid rgba(251,248,243,.3);background:rgba(203,185,163,.09);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  margin-right:clamp(-34px,-3.4vw,-20px);position:relative}
-.circ:last-child{margin-right:0}
-.circ .zh{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.5vw,30px);letter-spacing:.24em;color:var(--paper)}
-.circ .en{font-family:var(--en);font-style:italic;font-size:15px;color:rgba(251,248,243,.55);margin-top:4px}
-.optlabel{font-family:var(--util);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  border:1px solid rgba(251,248,243,.28);color:rgba(251,248,243,.62);
-  border-radius:999px;padding:5px 15px;display:inline-block;margin-bottom:6px}
-.optnote{font-size:12.5px;color:rgba(251,248,243,.45);margin:10px 0 0}
-.bar{display:grid;grid-template-columns:3fr 11fr 14fr;gap:3px;margin:clamp(30px,4vw,52px) 0 0}
-.bar span{height:5px;border-radius:2px;background:var(--oak)}
-.bar span:nth-child(1){opacity:.95}
-.bar span:nth-child(2){opacity:.6}
-.bar span:nth-child(3){opacity:.32}
-.ticks{display:flex;justify-content:space-between;margin-top:9px;
-  font-family:var(--util);font-size:10px;letter-spacing:.16em;color:rgba(251,248,243,.42)}
-.bgrid{display:grid;grid-template-columns:3fr 11fr 14fr;gap:clamp(16px,2.4vw,32px);margin-top:clamp(22px,3vw,34px)}
-.bg2{border-top:1px solid rgba(251,248,243,.22);padding-top:18px}
-.bg2 .day{font-family:var(--util);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--oak)}
-.bg2 .zh{font-family:var(--serif);font-weight:300;font-size:clamp(20px,2.2vw,26px);letter-spacing:.22em;color:var(--paper);margin:9px 0 2px}
-.bg2 .en{font-family:var(--en);font-style:italic;font-size:15px;color:rgba(251,248,243,.52);margin-bottom:11px}
-.bg2 p{font-size:13.5px;line-height:2;color:rgba(251,248,243,.68);margin:0}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,36px);margin-top:clamp(30px,4vw,52px)}
-.pg{border-top:1px solid rgba(251,248,243,.24);padding-top:18px}
-.pg h4{font-family:var(--serif);font-weight:300;font-size:17px;letter-spacing:.2em;margin:0 0 9px;color:var(--paper)}
-.pg p{font-size:13.5px;line-height:2;color:rgba(251,248,243,.68);margin:0}
+/* for you */
+.foryou{background:var(--white)}
+.foryou .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,8vw,120px);align-items:start}
+.checks{list-style:none;border-top:1px solid var(--line)}
+.checks li{display:grid;grid-template-columns:44px 1fr auto;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);font-size:15px}
+.checks .n{font-family:var(--en);font-style:italic;color:var(--sage);font-size:20px}
+.tag{font-family:var(--util);font-size:11px;letter-spacing:.14em;padding:4px 12px;border-radius:99px;white-space:nowrap}
+.tag.base{background:var(--sage-mist);color:var(--sage-deep)}
+.tag.eye{background:var(--clay-soft);color:#B8624B}
+.tag.lift{border:1px dashed var(--clay);color:#B8624B}
+@media (max-width:860px){.foryou .grid{grid-template-columns:1fr}.checks li{grid-template-columns:36px 1fr;row-gap:8px}.checks .tag{grid-column:2;justify-self:start}}
 
-/* skin cycle — dark continued */
-.cycwrap{max-width:900px;margin:clamp(30px,4vw,50px) auto 0}
-.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,26px);margin-top:clamp(22px,3vw,34px)}
-.cg{border-top:1px solid rgba(251,248,243,.24);padding-top:16px}
-.cg .k{font-family:var(--util);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--oak)}
-.cg h4{font-family:var(--serif);font-weight:300;font-size:16px;letter-spacing:.14em;margin:7px 0 8px;color:var(--paper)}
-.cg p{font-size:13px;line-height:1.95;color:rgba(251,248,243,.66);margin:0}
+/* programs */
+.programs{background:var(--bg)}
+.programs .head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.plan{background:var(--white);padding:clamp(28px,4vw,48px);position:relative}
+.plan .no{font-family:var(--en);font-style:italic;font-size:64px;color:var(--clay);opacity:.55;line-height:1}
+.plan h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.16em;margin:10px 0 6px}
+.plan .for{font-size:14px;color:var(--ink-soft);margin-bottom:30px}
+.tx{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.plan.eye .tx{grid-template-columns:repeat(5,1fr)}
+.card{background:#E4E4E1;border-radius:4px;aspect-ratio:3/4.4;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:10px}
+.card img{position:absolute;left:50%;top:8%;height:54%;transform:translateX(-50%);object-fit:contain;mix-blend-mode:multiply}
+.card span{position:relative;font-size:12px;line-height:1.4;letter-spacing:.06em}
+.card span em{display:block;font-family:var(--util);font-style:normal;font-size:8.5px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase}
+.card.add{background:var(--clay-soft)}
+.card.add .ring{position:absolute;left:50%;top:16%;width:58%;aspect-ratio:1.5;transform:translateX(-50%);border:1px solid var(--clay);border-radius:50%}
+.card.add .ring::after{content:"";position:absolute;inset:22% 18%;border:1px solid var(--clay);border-radius:50%;opacity:.6}
+.plan.eye .card:not(.add){opacity:.55}
+.plan .note{margin-top:22px;font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:16px}
+.or{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:56px;height:56px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-family:var(--en);font-style:italic;font-size:22px;color:var(--sage-deep)}
+.plans{position:relative}
+.addon{margin-top:28px;border:1px dashed var(--clay);padding:clamp(24px,3.4vw,40px) clamp(28px,4vw,48px);display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center}
+.addon .plus{font-family:var(--en);font-size:56px;color:var(--clay);line-height:1;font-weight:300}
+.addon h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em}
+.addon p{font-size:14px;color:var(--ink-soft)}
+@media (max-width:860px){.plans{grid-template-columns:1fr}.or{top:50%}.tx{grid-template-columns:repeat(2,1fr)}.plan.eye .tx{grid-template-columns:repeat(3,1fr)}.addon{grid-template-columns:1fr;gap:10px}}
 
-/* categories */
-.cat{padding:clamp(38px,5vw,62px) 0;border-top:1px solid var(--line)}
-.cat:first-of-type{border-top:0;padding-top:clamp(20px,2.5vw,30px)}
-.cathead{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:clamp(20px,4vw,64px);align-items:start}
-.catno{font-family:var(--en);font-size:24px;color:var(--oak);letter-spacing:.08em}
-.cath3{font-family:var(--serif);font-weight:200;font-size:clamp(24px,2.8vw,34px);letter-spacing:.16em;margin:6px 0 5px}
-.caten{font-family:var(--en);font-style:italic;font-size:16px;color:var(--taupe)}
-.catdesc{font-size:14.5px;line-height:2.1;color:var(--taupe-deep);margin:8px 0 0;max-width:34em}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:clamp(10px,1.4vw,16px);margin-top:clamp(24px,3vw,38px)}
-.tile{background:var(--stone);border:1px solid var(--line);padding:26px 18px;
-  font-family:var(--serif);font-size:16px;letter-spacing:.12em;text-align:center;
-  transition:background .3s,color .3s,border-color .3s}
-.tile:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+/* rhythm */
+.rhythm{background:var(--white)}
+.rhythm .head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.switch{display:inline-flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.switch button{font:inherit;font-size:13px;letter-spacing:.14em;border:1px solid var(--line);background:none;border-radius:99px;padding:8px 20px;cursor:pointer;color:var(--ink-soft);transition:all .2s}
+.switch button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.switch button.lift[aria-pressed="true"]{background:var(--clay);border-color:var(--clay)}
+.track{position:relative;padding:20px 0 0}
+.track svg{width:100%;height:auto;display:block;overflow:visible}
+.ov{fill:none;stroke:var(--ink);stroke-opacity:.5;stroke-width:1}
+.ov.lift{stroke:var(--clay);stroke-opacity:1;stroke-dasharray:4 5}
+.ov.eye{stroke:var(--clay);stroke-opacity:.9}
+.lbl-en{font-family:var(--en);font-size:30px;fill:var(--ink-soft);font-weight:300}
+.fade{transition:opacity .45s ease}
+.hide{opacity:0;pointer-events:none}
+.visits{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px}
+.visit .when{font-family:var(--util);font-size:12px;letter-spacing:.2em;color:var(--clay)}
+.visit h4{font-family:var(--serif);font-weight:400;font-size:19px;letter-spacing:.12em;margin:6px 0 8px}
+.visit p{font-size:13px;color:var(--ink-soft);line-height:1.8}
+.visit.lift h4{color:#B8624B}
+.eye-chip{display:none;margin-top:12px;font-size:12px;color:#B8624B;background:var(--clay-soft);padding:6px 12px;border-radius:4px;line-height:1.6}
+.show-eye .eye-chip{display:block}
+.interval{display:flex;align-items:center;gap:16px;margin:36px 0 0;font-size:13px;color:var(--ink-soft)}
+.interval::before,.interval::after{content:"";flex:1;height:1px;background:var(--line)}
+.rules{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid var(--line);padding-top:32px}
+.rules b{display:block;font-family:var(--serif);font-weight:400;font-size:16px;letter-spacing:.1em;margin-bottom:6px}
+.rules p{font-size:13px;color:var(--ink-soft)}
+@media (max-width:860px){.rhythm .head{grid-template-columns:1fr}.track svg{display:none}.visits{grid-template-columns:1fr;gap:0;border-left:1px solid var(--line);margin-left:6px}.visit{position:relative;padding:0 0 34px 26px}.visit::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;border:1px solid var(--ink);background:#fff}.visit.lift::before{border:1px dashed var(--clay)}.visit.lift.hide{display:none}.rules{grid-template-columns:1fr}}
 
-/* cta */
-.cta{background:var(--travertine);text-align:center;padding:clamp(52px,7vw,100px) var(--gut)}
-.btn{font-size:13px;letter-spacing:.2em;padding:14px 30px;border-radius:999px;border:1px solid var(--ink);display:inline-block;transition:.3s;background:var(--ink);color:var(--paper);margin-top:26px}
-.btn:hover{background:transparent;color:var(--ink)}
-.reviewed{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding:24px var(--gut);background:var(--ink);color:rgba(251,248,243,.68);font-size:12.5px}
-.reviewed b{font-weight:400;color:var(--paper)}
-footer{background:var(--ink);color:rgba(251,248,243,.4);font-size:11px;line-height:1.9;padding:0 var(--gut) 30px;border-top:1px solid rgba(251,248,243,.12)}
-footer div{padding-top:22px;max-width:60em}
+/* feel */
+.feel{background:var(--bg)}
+.days{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid var(--ink)}
+.day{padding:28px 32px 0 0;position:relative}
+.day::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--clay)}
+.day .d{font-family:var(--util);font-size:13px;letter-spacing:.2em;color:var(--clay)}
+.day h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em;margin:8px 0 10px}
+.day p{font-size:14px;color:var(--ink-soft)}
+.day .link{font-family:var(--en);font-style:italic;font-size:22px;color:var(--sage);display:block;margin-top:14px}
+@media (max-width:860px){.days{grid-template-columns:1fr;border-top:none;border-left:1px solid var(--ink);padding-left:24px}.day{padding:0 0 36px}.day::before{left:-29px;top:8px}}
 
-@media(max-width:900px){
-  .menu{display:none} .burger{display:block}
-  .pgrid,.cgrid,.bgrid{grid-template-columns:1fr}
-  .bar{grid-template-columns:3fr 11fr 14fr}
-  .cathead{grid-template-columns:1fr;gap:14px}
-  .circles{gap:12px} .circ{margin-right:clamp(-26px,-4vw,-14px)}
-  .cycwrap{overflow-x:auto} .cycwrap svg{min-width:620px}
-}
-@media(max-width:560px){
-  .tiles{grid-template-columns:1fr 1fr}
-  .circ{width:min(46vw,180px);margin-right:-20px}
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* after */
+.after{background:var(--white)}
+.after .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.after img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.35)}
+.after blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.6vw,30px);letter-spacing:.14em;line-height:1.9;margin:24px 0 28px}
+.paths{display:grid;gap:12px;margin-top:28px}
+.paths div{display:flex;gap:16px;align-items:baseline;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);padding-bottom:12px}
+.paths i{font-family:var(--en);font-size:18px;color:var(--sage)}
+@media (max-width:860px){.after .grid{grid-template-columns:1fr}}
+
+/* faq */
+.faq{background:var(--bg)}
+.faq .grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(40px,7vw,110px)}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-size:15px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--util);color:var(--ink-soft);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
+@media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--sage-mist)}
+.contact .en-title{color:#fff}
+.contact p{margin:40px 0 32px;max-width:30em;color:var(--ink)}
+.contact .btns{display:flex;gap:14px;flex-wrap:wrap}
+.legal{margin-top:90px;font-size:11.5px;color:var(--ink-soft);line-height:1.8;max-width:60em}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
-<style>
-#pxbar{position:fixed;z-index:9999;bottom:16px;left:50%;transform:translateX(-50%);
- display:flex;align-items:center;gap:6px;max-width:calc(100vw - 20px)}
-#pxab,#pxnav{display:flex;gap:2px;background:rgba(42,37,33,.94);backdrop-filter:blur(10px);
- border-radius:999px;padding:5px;box-shadow:0 6px 28px rgba(42,37,33,.3);
- font-family:"Noto Sans TC",sans-serif;font-weight:300}
-#pxnav{overflow-x:auto}
-#pxbar a{color:rgba(251,248,243,.6);font-size:12px;letter-spacing:.1em;padding:8px 14px;
- border-radius:999px;white-space:nowrap;text-decoration:none;transition:.25s}
-#pxbar a:hover{color:#FBF8F3}
-#pxbar a.cur{background:#FBF8F3;color:#2A2521}
-#pxab a.cur{background:#B58C86;color:#FBF8F3}
-#pxab a{font-family:Jost,sans-serif;letter-spacing:.18em;font-size:11.5px;padding:8px 15px}
-@media(max-width:560px){#pxbar a{font-size:11px;padding:7px 10px}#pxbar{gap:4px}}
-@media print{#pxbar{display:none}}
-</style>
-<style>
-/* 手機導覽選單（≤960px）*/
-@media(max-width:960px){
-  .nav{flex-wrap:wrap}
-  .burger{display:block;min-width:44px;min-height:44px;line-height:1;padding:10px;margin:-10px -6px -10px 0}
-  .menu{display:none;flex-direction:column;gap:0;width:100%;order:5;margin-top:14px;padding-top:6px;border-top:1px solid var(--line)}
-  .menu.open{display:flex}
-  .menu a{padding:15px 2px;font-size:15px;letter-spacing:.12em;border-bottom:1px solid var(--line)}
-  .menu a:last-child{border-bottom:0}
-}
-</style>
-<style>
-/* 錨點跳轉時避開 sticky header */
-#about,#rhythm,#treatments,#doctors,#journal,#space,#visit{scroll-margin-top:96px}
-</style></head><body>
+</head>
+<body>
 
-<div class="propbar">視覺提案 v1 · 療程概覽頁</div>
-
-<header><div class="nav">
-  <div class="brand"><span class="zh">蒔恩</span><span class="en">SheAnd</span></div>
-  <nav class="menu">
-    <a href="index.html#about">關於蒔恩</a><a href="index.html#rhythm">養膚計畫</a>
-    <a href="treatments.html" class="on">療程項目</a><a href="doctors.html">醫師團隊</a>
-    <a href="journal-botox.html">美學視野</a>
-  </nav>
-  <a class="book" href="#visit">預約諮詢</a>
-  <button class="burger" aria-label="開啟選單">☰</button>
-</div></header>
-
-<section class="hero"><div class="wrap">
-  <div class="eyebrow">Treatments · 療程概覽</div>
-  <h1>皮膚會自己更新<br>我們給它一個訊號</h1>
-  <p class="lede">蒔恩的療程不是一次到位的加法，而是照著皮膚的更新週期安排的循環。以下先說明我們的做法，再往下是三類療程。</p>
-</div></section>
-
-<section class="section concept"><div class="wrap">
-  <div class="eyebrow">The Mechanism · 核心概念</div>
-  <h2 class="h2">破壞、修復、新生</h2>
-  <p class="body" style="margin-top:18px">皮膚的更新是靠一次可控的刺激啟動的。療程給的是訊號，接下來的修復與新生由皮膚自己完成 —— 這段路大約需要 28 天。</p>
-
-  <div style="margin-top:clamp(38px,5vw,64px)">
-    <span class="optlabel">提案 A · 圖像式</span>
-    <div class="circles">
-      <div class="circ"><div class="zh">破壞</div><div class="en">Disrupt</div></div><div class="circ"><div class="zh">修復</div><div class="en">Repair</div></div><div class="circ"><div class="zh">新生</div><div class="en">Renew</div></div>
-    </div>
-    <div class="pgrid">
-      <div class="pg"><h4>破壞</h4><p>以可控的能量或微創方式給予刺激，啟動皮膚的修復訊號。此階段常見泛紅、緊繃或輕微腫脹，屬預期中的反應。</p></div><div class="pg"><h4>修復</h4><p>發炎反應逐步消退，纖維細胞開始活化、新的膠原蛋白進入生成階段。這段時間的保濕與防曬，決定了修復的品質。</p></div><div class="pg"><h4>新生</h4><p>角質層完成一輪更新，膚況趨於穩定。此時的狀態，才是這次療程真正的落點；接著進入下一個循環的評估。</p></div>
-    </div>
-    <p class="optnote">三個交疊的圓，不標天數。視覺主導、品牌感強，適合首頁與形象取向的呈現。</p>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#"><span class="mark">S∂</span><span><small>SHE AND</small><small>蒔恩美學診所</small></span></a>
+    <ul>
+      <li><a href="#">關於蒔恩</a></li>
+      <li><a href="#" class="on">蘊膚體驗</a></li>
+      <li><a href="#">療程項目</a></li>
+      <li><a href="#">美學視野</a></li>
+    </ul>
+    <a class="btn" href="#contact">線上預約</a>
   </div>
+</header>
 
-  <hr style="border:0;border-top:1px solid rgba(251,248,243,.14);margin:clamp(46px,6vw,80px) 0 0">
-
-  <div style="margin-top:clamp(42px,5.5vw,74px)">
-    <span class="optlabel">提案 B · 教育式</span>
-    <div class="bar"><span></span><span></span><span></span></div>
-    <div class="ticks"><span>DAY 0</span><span>DAY 3</span><span>DAY 14</span><span>DAY 28</span></div>
-    <div class="bgrid">
-      <div class="bg2"><div class="day">Day 0 – 3</div><div class="zh">破壞</div><div class="en">Disrupt</div><p>以可控的能量或微創方式給予刺激，啟動皮膚的修復訊號。此階段常見泛紅、緊繃或輕微腫脹，屬預期中的反應。</p></div><div class="bg2"><div class="day">Day 3 – 14</div><div class="zh">修復</div><div class="en">Repair</div><p>發炎反應逐步消退，纖維細胞開始活化、新的膠原蛋白進入生成階段。這段時間的保濕與防曬，決定了修復的品質。</p></div><div class="bg2"><div class="day">Day 14 – 28</div><div class="zh">新生</div><div class="en">Renew</div><p>角質層完成一輪更新，膚況趨於穩定。此時的狀態，才是這次療程真正的落點；接著進入下一個循環的評估。</p></div>
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="en-title">Experience</div>
+      <h1>蘊膚體驗</h1>
+      <p>第一次來，先認識自己的皮膚。<br>我們把四項養膚療程排成一段約三個月的節奏，讓你在每一次回來之間，看見皮膚慢慢變好的樣子。</p>
     </div>
-    <p class="optnote">標出天數，欄寬對應各階段的實際長度。資訊量高、專業感強，適合療程頁與衛教內容。</p>
-    <p class="note">上述天數為皮膚生理週期的一般範圍，用於說明機轉，非療效承諾。個人的反應時間與恢復狀況因年齡、膚況與生活習慣而異，實際安排由醫師面診評估。</p>
+    <div class="hero-img"><img src="sheand-kol/images/treatment-1.jpg" alt=""></div>
   </div>
-
-  <hr style="border:0;border-top:1px solid rgba(251,248,243,.16);margin:clamp(50px,7vw,92px) 0 0">
-
-  <div style="margin-top:clamp(44px,6vw,80px)">
-    <div class="eyebrow">Skin Cycle · 我們的做法</div>
-    <h2 class="h2">同一條週期，我們陪你走完</h2>
-    <p class="body" style="margin-top:18px">上面那 28 天是皮膚在做的事，這四段是我們在做的事。兩者對齊，所以回訪不是重新開始，而是接續。</p>
-    <div class="cycwrap"><svg viewBox="0 0 880 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skin Cycle 四階段循環：面診評估、療程施作、居家照護、回訪微調"><circle cx="118" cy="105" r="88" fill="none" stroke="rgba(251,248,243,.34)" stroke-width="1"/><text x="118" y="96" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="21" fill="#FBF8F3">Diagnostic</text><text x="118" y="126" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="14" letter-spacing="3" fill="rgba(251,248,243,.72)">面診評估</text><circle cx="218" cy="50" r="2.6" fill="#CBB9A3"/><circle cx="326" cy="105" r="88" fill="none" stroke="rgba(251,248,243,.34)" stroke-width="1"/><text x="326" y="96" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="21" fill="#FBF8F3">Treat</text><text x="326" y="126" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="14" letter-spacing="3" fill="rgba(251,248,243,.72)">療程施作</text><circle cx="426" cy="50" r="2.6" fill="#CBB9A3"/><circle cx="534" cy="105" r="88" fill="none" stroke="rgba(251,248,243,.34)" stroke-width="1"/><text x="534" y="96" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="21" fill="#FBF8F3">Support</text><text x="534" y="126" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="14" letter-spacing="3" fill="rgba(251,248,243,.72)">居家照護</text><circle cx="634" cy="50" r="2.6" fill="#CBB9A3"/><circle cx="742" cy="105" r="88" fill="none" stroke="rgba(251,248,243,.34)" stroke-width="1"/><text x="742" y="96" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="21" fill="#FBF8F3">Renew</text><text x="742" y="126" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="14" letter-spacing="3" fill="rgba(251,248,243,.72)">回訪微調</text><path d="M 822 105 C 848 105, 856 66, 836 44" fill="none" stroke="rgba(203,185,163,.6)" stroke-width="1" stroke-dasharray="3 4"/><path d="M 836 44 l 6 4 l -1 -8 z" fill="#CBB9A3"/></svg></div>
-    <div class="cgrid">
-      <div class="cg"><div class="k">01 · Diagnostic</div><h4>面診評估</h4><p>讀取當下的膚況與週期位置，確認這次真正需要處理的是什麼。</p></div><div class="cg"><div class="k">02 · Treat</div><h4>療程施作</h4><p>依評估結果選擇項目與強度，用臨床流程啟動皮膚自身的更新。</p></div><div class="cg"><div class="k">03 · Support</div><h4>居家照護</h4><p>療程之間的日常延續了結果，也讓皮膚在回訪之間維持穩定。</p></div><div class="cg"><div class="k">04 · Renew</div><h4>回訪微調</h4><p>約六週後回來比較差異，再往前調整下一輪的內容與間隔。</p></div>
-    </div>
-  </div>
-
-  <p class="note">為什麼是六週而不是四週：皮膚完成一輪更新約需 28 天，我們額外保留約兩週讓膚況穩定，再進行下一次評估。上述天數為生理週期的一般範圍，用於說明機轉，非療效承諾；實際間隔由醫師面診評估。</p>
-</div></section>
-
-<section class="section"><div class="wrap">
-  <div class="eyebrow">Categories · 三類療程</div>
-  <h2 class="h2" style="margin-bottom:clamp(28px,4vw,48px)">從你在意的那件事開始</h2>
-  
-  <div class="cat">
-    <div class="cathead">
-      <div>
-        <div class="catno">01</div>
-        <h3 class="cath3">養膚</h3>
-        <div class="caten">Skin Cultivation</div>
-      </div>
-      <p class="catdesc">處理膚況的底盤 —— 保水度、清潔、色素與膚質。這一類的重點不在單次強度，而在規律。</p>
-    </div>
-    <div class="tiles"><a class="tile" href="#">雷射</a><a class="tile" href="#">水光針</a><a class="tile" href="#">麗珠蘭</a><a class="tile" href="#">Dermapen</a><a class="tile" href="#">HIFU booster</a><a class="tile" href="#">水飛梭</a><a class="tile" href="#">機能點滴</a><a class="tile" href="#">杏仁酸煥膚</a></div>
-  </div>
-  <div class="cat">
-    <div class="cathead">
-      <div>
-        <div class="catno">02</div>
-        <h3 class="cath3">輪廓抗老</h3>
-        <div class="caten">Contour &amp; Firming</div>
-      </div>
-      <p class="catdesc">隨年齡改變的是支撐與位置。這一類處理作用層次與方向，不是把外觀改成另一種樣子。</p>
-    </div>
-    <div class="tiles"><a class="tile" href="#">電波</a><a class="tile" href="#">音波</a><a class="tile" href="#">逆時針</a><a class="tile" href="#">肉毒</a></div>
-  </div>
-  <div class="cat">
-    <div class="cathead">
-      <div>
-        <div class="catno">03</div>
-        <h3 class="cath3">玻尿酸</h3>
-        <div class="caten">Filler</div>
-      </div>
-      <p class="catdesc">針對體積流失與線條的調整。材質、劑量與注射層次由醫師依臉部比例逐一評估。</p>
-    </div>
-    <div class="tiles"><a class="tile" href="#">瑞斯朗</a><a class="tile" href="#">eptq</a><a class="tile" href="#">艾麗斯</a></div>
-  </div>
-  <p class="note">上列為蒔恩目前提供的療程項目。是否適合、需要幾次、間隔多久，均因個人膚況與體質而異，須由醫師親自面診評估後決定。</p>
-</div></section>
-
-<section class="cta" id="visit">
-  <div class="eyebrow">Book · 預約</div>
-  <h2 class="h2">先來面診，再決定要不要開始</h2>
-  <p class="body" style="margin:16px auto 0">初次來訪我們會留足夠的時間了解你的膚況、作息與想改善的地方。</p>
-  <a class="btn" href="#">線上預約</a>
 </section>
 
-<footer><div>
-  本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。<br>
-  蒔恩診所｜台北市大安區 ○○路 ○ 號｜衛生局核准字號 ○○○○
-</div></footer>
-<div id="pxbar"><div id="pxab" aria-label="風格方向切換"><a href="treatments.html" class="cur">A</a><a href="treatments-b.html">B</a></div><nav id="pxnav" aria-label="頁面切換"><a href="index.html">首頁</a><a href="treatments.html" class="cur">療程</a><a href="category.html">養膚</a><a href="shine.html">水光針</a><a href="pico.html">皮秒</a><a href="doctors.html">醫師</a><a href="journal-botox.html">文章</a></nav></div>
+<!-- 2. FOR YOU -->
+<section class="foryou">
+  <div class="wrap grid">
+    <div class="reveal">
+      <div class="eyebrow">For You</div>
+      <h2 class="h-zh" style="margin:14px 0 18px">你是不是也這樣？</h2>
+      <p class="lede">勾起來最多的那幾項，就是你的起點。右邊的標籤，對應下面的體驗方式。</p>
+    </div>
+    <ul class="checks reveal">
+      <li><span class="n">01</span>想開始養膚，但不知道從哪裡開始<span class="tag base">蘊膚體驗</span></li>
+      <li><span class="n">02</span>膚況說不上不好，總覺得少了一點光澤<span class="tag base">蘊膚體驗</span></li>
+      <li><span class="n">03</span>乾燥、粗糙，上妝不服貼<span class="tag base">蘊膚體驗</span></li>
+      <li><span class="n">04</span>毛孔、暗沉、膚色不均<span class="tag base">蘊膚體驗</span></li>
+      <li><span class="n">05</span>眼周開始有細紋，看起來比較疲倦<span class="tag eye">＋眼周</span></li>
+      <li><span class="n">06</span>很在意臉部輪廓，線條不如以前清楚<span class="tag lift">＋電波／音波</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. PROGRAMS -->
+<section class="programs">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <div class="en-title">Programs</div>
+        <h2 class="h-zh" style="margin-top:18px">兩種體驗，依你在意的地方選擇</h2>
+      </div>
+      <p class="lede">兩種體驗都包含完整的四項養膚療程；差別只在要不要多照顧眼周。</p>
+    </div>
+
+    <div class="plans reveal">
+      <article class="plan">
+        <div class="no">01</div>
+        <h3>蘊膚體驗</h3>
+        <p class="for">從保濕、膚色到膚質，四個層次一次照顧完整。</p>
+        <div class="tx">
+          <div class="card"><img src="sheand-kol/images/device-hydra.webp" alt=""><span>海飛秀<em>Hydrafacial</em></span></div>
+          <div class="card"><img src="sheand-kol/images/device-pico.webp" alt=""><span>皮秒雷射<em>Picosecond</em></span></div>
+          <div class="card"><img src="sheand-kol/images/device-water.webp" alt=""><span>水光針<em>Skin Booster</em></span></div>
+          <div class="card"><img src="sheand-kol/images/device-dermapen.webp" alt=""><span>微針筆<em>Dermapen</em></span></div>
+        </div>
+        <p class="note">適合第一次接觸醫美、想先把膚質養好的你。</p>
+      </article>
+      <div class="or">or</div>
+      <article class="plan eye">
+        <div class="no">02</div>
+        <h3>蘊膚體驗＋眼周</h3>
+        <p class="for">四項療程之外，再加上專為眼周設計的音波。</p>
+        <div class="tx">
+          <div class="card"><img src="sheand-kol/images/device-hydra.webp" alt=""><span>海飛秀<em>Hydrafacial</em></span></div>
+          <div class="card"><img src="sheand-kol/images/device-pico.webp" alt=""><span>皮秒雷射<em>Picosecond</em></span></div>
+          <div class="card"><img src="sheand-kol/images/device-water.webp" alt=""><span>水光針<em>Skin Booster</em></span></div>
+          <div class="card"><img src="sheand-kol/images/device-dermapen.webp" alt=""><span>微針筆<em>Dermapen</em></span></div>
+          <div class="card add"><div class="ring"></div><span>海芙音波<em>Eye · 200</em></span></div>
+        </div>
+        <p class="note">眼周皮膚較薄，我們用專門的方式另外照顧，與全臉音波分開規劃。</p>
+      </article>
+    </div>
+
+    <div class="addon reveal">
+      <div class="plus">+</div>
+      <div>
+        <h4>如果你也很在意臉部輪廓</h4>
+        <p>兩種體驗都可以再加上全臉電波或音波。我們會在養膚療程之後安排——先把膚質養好，再加一層支撐。</p>
+      </div>
+      <span class="tag lift">加選 · 電波／音波</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. RHYTHM -->
+<section class="rhythm" id="rhythm">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <div class="en-title">Rhythm</div>
+        <h2 class="h-zh" style="margin-top:18px">分兩到三次，約三個月完成</h2>
+      </div>
+      <div>
+        <p class="lede">每次間隔約一到兩個月，讓皮膚在兩次之間有時間修復。點選下方，看看你的體驗會怎麼排。</p>
+        <div class="switch" role="group" aria-label="切換體驗">
+          <button type="button" data-k="eye" aria-pressed="false">＋眼周</button>
+          <button type="button" data-k="lift" class="lift" aria-pressed="false">＋電波／音波</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="track reveal" id="track">
+      <svg viewBox="0 0 1200 220" aria-hidden="true">
+        <ellipse class="ov" cx="150" cy="110" rx="150" ry="100"/>
+        <ellipse class="ov" cx="450" cy="110" rx="150" ry="100"/>
+        <ellipse class="ov" cx="750" cy="110" rx="150" ry="100"/>
+        <ellipse class="ov lift fade hide" id="ovLift" cx="1050" cy="110" rx="150" ry="100"/>
+        <text class="lbl-en" x="150" y="120" text-anchor="middle">Visit 01</text>
+        <text class="lbl-en" x="450" y="120" text-anchor="middle">Visit 02</text>
+        <text class="lbl-en" x="750" y="120" text-anchor="middle">Visit 03</text>
+        <text class="lbl-en fade hide" id="txLift" x="1050" y="120" text-anchor="middle" style="fill:#B8624B">Support</text>
+      </svg>
+      <div class="visits">
+        <div class="visit"><div class="when">第 1 次</div><h4>海飛秀＋雷射</h4><p>先清潔、整理膚色，作為接下來療程的基礎。</p><div class="eye-chip">眼周音波可安排在任一次</div></div>
+        <div class="visit"><div class="when">第 2 次 · 約 1–2 個月後</div><h4>水光針</h4><p>補充水分，讓肌底穩定下來。</p></div>
+        <div class="visit"><div class="when">第 3 次 · 約 1–2 個月後</div><h4>微針筆</h4><p>處理膚質與毛孔，完成這一輪養膚。</p></div>
+        <div class="visit lift fade hide" id="vLift"><div class="when">養膚之後</div><h4>電波／音波</h4><p>可在第 3 次當天一起進行，或另外安排。</p></div>
+      </div>
+      <p class="interval">也可以依你的時間合併成兩次：海飛秀＋雷射＋水光針 → 微針筆</p>
+    </div>
+
+    <div class="rules reveal">
+      <div><b>水光針與微針筆，分開安排</b><p>兩者都直接作用在皮膚裡，分開進行，讓皮膚在兩次之間完成修復。</p></div>
+      <div><b>海飛秀、雷射，可搭配任何一次</b><p>能和其他療程同日進行，減少你往返的次數。</p></div>
+      <div><b>眼周音波，建議間隔約一個月</b><p>可以和任一次療程同天進行，也建議與其他療程錯開約一個月。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FEEL -->
+<section class="feel">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="en-title">After Each Visit</div>
+      <h2 class="h-zh" style="margin-top:18px">每次療程之後，你會經歷什麼</h2>
+    </div>
+    <div class="days reveal">
+      <div class="day"><div class="d">DAY 1 – 3</div><h4>微微泛紅、緊繃</h4><p>屬於預期中的反應。加強保濕與防曬，避免去角質與高溫環境。</p><span class="link">Disrupt</span></div>
+      <div class="day"><div class="d">DAY 3 – 14</div><h4>慢慢回到日常</h4><p>泛紅逐步退去，通常已能正常上妝、上班。這段時間的照顧，決定修復的品質。</p><span class="link">Repair</span></div>
+      <div class="day"><div class="d">DAY 14 – 28</div><h4>膚況趨於穩定</h4><p>皮膚完成一輪更新。這時的狀態，才是這次療程真正的落點——接著，就是下一次回來的時候。</p><span class="link">Renew</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. AFTER -->
+<section class="after">
+  <div class="wrap grid">
+    <img class="reveal" src="sheand-kol/images/space-3.jpg" alt="療程室">
+    <div class="reveal">
+      <div class="eyebrow">What's Next</div>
+      <blockquote>走完一輪，<br>你會知道自己的皮膚<br>對哪一種照顧最有感。</blockquote>
+      <p class="lede">體驗不是終點。接下來，醫師會依你這三個月的變化，和你一起規劃之後的節奏。</p>
+      <div class="paths">
+        <div><i>i.</i>以最有感的項目為主，規律回訪</div>
+        <div><i>ii.</i>在養膚之外，加上電波或音波的支撐</div>
+        <div><i>iii.</i>依季節與膚況，輪替不同的照顧方式</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="faq">
+  <div class="wrap grid">
+    <div class="reveal"><div class="en-title">FAQ</div></div>
+    <div class="reveal">
+      <details><summary>不確定該選哪一種體驗？</summary><p>沒關係。面診時醫師會先看過你的膚況，再建議適合的體驗方式，也可以到現場再決定。</p></details>
+      <details><summary>第一次來，就想加電波或音波可以嗎？</summary><p>可以。兩種體驗都能加選，我們會安排在養膚療程之後，可以在最後一次療程的當天一起進行，或另外安排。</p></details>
+      <details><summary>眼周音波和全臉音波有什麼不同？</summary><p>眼周皮膚較薄、結構也和臉頰不同，所以使用專門針對眼周的方式與參數，與全臉音波分開規劃。</p></details>
+      <details><summary>做完會紅腫嗎？隔天可以上班嗎？</summary><p>依療程不同，可能有短暫泛紅或緊繃，多數人隔天即可正常上班。實際狀況會在療程前由醫師說明。</p></details>
+      <details><summary>體驗完之後，要怎麼接續？</summary><p>走完一輪後，醫師會依你的變化，建議之後的保養節奏與項目。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="en-title">Contact</div>
+    <p>初次來訪建議預約面診。我們會留足夠的時間了解你的膚況與想改善的地方，再一起決定要不要開始。</p>
+    <div class="btns"><a class="btn" href="#">線上預約</a><a class="btn ghost" href="#">LINE 諮詢</a></div>
+    <p class="legal">本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。</p>
+  </div>
+</section>
+
 <script>
-(function(){
-  var b=document.querySelector('.burger'), m=document.querySelector('.menu');
-  if(!b||!m) return;
-  b.setAttribute('aria-expanded','false');
-  b.setAttribute('aria-controls','sitemenu');
-  m.id='sitemenu';
-  function set(open){
-    m.classList.toggle('open',open);
-    b.setAttribute('aria-expanded',String(open));
-    b.innerHTML=open?'&#215;':'&#9776;';
-    b.setAttribute('aria-label',open?'關閉選單':'開啟選單');
-  }
-  b.addEventListener('click',function(e){e.stopPropagation();set(!m.classList.contains('open'));});
-  m.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
-  document.addEventListener('click',function(e){
-    if(m.classList.contains('open')&&!m.contains(e.target)&&e.target!==b)set(false);
+// 節奏切換：＋眼周 / ＋電波音波
+const track=document.getElementById('track');
+document.querySelectorAll('.switch button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const on=b.getAttribute('aria-pressed')!=='true';
+    b.setAttribute('aria-pressed',on);
+    if(b.dataset.k==='eye') track.classList.toggle('show-eye',on);
+    if(b.dataset.k==='lift') ['ovLift','txLift','vLift'].forEach(id=>document.getElementById(id).classList.toggle('hide',!on));
   });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
-  window.addEventListener('resize',function(){if(window.innerWidth>960)set(false);});
-})();
+});
+// 捲動淡入
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
-</body></html>
+</body>
+</html>
