@@ -827,8 +827,7 @@ if __name__ == "__main__":
         if f.name == "index.html":
             continue
         shutil.copy2(f, dist / f.name)
-    # 首頁改由程式產生
-    (dist / "index.html").write_text(build_home(), encoding="utf-8")
+    # 首頁由 repo 根目錄的 render.py 產生，這裡不碰
 
     PUBLIC = {"experience.html"}    # 只有這頁對外
     for plan in PLANS:
