@@ -91,13 +91,57 @@ section{padding:clamp(80px,11vw,150px) 0}
   .hero h1,.hero p{color:#F3ECE6}
 }
 
-/* about */
+/* about —— 輪播，依設計稿元件集 535:1831（Component 3，1452x696，五張）
+   第 1 張：左文字（x88 寬622）＋右照片（x789 y103 663x470）
+   第 2–5 張：滿版照片（照片是該變體的底圖），無文字
+   箭頭 117 圓、chevron 48，左右各距邊 10、垂直置中
+   圓點 12、間距 12，距底 28，作用中 #8CAAA0、未選 #F3F3F2 */
 .about{background:var(--bg)}
-.about .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:end;margin-top:48px}
-.about h2{font-weight:300;font-size:clamp(20px,2.697vw + 9.16px,48px);line-height:1.21;letter-spacing:.2em;margin-bottom:40px}
-.about p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin-bottom:14px;max-width:34em}
-.about img{width:100%;aspect-ratio:4/3;object-fit:cover}
-@media (max-width:860px){.about .grid{grid-template-columns:1fr}}
+.about h2{font-weight:300;font-size:clamp(20px,2.697vw + 9.16px,48px);line-height:1.21;letter-spacing:.2em;margin-bottom:clamp(20px,1.93vw + 12.2px,40px)}
+.about p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:#4D4D4D;margin-bottom:14px}
+.car{position:relative;margin-top:clamp(32px,3.9vw + 16.3px,72px);aspect-ratio:1452/696}
+.car .slides{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;   /* 動畫交給 CSS：scrollTo 的 smooth 在部分瀏覽器對
+                               scroll-snap 容器無效，直接指定 scrollLeft 才可靠 */
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.car .slides::-webkit-scrollbar{display:none}
+.car .slide{flex:0 0 100%;scroll-snap-align:start;position:relative;height:100%}
+.car .slide img{display:block}
+/* 第 1 張 */
+.s-intro{display:grid;grid-template-columns:6.06% 48.2% 45.7%;align-items:start}
+.s-intro .stext{grid-column:2}
+.s-intro img{grid-column:3;width:100%;aspect-ratio:663/470;object-fit:cover;margin-top:14.8%}
+/* 第 2–5 張：滿版 */
+.s-full img{width:100%;height:100%;object-fit:cover}
+/* 箭頭：設計稿的圓透明度是 0、chevron 又是白色，等於看不見，所以它壓在
+   文字上也沒差。這裡要讓它可用就得顯示，但設計稿的 117 直徑會蓋住內文，
+   因此縮為 56（文字欄從 6.06% 起算，56 的圓剛好停在左緣外），位置與垂直
+   置中維持設計稿不變。 */
+.car .cnav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:clamp(40px,1.54vw + 33.8px,56px);aspect-ratio:1;border:0;border-radius:50%;
+  background:rgba(217,217,217,.75);color:#fff;cursor:pointer;
+  display:grid;place-items:center;padding:0;transition:background .2s}
+.car .cnav:hover{background:rgba(217,217,217,.95)}
+.car .cnav svg{width:34%;height:34%}
+.car .prev{left:clamp(6px,.39vw + 4.4px,10px)}
+.car .prev svg{transform:scaleX(-1)}
+.car .next{right:clamp(6px,.39vw + 4.4px,10px)}
+/* 圓點 */
+.cdots{position:absolute;left:0;right:0;bottom:clamp(12px,1.54vw + 5.8px,28px);z-index:2;
+  display:flex;justify-content:center;gap:12px}
+.cdots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:#F3F3F2;transition:background .2s}
+.cdots button[aria-current="true"]{background:var(--sage)}
+@media (max-width:700px){
+  .car{aspect-ratio:auto}
+  .car .slide{height:auto}
+  .s-intro{grid-template-columns:1fr;gap:24px}
+  .s-intro .stext,.s-intro img{grid-column:1}
+  .s-intro img{margin-top:0}
+  .s-full img{height:auto;aspect-ratio:1452/696}
+  .cdots{position:static;margin-top:20px}
+  .car .cnav{top:34%}
+}
 
 /* concept */
 .concept{background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
@@ -268,13 +312,24 @@ details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-hei
 <section class="about" id="about">
   <div class="wrap">
     <div class="en-title reveal">{{H:about}}</div>
-    <div class="grid">
-      <div class="reveal">
-        <h2>把保養當成一段<br>有節奏的關係</h2>
-        <p>蒔恩坐落在台北大安。空間用微水泥、洞石與淺色木質鋪成，燈光是柔的，沒有多餘的聲音 —— 我們希望你走進來的第一件事，是把肩膀放下來。</p>
-        <p>我們不追求一次見效的戲劇性。真正讓膚況穩定的，是規律、是被理解的膚質，以及一位持續看著你的醫師。</p>
+    <div class="car reveal" aria-roledescription="輪播" aria-label="蒔恩的空間">
+      <div class="slides">
+        <div class="slide s-intro">
+          <div class="stext">
+            <h2>把保養當成一段<br>有節奏的關係</h2>
+            <p>蒔恩坐落在台北大安。空間用微水泥、洞石與淺色木質鋪成，燈光是柔的，沒有多餘的聲音 —— 我們希望你走進來的第一件事，是把肩膀放下來。</p>
+            <p>我們不追求一次見效的戲劇性。真正讓膚況穩定的，是規律、是被理解的膚質，以及一位持續看著你的醫師。</p>
+          </div>
+          <img src="{{IMG}}about-1.webp" alt="蒔恩診所空間">
+        </div>
+        <div class="slide s-full"><img src="{{IMG}}about-2.webp" alt="蒔恩診所空間" loading="lazy"></div>
+        <div class="slide s-full"><img src="{{IMG}}about-3.webp" alt="蒔恩診所空間" loading="lazy"></div>
+        <div class="slide s-full"><img src="{{IMG}}about-4.webp" alt="蒔恩診所空間" loading="lazy"></div>
+        <div class="slide s-full"><img src="{{IMG}}about-5.webp" alt="蒔恩診所空間" loading="lazy"></div>
       </div>
-      <img class="reveal" src="{{IMG}}space-2.jpg" alt="蒔恩診所空間">
+      <button class="cnav prev" type="button" aria-label="上一張"><svg viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l10 11L1 23"/></svg></button>
+      <button class="cnav next" type="button" aria-label="下一張"><svg viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l10 11L1 23"/></svg></button>
+      <div class="cdots"></div>
     </div>
   </div>
 </section>
@@ -407,6 +462,24 @@ details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-hei
 </section>
 
 <script>
+// About 輪播：用原生 scroll-snap，手機直接可滑；箭頭與圓點只是改 scrollLeft
+document.querySelectorAll('.car').forEach(car=>{
+  const box=car.querySelector('.slides'), slides=[...car.querySelectorAll('.slide')];
+  const dots=car.querySelector('.cdots');
+  slides.forEach((_,i)=>{
+    const b=document.createElement('button');
+    b.type='button'; b.setAttribute('aria-label',`第 ${i+1} 張`);
+    b.onclick=()=>{box.scrollLeft=box.clientWidth*i};
+    dots.appendChild(b);
+  });
+  const at=()=>Math.round(box.scrollLeft/box.clientWidth);
+  const sync=()=>[...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===at()?'true':'false'));
+  const go=d=>{box.scrollLeft=box.clientWidth*Math.min(slides.length-1,Math.max(0,at()+d))};
+  car.querySelector('.prev').onclick=()=>go(-1);
+  car.querySelector('.next').onclick=()=>go(1);
+  let t; box.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(sync,80)});
+  addEventListener('resize',sync); sync();
+});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
