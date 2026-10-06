@@ -7,14 +7,15 @@
 <title>蒔恩美學診所 SHE AND</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Noto+Sans+TC:wght@300..500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#EDEDEB; --white:#FFFFFF;
   --sage:#8CAAA0; --sage-deep:#5B7A70; --sage-mist:#C7D4D0;
   --clay:#E39782; --clay-soft:#F3D9D0;
   --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
-  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
+  /* 設計稿的中文一律 Noto Sans TC，沒有襯線 */
+  --sans:"Noto Sans TC",sans-serif;
    --util:"Noto Sans","Noto Sans TC",sans-serif;
   /* 數字用系統字型：Apple 裝置會拿到 SF Pro，其他平台退回系統預設 */
   --num:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
@@ -72,14 +73,14 @@ section{padding:clamp(80px,11vw,150px) 0}
 .hero{padding:0;position:relative;background:#E9E9E7}
 .hero img{width:100%;height:min(88vh,820px);object-fit:cover;object-position:left center}
 .hero .copy{position:absolute;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:26em}
-.hero h1{white-space:nowrap;font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.4vw,46px);letter-spacing:.24em;margin-bottom:24px}
+.hero h1{white-space:nowrap;font-family:var(--sans);font-weight:300;font-size:clamp(28px,3.4vw,46px);letter-spacing:.24em;margin-bottom:24px}
 .hero p{font-size:14px;color:var(--ink-soft)}
 @media (max-width:860px){.hero img{height:62vh;object-position:20% center}.hero .copy{position:static;padding:40px var(--gut) 56px;max-width:none}}
 
 /* about */
 .about{background:var(--bg)}
 .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:end;margin-top:48px}
-.about h2{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.8vw,34px);letter-spacing:.24em;line-height:1.7;margin-bottom:40px}
+.about h2{font-family:var(--sans);font-weight:300;font-size:clamp(24px,2.8vw,34px);letter-spacing:.24em;line-height:1.7;margin-bottom:40px}
 .about p{font-size:14px;color:var(--ink-soft);margin-bottom:14px;max-width:30em}
 .about img{width:100%;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:860px){.about .grid{grid-template-columns:1fr}}
@@ -100,7 +101,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .stage:nth-child(2){top:50%}
 .stage:nth-child(3){top:77.28%}
 .stage .d{font-family:var(--num);font-size:13px;letter-spacing:.14em;color:var(--clay)}
-.stage h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.16em;margin:6px 0 10px}
+.stage h3{font-family:var(--sans);font-weight:400;font-size:24px;letter-spacing:.16em;margin:6px 0 10px}
 .stage p{font-size:13.5px;color:var(--ink-soft);max-width:22em}
 @media (max-width:860px){
   .stages{grid-template-columns:1fr;gap:40px}
@@ -113,7 +114,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(0px,5vw,72px)}
 .cat+.cat{border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
 .cat .no{font-family:var(--num);font-weight:200;font-size:56px;color:var(--clay);opacity:.6;line-height:1}
-.cat h3{font-family:var(--serif);font-weight:300;font-size:26px;letter-spacing:.16em;color:var(--clay);margin:10px 0 4px}
+.cat h3{font-family:var(--sans);font-weight:300;font-size:26px;letter-spacing:.16em;color:var(--clay);margin:10px 0 4px}
 .cat .desc{font-size:14px;color:var(--ink);margin-bottom:28px}
 /* 卡片橫向滑動。以下數值全部讀自設計稿 Frame 134 / Frame 4（633:1035、633:1036）：
    卡片 315x571、圓角 9、間距 24、陰影 6/4/16 黑 25% */
@@ -163,7 +164,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .doc .role{color:#4D4D4D;font-weight:400;
   font-size:calc(var(--dw) * 22/440);line-height:calc(var(--dw) * 26/440);
   margin-top:calc(var(--dw) * 9/440)}
-.doc h4{color:#4D4D4D;font-family:var(--sans);font-weight:300;letter-spacing:.1em;
+.doc h4{color:#4D4D4D;font-family:var(--sans);font-weight:350;letter-spacing:.1em;
   font-size:calc(var(--dw) * 48/440);line-height:calc(var(--dw) * 58/440);
   margin-top:calc(var(--dw) * 9/440)}
 /* 窄螢幕：卡片縮到看得見一整張加一點下一張，卡內元素等比跟著縮 */
