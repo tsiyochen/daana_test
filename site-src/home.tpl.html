@@ -112,10 +112,14 @@ section{padding:0}
 .car .slides::-webkit-scrollbar{display:none}
 .car .slide{flex:0 0 100%;scroll-snap-align:start;position:relative;height:100%}
 .car .slide img{display:block}
-/* 第 1 張 */
-.s-intro{display:grid;grid-template-columns:6.06% 48.2% 45.7%;align-items:start}
-.s-intro .stext{grid-column:2}
-.s-intro img{grid-column:3;width:100%;aspect-ratio:663/470;object-fit:cover;margin-top:14.8%}
+/* 文字不在輪播軌道裡。桌機依設計稿浮在左側、只在第 1 張顯示；
+   手機版設計稿（633:1349）是把文字放在輪播外、固定在上方，所有張只有照片。 */
+.car .stext{position:absolute;left:6.06%;top:0;width:42.8%;z-index:3;
+  transition:opacity .35s;pointer-events:none}
+.car:not([data-i="0"]) .stext{opacity:0}
+/* 第 1 張：照片靠右，位置與尺寸依設計稿（x789 y103 663x470 於 1452x696 內） */
+.s-intro{display:grid;grid-template-columns:54.3% 45.7%}
+.s-intro img{grid-column:2;width:100%;aspect-ratio:663/470;object-fit:cover;margin-top:14.8%}
 /* 第 2–5 張：滿版 */
 .s-full img{width:100%;height:100%;object-fit:cover}
 /* 箭頭：設計稿的圓透明度是 0、chevron 又是白色，等於看不見，所以它壓在
@@ -137,15 +141,18 @@ section{padding:0}
 .cdots button{width:calc(12px * var(--k));height:calc(12px * var(--k));border-radius:50%;border:0;padding:0;cursor:pointer;
   background:#F3F3F2;transition:background .2s}
 .cdots button[aria-current="true"]{background:var(--sage)}
+/* 手機版依設計稿 633:1349：文字在輪播外、照片統一 404x293，
+   所有張用同一個比例，不會再出現第 1 張很高、後面幾張變扁的情形 */
 @media (max-width:700px){
-  .car{aspect-ratio:auto}
-  .car .slide{height:auto}
-  .s-intro{grid-template-columns:1fr;gap:24px}
-  .s-intro .stext,.s-intro img{grid-column:1}
-  .s-intro img{margin-top:0}
-  .s-full img{height:auto;aspect-ratio:1452/696}
-  .cdots{position:static;margin-top:20px}
-  .car .cnav{top:34%}
+  .car{aspect-ratio:auto;display:flex;flex-direction:column;gap:17px}
+  .car .stext{position:static;width:auto;opacity:1!important;pointer-events:auto}
+  .car .slides{aspect-ratio:404/293}
+  .car .slide{height:100%}
+  .s-intro{display:block}
+  .s-intro img,.s-full img{width:100%;height:100%;object-fit:cover;margin-top:0}
+  .cdots{position:absolute;bottom:calc(10px * var(--k))}
+  .car .cnav{top:auto;bottom:calc(293px * var(--k) / 2);transform:translateY(50%);
+    width:calc(53px * var(--k))}
 }
 
 /* concept */
@@ -322,15 +329,13 @@ details p{padding:0 0 20px;font-size:calc(clamp(13px,0.482vw + 11.06px,18px) * v
   <div class="wrap">
     <div class="en-title reveal">{{H:about}}</div>
     <div class="car reveal" aria-roledescription="輪播" aria-label="蒔恩的空間">
+      <div class="stext">
+        <h2>把保養當成一段<br>有節奏的關係</h2>
+        <p>蒔恩坐落在台北大安。空間用微水泥、洞石與淺色木質鋪成，燈光是柔的，沒有多餘的聲音 —— 我們希望你走進來的第一件事，是把肩膀放下來。</p>
+        <p>我們不追求一次見效的戲劇性。真正讓膚況穩定的，是規律、是被理解的膚質，以及一位持續看著你的醫師。</p>
+      </div>
       <div class="slides">
-        <div class="slide s-intro">
-          <div class="stext">
-            <h2>把保養當成一段<br>有節奏的關係</h2>
-            <p>蒔恩坐落在台北大安。空間用微水泥、洞石與淺色木質鋪成，燈光是柔的，沒有多餘的聲音 —— 我們希望你走進來的第一件事，是把肩膀放下來。</p>
-            <p>我們不追求一次見效的戲劇性。真正讓膚況穩定的，是規律、是被理解的膚質，以及一位持續看著你的醫師。</p>
-          </div>
-          <img src="{{IMG}}about-1.webp" alt="蒔恩診所空間">
-        </div>
+        <div class="slide s-intro"><img src="{{IMG}}about-1.webp" alt="蒔恩診所空間"></div>
         <div class="slide s-full"><img src="{{IMG}}about-2.webp" alt="蒔恩診所空間" loading="lazy"></div>
         <div class="slide s-full"><img src="{{IMG}}about-3.webp" alt="蒔恩診所空間" loading="lazy"></div>
         <div class="slide s-full"><img src="{{IMG}}about-4.webp" alt="蒔恩診所空間" loading="lazy"></div>
@@ -482,7 +487,8 @@ document.querySelectorAll('.car').forEach(car=>{
     dots.appendChild(b);
   });
   const at=()=>Math.round(box.scrollLeft/box.clientWidth);
-  const sync=()=>[...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===at()?'true':'false'));
+  const sync=()=>{const n=at(); car.dataset.i=n;
+    [...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===n?'true':'false'));};
   const go=d=>{box.scrollLeft=box.clientWidth*Math.min(slides.length-1,Math.max(0,at()+d))};
   car.querySelector('.prev').onclick=()=>go(-1);
   car.querySelector('.next').onclick=()=>go(1);
