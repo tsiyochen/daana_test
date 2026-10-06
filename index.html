@@ -181,9 +181,14 @@ section{padding:0}
    不是上下堆疊。.stage 維持絕對定位，仍對齊三個環的中心。
    內文在手機版是靠左（桌機是置中），標題兩邊都置中。 */
 @media (max-width:860px){
-  .stages{grid-template-columns:199fr 153fr;gap:0}
+  .stages{grid-template-columns:199fr 153fr;gap:0;align-items:center}
   .ovals{max-width:none}
   .concept .top p{text-align:left;margin-left:0;margin-right:0;max-width:none}
+  /* 設計稿手機版的三段文字是「等距排列」（區塊 102、間距 19），不是對齊三個環心。
+     欄寬只有 130 左右，內文會換成七八行，照桌機的絕對定位會互相重疊。 */
+  .steps{display:flex;flex-direction:column;justify-content:center;
+    gap:calc(19px * var(--k))}
+  .stage{position:static;transform:none}
 }
 
 /* treatments */
