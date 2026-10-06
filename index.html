@@ -156,7 +156,7 @@ section{padding:0}
 }
 
 /* concept */
-.concept{padding:clamp(40px,4.9vw,70px) 0 clamp(32px,3.6vw,52px);   /* 設計稿 70 / 52 */
+.concept{padding:clamp(59px,1.060vw + 54.74px,70px) 0 52px;   /* 設計稿 桌機 70/52、手機 59/59 */   /* 設計稿 70 / 52 */
   background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
 .concept .top p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
@@ -193,7 +193,7 @@ section{padding:0}
 
 /* treatments */
 .treatments{background:var(--white);
-  padding:clamp(24px,2.9vw,42px) 0 clamp(56px,6.9vw,100px)}   /* 設計稿 42 / 100 */
+  padding:clamp(20px,2.120vw + 11.48px,42px) 0 clamp(60px,3.854vw + 44.51px,100px)}  /* 桌機 42/100、手機 20/60 */
 .cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
 .cat+.cat{border-top:1px solid var(--line);padding-top:clamp(40px,4.2vw,56px)}  /* 合計約 152，設計稿 142～161 */
 .cat .no{font-family:var(--num);font-weight:200;font-size:calc(clamp(60px,3.468vw + 46.06px,96px) * var(--k));
@@ -228,7 +228,7 @@ section{padding:0}
 
 /* team */
 .team{background:var(--bg);
-  padding:clamp(60px,7.6vw,110px) 0 clamp(72px,9.7vw,140px)}  /* 設計稿 110 / 140 */
+  padding:clamp(8px,9.827vw - 31.51px,110px) 0 clamp(38px,9.827vw - 1.51px,140px)}  /* 桌機 110/140、手機 8/38 */
 
 /* 醫師卡片橫向滑動，與療程卡同一套。設計稿 Frame 165（633:1068）：
    卡片 440x628、間距 10，照片 420x480 內縮 10，文字區 420x128。
@@ -257,7 +257,7 @@ section{padding:0}
 @media (max-width:620px){.docs{--dw:min(calc(440px * var(--k)),82vw)}}
 
 /* faq */
-.faq{background:var(--bg);padding:0}                   /* 設計稿 0 / 0 */
+.faq{background:var(--bg);padding:0}                   /* 設計稿 桌機 0/0 */
 .faq .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
 .faq .list{margin-top:44px}
 details{border-bottom:1px solid var(--line)}
@@ -269,6 +269,12 @@ summary::after{content:"+";font-family:var(--util);color:var(--ink-soft);transit
 details[open] summary::after{transform:rotate(45deg)}
 details p{padding:0 0 20px;font-size:calc(clamp(13px,0.482vw + 11.06px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
 .faq img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(.95)}
+/* 手機版依設計稿 633:1443：FAQ 沒有照片，區塊留白 30/80（桌機是 0/0）*/
+@media (max-width:700px){
+  .faq{padding:30px 0 80px}
+  .faq img{display:none}
+  .concept{padding-bottom:59px}
+}
 @media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
 
 /* contact —— 版面依設計稿 633:1124（桌機）與 633:1451（手機）

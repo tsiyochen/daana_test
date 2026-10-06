@@ -5,11 +5,12 @@
     python3 figma.py spec  <node_id>          該節點的 autolayout / 字體 / 顏色
     python3 figma.py find  <關鍵字>            依名稱搜尋節點
 """
-import json, sys, glob, pathlib
+import json, sys, glob, pathlib, os
+ROOT_DIR=os.path.dirname(os.path.abspath(__file__))
 
 ROOT = pathlib.Path(__file__).parent
 NODES = {}
-for f in glob.glob(str(ROOT / "node_*.json")):
+for f in glob.glob(os.path.join(ROOT_DIR,"node_*.json")):
     d = json.load(open(f))
     for nid, wrap in d.get("nodes", {}).items():
         def walk(n, parent=None):

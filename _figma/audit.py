@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-import json, glob, sys
+import json, glob, sys, os
+ROOT_DIR=os.path.dirname(os.path.abspath(__file__))
 NODES={}; ORDER=[]
-for f in glob.glob("node_*.json"):
+for f in glob.glob(os.path.join(ROOT_DIR,"node_*.json")):
     d=json.load(open(f))
     for nid,w in d.get("nodes",{}).items():
         def walk(n,p=None,depth=0):
