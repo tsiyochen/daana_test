@@ -21,6 +21,9 @@
   --num:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
   /* 設計稿頁寬 1440、左右留白 80（內容 1280）；手機版留白 40 */
   --gut:clamp(24px,3.854vw + 24.51px,80px); --max:1440px;
+  /* 整體字級與固定模組的縮放係數。1 = 完全照設計稿，0.9 = 等比縮小一成。
+     區塊留白與內容寬度不乘這個係數（那兩項已單獨對齊設計稿）。 */
+  --k:.9;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -29,7 +32,7 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .en-title{color:var(--sage);line-height:0}
-.en-title svg{height:clamp(82px,10.405vw + 40.17px,190px);width:auto;display:block}
+.en-title svg{height:calc(clamp(82px,10.405vw + 40.17px,190px) * var(--k));width:auto;display:block}
 /* svg 是 display:block，text-align 推不動它，靠 margin 對齊 */
 .en-title.right svg,.team .en-title svg{margin-left:auto}
 .concept .top .en-title svg{margin-inline:auto}
@@ -45,13 +48,13 @@ section{padding:0}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
 .nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;
-  font-size:clamp(14px,0.385vw + 12.45px,18px);line-height:1.22;letter-spacing:.2em}
+  font-size:calc(clamp(14px,0.385vw + 12.45px,18px) * var(--k));line-height:1.22;letter-spacing:.2em}
 .nav ul a.on{color:var(--sage-deep);border-bottom:1px solid var(--sage)}
 .btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;
-  padding:10px 26px;font-weight:500;font-size:clamp(10px,0.578vw + 7.68px,16px);letter-spacing:.15em;transition:opacity .2s}
+  padding:10px 26px;font-weight:500;font-size:calc(clamp(10px,0.578vw + 7.68px,16px) * var(--k));letter-spacing:.15em;transition:opacity .2s}
 .btn:hover{opacity:.85}
 .btn.ghost{background:#F6EFEB;color:var(--clay)}
-.contact .btn{font-family:var(--num);font-weight:400;font-size:20px;letter-spacing:.1em;padding:16px 36px}
+.contact .btn{font-family:var(--num);font-weight:400;font-size:calc(20px * var(--k));letter-spacing:.1em;padding:16px 36px}
 /* 中間尺寸：維持單列，縮小間距與字級，「線上預約」保留 */
 @media (max-width:860px){
   .nav ul{gap:20px}
@@ -82,9 +85,9 @@ section{padding:0}
   display:block;filter:brightness(1.16)}   /* 設計稿 exposure +0.16 */
 .hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.2;pointer-events:none}
 .hero .copy{position:absolute;z-index:1;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
-.hero h1{white-space:nowrap;color:#4D4D4D;font-weight:300;font-size:clamp(24px,2.312vw + 14.71px,48px);
+.hero h1{white-space:nowrap;color:#4D4D4D;font-weight:300;font-size:calc(clamp(24px,2.312vw + 14.71px,48px) * var(--k));
   line-height:1.21;letter-spacing:.2em;margin-bottom:24px}
-.hero p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.05em;color:#4D4D4D}
+.hero p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.05em;color:#4D4D4D}
 /* 手機版依設計稿 633:1300：402x483、壓暗 30%、文字米白壓在影像上 */
 @media (max-width:700px){
   .hero img{aspect-ratio:402/483;object-position:center}
@@ -99,8 +102,8 @@ section{padding:0}
    箭頭 117 圓、chevron 48，左右各距邊 10、垂直置中
    圓點 12、間距 12，距底 28，作用中 #8CAAA0、未選 #F3F3F2 */
 .about{background:var(--bg);padding:0}                 /* 設計稿 0 / 0 */
-.about h2{font-weight:300;font-size:clamp(20px,2.697vw + 9.16px,48px);line-height:1.21;letter-spacing:.2em;margin-bottom:clamp(20px,1.93vw + 12.2px,40px)}
-.about p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:#4D4D4D;margin-bottom:14px}
+.about h2{font-weight:300;font-size:calc(clamp(20px,2.697vw + 9.16px,48px) * var(--k));line-height:1.21;letter-spacing:.2em;margin-bottom:clamp(20px,1.93vw + 12.2px,40px)}
+.about p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:#4D4D4D;margin-bottom:14px}
 .car{position:relative;margin-top:clamp(32px,3.9vw + 16.3px,72px);aspect-ratio:1452/696}
 .car .slides{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;
   scroll-behavior:smooth;   /* 動畫交給 CSS：scrollTo 的 smooth 在部分瀏覽器對
@@ -120,7 +123,7 @@ section{padding:0}
    因此縮為 56（文字欄從 6.06% 起算，56 的圓剛好停在左緣外），位置與垂直
    置中維持設計稿不變。 */
 .car .cnav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
-  width:clamp(40px,1.54vw + 33.8px,56px);aspect-ratio:1;border:0;border-radius:50%;
+  width:calc(clamp(40px,1.54vw + 33.8px,56px) * var(--k));aspect-ratio:1;border:0;border-radius:50%;
   background:rgba(217,217,217,.75);color:#fff;cursor:pointer;
   display:grid;place-items:center;padding:0;transition:background .2s}
 .car .cnav:hover{background:rgba(217,217,217,.95)}
@@ -131,7 +134,7 @@ section{padding:0}
 /* 圓點 */
 .cdots{position:absolute;left:0;right:0;bottom:clamp(12px,1.54vw + 5.8px,28px);z-index:2;
   display:flex;justify-content:center;gap:12px}
-.cdots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;cursor:pointer;
+.cdots button{width:calc(12px * var(--k));height:calc(12px * var(--k));border-radius:50%;border:0;padding:0;cursor:pointer;
   background:#F3F3F2;transition:background .2s}
 .cdots button[aria-current="true"]{background:var(--sage)}
 @media (max-width:700px){
@@ -149,7 +152,7 @@ section{padding:0}
 .concept{padding:clamp(40px,4.9vw,70px) 0 clamp(32px,3.6vw,52px);   /* 設計稿 70 / 52 */
   background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
-.concept .top p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
+.concept .top p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
 .stages{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(48px,7vw,96px)}
 .ovals{position:relative;width:100%;max-width:650px}
 .ovals svg{width:100%;height:auto;display:block;overflow:visible}
@@ -161,9 +164,9 @@ section{padding:0}
 .stage:nth-child(1){top:22.72%}
 .stage:nth-child(2){top:50%}
 .stage:nth-child(3){top:77.28%}
-.stage .d{font-weight:500;font-size:clamp(12px,1.156vw + 7.35px,24px);line-height:1.21;color:var(--clay)}
-.stage h3{font-weight:400;font-size:clamp(16px,1.927vw + 8.25px,36px);line-height:1.11;margin:6px 0 10px}
-.stage p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);max-width:18em}
+.stage .d{font-weight:500;font-size:calc(clamp(12px,1.156vw + 7.35px,24px) * var(--k));line-height:1.21;color:var(--clay)}
+.stage h3{font-weight:400;font-size:calc(clamp(16px,1.927vw + 8.25px,36px) * var(--k));line-height:1.11;margin:6px 0 10px}
+.stage p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);max-width:18em}
 @media (max-width:860px){
   .stages{grid-template-columns:1fr;gap:40px}
   .ovals{max-width:320px;margin:0 auto}
@@ -175,31 +178,32 @@ section{padding:0}
   padding:clamp(24px,2.9vw,42px) 0 clamp(56px,6.9vw,100px)}   /* 設計稿 42 / 100 */
 .cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
 .cat+.cat{border-top:1px solid var(--line);padding-top:clamp(40px,4.2vw,56px)}  /* 合計約 152，設計稿 142～161 */
-.cat .no{font-family:var(--num);font-weight:200;font-size:clamp(60px,3.468vw + 46.06px,96px);
+.cat .no{font-family:var(--num);font-weight:200;font-size:calc(clamp(60px,3.468vw + 46.06px,96px) * var(--k));
   line-height:1.2;letter-spacing:.01em;color:var(--clay);opacity:.6}
-.cat h3{font-weight:300;font-size:clamp(36px,1.156vw + 31.35px,48px);line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:10px 0 4px}
-.cat .desc{font-size:clamp(16px,0.771vw + 12.90px,24px);line-height:1.5;color:var(--ink);margin-bottom:28px}
+.cat h3{font-weight:300;font-size:calc(clamp(36px,1.156vw + 31.35px,48px) * var(--k));line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:10px 0 4px}
+.cat .desc{font-size:calc(clamp(16px,0.771vw + 12.90px,24px) * var(--k));line-height:1.5;color:var(--ink);margin-bottom:28px}
 /* 卡片橫向滑動。以下數值全部讀自設計稿 Frame 134 / Frame 4（633:1035、633:1036）：
    卡片 315x571、圓角 9、間距 24、陰影 6/4/16 黑 25% */
-.cards{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;
+.cards{display:flex;gap:calc(24px * var(--k));overflow-x:auto;overflow-y:hidden;
   scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
   scrollbar-width:none;
   /* 向右延伸到視窗邊緣再裁切，讓人看得出右邊還有卡片 */
   margin-right:calc(-1 * var(--gut));padding-right:var(--gut);
   /* 留出陰影的空間，否則會被捲動容器裁掉 */
-  padding-bottom:22px;margin-bottom:-22px}
+  padding-bottom:calc(22px * var(--k));margin-bottom:calc(-22px * var(--k))}
 .cards::-webkit-scrollbar{display:none}
-.card{position:relative;flex:0 0 315px;aspect-ratio:315/571;scroll-snap-align:start;
-  border-radius:9px;overflow:hidden;background:#fff;box-shadow:6px 4px 16px rgba(0,0,0,.25)}
+.card{position:relative;flex:0 0 calc(315px * var(--k));aspect-ratio:315/571;scroll-snap-align:start;
+  border-radius:calc(9px * var(--k));overflow:hidden;background:#fff;
+  box-shadow:calc(6px * var(--k)) calc(4px * var(--k)) calc(16px * var(--k)) rgba(0,0,0,.25)}
 .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .card .ph{object-position:30% 30%;filter:sepia(.25) saturate(.9)}
 /* 壓暗層不在這裡做。設計稿每張卡的照片各自裁切、壓暗層 30%～40% 不等，
    已在 tx-*.webp 裡算好（直接從 Figma 匯出該圖層再疊白底） */
 /* 標籤：左 20、中文 top 472 / 30px / 行高 36、英文 top 520 / 16px / 行高 19 */
-.card .lb{position:absolute;left:20px;right:25px;top:472px;z-index:1;color:#fff;
-  font-family:var(--sans);font-weight:400;font-size:30px;line-height:36px;letter-spacing:0}
-.card .lb em{position:absolute;top:48px;left:0;right:0;display:block;
-  font-family:var(--num);font-style:normal;font-weight:700;font-size:16px;line-height:19px;
+.card .lb{position:absolute;left:calc(20px * var(--k));right:calc(25px * var(--k));top:calc(472px * var(--k));z-index:1;color:#fff;
+  font-family:var(--sans);font-weight:400;font-size:30px;line-height:calc(36px * var(--k));letter-spacing:0}
+.card .lb em{position:absolute;top:calc(48px * var(--k));left:0;right:0;display:block;
+  font-family:var(--num);font-style:normal;font-weight:700;font-size:16px;line-height:calc(19px * var(--k));
   letter-spacing:0;text-transform:uppercase;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
@@ -211,7 +215,7 @@ section{padding:0}
 /* 醫師卡片橫向滑動，與療程卡同一套。設計稿 Frame 165（633:1068）：
    卡片 440x628、間距 10，照片 420x480 內縮 10，文字區 420x128。
    卡內字級用 --dw 等比換算，窄螢幕縮小卡片時整張一起縮，不會只有字不動。 */
-.docs{--dw:440px;display:flex;gap:10px;margin-top:40px;
+.docs{--dw:calc(440px * var(--k));display:flex;gap:10px;margin-top:40px;
   overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;
   margin-right:calc(-1 * var(--gut));padding-right:var(--gut)}
@@ -232,7 +236,7 @@ section{padding:0}
   font-size:calc(var(--dw) * 48/440);line-height:calc(var(--dw) * 58/440);
   margin-top:calc(var(--dw) * 9/440)}
 /* 窄螢幕：卡片縮到看得見一整張加一點下一張，卡內元素等比跟著縮 */
-@media (max-width:620px){.docs{--dw:min(440px,82vw)}}
+@media (max-width:620px){.docs{--dw:min(calc(440px * var(--k)),82vw)}}
 
 /* faq */
 .faq{background:var(--bg);padding:0}                   /* 設計稿 0 / 0 */
@@ -241,11 +245,11 @@ section{padding:0}
 details{border-bottom:1px solid var(--line)}
 details:first-child{border-top:1px solid var(--line)}
 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
-  gap:20px;padding:18px 0;font-size:clamp(18px,0.578vw + 15.68px,24px);line-height:1.21}
+  gap:20px;padding:18px 0;font-size:calc(clamp(18px,0.578vw + 15.68px,24px) * var(--k));line-height:1.21}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-family:var(--util);color:var(--ink-soft);transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
+details p{padding:0 0 20px;font-size:calc(clamp(13px,0.482vw + 11.06px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
 .faq img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(.95)}
 @media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
 
@@ -256,23 +260,23 @@ details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-hei
 .contact .en-title{color:#fff}
 .cbody{padding-left:clamp(10px,9.634vw - 28.73px,110px);margin-top:clamp(44px,9.8vw,141px);color:#4D4D4D}
 .contact .intro{margin:0;max-width:32em;font-weight:350;
-  font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
+  font-size:calc(clamp(16px,0.385vw + 14.45px,20px) * var(--k));line-height:2;letter-spacing:.01em}
 /* 兩顆都是實心陶土橘，設計稿沒有淺底版本。單顆 213x64、間距 60 */
 .contact .btns{display:flex;gap:clamp(16px,4.2vw,60px);flex-wrap:wrap;margin-top:clamp(56px,4.6vw,67px)}
 .contact .btn{display:inline-flex;align-items:center;justify-content:center;
-  min-width:213px;height:64px;padding:0 32px;background:var(--clay);color:#fff;
-  font-family:var(--num);font-weight:400;font-size:20px;letter-spacing:.1em}
+  min-width:calc(213px * var(--k));height:calc(64px * var(--k));padding:0 calc(32px * var(--k));background:var(--clay);color:#fff;
+  font-family:var(--num);font-weight:400;font-size:calc(20px * var(--k));letter-spacing:.1em}
 /* logo ｜直線｜ 地址電話時間 */
 .finfo{display:flex;align-items:center;gap:clamp(20px,3.75vw,54px);margin-top:clamp(56px,7.5vw,108px)}
 .foot-logo{flex:none}
-.foot-logo .logo-svg{height:clamp(49px,2.120vw + 40.48px,71px)}
-.vline{flex:none;width:1px;height:92px;background:var(--sage)}
-.info{font-weight:350;font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
+.foot-logo .logo-svg{height:calc(clamp(49px,2.120vw + 40.48px,71px) * var(--k))}
+.vline{flex:none;width:1px;height:calc(92px * var(--k));background:var(--sage)}
+.info{font-weight:350;font-size:calc(clamp(16px,0.385vw + 14.45px,20px) * var(--k));line-height:2;letter-spacing:.01em}
 .map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;
-  font-family:var(--num);font-weight:400;font-size:16px;line-height:25px;vertical-align:middle}
+  font-family:var(--num);font-weight:400;font-size:calc(16px * var(--k));line-height:25px;vertical-align:middle}
 .map svg{width:11px;height:14px;flex:none}
 .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
-  font-size:clamp(14px,0.193vw + 13.23px,16px);line-height:1.56;letter-spacing:.05em}
+  font-size:calc(clamp(14px,0.193vw + 13.23px,16px) * var(--k));line-height:1.56;letter-spacing:.05em}
 /* 手機版：按鈕改直向堆疊、logo 移到資訊上方、不畫分隔線 */
 @media (max-width:700px){
   .contact .btns{flex-direction:column;gap:30px}
