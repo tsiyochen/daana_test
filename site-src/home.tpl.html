@@ -7,7 +7,7 @@
 <title>蒔恩美學診所 SHE AND</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#EDEDEB; --white:#FFFFFF;
@@ -15,7 +15,9 @@
   --clay:#E39782; --clay-soft:#F3D9D0;
   --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
   --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
-  --en:"Cormorant Garamond",serif; --util:"Jost",sans-serif;
+   --util:"Noto Sans","Noto Sans TC",sans-serif;
+  /* 數字用系統字型：Apple 裝置會拿到 SF Pro，其他平台退回系統預設 */
+  --num:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
   --gut:clamp(16px,6vw,96px); --max:1240px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -69,7 +71,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .ovals ellipse{fill:none;stroke:var(--ink);stroke-opacity:.55;stroke-width:1}
 .ovals text{font-family:var(--util);font-weight:300;font-size:22px;fill:var(--ink-soft)}
 .stage{padding:0 0 44px}
-.stage .d{font-family:var(--util);font-size:13px;letter-spacing:.14em;color:var(--clay)}
+.stage .d{font-family:var(--num);font-size:13px;letter-spacing:.14em;color:var(--clay)}
 .stage h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.16em;margin:6px 0 10px}
 .stage p{font-size:13.5px;color:var(--ink-soft);max-width:22em}
 @media (max-width:860px){.stages{grid-template-columns:1fr}.ovals{max-width:260px}}
@@ -78,7 +80,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .treatments{background:var(--white)}
 .cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(0px,5vw,72px)}
 .cat+.cat{border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
-.cat .no{font-family:var(--en);font-style:italic;font-weight:300;font-size:56px;color:var(--clay);opacity:.6;line-height:1}
+.cat .no{font-family:var(--num);font-weight:200;font-size:56px;color:var(--clay);opacity:.6;line-height:1}
 .cat h3{font-family:var(--serif);font-weight:300;font-size:26px;letter-spacing:.16em;color:var(--clay);margin:10px 0 4px}
 .cat .desc{font-size:14px;color:var(--ink);margin-bottom:28px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
