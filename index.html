@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Noto+Sans+TC:wght@300..500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EDEDEB; --white:#FFFFFF;
+  --bg:#E9E9E9; --white:#FFFFFF;   /* --bg 是設計稿的頁面底色 */
   --sage:#8CAAA0; --sage-deep:#5B7A70; --sage-mist:#C7D4D0;
   --clay:#E39782; --clay-soft:#F3D9D0;
   --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
@@ -24,7 +24,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
@@ -38,7 +38,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* test bar + nav */
 .testbar{position:sticky;top:0;z-index:21;height:28px;line-height:16px;background:var(--ink);color:#fff;text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
-.nav{position:sticky;top:28px;z-index:20;background:rgba(237,237,235,.94);backdrop-filter:blur(8px)}
+.nav{position:sticky;top:28px;z-index:20;background:rgba(233,233,233,.94);backdrop-filter:blur(8px)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
@@ -72,13 +72,24 @@ section{padding:clamp(80px,11vw,150px) 0}
 }
 
 /* hero */
-.hero{padding:0;position:relative;background:#E9E9E7}
-.hero img{width:100%;height:min(88vh,820px);object-fit:cover;object-position:left center}
-.hero .copy{position:absolute;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
-.hero h1{white-space:nowrap;font-weight:300;font-size:clamp(24px,2.312vw + 14.71px,48px);
+.hero{padding:0;position:relative;background:var(--bg)}
+/* 設計稿 1440x848.6。原本用 min(88vh,820px) 綁視窗高度，視窗一寬一矮
+   就被壓成扁長條，人像上下都被裁掉；改為鎖設計稿的比例。
+   imageTransform 的 sy=0.8785、ty≈0 表示由上緣裁切，所以 object-position 取 top。 */
+.hero img{width:100%;aspect-ratio:1440/848.6;object-fit:cover;object-position:top center;
+  display:block;filter:brightness(1.16)}   /* 設計稿 exposure +0.16 */
+.hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.2;pointer-events:none}
+.hero .copy{position:absolute;z-index:1;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
+.hero h1{white-space:nowrap;color:#4D4D4D;font-weight:300;font-size:clamp(24px,2.312vw + 14.71px,48px);
   line-height:1.21;letter-spacing:.2em;margin-bottom:24px}
-.hero p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.05em;color:var(--ink-soft)}
-@media (max-width:860px){.hero img{height:62vh;object-position:20% center}.hero .copy{position:static;padding:40px var(--gut) 56px;max-width:none}}
+.hero p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.05em;color:#4D4D4D}
+/* 手機版依設計稿 633:1300：402x483、壓暗 30%、文字米白壓在影像上 */
+@media (max-width:700px){
+  .hero img{aspect-ratio:402/483;object-position:center}
+  .hero::after{opacity:.3}
+  .hero .copy{right:var(--gut);left:var(--gut);bottom:40px;max-width:none}
+  .hero h1,.hero p{color:#F3ECE6}
+}
 
 /* about */
 .about{background:var(--bg)}
@@ -246,7 +257,7 @@ details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-hei
 
 <!-- HERO -->
 <section class="hero">
-  <img src="images/hero-portrait.jpg" alt="">
+  <img src="images/hero-home.webp" alt="">
   <div class="copy">
     <h1>讓美好慢慢長出來</h1>
     <p>「蒔」是播下，也是培育。<br>好的膚況很少一次到位，它更像一段被照顧過的時間 ——<br>每一次回來，都比上一次再好一點。</p>
