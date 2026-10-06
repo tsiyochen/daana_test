@@ -1,11 +1,5 @@
 .DS_Store
-_原檔備份/
-*.bak
 
-# 本地素材與備份，不進 repo
-_接上git前備份_*/
-sheand-proposal-site_1/
-*.otf
-*.pdf
-*原檔備份*
-concept.html.bak-from-repo
+# 本地素材與封存，不進 repo
+_素材原檔/
+_舊版封存/
