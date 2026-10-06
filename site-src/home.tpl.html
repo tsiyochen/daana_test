@@ -189,16 +189,37 @@ details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-hei
 .faq img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(.95)}
 @media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
 
-/* contact */
-.contact{background:var(--sage-mist)}
+/* contact —— 版面依設計稿 633:1124（桌機）與 633:1451（手機）
+   內容左緣 190、標題 80，所以內容區比標題多內縮 110，與分類區相同 */
+.contact{background:var(--sage-mist);
+  padding:clamp(30px,1.541vw + 23.80px,46px) 0 clamp(40px,2.601vw + 29.54px,67px)}
 .contact .en-title{color:#fff}
-.contact .intro{margin:40px 0 32px;max-width:30em;font-weight:350;
+.cbody{padding-left:clamp(10px,9.634vw - 28.73px,110px);margin-top:clamp(44px,9.8vw,141px);color:#4D4D4D}
+.contact .intro{margin:0;max-width:32em;font-weight:350;
   font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
-.contact .btns{display:flex;gap:14px;flex-wrap:wrap}
-.info{margin-top:56px;font-weight:350;font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
-.foot-logo{margin-top:72px}
-.foot-logo .logo-svg{height:44px}
-.legal{margin-top:24px;font-size:clamp(14px,0.193vw + 13.23px,16px);line-height:1.56;letter-spacing:.05em;color:var(--ink-soft);max-width:60em}
+/* 兩顆都是實心陶土橘，設計稿沒有淺底版本。單顆 213x64、間距 60 */
+.contact .btns{display:flex;gap:clamp(16px,4.2vw,60px);flex-wrap:wrap;margin-top:clamp(56px,4.6vw,67px)}
+.contact .btn{display:inline-flex;align-items:center;justify-content:center;
+  min-width:213px;height:64px;padding:0 32px;background:var(--clay);color:#fff;
+  font-family:var(--num);font-weight:400;font-size:20px;letter-spacing:.1em}
+/* logo ｜直線｜ 地址電話時間 */
+.finfo{display:flex;align-items:center;gap:clamp(20px,3.75vw,54px);margin-top:clamp(56px,7.5vw,108px)}
+.foot-logo{flex:none}
+.foot-logo .logo-svg{height:clamp(49px,2.120vw + 40.48px,71px)}
+.vline{flex:none;width:1px;height:92px;background:var(--sage)}
+.info{font-weight:350;font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
+.map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;
+  font-family:var(--num);font-weight:400;font-size:16px;line-height:25px;vertical-align:middle}
+.map svg{width:11px;height:14px;flex:none}
+.legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
+  font-size:clamp(14px,0.193vw + 13.23px,16px);line-height:1.56;letter-spacing:.05em}
+/* 手機版：按鈕改直向堆疊、logo 移到資訊上方、不畫分隔線 */
+@media (max-width:700px){
+  .contact .btns{flex-direction:column;gap:30px}
+  .contact .btn{width:100%;max-width:213px}
+  .finfo{flex-direction:column;align-items:flex-start;gap:23px}
+  .vline{display:none}
+}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
@@ -357,11 +378,20 @@ details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-hei
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="en-title">{{H:contact}}</div>
+    <div class="cbody">
     <p class="intro">初次來訪建議預約面診，我們會留足夠的時間了解你的膚況與想改善的地方，再一起決定要不要開始。</p>
-    <div class="btns"><a class="btn" href="#">線上預約</a><a class="btn ghost" href="#">LINE諮詢</a></div>
-    <div class="info">蒔恩美學診所<br>台北市大安區新生南路二段2號7樓　・　0987-167-852<br>週一至週六 11:00–20:00（週日休診）</div>
-    <div class="foot-logo">{{LOGO}}</div>
+    <div class="btns"><a class="btn" href="#">線上預約</a><a class="btn" href="#">LINE諮詢</a></div>
+    <div class="finfo">
+      <div class="foot-logo">{{LOGO}}</div>
+      <div class="vline"></div>
+      <div class="info">
+        <div>台北市大安區新生南路二段2號7樓<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E6%96%B0%E7%94%9F%E5%8D%97%E8%B7%AF%E4%BA%8C%E6%AE%B52%E8%99%9F7%E6%A8%93" target="_blank" rel="noopener"><svg viewBox="0 0 11 14" fill="currentColor" aria-hidden="true"><path d="M5.5 0C2.46 0 0 2.46 0 5.5 0 9.62 5.5 14 5.5 14S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"/></svg>MAP</a></div>
+        <div>0987-167-852</div>
+        <div>週一至週六 11:00–20:00（週日休診）</div>
+      </div>
+    </div>
     <p class="legal">本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。<br>蒔恩美學診所｜台北市大安區新生南路二段2號7樓｜衛生局核准字號 ○○○○</p>
+    </div>
   </div>
 </section>
 
