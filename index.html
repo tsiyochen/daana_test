@@ -34,7 +34,9 @@ a{color:inherit;text-decoration:none}
 .en-title.right svg,.team .en-title svg{margin-left:auto}
 .concept .top .en-title svg{margin-inline:auto}
 .lede{color:var(--ink-soft);font-size:15px;max-width:34em}
-section{padding:clamp(80px,11vw,150px) 0}
+/* 區塊留白逐區設定，數值取自設計稿每個 section 的實際內容上下緣。
+   原本全站統一 150/150，相鄰兩區固定 300px；設計稿是 46～210px 且每段不同。 */
+section{padding:0}
 
 /* test bar + nav */
 .testbar{position:sticky;top:0;z-index:21;height:28px;line-height:16px;background:var(--ink);color:#fff;text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
@@ -96,7 +98,7 @@ section{padding:clamp(80px,11vw,150px) 0}
    第 2–5 張：滿版照片（照片是該變體的底圖），無文字
    箭頭 117 圓、chevron 48，左右各距邊 10、垂直置中
    圓點 12、間距 12，距底 28，作用中 #8CAAA0、未選 #F3F3F2 */
-.about{background:var(--bg)}
+.about{background:var(--bg);padding:0}                 /* 設計稿 0 / 0 */
 .about h2{font-weight:300;font-size:clamp(20px,2.697vw + 9.16px,48px);line-height:1.21;letter-spacing:.2em;margin-bottom:clamp(20px,1.93vw + 12.2px,40px)}
 .about p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:#4D4D4D;margin-bottom:14px}
 .car{position:relative;margin-top:clamp(32px,3.9vw + 16.3px,72px);aspect-ratio:1452/696}
@@ -144,7 +146,8 @@ section{padding:clamp(80px,11vw,150px) 0}
 }
 
 /* concept */
-.concept{background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
+.concept{padding:clamp(40px,4.9vw,70px) 0 clamp(32px,3.6vw,52px);   /* 設計稿 70 / 52 */
+  background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
 .concept .top p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
 .stages{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(48px,7vw,96px)}
@@ -168,9 +171,10 @@ section{padding:clamp(80px,11vw,150px) 0}
 }
 
 /* treatments */
-.treatments{background:var(--white)}
+.treatments{background:var(--white);
+  padding:clamp(24px,2.9vw,42px) 0 clamp(56px,6.9vw,100px)}   /* 設計稿 42 / 100 */
 .cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
-.cat+.cat{border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
+.cat+.cat{border-top:1px solid var(--line);padding-top:clamp(40px,4.2vw,56px)}  /* 合計約 152，設計稿 142～161 */
 .cat .no{font-family:var(--num);font-weight:200;font-size:clamp(60px,3.468vw + 46.06px,96px);
   line-height:1.2;letter-spacing:.01em;color:var(--clay);opacity:.6}
 .cat h3{font-weight:300;font-size:clamp(36px,1.156vw + 31.35px,48px);line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:10px 0 4px}
@@ -201,7 +205,8 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 
 /* team */
-.team{background:var(--bg)}
+.team{background:var(--bg);
+  padding:clamp(60px,7.6vw,110px) 0 clamp(72px,9.7vw,140px)}  /* 設計稿 110 / 140 */
 
 /* 醫師卡片橫向滑動，與療程卡同一套。設計稿 Frame 165（633:1068）：
    卡片 440x628、間距 10，照片 420x480 內縮 10，文字區 420x128。
@@ -230,7 +235,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 @media (max-width:620px){.docs{--dw:min(440px,82vw)}}
 
 /* faq */
-.faq{background:var(--bg);padding-top:0}
+.faq{background:var(--bg);padding:0}                   /* 設計稿 0 / 0 */
 .faq .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
 .faq .list{margin-top:44px}
 details{border-bottom:1px solid var(--line)}
