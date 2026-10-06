@@ -817,10 +817,13 @@ if __name__ == "__main__":
     import shutil
     dist = here / "dist"           # ← Cloudflare 輸出目錄，只放該公開的
     preview = here / "preview"     # ← 內部預覽，不部署
-    for d in (dist, preview):
-        if d.exists():
-            shutil.rmtree(d)
-        d.mkdir()
+    # 只清理自己的產出，不要動整個 dist —— 首頁與其他頁面由 render.py 管
+    if preview.exists():
+        shutil.rmtree(preview)
+    preview.mkdir()
+    dist.mkdir(exist_ok=True)
+    if (dist / "experience").exists():
+        shutil.rmtree(dist / "experience")
 
     # 靜態檔（_headers、robots.txt）原樣複製進 dist
     for f in (here / "static").iterdir():

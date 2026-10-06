@@ -73,11 +73,9 @@ def main():
     if not SRC.exists():
         sys.exit("找不到 site-src/")
 
-    # 1. 只有發布時才重建 dist —— build.py 會清空 dist/，
-    #    若不發布就執行，正式站的首頁會被刪掉。
-    if PUBLISH:
-        print("── 建置 KOL 頁面 ──")
-        subprocess.run([sys.executable, "build.py"], cwd=KOL, check=True)
+    # 1. 建置 KOL 頁面（只會重建 dist/experience/，不碰其他頁）
+    print("── 建置 KOL 頁面 ──")
+    subprocess.run([sys.executable, "build.py"], cwd=KOL, check=True)
 
     # 2. 圖片：兩站都放在各自根目錄的 images/
     targets = [ROOT / "images"] + ([DIST / "images"] if PUBLISH else [])
@@ -106,6 +104,17 @@ def main():
             out_prod.parent.mkdir(parents=True, exist_ok=True)
             out_prod.write_text(render(tpl, "prod"), encoding="utf-8")
             print(f"  正式站  /{p['route']:16} {out_prod.stat().st_size/1024:6.0f} KB")
+
+    # 4. KOL 頁同步到測試站，路徑與正式站一致：/experience/
+    src_exp = DIST / "experience" / "index.html"
+    if src_exp.exists():
+        html = src_exp.read_text(encoding="utf-8")
+        # 它的 logo 連回首頁，測試站要帶上 base
+        html_test = html.replace('href="/"', f'href="{BASE["test"]}"')
+        out = ROOT / "experience" / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html_test, encoding="utf-8")
+        print(f"  測試站  /experience/     {out.stat().st_size/1024:6.0f} KB")
 
     if not PUBLISH:
         print("\n  （只更新了測試站。確認無誤後跑 --publish 推正式站）")
