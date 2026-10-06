@@ -86,13 +86,17 @@ def main():
 
     font = TTFont(FONT)
     OUT.mkdir(exist_ok=True)
-    pad = 20
+    pad = 4
+
+    # 垂直範圍用字型的 em box（hhea 的 ascent/descent），六個字一致。
+    # 否則各自用字框高度，同一個 CSS 高度會算出不同字級：實測 115～149px 都有。
+    # 設計稿的行高 190 = 128px × (1183+300)/1000，正是這個 box，
+    # 所以 SVG 高度可以直接對應設計稿的行高。
+    asc, desc = font["hhea"].ascent, font["hhea"].descent
 
     for slug, text in HEADINGS.items():
         d, (x0, y0, x1, y1) = build(font, text)
-        # 翻轉後的 Y 範圍
-        top, bottom = -y1, -y0
-        vb = (x0 - pad, top - pad, (x1 - x0) + pad * 2, (bottom - top) + pad * 2)
+        vb = (x0 - pad, -asc, (x1 - x0) + pad * 2, asc - desc)
         svg = (
             f'<svg xmlns="http://www.w3.org/2000/svg" '
             f'viewBox="{vb[0]:.0f} {vb[1]:.0f} {vb[2]:.0f} {vb[3]:.0f}" '

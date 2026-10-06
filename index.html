@@ -19,16 +19,17 @@
    --util:"Noto Sans","Noto Sans TC",sans-serif;
   /* 數字用系統字型：Apple 裝置會拿到 SF Pro，其他平台退回系統預設 */
   --num:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
-  --gut:clamp(16px,6vw,96px); --max:1240px;
+  /* 設計稿頁寬 1440、左右留白 80（內容 1280）；手機版留白 40 */
+  --gut:clamp(24px,3.854vw + 24.51px,80px); --max:1440px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .en-title{color:var(--sage);line-height:0}
-.en-title svg{height:clamp(50px,8vw,116px);width:auto;display:block}
+.en-title svg{height:clamp(82px,10.405vw + 40.17px,190px);width:auto;display:block}
 /* svg 是 display:block，text-align 推不動它，靠 margin 對齊 */
 .en-title.right svg,.team .en-title svg{margin-left:auto}
 .concept .top .en-title svg{margin-inline:auto}
@@ -41,16 +42,19 @@ section{padding:clamp(80px,11vw,150px) 0}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
-.nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;font-size:13px;letter-spacing:.18em}
+.nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;
+  font-size:clamp(14px,0.385vw + 12.45px,18px);line-height:1.22;letter-spacing:.2em}
 .nav ul a.on{color:var(--sage-deep);border-bottom:1px solid var(--sage)}
-.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;padding:10px 26px;font-size:13px;letter-spacing:.2em;transition:opacity .2s}
+.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;
+  padding:10px 26px;font-weight:500;font-size:clamp(10px,0.578vw + 7.68px,16px);letter-spacing:.15em;transition:opacity .2s}
 .btn:hover{opacity:.85}
 .btn.ghost{background:#F6EFEB;color:var(--clay)}
+.contact .btn{font-family:var(--num);font-weight:400;font-size:20px;letter-spacing:.1em;padding:16px 36px}
 /* 中間尺寸：維持單列，縮小間距與字級，「線上預約」保留 */
 @media (max-width:860px){
-  .nav ul{gap:20px;font-size:12px;letter-spacing:.1em}
+  .nav ul{gap:20px}
   .logo-svg{height:30px}
-  .nav .btn{padding:8px 18px;font-size:12px;letter-spacing:.15em}
+  .nav .btn{padding:8px 18px}
 }
 /* 手機：依設計稿 Frame 309（633:1291）改為兩列 —— 上列 logo 與預約鈕，
    下列四個導覽項目平均分配。設計稿是 402 寬、每項 85 / 間距 10，
@@ -60,11 +64,9 @@ section{padding:clamp(80px,11vw,150px) 0}
     align-items:center;height:auto;padding-top:14px;padding-bottom:10px;row-gap:5px}
   .logo{grid-column:1;grid-row:1}
   .logo-svg{height:34px}
-  .nav .btn{grid-column:2;grid-row:1;
-    padding:8px 20px;font-size:10px;font-weight:500;letter-spacing:.15em}
+  .nav .btn{grid-column:2;grid-row:1;padding:8px 20px}
   .nav ul{grid-column:1 / -1;grid-row:2;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
-    font-size:14px;letter-spacing:.2em;text-align:center}
+    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
   .nav ul a{display:block;padding:6px 0}
   .nav ul a.on{display:inline-block}
 }
@@ -72,23 +74,24 @@ section{padding:clamp(80px,11vw,150px) 0}
 /* hero */
 .hero{padding:0;position:relative;background:#E9E9E7}
 .hero img{width:100%;height:min(88vh,820px);object-fit:cover;object-position:left center}
-.hero .copy{position:absolute;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:26em}
-.hero h1{white-space:nowrap;font-family:var(--sans);font-weight:300;font-size:clamp(28px,3.4vw,46px);letter-spacing:.24em;margin-bottom:24px}
-.hero p{font-size:14px;color:var(--ink-soft)}
+.hero .copy{position:absolute;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
+.hero h1{white-space:nowrap;font-weight:300;font-size:clamp(24px,2.312vw + 14.71px,48px);
+  line-height:1.21;letter-spacing:.2em;margin-bottom:24px}
+.hero p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.05em;color:var(--ink-soft)}
 @media (max-width:860px){.hero img{height:62vh;object-position:20% center}.hero .copy{position:static;padding:40px var(--gut) 56px;max-width:none}}
 
 /* about */
 .about{background:var(--bg)}
 .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:end;margin-top:48px}
-.about h2{font-family:var(--sans);font-weight:300;font-size:clamp(24px,2.8vw,34px);letter-spacing:.24em;line-height:1.7;margin-bottom:40px}
-.about p{font-size:14px;color:var(--ink-soft);margin-bottom:14px;max-width:30em}
+.about h2{font-weight:300;font-size:clamp(20px,2.697vw + 9.16px,48px);line-height:1.21;letter-spacing:.2em;margin-bottom:40px}
+.about p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin-bottom:14px;max-width:34em}
 .about img{width:100%;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:860px){.about .grid{grid-template-columns:1fr}}
 
 /* concept */
 .concept{background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
-.concept .top p{font-size:14px;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
+.concept .top p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
 .stages{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(48px,7vw,96px)}
 .ovals{position:relative;width:100%;max-width:650px}
 .ovals svg{width:100%;height:auto;display:block;overflow:visible}
@@ -100,9 +103,9 @@ section{padding:clamp(80px,11vw,150px) 0}
 .stage:nth-child(1){top:22.72%}
 .stage:nth-child(2){top:50%}
 .stage:nth-child(3){top:77.28%}
-.stage .d{font-family:var(--num);font-size:13px;letter-spacing:.14em;color:var(--clay)}
-.stage h3{font-family:var(--sans);font-weight:400;font-size:24px;letter-spacing:.16em;margin:6px 0 10px}
-.stage p{font-size:13.5px;color:var(--ink-soft);max-width:22em}
+.stage .d{font-weight:500;font-size:clamp(12px,1.156vw + 7.35px,24px);line-height:1.21;color:var(--clay)}
+.stage h3{font-weight:400;font-size:clamp(16px,1.927vw + 8.25px,36px);line-height:1.11;margin:6px 0 10px}
+.stage p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);max-width:18em}
 @media (max-width:860px){
   .stages{grid-template-columns:1fr;gap:40px}
   .ovals{max-width:320px;margin:0 auto}
@@ -111,11 +114,12 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* treatments */
 .treatments{background:var(--white)}
-.cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(0px,5vw,72px)}
+.cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
 .cat+.cat{border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
-.cat .no{font-family:var(--num);font-weight:200;font-size:56px;color:var(--clay);opacity:.6;line-height:1}
-.cat h3{font-family:var(--sans);font-weight:300;font-size:26px;letter-spacing:.16em;color:var(--clay);margin:10px 0 4px}
-.cat .desc{font-size:14px;color:var(--ink);margin-bottom:28px}
+.cat .no{font-family:var(--num);font-weight:200;font-size:clamp(60px,3.468vw + 46.06px,96px);
+  line-height:1.2;letter-spacing:.01em;color:var(--clay);opacity:.6}
+.cat h3{font-weight:300;font-size:clamp(36px,1.156vw + 31.35px,48px);line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:10px 0 4px}
+.cat .desc{font-size:clamp(16px,0.771vw + 12.90px,24px);line-height:1.5;color:var(--ink);margin-bottom:28px}
 /* 卡片橫向滑動。以下數值全部讀自設計稿 Frame 134 / Frame 4（633:1035、633:1036）：
    卡片 315x571、圓角 9、間距 24、陰影 6/4/16 黑 25% */
 .cards{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;
@@ -176,23 +180,25 @@ section{padding:clamp(80px,11vw,150px) 0}
 .faq .list{margin-top:44px}
 details{border-bottom:1px solid var(--line)}
 details:first-child{border-top:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-size:14px}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
+  gap:20px;padding:18px 0;font-size:clamp(18px,0.578vw + 15.68px,24px);line-height:1.21}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-family:var(--util);color:var(--ink-soft);transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
+details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
 .faq img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(.95)}
 @media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
 
 /* contact */
 .contact{background:var(--sage-mist)}
 .contact .en-title{color:#fff}
-.contact .intro{margin:40px 0 32px;max-width:30em;font-size:14px}
+.contact .intro{margin:40px 0 32px;max-width:30em;font-weight:350;
+  font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
 .contact .btns{display:flex;gap:14px;flex-wrap:wrap}
-.info{margin-top:56px;font-size:14px;line-height:2.1}
+.info{margin-top:56px;font-weight:350;font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
 .foot-logo{margin-top:72px}
 .foot-logo .logo-svg{height:44px}
-.legal{margin-top:24px;font-size:11.5px;color:var(--ink-soft);line-height:1.8;max-width:60em}
+.legal{margin-top:24px;font-size:clamp(14px,0.193vw + 13.23px,16px);line-height:1.56;letter-spacing:.05em;color:var(--ink-soft);max-width:60em}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
@@ -229,7 +235,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="wrap">
-    <div class="en-title reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 -830 2621 862" fill="currentColor" role="img" aria-label="About"><title>About</title><path d="M528 0H584L297 -740H293L129 -317C88 -211 46 -100 4 0H49C61 -59 78 -124 122 -242H435ZM128 -260 148 -311 278 -647 428 -260ZM882 -536C814 -536 749 -505 698 -452V-810H694L650 -790V0H654L686 -66C731 -16 793 12 859 12C992 12 1107 -99 1107 -269C1107 -425 1012 -536 882 -536ZM858 -4C790 -4 730 -42 698 -104V-427C745 -481 811 -512 869 -512C972 -512 1053 -413 1053 -261C1053 -104 967 -4 858 -4ZM1419 12C1565 12 1675 -98 1675 -265C1675 -433 1570 -536 1427 -536C1281 -536 1171 -426 1171 -259C1171 -91 1276 12 1419 12ZM1424 -2C1312 -2 1225 -106 1225 -265C1225 -422 1311 -522 1421 -522C1534 -522 1621 -418 1621 -259C1621 -103 1535 -2 1424 -2ZM2180 -88V-532H2176L2132 -512V-107C2084 -51 2011 -14 1949 -14C1811 -14 1811 -138 1811 -182V-532H1807L1763 -512V-174C1763 -47 1819 12 1928 12C2002 12 2077 -27 2132 -83V-78L2158 8L2202 -12ZM2577 -37C2542 -18 2510 -12 2486 -12C2394 -12 2394 -97 2394 -128V-502H2565L2579 -524H2394V-681H2390L2340 -524L2259 -519V-502H2346V-120C2346 -84 2346 12 2464 12C2511 12 2547 -3 2585 -25Z"/></svg></div>
+    <div class="en-title reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1183 2589 1483" fill="currentColor" role="img" aria-label="About"><title>About</title><path d="M528 0H584L297 -740H293L129 -317C88 -211 46 -100 4 0H49C61 -59 78 -124 122 -242H435ZM128 -260 148 -311 278 -647 428 -260ZM882 -536C814 -536 749 -505 698 -452V-810H694L650 -790V0H654L686 -66C731 -16 793 12 859 12C992 12 1107 -99 1107 -269C1107 -425 1012 -536 882 -536ZM858 -4C790 -4 730 -42 698 -104V-427C745 -481 811 -512 869 -512C972 -512 1053 -413 1053 -261C1053 -104 967 -4 858 -4ZM1419 12C1565 12 1675 -98 1675 -265C1675 -433 1570 -536 1427 -536C1281 -536 1171 -426 1171 -259C1171 -91 1276 12 1419 12ZM1424 -2C1312 -2 1225 -106 1225 -265C1225 -422 1311 -522 1421 -522C1534 -522 1621 -418 1621 -259C1621 -103 1535 -2 1424 -2ZM2180 -88V-532H2176L2132 -512V-107C2084 -51 2011 -14 1949 -14C1811 -14 1811 -138 1811 -182V-532H1807L1763 -512V-174C1763 -47 1819 12 1928 12C2002 12 2077 -27 2132 -83V-78L2158 8L2202 -12ZM2577 -37C2542 -18 2510 -12 2486 -12C2394 -12 2394 -97 2394 -128V-502H2565L2579 -524H2394V-681H2390L2340 -524L2259 -519V-502H2346V-120C2346 -84 2346 12 2464 12C2511 12 2547 -3 2585 -25Z"/></svg></div>
     <div class="grid">
       <div class="reveal">
         <h2>把保養當成一段<br>有節奏的關係</h2>
@@ -245,7 +251,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <section class="concept">
   <div class="wrap">
     <div class="top reveal">
-      <div class="en-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="21 -760 3709 1008" fill="currentColor" role="img" aria-label="Concept"><title>Concept</title><path d="M390 12C526 12 624 -56 691 -162L679 -169C611 -64 514 -18 413 -18C236 -18 99 -162 99 -376C99 -582 230 -724 401 -724C500 -724 585 -679 647 -592L681 -622C622 -695 526 -740 407 -740C201 -740 41 -589 41 -360C41 -129 194 12 390 12ZM985 12C1131 12 1241 -98 1241 -265C1241 -433 1136 -536 993 -536C847 -536 737 -426 737 -259C737 -91 842 12 985 12ZM990 -2C878 -2 791 -106 791 -265C791 -422 877 -522 987 -522C1100 -522 1187 -418 1187 -259C1187 -103 1101 -2 990 -2ZM1588 -536C1509 -536 1446 -505 1381 -445V-532H1377L1333 -512V0H1381V-426C1442 -484 1502 -510 1567 -510C1705 -510 1705 -386 1705 -342V0H1753V-350C1753 -477 1697 -536 1588 -536ZM2079 12C2169 12 2241 -37 2289 -112L2277 -119C2233 -50 2156 -16 2094 -16C1984 -16 1896 -112 1896 -268C1896 -420 1979 -522 2086 -522C2156 -522 2209 -482 2252 -415L2284 -443C2239 -505 2173 -536 2086 -536C1951 -536 1842 -423 1842 -259C1842 -97 1942 12 2079 12ZM2588 -16C2478 -16 2390 -112 2390 -272C2390 -282 2390 -292 2391 -302H2792C2792 -450 2712 -536 2588 -536C2444 -536 2336 -424 2336 -257C2336 -97 2436 12 2572 12C2663 12 2735 -37 2783 -112L2771 -119C2727 -50 2650 -16 2588 -16ZM2581 -522C2678 -522 2736 -440 2738 -318H2393C2408 -441 2484 -522 2581 -522ZM3111 -536C3043 -536 2978 -505 2927 -452V-532H2923L2879 -512V228H2927V-53C2971 -11 3027 12 3088 12C3221 12 3336 -99 3336 -269C3336 -425 3241 -536 3111 -536ZM3087 -4C3019 -4 2959 -42 2927 -104V-427C2974 -481 3040 -512 3098 -512C3201 -512 3282 -413 3282 -261C3282 -104 3196 -4 3087 -4ZM3702 -37C3667 -18 3635 -12 3611 -12C3519 -12 3519 -97 3519 -128V-502H3690L3704 -524H3519V-681H3515L3465 -524L3384 -519V-502H3471V-120C3471 -84 3471 12 3589 12C3636 12 3672 -3 3710 -25Z"/></svg></div>
+      <div class="en-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="37 -1183 3677 1483" fill="currentColor" role="img" aria-label="Concept"><title>Concept</title><path d="M390 12C526 12 624 -56 691 -162L679 -169C611 -64 514 -18 413 -18C236 -18 99 -162 99 -376C99 -582 230 -724 401 -724C500 -724 585 -679 647 -592L681 -622C622 -695 526 -740 407 -740C201 -740 41 -589 41 -360C41 -129 194 12 390 12ZM985 12C1131 12 1241 -98 1241 -265C1241 -433 1136 -536 993 -536C847 -536 737 -426 737 -259C737 -91 842 12 985 12ZM990 -2C878 -2 791 -106 791 -265C791 -422 877 -522 987 -522C1100 -522 1187 -418 1187 -259C1187 -103 1101 -2 990 -2ZM1588 -536C1509 -536 1446 -505 1381 -445V-532H1377L1333 -512V0H1381V-426C1442 -484 1502 -510 1567 -510C1705 -510 1705 -386 1705 -342V0H1753V-350C1753 -477 1697 -536 1588 -536ZM2079 12C2169 12 2241 -37 2289 -112L2277 -119C2233 -50 2156 -16 2094 -16C1984 -16 1896 -112 1896 -268C1896 -420 1979 -522 2086 -522C2156 -522 2209 -482 2252 -415L2284 -443C2239 -505 2173 -536 2086 -536C1951 -536 1842 -423 1842 -259C1842 -97 1942 12 2079 12ZM2588 -16C2478 -16 2390 -112 2390 -272C2390 -282 2390 -292 2391 -302H2792C2792 -450 2712 -536 2588 -536C2444 -536 2336 -424 2336 -257C2336 -97 2436 12 2572 12C2663 12 2735 -37 2783 -112L2771 -119C2727 -50 2650 -16 2588 -16ZM2581 -522C2678 -522 2736 -440 2738 -318H2393C2408 -441 2484 -522 2581 -522ZM3111 -536C3043 -536 2978 -505 2927 -452V-532H2923L2879 -512V228H2927V-53C2971 -11 3027 12 3088 12C3221 12 3336 -99 3336 -269C3336 -425 3241 -536 3111 -536ZM3087 -4C3019 -4 2959 -42 2927 -104V-427C2974 -481 3040 -512 3098 -512C3201 -512 3282 -413 3282 -261C3282 -104 3196 -4 3087 -4ZM3702 -37C3667 -18 3635 -12 3611 -12C3519 -12 3519 -97 3519 -128V-502H3690L3704 -524H3519V-681H3515L3465 -524L3384 -519V-502H3471V-120C3471 -84 3471 12 3589 12C3636 12 3672 -3 3710 -25Z"/></svg></div>
       <p>皮膚的更新是靠一次可控的刺激啟動的。療程給的是訊號，接下來的修復與新生由皮膚自己完成 —— 這段路大約需要 28 天。</p>
     </div>
     <div class="stages">
@@ -285,7 +291,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- TREATMENTS -->
 <section class="treatments">
   <div class="wrap">
-    <div class="en-title reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -748 4900 780" fill="currentColor" role="img" aria-label="Treatments"><title>Treatments</title><path d="M522 -728H22L10 -690H12C92 -704 156 -710 216 -710H246V0H298V-710H328C388 -710 452 -704 532 -690H534ZM820 -534C750 -534 696 -491 652 -424V-532H648L604 -512V0H652V-400C685 -453 735 -495 794 -495C810 -495 832 -492 851 -483L869 -528C852 -532 836 -534 820 -534ZM1157 -16C1047 -16 959 -112 959 -272C959 -282 959 -292 960 -302H1361C1361 -450 1281 -536 1157 -536C1013 -536 905 -424 905 -257C905 -97 1005 12 1141 12C1232 12 1304 -37 1352 -112L1340 -119C1296 -50 1219 -16 1157 -16ZM1150 -522C1247 -522 1305 -440 1307 -318H962C977 -441 1053 -522 1150 -522ZM1839 -18C1789 -18 1789 -46 1789 -94V-350C1789 -478 1733 -536 1625 -536C1553 -536 1499 -508 1444 -458L1453 -447C1503 -490 1549 -510 1605 -510C1697 -510 1741 -455 1741 -342V-282C1708 -280 1672 -277 1637 -273C1501 -257 1407 -204 1407 -108C1407 -33 1465 10 1545 10C1609 10 1685 -17 1741 -69C1743 -42 1751 4 1800 4C1819 4 1838 -3 1857 -14V-20C1851 -19 1845 -18 1839 -18ZM1457 -123C1457 -230 1580 -254 1741 -268V-88C1692 -40 1629 -16 1574 -16C1509 -16 1457 -51 1457 -123ZM2199 -37C2164 -18 2132 -12 2108 -12C2016 -12 2016 -97 2016 -128V-502H2187L2201 -524H2016V-681H2012L1962 -524L1881 -519V-502H1968V-120C1968 -84 1968 12 2086 12C2133 12 2169 -3 2207 -25ZM2869 -536C2786 -536 2728 -501 2661 -436C2639 -504 2588 -536 2507 -536C2428 -536 2373 -505 2310 -445V-532H2306L2262 -512V0H2310V-426C2370 -484 2421 -510 2486 -510C2624 -510 2624 -386 2624 -342V0H2672V-350C2672 -376 2670 -398 2665 -418C2728 -481 2781 -510 2848 -510C2986 -510 2986 -386 2986 -342V0H3034V-350C3034 -477 2978 -536 2869 -536ZM3375 -16C3265 -16 3177 -112 3177 -272C3177 -282 3177 -292 3178 -302H3579C3579 -450 3499 -536 3375 -536C3231 -536 3123 -424 3123 -257C3123 -97 3223 12 3359 12C3450 12 3522 -37 3570 -112L3558 -119C3514 -50 3437 -16 3375 -16ZM3368 -522C3465 -522 3523 -440 3525 -318H3180C3195 -441 3271 -522 3368 -522ZM3921 -536C3842 -536 3779 -505 3714 -445V-532H3710L3666 -512V0H3714V-426C3775 -484 3835 -510 3900 -510C4038 -510 4038 -386 4038 -342V0H4086V-350C4086 -477 4030 -536 3921 -536ZM4477 -37C4442 -18 4410 -12 4386 -12C4294 -12 4294 -97 4294 -128V-502H4465L4479 -524H4294V-681H4290L4240 -524L4159 -519V-502H4246V-120C4246 -84 4246 12 4364 12C4411 12 4447 -3 4485 -25ZM4683 12C4793 12 4870 -43 4870 -132C4870 -222 4790 -258 4723 -288L4683 -306C4630 -330 4557 -358 4557 -424C4557 -476 4600 -522 4677 -522C4742 -522 4804 -488 4839 -459L4850 -492C4808 -517 4744 -536 4681 -536C4587 -536 4515 -489 4515 -409C4515 -325 4593 -290 4664 -258L4704 -240C4767 -212 4829 -184 4829 -116C4829 -49 4770 -2 4687 -2C4613 -2 4557 -32 4514 -75L4503 -42C4561 -3 4626 12 4683 12Z"/></svg></div>
+    <div class="en-title reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="6 -1183 4868 1483" fill="currentColor" role="img" aria-label="Treatments"><title>Treatments</title><path d="M522 -728H22L10 -690H12C92 -704 156 -710 216 -710H246V0H298V-710H328C388 -710 452 -704 532 -690H534ZM820 -534C750 -534 696 -491 652 -424V-532H648L604 -512V0H652V-400C685 -453 735 -495 794 -495C810 -495 832 -492 851 -483L869 -528C852 -532 836 -534 820 -534ZM1157 -16C1047 -16 959 -112 959 -272C959 -282 959 -292 960 -302H1361C1361 -450 1281 -536 1157 -536C1013 -536 905 -424 905 -257C905 -97 1005 12 1141 12C1232 12 1304 -37 1352 -112L1340 -119C1296 -50 1219 -16 1157 -16ZM1150 -522C1247 -522 1305 -440 1307 -318H962C977 -441 1053 -522 1150 -522ZM1839 -18C1789 -18 1789 -46 1789 -94V-350C1789 -478 1733 -536 1625 -536C1553 -536 1499 -508 1444 -458L1453 -447C1503 -490 1549 -510 1605 -510C1697 -510 1741 -455 1741 -342V-282C1708 -280 1672 -277 1637 -273C1501 -257 1407 -204 1407 -108C1407 -33 1465 10 1545 10C1609 10 1685 -17 1741 -69C1743 -42 1751 4 1800 4C1819 4 1838 -3 1857 -14V-20C1851 -19 1845 -18 1839 -18ZM1457 -123C1457 -230 1580 -254 1741 -268V-88C1692 -40 1629 -16 1574 -16C1509 -16 1457 -51 1457 -123ZM2199 -37C2164 -18 2132 -12 2108 -12C2016 -12 2016 -97 2016 -128V-502H2187L2201 -524H2016V-681H2012L1962 -524L1881 -519V-502H1968V-120C1968 -84 1968 12 2086 12C2133 12 2169 -3 2207 -25ZM2869 -536C2786 -536 2728 -501 2661 -436C2639 -504 2588 -536 2507 -536C2428 -536 2373 -505 2310 -445V-532H2306L2262 -512V0H2310V-426C2370 -484 2421 -510 2486 -510C2624 -510 2624 -386 2624 -342V0H2672V-350C2672 -376 2670 -398 2665 -418C2728 -481 2781 -510 2848 -510C2986 -510 2986 -386 2986 -342V0H3034V-350C3034 -477 2978 -536 2869 -536ZM3375 -16C3265 -16 3177 -112 3177 -272C3177 -282 3177 -292 3178 -302H3579C3579 -450 3499 -536 3375 -536C3231 -536 3123 -424 3123 -257C3123 -97 3223 12 3359 12C3450 12 3522 -37 3570 -112L3558 -119C3514 -50 3437 -16 3375 -16ZM3368 -522C3465 -522 3523 -440 3525 -318H3180C3195 -441 3271 -522 3368 -522ZM3921 -536C3842 -536 3779 -505 3714 -445V-532H3710L3666 -512V0H3714V-426C3775 -484 3835 -510 3900 -510C4038 -510 4038 -386 4038 -342V0H4086V-350C4086 -477 4030 -536 3921 -536ZM4477 -37C4442 -18 4410 -12 4386 -12C4294 -12 4294 -97 4294 -128V-502H4465L4479 -524H4294V-681H4290L4240 -524L4159 -519V-502H4246V-120C4246 -84 4246 12 4364 12C4411 12 4447 -3 4485 -25ZM4683 12C4793 12 4870 -43 4870 -132C4870 -222 4790 -258 4723 -288L4683 -306C4630 -330 4557 -358 4557 -424C4557 -476 4600 -522 4677 -522C4742 -522 4804 -488 4839 -459L4850 -492C4808 -517 4744 -536 4681 -536C4587 -536 4515 -489 4515 -409C4515 -325 4593 -290 4664 -258L4704 -240C4767 -212 4829 -184 4829 -116C4829 -49 4770 -2 4687 -2C4613 -2 4557 -32 4514 -75L4503 -42C4561 -3 4626 12 4683 12Z"/></svg></div>
 
     <div class="cat reveal">
       <div class="no">01</div>
@@ -324,7 +330,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- TEAM -->
 <section class="team">
   <div class="wrap">
-    <div class="en-title reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="20 -760 4335 792" fill="currentColor" role="img" aria-label="Our Team"><title>Our Team</title><path d="M404 12C611 12 780 -139 780 -370C780 -597 617 -740 416 -740C209 -740 40 -589 40 -358C40 -131 203 12 404 12ZM414 -4C238 -4 98 -150 98 -368C98 -582 234 -724 408 -724C582 -724 722 -578 722 -360C722 -145 586 -4 414 -4ZM1293 -88V-532H1289L1245 -512V-107C1197 -51 1124 -14 1062 -14C924 -14 924 -138 924 -182V-532H920L876 -512V-174C876 -47 932 12 1041 12C1115 12 1190 -27 1245 -83V-78L1271 8L1315 -12ZM1632 -534C1562 -534 1508 -491 1464 -424V-532H1460L1416 -512V0H1464V-400C1497 -453 1547 -495 1606 -495C1622 -495 1644 -492 1663 -483L1681 -528C1664 -532 1648 -534 1632 -534ZM2488.6 -728H1988.6L1976.6 -690H1978.6C2058.6 -704 2122.6 -710 2182.6 -710H2212.6V0H2264.6V-710H2294.6C2354.6 -710 2418.6 -704 2498.6 -690H2500.6ZM2794.6 -16C2684.6 -16 2596.6 -112 2596.6 -272C2596.6 -282 2596.6 -292 2597.6 -302H2998.6C2998.6 -450 2918.6 -536 2794.6 -536C2650.6 -536 2542.6 -424 2542.6 -257C2542.6 -97 2642.6 12 2778.6 12C2869.6 12 2941.6 -37 2989.6 -112L2977.6 -119C2933.6 -50 2856.6 -16 2794.6 -16ZM2787.6 -522C2884.6 -522 2942.6 -440 2944.6 -318H2599.6C2614.6 -441 2690.6 -522 2787.6 -522ZM3476.6 -18C3426.6 -18 3426.6 -46 3426.6 -94V-350C3426.6 -478 3370.6 -536 3262.6 -536C3190.6 -536 3136.6 -508 3081.6 -458L3090.6 -447C3140.6 -490 3186.6 -510 3242.6 -510C3334.6 -510 3378.6 -455 3378.6 -342V-282C3345.6 -280 3309.6 -277 3274.6 -273C3138.6 -257 3044.6 -204 3044.6 -108C3044.6 -33 3102.6 10 3182.6 10C3246.6 10 3322.6 -17 3378.6 -69C3380.6 -42 3388.6 4 3437.6 4C3456.6 4 3475.6 -3 3494.6 -14V-20C3488.6 -19 3482.6 -18 3476.6 -18ZM3094.6 -123C3094.6 -230 3217.6 -254 3378.6 -268V-88C3329.6 -40 3266.6 -16 3211.6 -16C3146.6 -16 3094.6 -51 3094.6 -123ZM4169.6 -536C4086.6 -536 4028.6 -501 3961.6 -436C3939.6 -504 3888.6 -536 3807.6 -536C3728.6 -536 3673.6 -505 3610.6 -445V-532H3606.6L3562.6 -512V0H3610.6V-426C3670.6 -484 3721.6 -510 3786.6 -510C3924.6 -510 3924.6 -386 3924.6 -342V0H3972.6V-350C3972.6 -376 3970.6 -398 3965.6 -418C4028.6 -481 4081.6 -510 4148.6 -510C4286.6 -510 4286.6 -386 4286.6 -342V0H4334.6V-350C4334.6 -477 4278.6 -536 4169.6 -536Z"/></svg></div>
+    <div class="en-title reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="36 -1183 4303 1483" fill="currentColor" role="img" aria-label="Our Team"><title>Our Team</title><path d="M404 12C611 12 780 -139 780 -370C780 -597 617 -740 416 -740C209 -740 40 -589 40 -358C40 -131 203 12 404 12ZM414 -4C238 -4 98 -150 98 -368C98 -582 234 -724 408 -724C582 -724 722 -578 722 -360C722 -145 586 -4 414 -4ZM1293 -88V-532H1289L1245 -512V-107C1197 -51 1124 -14 1062 -14C924 -14 924 -138 924 -182V-532H920L876 -512V-174C876 -47 932 12 1041 12C1115 12 1190 -27 1245 -83V-78L1271 8L1315 -12ZM1632 -534C1562 -534 1508 -491 1464 -424V-532H1460L1416 -512V0H1464V-400C1497 -453 1547 -495 1606 -495C1622 -495 1644 -492 1663 -483L1681 -528C1664 -532 1648 -534 1632 -534ZM2488.6 -728H1988.6L1976.6 -690H1978.6C2058.6 -704 2122.6 -710 2182.6 -710H2212.6V0H2264.6V-710H2294.6C2354.6 -710 2418.6 -704 2498.6 -690H2500.6ZM2794.6 -16C2684.6 -16 2596.6 -112 2596.6 -272C2596.6 -282 2596.6 -292 2597.6 -302H2998.6C2998.6 -450 2918.6 -536 2794.6 -536C2650.6 -536 2542.6 -424 2542.6 -257C2542.6 -97 2642.6 12 2778.6 12C2869.6 12 2941.6 -37 2989.6 -112L2977.6 -119C2933.6 -50 2856.6 -16 2794.6 -16ZM2787.6 -522C2884.6 -522 2942.6 -440 2944.6 -318H2599.6C2614.6 -441 2690.6 -522 2787.6 -522ZM3476.6 -18C3426.6 -18 3426.6 -46 3426.6 -94V-350C3426.6 -478 3370.6 -536 3262.6 -536C3190.6 -536 3136.6 -508 3081.6 -458L3090.6 -447C3140.6 -490 3186.6 -510 3242.6 -510C3334.6 -510 3378.6 -455 3378.6 -342V-282C3345.6 -280 3309.6 -277 3274.6 -273C3138.6 -257 3044.6 -204 3044.6 -108C3044.6 -33 3102.6 10 3182.6 10C3246.6 10 3322.6 -17 3378.6 -69C3380.6 -42 3388.6 4 3437.6 4C3456.6 4 3475.6 -3 3494.6 -14V-20C3488.6 -19 3482.6 -18 3476.6 -18ZM3094.6 -123C3094.6 -230 3217.6 -254 3378.6 -268V-88C3329.6 -40 3266.6 -16 3211.6 -16C3146.6 -16 3094.6 -51 3094.6 -123ZM4169.6 -536C4086.6 -536 4028.6 -501 3961.6 -436C3939.6 -504 3888.6 -536 3807.6 -536C3728.6 -536 3673.6 -505 3610.6 -445V-532H3606.6L3562.6 -512V0H3610.6V-426C3670.6 -484 3721.6 -510 3786.6 -510C3924.6 -510 3924.6 -386 3924.6 -342V0H3972.6V-350C3972.6 -376 3970.6 -398 3965.6 -418C4028.6 -481 4081.6 -510 4148.6 -510C4286.6 -510 4286.6 -386 4286.6 -342V0H4334.6V-350C4334.6 -477 4278.6 -536 4169.6 -536Z"/></svg></div>
     <div class="docs reveal">
       <div class="doc"><div class="ph"><img src="images/doc-jeff.webp" alt="楊陞醫師"></div><div class="role">麻醉專科醫師</div><div class="role">台大醫學系畢業</div><h4>楊陞 醫師</h4></div>
       <div class="doc"><div class="ph"><img src="images/doc-huang.webp" alt="黃瀞瑩醫師"></div><div class="role">林口長庚紀念醫院影像專科住院醫師</div><div class="role">台灣中山醫學大學 醫學系畢</div><h4>黃瀞瑩 醫師</h4></div>
@@ -336,7 +342,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <section class="faq">
   <div class="wrap grid">
     <div class="reveal">
-      <div class="en-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="56 -760 1950 930" fill="currentColor" role="img" aria-label="FAQ"><title>FAQ</title><path d="M176 -710C264 -710 358 -704 458 -690H460L448 -728H76V0H128V-358H182C290 -358 358 -354 396 -350H398V-382H396C358 -378 290 -376 182 -376H128V-710ZM997 0H1053L766 -740H762L598 -317C557 -211 515 -100 473 0H518C530 -59 547 -124 591 -242H904ZM597 -260 617 -311 747 -647 897 -260ZM1894 126C1778 126 1666 81 1573 -3C1727 -46 1839 -182 1839 -370C1839 -597 1676 -740 1475 -740C1268 -740 1099 -589 1099 -358C1099 -131 1262 12 1463 12C1480 12 1496 11 1512 9C1581 95 1726 150 1851 150C1902 150 1948 141 1986 121V117C1955 123 1925 126 1894 126ZM1157 -368C1157 -582 1293 -724 1467 -724C1641 -724 1781 -578 1781 -360C1781 -145 1645 -4 1473 -4C1297 -4 1157 -150 1157 -368Z"/></svg></div>
+      <div class="en-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="72 -1183 1918 1483" fill="currentColor" role="img" aria-label="FAQ"><title>FAQ</title><path d="M176 -710C264 -710 358 -704 458 -690H460L448 -728H76V0H128V-358H182C290 -358 358 -354 396 -350H398V-382H396C358 -378 290 -376 182 -376H128V-710ZM997 0H1053L766 -740H762L598 -317C557 -211 515 -100 473 0H518C530 -59 547 -124 591 -242H904ZM597 -260 617 -311 747 -647 897 -260ZM1894 126C1778 126 1666 81 1573 -3C1727 -46 1839 -182 1839 -370C1839 -597 1676 -740 1475 -740C1268 -740 1099 -589 1099 -358C1099 -131 1262 12 1463 12C1480 12 1496 11 1512 9C1581 95 1726 150 1851 150C1902 150 1948 141 1986 121V117C1955 123 1925 126 1894 126ZM1157 -368C1157 -582 1293 -724 1467 -724C1641 -724 1781 -578 1781 -360C1781 -145 1645 -4 1473 -4C1297 -4 1157 -150 1157 -368Z"/></svg></div>
       <div class="list">
         <details><summary>第一次施打，多久後回診比較合理？</summary><p>一般會安排在效果穩定之後回診，確認分布是否均勻、是否需要微調。實際時間由醫師依施打部位與你的反應決定。</p></details>
         <details><summary>效果還沒完全退，可以先補打嗎？</summary><p>是否適合提前施打須由醫師評估。過於密集的施打不會延長維持時間，且可能增加不必要的風險。</p></details>
@@ -351,7 +357,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="en-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="21 -760 3459 792" fill="currentColor" role="img" aria-label="Contact"><title>Contact</title><path d="M390 12C526 12 624 -56 691 -162L679 -169C611 -64 514 -18 413 -18C236 -18 99 -162 99 -376C99 -582 230 -724 401 -724C500 -724 585 -679 647 -592L681 -622C622 -695 526 -740 407 -740C201 -740 41 -589 41 -360C41 -129 194 12 390 12ZM985 12C1131 12 1241 -98 1241 -265C1241 -433 1136 -536 993 -536C847 -536 737 -426 737 -259C737 -91 842 12 985 12ZM990 -2C878 -2 791 -106 791 -265C791 -422 877 -522 987 -522C1100 -522 1187 -418 1187 -259C1187 -103 1101 -2 990 -2ZM1588 -536C1509 -536 1446 -505 1381 -445V-532H1377L1333 -512V0H1381V-426C1442 -484 1502 -510 1567 -510C1705 -510 1705 -386 1705 -342V0H1753V-350C1753 -477 1697 -536 1588 -536ZM2144 -37C2109 -18 2077 -12 2053 -12C1961 -12 1961 -97 1961 -128V-502H2132L2146 -524H1961V-681H1957L1907 -524L1826 -519V-502H1913V-120C1913 -84 1913 12 2031 12C2078 12 2114 -3 2152 -25ZM2598 -18C2548 -18 2548 -46 2548 -94V-350C2548 -478 2492 -536 2384 -536C2312 -536 2258 -508 2203 -458L2212 -447C2262 -490 2308 -510 2364 -510C2456 -510 2500 -455 2500 -342V-282C2467 -280 2431 -277 2396 -273C2260 -257 2166 -204 2166 -108C2166 -33 2224 10 2304 10C2368 10 2444 -17 2500 -69C2502 -42 2510 4 2559 4C2578 4 2597 -3 2616 -14V-20C2610 -19 2604 -18 2598 -18ZM2216 -123C2216 -230 2339 -254 2500 -268V-88C2451 -40 2388 -16 2333 -16C2268 -16 2216 -51 2216 -123ZM2893 12C2983 12 3055 -37 3103 -112L3091 -119C3047 -50 2970 -16 2908 -16C2798 -16 2710 -112 2710 -268C2710 -420 2793 -522 2900 -522C2970 -522 3023 -482 3066 -415L3098 -443C3053 -505 2987 -536 2900 -536C2765 -536 2656 -423 2656 -259C2656 -97 2756 12 2893 12ZM3452 -37C3417 -18 3385 -12 3361 -12C3269 -12 3269 -97 3269 -128V-502H3440L3454 -524H3269V-681H3265L3215 -524L3134 -519V-502H3221V-120C3221 -84 3221 12 3339 12C3386 12 3422 -3 3460 -25Z"/></svg></div>
+    <div class="en-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="37 -1183 3427 1483" fill="currentColor" role="img" aria-label="Contact"><title>Contact</title><path d="M390 12C526 12 624 -56 691 -162L679 -169C611 -64 514 -18 413 -18C236 -18 99 -162 99 -376C99 -582 230 -724 401 -724C500 -724 585 -679 647 -592L681 -622C622 -695 526 -740 407 -740C201 -740 41 -589 41 -360C41 -129 194 12 390 12ZM985 12C1131 12 1241 -98 1241 -265C1241 -433 1136 -536 993 -536C847 -536 737 -426 737 -259C737 -91 842 12 985 12ZM990 -2C878 -2 791 -106 791 -265C791 -422 877 -522 987 -522C1100 -522 1187 -418 1187 -259C1187 -103 1101 -2 990 -2ZM1588 -536C1509 -536 1446 -505 1381 -445V-532H1377L1333 -512V0H1381V-426C1442 -484 1502 -510 1567 -510C1705 -510 1705 -386 1705 -342V0H1753V-350C1753 -477 1697 -536 1588 -536ZM2144 -37C2109 -18 2077 -12 2053 -12C1961 -12 1961 -97 1961 -128V-502H2132L2146 -524H1961V-681H1957L1907 -524L1826 -519V-502H1913V-120C1913 -84 1913 12 2031 12C2078 12 2114 -3 2152 -25ZM2598 -18C2548 -18 2548 -46 2548 -94V-350C2548 -478 2492 -536 2384 -536C2312 -536 2258 -508 2203 -458L2212 -447C2262 -490 2308 -510 2364 -510C2456 -510 2500 -455 2500 -342V-282C2467 -280 2431 -277 2396 -273C2260 -257 2166 -204 2166 -108C2166 -33 2224 10 2304 10C2368 10 2444 -17 2500 -69C2502 -42 2510 4 2559 4C2578 4 2597 -3 2616 -14V-20C2610 -19 2604 -18 2598 -18ZM2216 -123C2216 -230 2339 -254 2500 -268V-88C2451 -40 2388 -16 2333 -16C2268 -16 2216 -51 2216 -123ZM2893 12C2983 12 3055 -37 3103 -112L3091 -119C3047 -50 2970 -16 2908 -16C2798 -16 2710 -112 2710 -268C2710 -420 2793 -522 2900 -522C2970 -522 3023 -482 3066 -415L3098 -443C3053 -505 2987 -536 2900 -536C2765 -536 2656 -423 2656 -259C2656 -97 2756 12 2893 12ZM3452 -37C3417 -18 3385 -12 3361 -12C3269 -12 3269 -97 3269 -128V-502H3440L3454 -524H3269V-681H3265L3215 -524L3134 -519V-502H3221V-120C3221 -84 3221 12 3339 12C3386 12 3422 -3 3460 -25Z"/></svg></div>
     <p class="intro">初次來訪建議預約面診，我們會留足夠的時間了解你的膚況與想改善的地方，再一起決定要不要開始。</p>
     <div class="btns"><a class="btn" href="#">線上預約</a><a class="btn ghost" href="#">LINE諮詢</a></div>
     <div class="info">蒔恩美學診所<br>台北市大安區新生南路二段2號7樓　・　0987-167-852<br>週一至週六 11:00–20:00（週日休診）</div>

@@ -19,16 +19,17 @@
    --util:"Noto Sans","Noto Sans TC",sans-serif;
   /* 數字用系統字型：Apple 裝置會拿到 SF Pro，其他平台退回系統預設 */
   --num:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
-  --gut:clamp(16px,6vw,96px); --max:1240px;
+  /* 設計稿頁寬 1440、左右留白 80（內容 1280）；手機版留白 40 */
+  --gut:clamp(24px,3.854vw + 24.51px,80px); --max:1440px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .en-title{color:var(--sage);line-height:0}
-.en-title svg{height:clamp(50px,8vw,116px);width:auto;display:block}
+.en-title svg{height:clamp(82px,10.405vw + 40.17px,190px);width:auto;display:block}
 /* svg 是 display:block，text-align 推不動它，靠 margin 對齊 */
 .en-title.right svg,.team .en-title svg{margin-left:auto}
 .concept .top .en-title svg{margin-inline:auto}
@@ -41,16 +42,19 @@ section{padding:clamp(80px,11vw,150px) 0}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
-.nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;font-size:13px;letter-spacing:.18em}
+.nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;
+  font-size:clamp(14px,0.385vw + 12.45px,18px);line-height:1.22;letter-spacing:.2em}
 .nav ul a.on{color:var(--sage-deep);border-bottom:1px solid var(--sage)}
-.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;padding:10px 26px;font-size:13px;letter-spacing:.2em;transition:opacity .2s}
+.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;
+  padding:10px 26px;font-weight:500;font-size:clamp(10px,0.578vw + 7.68px,16px);letter-spacing:.15em;transition:opacity .2s}
 .btn:hover{opacity:.85}
 .btn.ghost{background:#F6EFEB;color:var(--clay)}
+.contact .btn{font-family:var(--num);font-weight:400;font-size:20px;letter-spacing:.1em;padding:16px 36px}
 /* 中間尺寸：維持單列，縮小間距與字級，「線上預約」保留 */
 @media (max-width:860px){
-  .nav ul{gap:20px;font-size:12px;letter-spacing:.1em}
+  .nav ul{gap:20px}
   .logo-svg{height:30px}
-  .nav .btn{padding:8px 18px;font-size:12px;letter-spacing:.15em}
+  .nav .btn{padding:8px 18px}
 }
 /* 手機：依設計稿 Frame 309（633:1291）改為兩列 —— 上列 logo 與預約鈕，
    下列四個導覽項目平均分配。設計稿是 402 寬、每項 85 / 間距 10，
@@ -60,11 +64,9 @@ section{padding:clamp(80px,11vw,150px) 0}
     align-items:center;height:auto;padding-top:14px;padding-bottom:10px;row-gap:5px}
   .logo{grid-column:1;grid-row:1}
   .logo-svg{height:34px}
-  .nav .btn{grid-column:2;grid-row:1;
-    padding:8px 20px;font-size:10px;font-weight:500;letter-spacing:.15em}
+  .nav .btn{grid-column:2;grid-row:1;padding:8px 20px}
   .nav ul{grid-column:1 / -1;grid-row:2;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
-    font-size:14px;letter-spacing:.2em;text-align:center}
+    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
   .nav ul a{display:block;padding:6px 0}
   .nav ul a.on{display:inline-block}
 }
@@ -72,23 +74,24 @@ section{padding:clamp(80px,11vw,150px) 0}
 /* hero */
 .hero{padding:0;position:relative;background:#E9E9E7}
 .hero img{width:100%;height:min(88vh,820px);object-fit:cover;object-position:left center}
-.hero .copy{position:absolute;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:26em}
-.hero h1{white-space:nowrap;font-family:var(--sans);font-weight:300;font-size:clamp(28px,3.4vw,46px);letter-spacing:.24em;margin-bottom:24px}
-.hero p{font-size:14px;color:var(--ink-soft)}
+.hero .copy{position:absolute;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
+.hero h1{white-space:nowrap;font-weight:300;font-size:clamp(24px,2.312vw + 14.71px,48px);
+  line-height:1.21;letter-spacing:.2em;margin-bottom:24px}
+.hero p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.05em;color:var(--ink-soft)}
 @media (max-width:860px){.hero img{height:62vh;object-position:20% center}.hero .copy{position:static;padding:40px var(--gut) 56px;max-width:none}}
 
 /* about */
 .about{background:var(--bg)}
 .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:end;margin-top:48px}
-.about h2{font-family:var(--sans);font-weight:300;font-size:clamp(24px,2.8vw,34px);letter-spacing:.24em;line-height:1.7;margin-bottom:40px}
-.about p{font-size:14px;color:var(--ink-soft);margin-bottom:14px;max-width:30em}
+.about h2{font-weight:300;font-size:clamp(20px,2.697vw + 9.16px,48px);line-height:1.21;letter-spacing:.2em;margin-bottom:40px}
+.about p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin-bottom:14px;max-width:34em}
 .about img{width:100%;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:860px){.about .grid{grid-template-columns:1fr}}
 
 /* concept */
 .concept{background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
-.concept .top p{font-size:14px;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
+.concept .top p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
 .stages{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(48px,7vw,96px)}
 .ovals{position:relative;width:100%;max-width:650px}
 .ovals svg{width:100%;height:auto;display:block;overflow:visible}
@@ -100,9 +103,9 @@ section{padding:clamp(80px,11vw,150px) 0}
 .stage:nth-child(1){top:22.72%}
 .stage:nth-child(2){top:50%}
 .stage:nth-child(3){top:77.28%}
-.stage .d{font-family:var(--num);font-size:13px;letter-spacing:.14em;color:var(--clay)}
-.stage h3{font-family:var(--sans);font-weight:400;font-size:24px;letter-spacing:.16em;margin:6px 0 10px}
-.stage p{font-size:13.5px;color:var(--ink-soft);max-width:22em}
+.stage .d{font-weight:500;font-size:clamp(12px,1.156vw + 7.35px,24px);line-height:1.21;color:var(--clay)}
+.stage h3{font-weight:400;font-size:clamp(16px,1.927vw + 8.25px,36px);line-height:1.11;margin:6px 0 10px}
+.stage p{font-size:clamp(10px,0.771vw + 6.90px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);max-width:18em}
 @media (max-width:860px){
   .stages{grid-template-columns:1fr;gap:40px}
   .ovals{max-width:320px;margin:0 auto}
@@ -111,11 +114,12 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* treatments */
 .treatments{background:var(--white)}
-.cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(0px,5vw,72px)}
+.cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
 .cat+.cat{border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
-.cat .no{font-family:var(--num);font-weight:200;font-size:56px;color:var(--clay);opacity:.6;line-height:1}
-.cat h3{font-family:var(--sans);font-weight:300;font-size:26px;letter-spacing:.16em;color:var(--clay);margin:10px 0 4px}
-.cat .desc{font-size:14px;color:var(--ink);margin-bottom:28px}
+.cat .no{font-family:var(--num);font-weight:200;font-size:clamp(60px,3.468vw + 46.06px,96px);
+  line-height:1.2;letter-spacing:.01em;color:var(--clay);opacity:.6}
+.cat h3{font-weight:300;font-size:clamp(36px,1.156vw + 31.35px,48px);line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:10px 0 4px}
+.cat .desc{font-size:clamp(16px,0.771vw + 12.90px,24px);line-height:1.5;color:var(--ink);margin-bottom:28px}
 /* 卡片橫向滑動。以下數值全部讀自設計稿 Frame 134 / Frame 4（633:1035、633:1036）：
    卡片 315x571、圓角 9、間距 24、陰影 6/4/16 黑 25% */
 .cards{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;
@@ -176,23 +180,25 @@ section{padding:clamp(80px,11vw,150px) 0}
 .faq .list{margin-top:44px}
 details{border-bottom:1px solid var(--line)}
 details:first-child{border-top:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-size:14px}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
+  gap:20px;padding:18px 0;font-size:clamp(18px,0.578vw + 15.68px,24px);line-height:1.21}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-family:var(--util);color:var(--ink-soft);transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
+details p{padding:0 0 20px;font-size:clamp(13px,0.482vw + 11.06px,18px);line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
 .faq img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(.95)}
 @media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
 
 /* contact */
 .contact{background:var(--sage-mist)}
 .contact .en-title{color:#fff}
-.contact .intro{margin:40px 0 32px;max-width:30em;font-size:14px}
+.contact .intro{margin:40px 0 32px;max-width:30em;font-weight:350;
+  font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
 .contact .btns{display:flex;gap:14px;flex-wrap:wrap}
-.info{margin-top:56px;font-size:14px;line-height:2.1}
+.info{margin-top:56px;font-weight:350;font-size:clamp(16px,0.385vw + 14.45px,20px);line-height:2;letter-spacing:.01em}
 .foot-logo{margin-top:72px}
 .foot-logo .logo-svg{height:44px}
-.legal{margin-top:24px;font-size:11.5px;color:var(--ink-soft);line-height:1.8;max-width:60em}
+.legal{margin-top:24px;font-size:clamp(14px,0.193vw + 13.23px,16px);line-height:1.56;letter-spacing:.05em;color:var(--ink-soft);max-width:60em}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
