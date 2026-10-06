@@ -65,16 +65,25 @@ section{padding:clamp(80px,11vw,150px) 0}
 .concept{background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
 .concept .top p{font-size:14px;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
-.stages{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);margin-top:80px;align-items:center}
-.ovals{position:relative;width:100%;max-width:440px;margin:0 auto}
-.ovals svg{width:100%;height:auto;overflow:visible}
-.ovals ellipse{fill:none;stroke:var(--ink);stroke-opacity:.55;stroke-width:1}
-.ovals text{font-family:var(--util);font-weight:300;font-size:22px;fill:var(--ink-soft)}
-.stage{padding:0 0 44px}
+.stages{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(48px,7vw,96px)}
+.ovals{position:relative;width:100%;max-width:650px}
+.ovals svg{width:100%;height:auto;display:block;overflow:visible}
+.ovals path{fill:none;stroke:#898989;stroke-width:2}
+.ovals text{font-family:var(--util);font-weight:300;font-size:50px;letter-spacing:.5px;fill:#8E8D8D}
+/* 三段文字分別對齊左邊三個環的中心：22.72% / 50% / 77.28% */
+.steps{position:relative}
+.stage{position:absolute;left:0;right:0;transform:translateY(-50%)}
+.stage:nth-child(1){top:22.72%}
+.stage:nth-child(2){top:50%}
+.stage:nth-child(3){top:77.28%}
 .stage .d{font-family:var(--num);font-size:13px;letter-spacing:.14em;color:var(--clay)}
 .stage h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.16em;margin:6px 0 10px}
 .stage p{font-size:13.5px;color:var(--ink-soft);max-width:22em}
-@media (max-width:860px){.stages{grid-template-columns:1fr}.ovals{max-width:260px}}
+@media (max-width:860px){
+  .stages{grid-template-columns:1fr;gap:40px}
+  .ovals{max-width:320px;margin:0 auto}
+  .stage{position:static;transform:none;padding:0 0 40px}
+}
 
 /* treatments */
 .treatments{background:var(--white)}
@@ -182,16 +191,30 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
     </div>
     <div class="stages">
       <div class="ovals reveal">
-        <svg viewBox="0 0 440 560" aria-hidden="true">
-          <ellipse cx="220" cy="120" rx="200" ry="115" transform="rotate(-14 220 120)"/>
-          <ellipse cx="220" cy="280" rx="200" ry="115" transform="rotate(-14 220 280)"/>
-          <ellipse cx="220" cy="440" rx="200" ry="115" transform="rotate(-14 220 440)"/>
-          <text x="220" y="128" text-anchor="middle">Disrupt</text>
-          <text x="220" y="288" text-anchor="middle">Repair</text>
-          <text x="220" y="448" text-anchor="middle">Renew</text>
+        <!-- 來自設計稿 Frame 286（Figma node 633:988）的原始向量。
+             第三環 = 第一環往下位移 644.826，第二環為 180° 鏡像。 -->
+        <svg viewBox="0 0 650 1183" aria-hidden="true">
+          <g>
+            <path d="M126.849 208.559C159.788 174.406 203.605 143.044 255.182 118.993C396.115 53.275 541.619 67.0289 580.176 149.713C618.732 232.398 535.74 352.702 394.807 418.42C253.874 484.138 108.369 470.384 69.8125 387.7C48.4176 341.818 64.4492 284.353 107.039 231.059"/>
+            <path d="M540.656 289.128L567.974 269.559L563.109 300.348"/>
+            <path d="M131.656 219.559C131.656 227.843 124.941 234.559 116.656 234.559C108.372 234.559 101.656 227.843 101.656 219.559C101.656 211.274 108.372 204.559 116.656 204.559C124.941 204.559 131.656 211.274 131.656 219.559Z"/>
+          </g>
+          <g>
+            <path d="M561.903 601.973C529.494 654.483 470.509 705.533 394.807 740.834C253.874 806.552 108.369 792.798 69.8125 710.114C31.2561 627.429 114.249 507.125 255.182 441.407C396.115 375.689 541.619 389.443 580.176 472.127C594.545 502.942 592.032 538.981 575.931 575.473"/>
+            <path d="M102.704 581.164L76.8495 602.63L79.5084 571.572"/>
+            <path d="M584 588.973C584 597.257 577.284 603.973 569 603.973C560.716 603.973 554 597.257 554 588.973C554 580.688 560.716 573.973 569 573.973C577.284 573.973 584 580.688 584 588.973Z"/>
+          </g>
+          <g transform="translate(0,644.826)">
+            <path d="M126.849 208.559C159.788 174.406 203.605 143.044 255.182 118.993C396.115 53.275 541.619 67.0289 580.176 149.713C618.732 232.398 535.74 352.702 394.807 418.42C253.874 484.138 108.369 470.384 69.8125 387.7C48.4176 341.818 64.4492 284.353 107.039 231.059"/>
+            <path d="M540.656 289.128L567.974 269.559L563.109 300.348"/>
+            <path d="M131.656 219.559C131.656 227.843 124.941 234.559 116.656 234.559C108.372 234.559 101.656 227.843 101.656 219.559C101.656 211.274 108.372 204.559 116.656 204.559C124.941 204.559 131.656 211.274 131.656 219.559Z"/>
+          </g>
+          <text x="336.3" y="287.5" text-anchor="middle">Disrupt</text>
+          <text x="334.6" y="609.9" text-anchor="middle">Repair</text>
+          <text x="327.2" y="933.3" text-anchor="middle">Renew</text>
         </svg>
       </div>
-      <div class="reveal">
+      <div class="steps reveal">
         <div class="stage"><div class="d">Day 0 – 3</div><h3>破壞</h3><p>以可控的能量或微創方式給予刺激，啟動皮膚修復訊號。此階段常見泛紅、緊繃或輕微腫脹，屬預期中的反應。</p></div>
         <div class="stage"><div class="d">Day 3 – 14</div><h3>修復</h3><p>泛紅反應逐步消退，皮膚開始活化、新的膠原蛋白進入生成階段。這段時間的養護與作息，決定了修復的品質。</p></div>
         <div class="stage"><div class="d">Day 14 – 28</div><h3>新生</h3><p>肌膚完成一輪更新，膚況趨於穩定。此時的狀態，才是這次療程真正的落點；接著進入下一個循環。</p></div>
