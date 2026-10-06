@@ -160,7 +160,10 @@ section{padding:0}
   background:radial-gradient(120% 80% at 70% 10%,#FAFAF8 0%,#E6E6E3 60%,#DEDEDA 100%);overflow:hidden}
 .concept .top{text-align:center}
 .concept .top p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);margin:28px auto 0;max-width:38em}
-.stages{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(48px,7vw,96px)}
+/* 設計稿的 Concept 內容是 650（插圖）+ 382（文字）= 1032，置中於 1440，
+   不是撐滿內容寬。間距 0，兩欄緊貼。 */
+.stages{display:grid;grid-template-columns:650fr 382fr;gap:0;
+  max-width:1032px;margin:clamp(48px,7vw,96px) auto 0}
 .ovals{position:relative;width:100%;max-width:650px}
 .ovals svg{width:100%;height:auto;display:block;overflow:visible}
 .ovals path{fill:none;stroke:#898989;stroke-width:2}
@@ -174,10 +177,13 @@ section{padding:0}
 .stage .d{font-weight:500;font-size:calc(clamp(12px,1.156vw + 7.35px,24px) * var(--k));line-height:1.21;color:var(--clay)}
 .stage h3{font-weight:400;font-size:calc(clamp(16px,1.927vw + 8.25px,36px) * var(--k));line-height:1.11;margin:6px 0 10px}
 .stage p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft);max-width:18em}
+/* 手機版依設計稿 633:1304：插圖與三段文字仍是左右兩欄（插圖 199、文字 153），
+   不是上下堆疊。.stage 維持絕對定位，仍對齊三個環的中心。
+   內文在手機版是靠左（桌機是置中），標題兩邊都置中。 */
 @media (max-width:860px){
-  .stages{grid-template-columns:1fr;gap:40px}
-  .ovals{max-width:320px;margin:0 auto}
-  .stage{position:static;transform:none;padding:0 0 40px}
+  .stages{grid-template-columns:199fr 153fr;gap:0}
+  .ovals{max-width:none}
+  .concept .top p{text-align:left;margin-left:0;margin-right:0;max-width:none}
 }
 
 /* treatments */
