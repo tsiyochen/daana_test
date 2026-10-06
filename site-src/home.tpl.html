@@ -24,7 +24,9 @@ body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weigh
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
-.en-title{font-family:var(--en);font-weight:300;color:var(--sage);font-size:clamp(56px,9vw,128px);line-height:1;letter-spacing:-.01em}
+.en-title{color:var(--sage);line-height:0}
+.en-title svg{height:clamp(50px,8vw,116px);width:auto;display:block}
+.en-title.right svg,.en-title[style*="right"] svg{margin-left:auto}
 .lede{color:var(--ink-soft);font-size:15px;max-width:34em}
 section{padding:clamp(80px,11vw,150px) 0}
 
@@ -157,7 +159,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="wrap">
-    <div class="en-title reveal">About</div>
+    <div class="en-title reveal">{{H:about}}</div>
     <div class="grid">
       <div class="reveal">
         <h2>把保養當成一段<br>有節奏的關係</h2>
@@ -173,7 +175,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <section class="concept">
   <div class="wrap">
     <div class="top reveal">
-      <div class="en-title">Concept</div>
+      <div class="en-title">{{H:concept}}</div>
       <p>皮膚的更新是靠一次可控的刺激啟動的。療程給的是訊號，接下來的修復與新生由皮膚自己完成 —— 這段路大約需要 28 天。</p>
     </div>
     <div class="stages">
@@ -199,7 +201,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- TREATMENTS -->
 <section class="treatments">
   <div class="wrap">
-    <div class="en-title reveal">Treatments</div>
+    <div class="en-title reveal">{{H:treatments}}</div>
 
     <div class="cat reveal">
       <div class="no">01</div>
@@ -241,7 +243,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- TEAM -->
 <section class="team">
   <div class="wrap">
-    <div class="en-title reveal">Our Team</div>
+    <div class="en-title reveal">{{H:team}}</div>
     <div class="docs reveal">
       {{DOCS}}
     </div>
@@ -252,7 +254,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <section class="faq">
   <div class="wrap grid">
     <div class="reveal">
-      <div class="en-title">FAQ</div>
+      <div class="en-title">{{H:faq}}</div>
       <div class="list">
         <details><summary>第一次施打，多久後回診比較合理？</summary><p>多數療程建議在施打後 2–4 週回診，讓醫師觀察皮膚的反應，再決定下一步。實際時間依療程與膚況而定。</p></details>
         <details><summary>效果還沒完全退，可以先補打嗎？</summary><p>不建議自行提前。是否需要補打、何時補打，會由醫師依當下狀態評估。</p></details>
@@ -267,7 +269,7 @@ details p{padding:0 0 20px;font-size:13.5px;color:var(--ink-soft)}
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="en-title">Contact</div>
+    <div class="en-title">{{H:contact}}</div>
     <p class="intro">初次來訪建議預約面診，我們會留足夠的時間了解你的膚況與想改善的地方，再一起決定要不要開始。</p>
     <div class="btns"><a class="btn" href="#">線上預約</a><a class="btn ghost" href="#">LINE 諮詢</a></div>
     <div class="info">蒔恩美學診所<br>台北市大安區新生南路二段2號7樓　・　0987-167-852<br>週一至週六 11:00–20:00（週日休診）</div>

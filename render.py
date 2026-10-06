@@ -29,10 +29,10 @@ PAGES = [
     dict(tpl="cultivation.tpl.html", route="cultivation/"),  # 蘊膚計畫
 ]
 
-# ── 站台根路徑 ──────────────────────────────────────────
-#  GitHub Pages 的專案站在子路徑底下，所以兩站的 base 不同，
-#  但 base 之後的路徑完全一致：/、/cultivation/
-BASE = {"test": "/daana_test/", "prod": "/"}
+# ── 路徑策略 ────────────────────────────────────────────
+#  一律用相對路徑。GitHub Pages 的專案站在 /daana_test/ 底下，
+#  正式站在根目錄，本機預覽又是另一個位置 —— 相對路徑三者皆通，
+#  不需要為各環境設不同的 base。
 
 # ── 模板裡的連結寫法 → 對應到哪一條 route ───────────────
 LINKS = {
@@ -49,20 +49,29 @@ def logo_svg():
         '<svg class="logo-svg" aria-label="蒔恩美學診所 SHE AND" ', 1)
 
 
+def heading_svg(slug):
+    """英文大標：從 Ivymode 轉出的向量路徑，用 currentColor 上色"""
+    f = IMAGES.parent.parent / "images" / f"heading-{slug}.svg"
+    if not f.exists():
+        f = ROOT / "images" / f"heading-{slug}.svg"
+    return f.read_text(encoding="utf-8").strip() if f.exists() else ""
+
 def docs_html():
     """醫師卡片，來源是 site-src/docs.html"""
     f = SRC / "docs.html"
     return f.read_text(encoding="utf-8").strip() if f.exists() else ""
 
 
-def render(tpl_text, env):
+def render(tpl_text, env, depth=0):
+    up = "../" * depth
     s = tpl_text
     s = s.replace("{{LOGO}}", logo_svg())
-    s = s.replace("{{IMG}}", BASE[env] + "images/")
+    s = s.replace("{{IMG}}", up + "images/")
     s = s.replace("{{DOCS}}", docs_html())
-    # 導覽連結改寫
+    s = re.sub(r"\{\{H:([a-z]+)\}\}", lambda m: heading_svg(m.group(1)), s)
+    # 導覽連結改寫：換算成從目前頁面出發的相對路徑
     for src, route in LINKS.items():
-        s = s.replace(f'href="{src}"', f'href="{BASE[env]}{route}"')
+        s = s.replace(f'href="{src}"', f'href="{(up + route) or "./"}"')
     # 正式站拿掉測試橫條
     if env == "prod":
         s = re.sub(r'<div class="testbar">.*?</div>\s*', "", s, flags=re.S)
@@ -96,13 +105,14 @@ def main():
 
         out_test = ROOT / rel
         out_test.parent.mkdir(parents=True, exist_ok=True)
-        out_test.write_text(render(tpl, "test"), encoding="utf-8")
+        depth = p["route"].count("/")
+        out_test.write_text(render(tpl, "test", depth), encoding="utf-8")
         print(f"  測試站  /{p['route']:16} {out_test.stat().st_size/1024:6.0f} KB")
 
         if PUBLISH:
             out_prod = DIST / rel
             out_prod.parent.mkdir(parents=True, exist_ok=True)
-            out_prod.write_text(render(tpl, "prod"), encoding="utf-8")
+            out_prod.write_text(render(tpl, "prod", depth), encoding="utf-8")
             print(f"  正式站  /{p['route']:16} {out_prod.stat().st_size/1024:6.0f} KB")
 
     # 4. KOL 頁同步到測試站，路徑與正式站一致：/experience/
@@ -110,7 +120,7 @@ def main():
     if src_exp.exists():
         html = src_exp.read_text(encoding="utf-8")
         # 它的 logo 連回首頁，測試站要帶上 base
-        html_test = html.replace('href="/"', f'href="{BASE["test"]}"')
+        html_test = html.replace('href="/"', 'href="../"')
         out = ROOT / "experience" / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html_test, encoding="utf-8")
