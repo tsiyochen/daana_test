@@ -254,7 +254,8 @@ section{padding:0}
   font-size:calc(var(--dw) * 22/440);line-height:calc(var(--dw) * 26/440);
   margin-top:calc(var(--dw) * 9/440)}
 .doc h4{color:#4D4D4D;font-family:var(--sans);font-weight:350;letter-spacing:.1em;
-  font-size:calc(var(--dw) * 48/440);line-height:calc(var(--dw) * 58/440);
+  /* 設計稿 48，依指示改為渲染 40。--dw 已含 --k(.9)，所以基準寫 44.4 */
+  font-size:calc(var(--dw) * 44.4/440);line-height:1.21;
   margin-top:calc(var(--dw) * 9/440)}
 /* 窄螢幕：卡片縮到看得見一整張加一點下一張，卡內元素等比跟著縮 */
 @media (max-width:620px){.docs{--dw:min(calc(440px * var(--k)),82vw)}}
