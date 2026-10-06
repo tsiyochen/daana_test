@@ -141,13 +141,30 @@ section{padding:clamp(80px,11vw,150px) 0}
 /* team */
 .team{background:var(--bg)}
 .team .en-title{text-align:right}
-.docs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
-.doc .ph{aspect-ratio:4/4.6;background:linear-gradient(180deg,#F4F4F2,#E2E2DF);display:grid;place-items:center;color:#BDBDB8}
+/* 醫師卡片橫向滑動，與療程卡同一套。設計稿 Frame 165（633:1068）：
+   卡片 440x628、間距 10，照片 420x480 內縮 10，文字區 420x128。
+   卡內字級用 --dw 等比換算，窄螢幕縮小卡片時整張一起縮，不會只有字不動。 */
+.docs{--dw:440px;display:flex;gap:10px;margin-top:40px;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  margin-right:calc(-1 * var(--gut));padding-right:var(--gut)}
+.docs::-webkit-scrollbar{display:none}
+.doc{flex:0 0 var(--dw);scroll-snap-align:start;
+  padding:calc(var(--dw) * 10/440) calc(var(--dw) * 10/440) 0}
+.doc .ph{aspect-ratio:420/480;background:linear-gradient(180deg,#F4F4F2,#E2E2DF);
+  display:grid;place-items:center;color:#BDBDB8}
 .doc .ph svg{width:28%;height:auto}
-.doc small{display:block;font-family:var(--util);font-size:11px;letter-spacing:.06em;color:var(--ink-soft);margin-top:12px;line-height:1.6}
-.doc .role{font-size:11px;color:var(--ink-soft)}
-.doc h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em;margin-top:2px}
-@media (max-width:860px){.docs{grid-template-columns:repeat(2,1fr)}}
+.doc small{display:block;color:#4D4D4D;font-family:var(--num);font-weight:400;
+  font-size:calc(var(--dw) * 22/440);line-height:calc(var(--dw) * 26/440);
+  letter-spacing:0;margin-top:calc(var(--dw) * 10/440)}
+.doc .role{color:#4D4D4D;font-weight:400;
+  font-size:calc(var(--dw) * 22/440);line-height:calc(var(--dw) * 26/440);
+  margin-top:calc(var(--dw) * 9/440)}
+.doc h4{color:#4D4D4D;font-family:var(--sans);font-weight:300;letter-spacing:.1em;
+  font-size:calc(var(--dw) * 48/440);line-height:calc(var(--dw) * 58/440);
+  margin-top:calc(var(--dw) * 9/440)}
+/* 窄螢幕：卡片縮到看得見一整張加一點下一張，卡內元素等比跟著縮 */
+@media (max-width:620px){.docs{--dw:min(440px,82vw)}}
 
 /* faq */
 .faq{background:var(--bg);padding-top:0}
