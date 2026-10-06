@@ -28,7 +28,9 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .en-title{color:var(--sage);line-height:0}
 .en-title svg{height:clamp(50px,8vw,116px);width:auto;display:block}
-.en-title.right svg,.en-title[style*="right"] svg{margin-left:auto}
+/* svg 是 display:block，text-align 推不動它，靠 margin 對齊 */
+.en-title.right svg,.team .en-title svg{margin-left:auto}
+.concept .top .en-title svg{margin-inline:auto}
 .lede{color:var(--ink-soft);font-size:15px;max-width:34em}
 section{padding:clamp(80px,11vw,150px) 0}
 
@@ -140,7 +142,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* team */
 .team{background:var(--bg)}
-.team .en-title{text-align:right}
+
 /* 醫師卡片橫向滑動，與療程卡同一套。設計稿 Frame 165（633:1068）：
    卡片 440x628、間距 10，照片 420x480 內縮 10，文字區 420x128。
    卡內字級用 --dw 等比換算，窄螢幕縮小卡片時整張一起縮，不會只有字不動。 */
