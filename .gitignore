@@ -3,3 +3,5 @@
 # 本地素材與封存，不進 repo
 _素材原檔/
 _舊版封存/
+_figma/*.bin
+_figma/figimg/
