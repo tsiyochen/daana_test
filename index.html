@@ -249,6 +249,7 @@ section{padding:0}
 .doc small{display:block;color:#4D4D4D;font-family:var(--num);font-weight:400;
   font-size:calc(var(--dw) * 22/440);line-height:calc(var(--dw) * 26/440);
   letter-spacing:0;margin-top:calc(var(--dw) * 10/440)}
+.doc .ph + .role{margin-top:calc(var(--dw) * 10/440)}   /* 設計稿照片框底到文字區是 10 */
 .doc .role{color:#4D4D4D;font-weight:400;
   font-size:calc(var(--dw) * 22/440);line-height:calc(var(--dw) * 26/440);
   margin-top:calc(var(--dw) * 9/440)}
@@ -259,25 +260,30 @@ section{padding:0}
 @media (max-width:620px){.docs{--dw:min(calc(440px * var(--k)),82vw)}}
 
 /* faq */
-.faq{background:var(--bg);padding:0}                   /* 設計稿 桌機 0/0 */
-.faq .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
-.faq .list{margin-top:44px}
-details{border-bottom:1px solid var(--line)}
-details:first-child{border-top:1px solid var(--line)}
+.faq{background:var(--bg);padding:0;overflow:hidden}   /* 設計稿 桌機 0/0；照片出血靠這裡裁掉 */
+/* 設計稿：左欄 736（x80..816）、照片 500（x952..1452）——照片向右出血超出畫面 12，
+   兩者間距 136。原本做成 1:1 等分是錯的。 */
+.faq .grid{display:grid;grid-template-columns:736fr 408fr;gap:clamp(40px,9.45vw,136px);align-items:center}
+.faq .list{margin-top:clamp(55px,4.817vw + 35.64px,105px)}
+details{border-bottom:1px solid #898989}
+details:first-child{border-top:1px solid #898989}
 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
-  gap:20px;padding:18px 0;font-size:calc(clamp(18px,0.578vw + 15.68px,24px) * var(--k));line-height:1.21}
+  gap:20px;padding:30px 0;font-size:calc(clamp(18px,0.578vw + 15.68px,24px) * var(--k));line-height:1.21}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-family:var(--util);color:var(--ink-soft);transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 0 20px;font-size:calc(clamp(13px,0.482vw + 11.06px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
-.faq img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(.95)}
+details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px) * var(--k));line-height:1.67;letter-spacing:.01em;color:var(--ink-soft)}
+/* 照片自己向右溢出 var(--gut)+12，區塊 overflow:hidden 在畫面右緣裁掉，
+   等於設計稿的 x952..1452（超出 1440 畫面 12）。不能用容器的負 margin —— 
+   .grid 同時也是 .wrap，動它會把整個置中容器推偏。 */
+.faq img{width:calc(100% + var(--gut) + 12px);max-width:none;aspect-ratio:500/667;object-fit:cover;filter:grayscale(1) contrast(.95)}
 /* 手機版依設計稿 633:1443：FAQ 沒有照片，區塊留白 30/80（桌機是 0/0）*/
 @media (max-width:700px){
   .faq{padding:30px 0 80px}
   .faq img{display:none}
   .concept{padding-bottom:59px}
 }
-@media (max-width:860px){.faq .grid{grid-template-columns:1fr}}
+@media (max-width:860px){.faq .grid{grid-template-columns:1fr;gap:40px;margin-right:0}}
 
 /* contact —— 版面依設計稿 633:1124（桌機）與 633:1451（手機）
    內容左緣 190、標題 80，所以內容區比標題多內縮 110，與分類區相同 */
