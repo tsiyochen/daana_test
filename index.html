@@ -194,12 +194,14 @@ section{padding:0}
 /* treatments */
 .treatments{background:var(--white);
   padding:clamp(20px,2.120vw + 11.48px,42px) 0 clamp(60px,3.854vw + 44.51px,100px)}  /* 桌機 42/100、手機 20/60 */
-.cat{margin-top:clamp(56px,7vw,96px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
-.cat+.cat{border-top:1px solid var(--line);padding-top:clamp(40px,4.2vw,56px)}  /* 合計約 152，設計稿 142～161 */
+.cat{margin-top:clamp(35px,3.179vw + 22.22px,68px);padding-left:clamp(10px,9.634vw - 28.73px,110px)}
+.cat+.cat{border-top:1px solid var(--line);
+  margin-top:clamp(65px,1.541vw + 58.80px,81px);
+  padding-top:clamp(65px,1.541vw + 58.80px,81px)}   /* 兩段相加扣掉 .cards 的 -22*k：桌機 142、手機 110 */
 .cat .no{font-family:var(--num);font-weight:200;font-size:calc(clamp(60px,3.468vw + 46.06px,96px) * var(--k));
   line-height:1.2;letter-spacing:.01em;color:var(--clay);opacity:.6}
-.cat h3{font-weight:300;font-size:calc(clamp(36px,1.156vw + 31.35px,48px) * var(--k));line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:10px 0 4px}
-.cat .desc{font-size:calc(clamp(16px,0.771vw + 12.90px,24px) * var(--k));line-height:1.5;color:var(--ink);margin-bottom:28px}
+.cat h3{font-weight:300;font-size:calc(clamp(36px,1.156vw + 31.35px,48px) * var(--k));line-height:1.21;letter-spacing:.01em;color:var(--clay);margin:12px 0}
+.cat .desc{font-size:calc(clamp(16px,0.771vw + 12.90px,24px) * var(--k));line-height:1.5;color:var(--ink);margin-bottom:42px}
 /* 卡片橫向滑動。以下數值全部讀自設計稿 Frame 134 / Frame 4（633:1035、633:1036）：
    卡片 315x571、圓角 9、間距 24、陰影 6/4/16 黑 25% */
 .cards{display:flex;gap:calc(24px * var(--k));overflow-x:auto;overflow-y:hidden;
