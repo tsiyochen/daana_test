@@ -66,8 +66,9 @@ def render(tpl_text, env, depth=0):
     up = "../" * depth
     s = tpl_text
     s = s.replace("{{LOGO}}", logo_svg())
-    s = s.replace("{{IMG}}", up + "images/")
+    # DOCS 要先插入，它裡面也有 {{IMG}}；順序反了會留下沒換掉的佔位符
     s = s.replace("{{DOCS}}", docs_html())
+    s = s.replace("{{IMG}}", up + "images/")
     s = re.sub(r"\{\{H:([a-z]+)\}\}", lambda m: heading_svg(m.group(1)), s)
     # 導覽連結改寫：換算成從目前頁面出發的相對路徑
     for src, route in LINKS.items():
