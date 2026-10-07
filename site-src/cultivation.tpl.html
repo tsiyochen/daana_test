@@ -69,7 +69,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 /* programs */
 .programs{background:var(--bg)}
 .programs .head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.plans{display:grid;grid-template-columns:1fr;gap:28px;max-width:720px;margin-inline:auto}
 .plan{background:var(--white);padding:clamp(28px,4vw,48px);position:relative}
 .plan .no{font-family:var(--en);font-style:italic;font-size:64px;color:var(--clay);opacity:.55;line-height:1}
 .plan h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.16em;margin:10px 0 6px}
@@ -83,7 +83,6 @@ section{padding:clamp(80px,11vw,150px) 0}
 .card.add{background:var(--clay-soft)}
 .card.add .ring{position:absolute;left:50%;top:16%;width:58%;aspect-ratio:1.5;transform:translateX(-50%);border:1px solid var(--clay);border-radius:50%}
 .card.add .ring::after{content:"";position:absolute;inset:22% 18%;border:1px solid var(--clay);border-radius:50%;opacity:.6}
-.plan.eye .card:not(.add){opacity:.55}
 .plan .note{margin-top:22px;font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:16px}
 .or{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:56px;height:56px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-family:var(--en);font-style:italic;font-size:22px;color:var(--sage-deep)}
 .plans{position:relative}
@@ -95,7 +94,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .addon .plus{font-family:var(--en);font-size:56px;color:var(--clay);line-height:1;font-weight:300}
 .addon h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em}
 .addon p{font-size:14px;color:var(--ink-soft)}
-@media (max-width:860px){.plans{grid-template-columns:1fr}.or{top:50%}.tx{grid-template-columns:repeat(2,1fr)}.plan.eye .tx{grid-template-columns:repeat(3,1fr)}.addon{grid-template-columns:1fr;gap:10px}.opts{grid-column:1;grid-template-columns:1fr}}
+@media (max-width:860px){.tx{grid-template-columns:repeat(2,1fr)}.plan.eye .tx{grid-template-columns:repeat(3,1fr)}.addon{grid-template-columns:1fr;gap:10px}.opts{grid-column:1;grid-template-columns:1fr}}
 
 /* rhythm */
 .rhythm{background:var(--white)}
@@ -234,21 +233,7 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
     </div>
 
     <div class="plans reveal">
-      <article class="plan">
-        <div class="no">01</div>
-        <h3>蘊膚計畫</h3>
-        <p class="for">從保濕、膚色到膚質，四個層次一次照顧完整。</p>
-        <div class="tx">
-          <div class="card"><img src="{{IMG}}device-hydra.webp" alt=""><span>海飛秀<em>Hydrafacial</em></span></div>
-          <div class="card"><img src="{{IMG}}device-pico.webp" alt=""><span>皮秒雷射<em>Picosecond</em></span></div>
-          <div class="card"><img src="{{IMG}}device-water.webp" alt=""><span>水光針<em>Skin Booster</em></span></div>
-          <div class="card"><img src="{{IMG}}device-dermapen.webp" alt=""><span>微針筆<em>Dermapen</em></span></div>
-        </div>
-        <p class="note">適合第一次接觸醫美、想先把膚質養好的你。</p>
-      </article>
-      <div class="or">or</div>
       <article class="plan eye">
-        <div class="no">02</div>
         <h3>蘊膚計畫＋眼周</h3>
         <p class="for">四項療程之外，再加上專為眼周設計的音波。</p>
         <div class="tx">
