@@ -116,8 +116,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .visit h4{font-family:var(--serif);font-weight:400;font-size:19px;letter-spacing:.12em;margin:6px 0 8px}
 .visit p{font-size:13px;color:var(--ink-soft);line-height:1.8}
 .visit.lift h4{color:#B8624B}
-.eye-chip{display:none;margin-top:12px;font-size:12px;color:#B8624B;background:var(--clay-soft);padding:6px 12px;border-radius:4px;line-height:1.6}
-.show-eye .eye-chip{display:block}
+.eye-chip{display:block;margin-top:12px;font-size:12px;color:#B8624B;background:var(--clay-soft);padding:6px 12px;border-radius:4px;line-height:1.6}
 .interval{display:flex;align-items:center;gap:16px;margin:36px 0 0;font-size:13px;color:var(--ink-soft)}
 .interval::before,.interval::after{content:"";flex:1;height:1px;background:var(--line)}
 .rules{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid var(--line);padding-top:32px}
@@ -207,14 +206,14 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
     <div class="reveal">
       <div class="eyebrow">For You</div>
       <h2 class="h-zh" style="margin:14px 0 18px">你是不是也這樣？</h2>
-      <p class="lede">勾起來最多的那幾項，就是你的起點。右邊的標籤，對應下面的體驗方式。</p>
+      <p class="lede">勾起來最多的那幾項，就是你的起點。右邊的標籤，對應下面的療程安排。</p>
     </div>
     <ul class="checks reveal">
       <li><span class="n">01</span>想開始養膚，但不知道從哪裡開始<span class="tag base">蘊膚計畫</span></li>
       <li><span class="n">02</span>膚況說不上不好，總覺得少了一點光澤<span class="tag base">蘊膚計畫</span></li>
       <li><span class="n">03</span>乾燥、粗糙，上妝不服貼<span class="tag base">蘊膚計畫</span></li>
       <li><span class="n">04</span>毛孔、暗沉、膚色不均<span class="tag base">蘊膚計畫</span></li>
-      <li><span class="n">05</span>眼周開始有細紋，看起來比較疲倦<span class="tag eye">＋眼周</span></li>
+      <li><span class="n">05</span>眼周開始有細紋，看起來比較疲倦<span class="tag base">蘊膚計畫</span></li>
       <li><span class="n">06</span>臉部整體鬆弛，膚況不如以前緊實<span class="tag lift">＋電波</span></li>
       <li><span class="n">07</span>下顎線、輪廓線條不如以前清楚<span class="tag lift">＋音波</span></li>
     </ul>
@@ -227,14 +226,14 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
     <div class="head reveal">
       <div>
         <div class="en-title">Programs</div>
-        <h2 class="h-zh" style="margin-top:18px">兩種體驗，依你在意的地方選擇</h2>
+        <h2 class="h-zh" style="margin-top:18px">四項養膚，加上眼周的照顧</h2>
       </div>
-      <p class="lede">兩種體驗都包含完整的四項養膚療程；差別只在要不要多照顧眼周。</p>
+      <p class="lede">從保濕、膚色到膚質，四個層次一次照顧完整。</p>
     </div>
 
     <div class="plans reveal">
       <article class="plan eye">
-        <h3>蘊膚計畫＋眼周</h3>
+        <h3>蘊膚計畫</h3>
         <p class="for">四項療程之外，再加上專為眼周設計的音波。</p>
         <div class="tx">
           <div class="card"><img src="{{IMG}}device-hydra.webp" alt=""><span>海飛秀<em>Hydrafacial</em></span></div>
@@ -251,7 +250,7 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
       <div class="plus">+</div>
       <div class="addon-head">
         <h4>如果你也很在意臉部</h4>
-        <p>兩種體驗都可以再加選電波或音波，安排在養膚療程之後——先把膚質養好，再加一層支撐。兩者作用的層次不同，適合哪一種，會由醫師面診評估。</p>
+        <p>體驗之外還可以再加選電波或音波，安排在養膚療程之後——先把膚質養好，再加一層支撐。兩者作用的層次不同，適合哪一種，會由醫師面診評估。</p>
       </div>
       <div class="opts">
         <div class="opt"><span class="tag lift">加選</span><h5>全臉電波</h5><em>Radiofrequency</em><p>熱能作用在真皮層，著重整體的緊緻與膚質細緻度。適合在意臉部整體鬆弛的你。</p></div>
@@ -272,7 +271,6 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
       <div>
         <p class="lede">每次間隔約一到兩個月，讓皮膚在兩次之間有時間修復。點選下方，看看你的體驗會怎麼排。</p>
         <div class="switch" role="group" aria-label="切換體驗">
-          <button type="button" data-k="eye" aria-pressed="false">＋眼周</button>
           <button type="button" data-k="rf" class="lift" aria-pressed="false">＋電波</button>
           <button type="button" data-k="hifu" class="lift" aria-pressed="false">＋音波</button>
         </div>
@@ -344,8 +342,8 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
   <div class="wrap grid">
     <div class="reveal"><div class="en-title">FAQ</div></div>
     <div class="reveal">
-      <details><summary>不確定該選哪一種體驗？</summary><p>沒關係。面診時醫師會先看過你的膚況，再建議適合的體驗方式，也可以到現場再決定。</p></details>
-      <details><summary>第一次來，就想加電波或音波可以嗎？</summary><p>可以。兩種體驗都能加選，我們會安排在養膚療程之後，可以在最後一次療程的當天一起進行，或另外安排。</p></details>
+      <details><summary>不確定自己適不適合？</summary><p>沒關係。面診時醫師會先看過你的膚況，再建議適合的安排，也可以到現場再決定。</p></details>
+      <details><summary>第一次來，就想加電波或音波可以嗎？</summary><p>可以。我們會安排在養膚療程之後，可以在最後一次療程的當天一起進行，或另外安排。</p></details>
       <details><summary>電波和音波有什麼不同？</summary><p>兩者作用的層次不同。電波以熱能作用在真皮層，著重整體緊緻；音波把能量聚焦在更深的筋膜層，著重輪廓與線條。適合哪一種，會由醫師依你的狀況評估。</p></details>
       <details><summary>眼周音波和全臉音波有什麼不同？</summary><p>眼周皮膚較薄、結構也和臉頰不同，所以使用專門針對眼周的方式與參數，與全臉音波分開規劃。</p></details>
       <details><summary>做完會紅腫嗎？隔天可以上班嗎？</summary><p>依療程不同，可能有短暫泛紅或緊繃，多數人隔天即可正常上班。實際狀況會在療程前由醫師說明。</p></details>
@@ -367,13 +365,11 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 </section>
 
 <script>
-// 節奏切換：＋眼周 / ＋電波 / ＋音波
-const track=document.getElementById('track');
+// 節奏切換：＋電波 / ＋音波
 document.querySelectorAll('.switch button').forEach(b=>{
   b.addEventListener('click',()=>{
     const on=b.getAttribute('aria-pressed')!=='true';
     b.setAttribute('aria-pressed',on);
-    if(b.dataset.k==='eye') track.classList.toggle('show-eye',on);
     if(b.dataset.k==='rf'||b.dataset.k==='hifu'){
       const picked=[...document.querySelectorAll('.switch button.lift')].filter(x=>x.getAttribute('aria-pressed')==='true').map(x=>x.dataset.k==='rf'?'電波':'音波');
       document.getElementById('liftName').textContent=picked.join('＋');
