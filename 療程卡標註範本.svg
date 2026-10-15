@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="2284" viewBox="0 0 1260 2284">
+  <title>蒔恩 療程卡標註範本</title>
+
+  <!-- 底色：與現有療程卡一致 -->
+  <rect width="1260" height="2284" fill="#ECE2D3"/>
+
+  <!-- ===== 參考線：照片對位用，做完請整組刪掉 ===== -->
+  <g id="GUIDES-刪掉" stroke="#C94F4F" stroke-width="2" stroke-dasharray="12 10" opacity="0.55">
+    <line x1="0" y1="340"  x2="1260" y2="340"/>   <!-- 髮頂落在這 -->
+    <line x1="0" y1="1140" x2="1260" y2="1140"/>  <!-- 下巴底落在這 -->
+    <line x1="998" y1="0"  x2="998"  y2="2284"/>  <!-- 引線終點 -->
+    <line x1="1010" y1="0" x2="1010" y2="2284"/>  <!-- 文字左緣 -->
+  </g>
+
+  <!-- ===== 標註層：圓點 + 虛線引線 + 文字 ===== -->
+  <g id="標註" font-family="Gill Sans, Gill Sans MT, Lato, Helvetica Neue, sans-serif"
+     font-weight="300" font-size="28" fill="#683E31">
+
+    <g id="標註-1">
+      <line x1="779" y1="781" x2="998" y2="726" stroke="#7A3C2D" stroke-width="2" stroke-dasharray="10 6"/>
+      <circle cx="762" cy="786" r="7" fill="#7A3C2D"/>
+      <text x="1010" y="734">TEAR TROUGH</text>
+    </g>
+
+    <g id="標註-2">
+      <line x1="714" y1="810" x2="998" y2="816" stroke="#7A3C2D" stroke-width="2" stroke-dasharray="10 6"/>
+      <circle cx="696" cy="810" r="7" fill="#7A3C2D"/>
+      <text x="1010" y="826">CHEEK VOLUME</text>
+    </g>
+
+    <g id="標註-3">
+      <line x1="842" y1="923" x2="998" y2="916" stroke="#7A3C2D" stroke-width="2" stroke-dasharray="10 6"/>
+      <circle cx="824" cy="924" r="7" fill="#7A3C2D"/>
+      <text x="1010" y="912">NASOLABIAL</text>
+      <text x="1010" y="940">FOLDS</text>
+    </g>
+
+  </g>
+</svg>
