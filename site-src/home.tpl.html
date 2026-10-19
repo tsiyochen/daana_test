@@ -81,8 +81,13 @@ section{padding:0}
 /* 設計稿 1440x848.6。原本用 min(88vh,820px) 綁視窗高度，視窗一寬一矮
    就被壓成扁長條，人像上下都被裁掉；改為鎖設計稿的比例。
    imageTransform 的 sy=0.8785、ty≈0 表示由上緣裁切，所以 object-position 取 top。 */
-.hero img{width:100%;aspect-ratio:1440/848.6;object-fit:cover;object-position:top center;
-  display:block;filter:brightness(1.16)}   /* 設計稿 exposure +0.16 */
+.hslides{position:relative;aspect-ratio:1440/848.6}
+.hslides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;
+  display:block;filter:brightness(1.16);   /* 設計稿 exposure +0.16 */
+  opacity:0;transition:opacity 1.2s ease}
+.hslides img.on{opacity:1}
+/* 第二張是明亮的空間照，右下文字區只有 3.30:1；單獨降曝光拉到約 4.4:1 */
+.hslides img:nth-child(2){filter:brightness(.95)}
 .hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.2;pointer-events:none}
 .hero .copy{position:absolute;z-index:1;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
 .hero h1{white-space:nowrap;color:#fff;font-weight:300;font-size:calc(clamp(24px,2.312vw + 14.71px,48px) * var(--k));
@@ -90,7 +95,8 @@ section{padding:0}
 .hero p{font-size:calc(clamp(10px,0.771vw + 6.90px,18px) * var(--k));line-height:1.67;letter-spacing:.05em;color:#fff;font-style:italic}
 /* 手機版依設計稿 633:1300：402x483、壓暗 30%、文字米白壓在影像上 */
 @media (max-width:700px){
-  .hero img{aspect-ratio:402/483;object-position:center}
+  .hslides{aspect-ratio:402/483}
+  .hslides img{object-position:center}
   .hero::after{opacity:.3}
   .hero .copy{right:var(--gut);left:var(--gut);bottom:40px;max-width:none}
   .hero h1,.hero p{color:#F3ECE6}
@@ -343,7 +349,10 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
 
 <!-- HERO -->
 <section class="hero">
-  <img src="{{IMG}}hero-home.webp" alt="">
+  <div class="hslides">
+    <img src="{{IMG}}hero-home.webp" alt="" class="on">
+    <img src="{{IMG}}hero-2.webp" alt="" loading="lazy">
+  </div>
   <div class="copy">
     <h1>讓美好慢慢長出來</h1>
     <p>「蒔」是播下，也是培育。<br>好的狀態從來無需刻意用力，它更像一段被溫柔相待的過程 ——<br>每一次回來，都比上一次更好一點。</p>
@@ -366,6 +375,7 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
         <div class="slide s-full"><img src="{{IMG}}about-3.webp" alt="蒔恩診所空間" loading="lazy"></div>
         <div class="slide s-full"><img src="{{IMG}}about-4.webp" alt="蒔恩診所空間" loading="lazy"></div>
         <div class="slide s-full"><img src="{{IMG}}about-5.webp" alt="蒔恩診所空間" loading="lazy"></div>
+        <div class="slide s-full"><img src="{{IMG}}about-6.webp" alt="蒔恩診所空間" loading="lazy"></div>
       </div>
       <button class="cnav prev" type="button" aria-label="上一張"><svg viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l10 11L1 23"/></svg></button>
       <button class="cnav next" type="button" aria-label="下一張"><svg viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l10 11L1 23"/></svg></button>
@@ -526,6 +536,14 @@ document.querySelectorAll('.car').forEach(car=>{
   let t; box.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(sync,80)});
   addEventListener('resize',sync); sync();
 });
+// 首頁 banner 自動輪播（淡入淡出）
+(()=>{const hs=document.querySelector('.hslides'); if(!hs) return;
+  const im=[...hs.querySelectorAll('img')]; if(im.length<2) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i=0; setInterval(()=>{im[i].classList.remove('on');
+    i=(i+1)%im.length; im[i].classList.add('on');}, 6000);
+})();
+
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
