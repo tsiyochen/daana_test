@@ -76,6 +76,9 @@ def render(tpl_text, env, depth=0):
     # 正式站拿掉測試橫條
     if env == "prod":
         s = re.sub(r'<div class="testbar">.*?</div>\s*', "", s, flags=re.S)
+        # 蘊膚計畫頁尚未上線。導航列指向它會 404，比照「療程項目」「美學視野」
+        # 改為無作用的 #。該頁上線後把這行移除即可。
+        s = s.replace('href="cultivation/"', 'href="#"')
     return s
 
 
