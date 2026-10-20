@@ -86,8 +86,6 @@ section{padding:0}
 .hslides picture.on{opacity:1}
 .hslides img{width:100%;height:100%;object-fit:cover;object-position:top center;
   display:block;filter:brightness(1.16)}   /* 設計稿 exposure +0.16 */
-/* 第二張是明亮的空間照，文字區只有 3.30:1；單獨降曝光拉到約 4.4:1 */
-.hslides picture:nth-child(2) img{filter:brightness(.95)}
 .hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.2;pointer-events:none}
 .hero .copy{position:absolute;z-index:1;right:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));bottom:12%;max-width:32em}
 .hero h1{white-space:nowrap;color:#fff;font-weight:300;font-size:calc(clamp(24px,2.312vw + 14.71px,48px) * var(--k));
@@ -354,10 +352,6 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
       <source media="(max-width:700px)" srcset="{{IMG}}hero-home-m.webp">
       <img src="{{IMG}}hero-home.webp" alt="">
     </picture>
-    <picture>
-      <source media="(max-width:700px)" srcset="{{IMG}}hero-2-m.webp">
-      <img src="{{IMG}}hero-2.webp" alt="" loading="lazy">
-    </picture>
   </div>
   <div class="copy">
     <h1>讓美好慢慢長出來</h1>
@@ -382,6 +376,7 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
         <div class="slide s-full"><img src="{{IMG}}about-4.webp" alt="蒔恩診所空間" loading="lazy"></div>
         <div class="slide s-full"><img src="{{IMG}}about-5.webp" alt="蒔恩診所空間" loading="lazy"></div>
         <div class="slide s-full"><img src="{{IMG}}about-6.webp" alt="蒔恩診所空間" loading="lazy"></div>
+        <div class="slide s-full"><img src="{{IMG}}about-7.webp" alt="蒔恩診所空間" loading="lazy"></div>
       </div>
       <button class="cnav prev" type="button" aria-label="上一張"><svg viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l10 11L1 23"/></svg></button>
       <button class="cnav next" type="button" aria-label="下一張"><svg viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l10 11L1 23"/></svg></button>
