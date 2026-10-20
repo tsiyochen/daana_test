@@ -20,6 +20,14 @@ IMAGES = KOL / "images"
 
 PUBLISH = "--publish" in sys.argv
 
+# ── 上線開關 ────────────────────────────────────────────
+# 蘊膚計畫頁是否已對外。False 時正式站會：
+#   1. 導航列不顯示「蘊膚計畫」（顯示但點不動會讓人以為網站壞了）
+#   2. 不輸出 dist/cultivation/
+# 測試站不受影響，隨時可以繼續檢視該頁。
+# 該頁定稿後把這裡改成 True，跑 python3 render.py --publish 即可。
+CULTIVATION_LIVE = False
+
 # ── 頁面定義 ────────────────────────────────────────────
 # tpl        site-src 底下的模板
 # test_out   測試站輸出路徑（相對 repo 根目錄）
@@ -76,9 +84,9 @@ def render(tpl_text, env, depth=0):
     # 正式站拿掉測試橫條
     if env == "prod":
         s = re.sub(r'<div class="testbar">.*?</div>\s*', "", s, flags=re.S)
-        # 蘊膚計畫頁尚未上線。導航列指向它會 404，比照「療程項目」「美學視野」
-        # 改為無作用的 #。該頁上線後把這行移除即可。
-        s = s.replace('href="cultivation/"', 'href="#"')
+        if not CULTIVATION_LIVE:
+            # 整個項目移除，而不是改成 #：點不動的項目比沒有更糟
+            s = re.sub(r'\s*<li><a href="cultivation/"[^>]*>[^<]*</a></li>', "", s)
     return s
 
 
@@ -114,6 +122,8 @@ def main():
         print(f"  測試站  /{p['route']:16} {out_test.stat().st_size/1024:6.0f} KB")
 
         if PUBLISH:
+            if p["route"] == "cultivation/" and not CULTIVATION_LIVE:
+                continue
             out_prod = DIST / rel
             out_prod.parent.mkdir(parents=True, exist_ok=True)
             out_prod.write_text(render(tpl, "prod", depth), encoding="utf-8")

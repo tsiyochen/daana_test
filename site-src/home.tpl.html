@@ -334,12 +334,12 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
   <div class="wrap">
     <a class="logo" href="index.html">{{LOGO}}</a>
     <ul>
-      <li><a href="index.html" class="on">關於蒔恩</a></li>
+      <li><a href="#about" class="on">關於蒔恩</a></li>
       <li><a href="treatments.html">蘊膚計畫</a></li>
-      <li><a href="#">療程項目</a></li>
-      <li><a href="#">美學視野</a></li>
-      <!-- <li><a href="#">療程項目</a></li> 暫時隱藏 -->
-      <!-- <li><a href="#">美學視野</a></li> 暫時隱藏 -->
+      <!-- 以下兩項尚無對應內容，先隱藏。
+           「療程項目」要啟用就指向首頁的療程區塊（已加 id="treatments"）。 -->
+      <!-- <li><a href="#treatments">療程項目</a></li> -->
+      <!-- <li><a href="#">美學視野</a></li> -->
     </ul>
     <a class="btn" href="https://neocore.hk/wa/da.0.2004262745.CHI.0.53" target="_blank" rel="noopener">線上預約</a>
   </div>
@@ -427,7 +427,7 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
 </section>
 
 <!-- TREATMENTS -->
-<section class="treatments">
+<section class="treatments" id="treatments">
   <div class="wrap">
     <div class="en-title reveal">{{H:treatments}}</div>
 
