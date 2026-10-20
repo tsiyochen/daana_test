@@ -548,7 +548,7 @@ document.querySelectorAll('.car').forEach(car=>{
   const im=[...hs.querySelectorAll('picture')]; if(im.length<2) return;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   let i=0; setInterval(()=>{im[i].classList.remove('on');
-    i=(i+1)%im.length; im[i].classList.add('on');}, 6000);
+    i=(i+1)%im.length; im[i].classList.add('on');}, 4000);
 })();
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
