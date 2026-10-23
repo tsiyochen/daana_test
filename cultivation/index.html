@@ -16,7 +16,7 @@
   --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
   --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
   --en:"Cormorant Garamond",serif; --util:"Jost",sans-serif;
-  --gut:clamp(16px,6vw,96px); --max:1240px;
+  --gut:clamp(24px,3.854vw + 24.51px,80px); --max:1440px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -70,17 +70,6 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* programs */
 .programs{background:var(--bg)}
-/* 設計稿：左標題（x84–608）／右卡片（x620–1365，寬 745）兩欄 */
-.programs .pgrid{display:grid;grid-template-columns:536fr 745fr;gap:12px;align-items:start}
-.programs .phead{position:sticky;top:120px}
-/* 卡片 370x305（比例 1.213），2x2 後接一張滿寬 */
-.plan.eye .tx{grid-template-columns:repeat(2,1fr);gap:8px}
-.plan.eye .tx .card{aspect-ratio:370/305}
-.plan.eye .tx .card.add{grid-column:1 / -1;aspect-ratio:745/304}
-@media (max-width:860px){
-  .programs .pgrid{grid-template-columns:1fr;gap:40px}
-  .programs .phead{position:static}
-}
 
 .programs .head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
 .plans{display:grid;grid-template-columns:1fr;gap:28px}
@@ -187,6 +176,19 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ── Programs：依設計稿的兩欄版面（放在最後，避免被前面的 .tx 規則蓋掉）── */
+/* 設計稿：左標題（x84–608）／右卡片（x620–1365，寬 745）兩欄 */
+.programs .pgrid{display:grid;grid-template-columns:536fr 745fr;gap:12px;align-items:start}
+.programs .phead{position:sticky;top:120px}
+/* 卡片 370x305（比例 1.213），2x2 後接一張滿寬 */
+.plan.eye .tx{grid-template-columns:repeat(2,1fr);gap:8px}
+.plan.eye .tx .card{aspect-ratio:370/305}
+.plan.eye .tx .card.add{grid-column:1 / -1;aspect-ratio:745/304}
+@media (max-width:860px){
+  .programs .pgrid{grid-template-columns:1fr;gap:40px}
+  .programs .phead{position:static}
+}
 </style>
 </head>
 <body>
