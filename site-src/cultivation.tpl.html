@@ -70,6 +70,18 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* programs */
 .programs{background:var(--bg)}
+/* 設計稿：左標題（x84–608）／右卡片（x620–1365，寬 745）兩欄 */
+.programs .pgrid{display:grid;grid-template-columns:536fr 745fr;gap:12px;align-items:start}
+.programs .phead{position:sticky;top:120px}
+/* 卡片 370x305（比例 1.213），2x2 後接一張滿寬 */
+.plan.eye .tx{grid-template-columns:repeat(2,1fr);gap:8px}
+.plan.eye .tx .card{aspect-ratio:370/305}
+.plan.eye .tx .card.add{grid-column:1 / -1;aspect-ratio:745/304}
+@media (max-width:860px){
+  .programs .pgrid{grid-template-columns:1fr;gap:40px}
+  .programs .phead{position:static}
+}
+
 .programs .head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
 .plans{display:grid;grid-template-columns:1fr;gap:28px}
 .plan{background:var(--white);padding:clamp(28px,4vw,56px) clamp(24px,5vw,64px);position:relative}
@@ -227,14 +239,13 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 
 <!-- 3. PROGRAMS -->
 <section class="programs">
-  <div class="wrap">
-    <div class="head reveal">
-      <div>
-        <div class="en-title">Programs</div>
-        <h2 class="h-zh" style="margin-top:18px">四項養膚，加上眼周的照顧</h2>
-      </div>
+  <div class="wrap pgrid">
+    <div class="phead reveal">
+      <div class="en-title">Programs</div>
+      <h2 class="h-zh" style="margin-top:18px">四項養膚，加上眼周的照顧</h2>
       <p class="lede">從保濕、膚色到膚質，四個層次一次照顧完整。</p>
     </div>
+    <div class="pbody">
 
     <div class="plans reveal">
       <article class="plan eye">
@@ -261,6 +272,7 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
         <div class="opt"><span class="tag lift">加選</span><h5>全臉電波</h5><em>RF Treatment</em><p>熱能作用在真皮層，著重整體的緊緻與膚質細緻度。適合在意臉部整體鬆弛的你。</p></div>
         <div class="opt"><span class="tag lift">加選</span><h5>全臉音波</h5><em>Ultrasound</em><p>能量聚焦在更深的筋膜層，著重輪廓與線條的支撐。適合在意下顎線、輪廓的你。</p></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
