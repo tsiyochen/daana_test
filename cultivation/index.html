@@ -45,14 +45,17 @@ section{padding:clamp(80px,11vw,150px) 0}
 @media (max-width:860px){.nav ul{gap:20px;font-size:12px;letter-spacing:.1em}.nav .btn{display:none}}
 
 /* hero */
-.hero{background:var(--bg);padding:0;overflow:hidden}
-.hero .wrap{max-width:none;padding-right:0;padding-left:max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:min(78vh,760px);gap:40px}
-.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,56px);letter-spacing:.24em;margin:18px 0 26px}
-.hero .en-title{font-size:clamp(64px,10vw,140px)}
-.hero p{color:var(--ink-soft);max-width:26em}
-.hero-img{align-self:stretch;position:relative}
-.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.02)}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:60px;padding-right:var(--gut)}.hero-img{height:360px;margin:0 calc(var(--gut)*-1)}}
+.hero{background:var(--bg);padding:0;overflow:hidden;position:relative}
+/* 設計稿 1440x850（比例 1.694）。滿版照片、文字白色壓在左下，與首頁同一套 */
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.18;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:flex;align-items:flex-end;aspect-ratio:1440/850;padding-bottom:12%}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,56px);letter-spacing:.24em;margin:4px 0 26px;color:#fff}
+.hero .en-title{font-size:clamp(64px,10vw,140px);color:#fff}
+.hero p{color:#fff;max-width:30em}
+
+
+@media (max-width:860px){.hero .wrap{aspect-ratio:425/483;padding-bottom:16%}}
 
 /* for you */
 .foryou{background:var(--white)}
@@ -90,7 +93,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .opt h5{font-family:var(--serif);font-weight:400;font-size:18px;letter-spacing:.14em;margin:12px 0 0}
 .opt em{font-family:var(--en);font-size:17px;color:var(--sage);display:block;margin-bottom:8px}
 .addon .plus{font-family:var(--en);font-size:56px;color:var(--clay);line-height:1;font-weight:300}
-.addon h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em}
+.addon h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em;color:var(--clay)}
 .addon p{font-size:14px;color:var(--ink-soft)}
 @media (max-width:860px){.tx{grid-template-columns:repeat(2,1fr)}.plan.eye .tx{grid-template-columns:repeat(3,1fr)}.addon{grid-template-columns:1fr;gap:10px}.opts{grid-column:1;grid-template-columns:1fr}}
 
@@ -117,10 +120,13 @@ section{padding:clamp(80px,11vw,150px) 0}
 .eye-chip{display:block;margin-top:12px;font-size:12px;color:#B8624B;background:var(--clay-soft);padding:6px 12px;border-radius:4px;line-height:1.6}
 .interval{display:flex;align-items:center;gap:16px;margin:36px 0 0;font-size:13px;color:var(--ink-soft)}
 .interval::before,.interval::after{content:"";flex:1;height:1px;background:var(--line)}
-.rules{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid var(--line);padding-top:32px}
-.rules b{display:block;font-family:var(--serif);font-weight:400;font-size:16px;letter-spacing:.1em;margin-bottom:6px}
-.rules p{font-size:13px;color:var(--ink-soft)}
-@media (max-width:860px){.rhythm .head{grid-template-columns:1fr}.track svg{display:none}.visits{grid-template-columns:1fr;gap:0;border-left:1px solid var(--line);margin-left:6px}.visit{position:relative;padding:0 0 34px 26px}.visit::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;border:1px solid var(--ink);background:#fff}.visit.lift::before{border:1px dashed var(--clay)}.visit.lift.hide{display:none}.rules{grid-template-columns:1fr}}
+.rules{margin-top:56px;border-top:1px solid var(--line);padding-top:28px}
+.rules h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.14em;color:var(--clay);margin:0 0 14px}
+.rules ol{margin:0;padding-left:1.6em}
+.rules li{font-size:14px;line-height:1.9;color:var(--ink-soft);margin-bottom:6px}
+
+
+@media (max-width:860px){.rhythm .head{grid-template-columns:1fr}.track svg{display:none}.visits{grid-template-columns:1fr;gap:0;border-left:1px solid var(--line);margin-left:6px}.visit{position:relative;padding:0 0 34px 26px}.visit::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;border:1px solid var(--ink);background:#fff}.visit.lift::before{border:1px dashed var(--clay)}.visit.lift.hide{display:none}}
 
 /* feel */
 .feel{background:var(--bg)}
@@ -138,10 +144,10 @@ section{padding:clamp(80px,11vw,150px) 0}
 .after{background:var(--white)}
 .after .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
 .after img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.35)}
-.after blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.6vw,30px);letter-spacing:.14em;line-height:1.9;margin:24px 0 28px}
+.after blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.6vw,30px);letter-spacing:.14em;line-height:1.9;margin:24px 0 28px;color:var(--clay)}
 .paths{display:grid;gap:12px;margin-top:28px}
-.paths div{display:flex;gap:16px;align-items:baseline;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);padding-bottom:12px}
-.paths i{font-family:var(--en);font-size:18px;color:var(--sage)}
+.paths div{display:flex;gap:20px;align-items:center;font-size:15px;color:var(--ink);border-bottom:none;padding:10px 0}
+.paths i{font-family:var(--en);font-style:normal;font-size:15px;color:var(--ink-soft);flex:none;width:58px;height:58px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;letter-spacing:.06em}
 @media (max-width:860px){.after .grid{grid-template-columns:1fr}}
 
 /* faq */
@@ -188,13 +194,13 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 
 <!-- 1. HERO -->
 <section class="hero">
+  <img class="hero-bg" src="../images/hero-portrait.jpg" alt="">
   <div class="wrap">
-    <div>
+    <div class="copy">
       <div class="en-title">Experience</div>
       <h1>蘊膚計畫</h1>
       <p>第一次來，先認識自己的皮膚。<br>我們把四項養膚療程排成一段約三個月的節奏，讓你在每一次回來之間，看見皮膚慢慢變好的樣子。</p>
     </div>
-    <div class="hero-img"><img src="../images/treatment-1.jpg" alt=""></div>
   </div>
 </section>
 
@@ -247,11 +253,11 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
     <div class="addon reveal">
       <div class="plus">+</div>
       <div class="addon-head">
-        <h4>如果你也很在意臉部</h4>
-        <p>體驗之外還可以再加選電波或音波，安排在養膚療程之後——先把膚質養好，再加一層支撐。兩者作用的層次不同，適合哪一種，會由醫師面診評估。</p>
+        <h4>進階加選</h4>
+        <p>如果你也很在意臉部，體驗之外還可以再加選電波或音波，安排在養膚療程之後——先把膚質養好，再加一層支撐。兩者作用的層次不同，適合哪一種，會由醫師面診評估。</p>
       </div>
       <div class="opts">
-        <div class="opt"><span class="tag lift">加選</span><h5>全臉電波</h5><em>Radiofrequency</em><p>熱能作用在真皮層，著重整體的緊緻與膚質細緻度。適合在意臉部整體鬆弛的你。</p></div>
+        <div class="opt"><span class="tag lift">加選</span><h5>全臉電波</h5><em>RF Treatment</em><p>熱能作用在真皮層，著重整體的緊緻與膚質細緻度。適合在意臉部整體鬆弛的你。</p></div>
         <div class="opt"><span class="tag lift">加選</span><h5>全臉音波</h5><em>Ultrasound</em><p>能量聚焦在更深的筋膜層，著重輪廓與線條的支撐。適合在意下顎線、輪廓的你。</p></div>
       </div>
     </div>
@@ -296,9 +302,12 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
     </div>
 
     <div class="rules reveal">
-      <div><b>水光針與微針筆，分開安排</b><p>兩者都直接作用在皮膚裡，分開進行，讓皮膚在兩次之間完成修復。</p></div>
-      <div><b>海飛秀、雷射，可搭配任何一次</b><p>能和其他療程同日進行，減少你往返的次數。</p></div>
-      <div><b>眼周音波，建議間隔約一個月</b><p>可以和任一次療程同天進行，也建議與其他療程錯開約一個月。</p></div>
+      <h4>療程搭配與時間安排</h4>
+      <ol>
+        <li>海飛秀與雷射可依評估搭配其他療程，減少你往返的次數。</li>
+        <li>水光針與微針筆則建議分次進行，讓肌膚有適當的修復時間。</li>
+        <li>眼周音波，建議間隔約一個月。可以和任一次療程同天進行，也建議與其他療程錯開約一個月。眼周音波的施作時間可彈性安排。</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -308,12 +317,12 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
   <div class="wrap">
     <div class="reveal">
       <div class="en-title">After Each Visit</div>
-      <h2 class="h-zh" style="margin-top:18px">每次療程之後，你會經歷什麼</h2>
+      <h2 class="h-zh" style="margin-top:18px">每次療程之後，你會經歷什麼？</h2>
     </div>
     <div class="days reveal">
-      <div class="day"><div class="d">DAY 1 – 3</div><h4>微微泛紅、緊繃</h4><p>屬於預期中的反應。加強保濕與防曬，避免去角質與高溫環境。</p><span class="link"><b>破壞</b>Disrupt</span></div>
-      <div class="day"><div class="d">DAY 3 – 14</div><h4>慢慢回到日常</h4><p>泛紅逐步退去，通常已能正常上妝、上班。這段時間的照顧，決定修復的品質。</p><span class="link"><b>修復</b>Repair</span></div>
-      <div class="day"><div class="d">DAY 14 – 28</div><h4>膚況趨於穩定</h4><p>皮膚完成一輪更新。這時的狀態，才是這次療程真正的落點——接著，就是下一次回來的時候。</p><span class="link"><b>新生</b>Renew</span></div>
+      <div class="day"><div class="d">DAY 1 – 3</div><h4>破壞 Disrupt</h4><p>微微泛紅、緊繃。<br>屬於預期中的反應。加強保濕與防曬，避免去角質與高溫環境。</p></div>
+      <div class="day"><div class="d">DAY 3 – 14</div><h4>修復 Repair</h4><p>慢慢回到日常。<br>泛紅逐步退去，通常已能正常上妝、上班。這段時間的照顧，決定修復的品質。</p></div>
+      <div class="day"><div class="d">DAY 14 – 28</div><h4>新生 Renew</h4><p>膚況趨於穩定。<br>皮膚完成一輪更新。這時的狀態，才是這次療程真正的落點——接著，就是下一次回來的時候。</p></div>
     </div>
   </div>
 </section>
@@ -323,13 +332,12 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
   <div class="wrap grid">
     <img class="reveal" src="../images/space-3.jpg" alt="療程室">
     <div class="reveal">
-      <div class="eyebrow">What's Next</div>
       <blockquote>走完一輪，<br>你會知道自己的皮膚<br>對哪一種照顧最有感。</blockquote>
       <p class="lede">體驗不是終點。接下來，醫師會依你這三個月的變化，和你一起規劃之後的節奏。</p>
       <div class="paths">
-        <div><i>i.</i>以最有感的項目為主，規律回訪</div>
-        <div><i>ii.</i>在養膚之外，加上電波或音波的支撐</div>
-        <div><i>iii.</i>依季節與膚況，輪替不同的照顧方式</div>
+        <div><i>01</i>以最有感的項目為主，規律回訪</div>
+        <div><i>02</i>在養膚之外，加上電波或音波的支撐</div>
+        <div><i>03</i>依季節與膚況，輪替不同的照顧方式</div>
       </div>
     </div>
   </div>
