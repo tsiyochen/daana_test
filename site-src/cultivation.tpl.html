@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EDEDEB; --paper:#F6F5F2; --white:#FFFFFF;
+  --bg:#E9E9E9; --paper:#F6F5F2; --white:#FFFFFF;
   --sage:#8CAAA0; --sage-deep:#5B7A70; --sage-mist:#C7D4D0;
   --clay:#E39782; --clay-soft:#F3D9D0;
   --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
@@ -21,7 +21,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
@@ -33,7 +33,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* test bar + nav */
 .testbar{position:sticky;top:0;z-index:21;height:28px;line-height:16px;background:var(--ink);color:#fff;text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
-.nav{position:sticky;top:28px;z-index:20;background:rgba(237,237,235,.92);backdrop-filter:blur(8px)}
+.nav{position:sticky;top:28px;z-index:20;background:rgba(233,233,233,.92);backdrop-filter:blur(8px)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
@@ -49,7 +49,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 .hero{background:var(--bg);padding:0;overflow:hidden;position:relative;aspect-ratio:1440/850;display:flex;align-items:flex-end}
 /* 設計稿 1440x850（比例 1.694）。滿版照片、文字白色壓在左下，與首頁同一套 */
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.18;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:#4D4D4D;opacity:.30;pointer-events:none}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:13%}
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,56px);letter-spacing:.24em;margin:4px 0 26px;color:#fff}
 .hero .en-title{font-size:clamp(64px,10vw,140px);color:#fff}
@@ -60,7 +60,7 @@ section{padding:clamp(80px,11vw,150px) 0}
   .hero .wrap{padding-bottom:14%}}
 
 /* for you */
-.foryou{background:var(--white)}
+.foryou{background:var(--bg)}
 .foryou .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,8vw,120px);align-items:start}
 .checks{list-style:none;border-top:1px solid var(--line)}
 .checks li{display:grid;grid-template-columns:44px 1fr auto;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -70,7 +70,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 @media (max-width:860px){.foryou .grid{grid-template-columns:1fr}.checks li{grid-template-columns:36px 1fr;row-gap:8px}.checks .tag{grid-column:2;justify-self:start}}
 
 /* programs */
-.programs{background:var(--bg)}
+.programs{background:var(--white)}
 
 .programs .head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
 .plans{display:grid;grid-template-columns:1fr;gap:28px}
@@ -101,7 +101,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 @media (max-width:860px){.tx{grid-template-columns:repeat(2,1fr)}.plan.eye .tx{grid-template-columns:repeat(3,1fr)}.addon{grid-template-columns:1fr;gap:10px}.opts{grid-column:1;grid-template-columns:1fr}}
 
 /* rhythm */
-.rhythm{background:var(--white)}
+.rhythm{background:var(--bg)}
 .rhythm .head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
 .switch{display:inline-flex;flex-wrap:wrap;gap:8px;margin-top:28px}
 .switch button{font:inherit;font-size:13px;letter-spacing:.14em;border:1px solid var(--line);background:none;border-radius:99px;padding:8px 20px;cursor:pointer;color:var(--ink-soft);transition:all .2s}
@@ -132,7 +132,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 @media (max-width:860px){.rhythm .head{grid-template-columns:1fr}.track svg{display:none}.visits{grid-template-columns:1fr;gap:0;border-left:1px solid var(--line);margin-left:6px}.visit{position:relative;padding:0 0 34px 26px}.visit::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;border:1px solid var(--ink);background:#fff}.visit.lift::before{border:1px dashed var(--clay)}.visit.lift.hide{display:none}}
 
 /* feel */
-.feel{background:var(--bg)}
+.feel{background:var(--white)}
 .days{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid var(--ink)}
 .day{padding:28px 32px 0 0;position:relative}
 .day::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--clay)}
@@ -238,9 +238,9 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 .rhythm .rhead{margin-bottom:60px}
 .rhythm .rhead .h-zh{margin:72px 0 10px}
 .rgrid{display:grid;grid-template-columns:366fr 322fr 466fr;gap:65px;align-items:start}
-.ovs{padding-top:12px}
-.ovs svg{width:112.02%;height:auto;margin-left:-6.557%;overflow:visible}
-.ovs .ov{fill:none;stroke:var(--line);stroke-width:1}
+.ovs{padding-top:41px}
+.ovs svg{width:100%;height:auto;overflow:visible}
+.ovs .ov{fill:none;stroke:#4D4D4D;stroke-width:1}
 .ovs .lbl-en{font-family:var(--sans);font-weight:300;font-size:32px;fill:#8D8D8D}
 .rhythm .visits{display:grid;grid-template-columns:1fr;gap:61px;padding-top:47px}
 .rhythm .visit .when{font-weight:500;font-size:24px;line-height:29px;color:var(--clay);margin-bottom:16px}
@@ -474,18 +474,19 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
     </div>
 
     <div class="rgrid reveal">
-      <!-- 設計稿 987:2047：三個垂直堆疊且互相重疊的橢圓（x56–466、y485–1170） -->
+      <!-- 設計稿 987:2047：同一顆 366x203 的橢圓，繞中心轉 -11.237°/+14.043°/-17.647°。
+           中心 x261 y620/816/1018（換算成欄位座標 cx183、cy105.8/301.8/503.8）。 -->
       <div class="ovs">
-        <svg viewBox="0 0 410 686" aria-hidden="true">
-          <ellipse class="ov" cx="205" cy="135" rx="199" ry="134"/>
-          <ellipse class="ov" cx="205" cy="331" rx="202" ry="143"/>
-          <ellipse class="ov" cx="205" cy="533" rx="205" ry="152"/>
-          <ellipse class="ov lift fade hide" id="ovLift" cx="205" cy="745" rx="205" ry="152"/>
-          <text class="lbl-en" x="205" y="147" text-anchor="middle">Visit 1</text>
-          <text class="lbl-en" x="205" y="343" text-anchor="middle">Visit 2</text>
-          <text class="lbl-en" x="205" y="545" text-anchor="middle">Visit 3</text>
-          <text class="lbl-en fade hide" id="txLift" x="205" y="757" text-anchor="middle">Support</text>
-        </svg>
+      <svg viewBox="0 0 366 616" aria-hidden="true">
+        <ellipse class="ov" cx="183" cy="105.8" rx="183" ry="101.5" transform="rotate(-11.237 183 105.8)"/>
+        <ellipse class="ov" cx="183" cy="301.8" rx="183" ry="101.5" transform="rotate(14.043 183 301.8)"/>
+        <ellipse class="ov" cx="183" cy="503.8" rx="183" ry="101.5" transform="rotate(-17.647 183 503.8)"/>
+        <ellipse class="ov lift fade hide" id="ovLift" cx="183" cy="711.8" rx="183" ry="101.5" transform="rotate(20.4 183 711.8)"/>
+        <text class="lbl-en" x="183" y="116.8" text-anchor="middle">Visit 1</text>
+        <text class="lbl-en" x="183" y="312.8" text-anchor="middle">Visit 2</text>
+        <text class="lbl-en" x="183" y="514.8" text-anchor="middle">Visit 3</text>
+        <text class="lbl-en fade hide" id="txLift" x="183" y="722.8" text-anchor="middle">Support</text>
+      </svg>
       </div>
 
       <div class="visits">
@@ -588,7 +589,7 @@ document.querySelectorAll('.switch button').forEach(b=>{
       const picked=[...document.querySelectorAll('.switch button.lift')].filter(x=>x.getAttribute('aria-pressed')==='true').map(x=>x.dataset.k==='rf'?'電波':'音波');
       document.getElementById('liftName').textContent=picked.join('＋');
       ['ovLift','txLift','vLift'].forEach(id=>document.getElementById(id).classList.toggle('hide',!picked.length));
-      document.querySelector('.ovs svg').setAttribute('viewBox', picked.length?'0 0 410 898':'0 0 410 686');
+      document.querySelector('.ovs svg').setAttribute('viewBox', picked.length?'0 0 366 827':'0 0 366 616');
     }
   });
 });
