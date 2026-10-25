@@ -255,13 +255,20 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 .ovs .ov{fill:none;stroke:#4D4D4D;stroke-width:1}
 .ovs .lbl-en{font-family:var(--sans);font-weight:300;font-size:32px;fill:#8D8D8D}
 .rhythm .visits{display:grid;grid-template-columns:1fr;gap:61px;padding-top:47px}
-.rhythm .visit .when{font-weight:500;font-size:24px;line-height:29px;color:var(--clay);margin-bottom:16px}
+.rhythm .lede{font-size:18px;line-height:30px;letter-spacing:.01em;color:#4D4D4D;max-width:none}
+/* 設計稿這一區的字距幾乎都是 0（全站預設 .04em 會把字撐寬） */
+.ovs .lbl-en{letter-spacing:.01em}
+.rhythm .visit .when{font-family:var(--sans);font-weight:500;font-size:24px;line-height:29px;
+  letter-spacing:0;color:var(--clay);margin-bottom:16px}
 .rhythm .visit h4{font-family:var(--sans);font-weight:400;font-size:36px;line-height:40px;
-  letter-spacing:.04em;color:#4D4D4D;margin:0 0 16px}
-.rhythm .visit p{font-size:18px;line-height:30px;color:#4D4D4D;margin:0}
+  letter-spacing:0;color:#4D4D4D;margin:0 0 16px}
+.rhythm .visit p{font-size:18px;line-height:30px;letter-spacing:.01em;color:#4D4D4D;margin:0}
 .visit.lift.hide{display:none}
 .rphoto img{width:100%;aspect-ratio:466/699;object-fit:cover;display:block}
 .rhythm .rules{margin-top:97px;border-top:0;padding-top:0;max-width:852px;margin-left:auto}
+.rhythm .rules h4{font-family:var(--sans);font-weight:400;font-size:30px;line-height:36px;
+  letter-spacing:.05em;color:var(--clay);margin:0 0 23px}
+.rhythm .rules li{font-size:18px;line-height:30px;letter-spacing:.01em;color:#4D4D4D;margin-bottom:0}
 @media (max-width:860px){
   .rgrid{grid-template-columns:1fr;gap:36px}
   .ovs{display:none}
