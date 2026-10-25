@@ -16,7 +16,8 @@
   --ink:#33322F; --ink-soft:#6B6862; --line:rgba(51,50,47,.16);
   --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
   --en:"Cormorant Garamond",serif; --util:"Jost",sans-serif;
-  --gut:clamp(24px,3.854vw + 24.51px,80px); --max:1440px;
+  --gut:clamp(24px,3.854vw + 24.51px,80px); --max:1440px; --k:.9;
+  --num:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -255,6 +256,119 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 }
 /* 你是不是也這樣：設計稿 592+546，容器 1280 → 間距 142 才對得上 */
 .foryou .grid{gap:142px}
+
+/* ── 標題級距：設計稿全頁 h2 都是 Noto Sans TC Light 48/57.6、字距 .05em ── */
+.h-zh{font-family:var(--sans);font-weight:300;font-size:clamp(28px,1.972vw + 19.6px,48px);
+  line-height:1.2;letter-spacing:.05em}
+.foryou .h-zh{color:#4D4D4D}
+.programs .h-zh,.rhythm .h-zh,.feel .h-zh,.after .h-zh{color:var(--clay)}
+.hero h1{font-family:var(--sans);font-weight:300;font-size:clamp(28px,1.972vw + 19.6px,48px);
+  line-height:1.2;letter-spacing:.2em;color:#F3ECE6;margin:4px 0 26px}
+
+/* ── Rhythm：三欄絕對寬 366／322／466，間距 63／65（合計 1282≈容器 1280）── */
+.rgrid{grid-template-columns:366fr 63fr 322fr 65fr 466fr;gap:0}
+.rgrid>.ovs{grid-column:1}
+.rgrid>.visits{grid-column:3}
+.rgrid>.rphoto{grid-column:5}
+
+/* ── After Each Visit：設計稿 987:2085（1440x936）────────────────
+   時間軸 x170–1270（內容左右各縮 90），三欄 322 寬、間距 124，整列左縮 30／右縮 36 */
+.feel{padding:98px 0 97px}
+.feel .h-zh{margin:72px 0 0 30px}
+.feel .timeline{position:relative;height:21px;margin:130px 90px 0}
+.feel .timeline::before{content:"";position:absolute;left:10px;right:10px;top:10px;
+  border-top:1px solid var(--sage)}
+.feel .timeline i{position:absolute;top:0;width:21px;height:21px;border-radius:50%;background:var(--sage)}
+.feel .timeline i:nth-child(1){left:0}
+.feel .timeline i:nth-child(2){left:50%;margin-left:-10.5px}
+.feel .timeline i:nth-child(3){right:0}
+.days{grid-template-columns:repeat(3,1fr);gap:124px;margin:101px 36px 0 30px;border-top:0}
+.day{padding:0}
+.day::before{display:none}
+.day .d{font-family:var(--sans);font-weight:500;font-size:24px;line-height:29px;
+  letter-spacing:.04em;color:var(--clay)}
+.day h4{font-family:var(--sans);font-weight:400;font-size:36px;line-height:40px;
+  letter-spacing:.04em;color:#4D4D4D;margin:21px 0 20px}
+.day p{font-size:18px;line-height:30px;color:#4D4D4D;text-align:justify}
+
+/* ── 走完一輪：設計稿 987:2113（1440x805）────────────────────────
+   左文字 x118 寬 555、右 745x745 淺灰方塊內放 01/02/03。
+   兩塊都貼到距畫面邊 10px，所以不走 .wrap 容器。 */
+.after{padding:0}
+.after .awrap{display:grid;grid-template-columns:675fr 745fr;align-items:start;padding:50px 10px 10px}
+.after .acopy{padding:172px 0 0 108px}
+.after .acopy .h-zh{margin:0}
+.after .acopy .lede{margin-top:22px;max-width:555px;font-size:18px;line-height:30px;color:#4D4D4D}
+.after .apaths{aspect-ratio:1;background:rgba(77,77,77,.1);display:grid;
+  align-content:start;justify-content:start;padding:60px 0 0 133px}
+.paths{display:grid;gap:80px;margin:0}
+.paths div{display:grid;grid-template-columns:135px 237px;align-items:center;gap:43px;padding:0;border:0}
+.paths i{width:135px;height:135px;border:1px solid #000;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--sans);font-style:normal;font-weight:400;font-size:30px;line-height:36px;
+  letter-spacing:.04em;color:#4D4D4D}
+.paths span{font-size:24px;line-height:35px;letter-spacing:.04em;color:#4D4D4D}
+
+/* ── FAQ：設計稿 987:2130（1440x1206）標題靠右、問答收在右側 736 欄 ── */
+.faq{padding:80px 0 180px}
+.faq .fhead{text-align:right}
+.faq .fitems{max-width:736px;margin:184px 0 0 auto}
+details{border-top:1px solid var(--line);border-bottom:0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{align-items:flex-start;padding:30px 0 28px;font-size:24px;line-height:29px;
+  letter-spacing:.04em;color:#4D4D4D}
+summary::after{flex:none;width:24px;font-size:24px;line-height:29px;text-align:center}
+details[open] summary{padding-bottom:20px}
+details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-width:696px}
+
+/* ── Contact：與首頁同一套（設計稿 987:2141，1440x1060）── */
+.contact{padding:clamp(30px,1.541vw + 23.80px,46px) 0 clamp(40px,2.601vw + 29.54px,67px)}
+.contact p{margin:0;max-width:none}
+.cbody{padding-left:clamp(10px,9.634vw - 28.73px,110px);margin-top:clamp(44px,3.468vw + 30.06px,80px);color:#4D4D4D}
+.contact .intro{margin:0;max-width:32em;font-weight:350;
+  font-size:calc(clamp(16px,0.385vw + 14.45px,20px) * var(--k));line-height:2;letter-spacing:.01em}
+.contact .btns{display:flex;gap:clamp(16px,4.2vw,60px);flex-wrap:wrap;margin-top:clamp(56px,4.6vw,67px)}
+.contact .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:99px;
+  min-width:calc(213px * var(--k));height:calc(64px * var(--k));padding:0 calc(32px * var(--k));
+  background:var(--clay);color:#fff;font-family:var(--num);font-weight:400;
+  font-size:calc(20px * var(--k));letter-spacing:.1em}
+.finfo{display:flex;align-items:center;gap:clamp(20px,3.75vw,54px);margin-top:clamp(56px,7.5vw,108px)}
+.foot-logo{flex:none;margin-top:0}
+.foot-logo .logo-svg{height:calc(clamp(49px,2.120vw + 40.48px,71px) * var(--k))}
+.vline{flex:none;width:1px;height:calc(92px * var(--k));background:var(--sage)}
+.info{margin-top:0;font-weight:350;font-size:calc(clamp(16px,0.385vw + 14.45px,20px) * var(--k));
+  line-height:2;letter-spacing:.01em}
+.map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;color:var(--clay);
+  font-family:var(--num);font-weight:400;font-size:calc(16px * var(--k));line-height:25px;vertical-align:middle}
+.map svg{width:11px;height:14px;flex:none}
+.contact .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
+  font-size:calc(clamp(14px,0.193vw + 13.23px,16px) * var(--k));line-height:1.56;letter-spacing:.05em}
+
+@media (max-width:860px){
+  .feel{padding:48px 0}
+  .feel .h-zh{margin-left:0}
+  .feel .timeline{display:none}
+  .days{grid-template-columns:1fr;gap:36px;margin:40px 0 0}
+  .day h4{font-size:26px;line-height:32px;margin:12px 0}
+  .after .awrap{grid-template-columns:1fr;padding:40px 24px}
+  .after .apaths{padding:36px 24px}
+  .after .acopy{padding:0 0 40px}
+  .after .apaths{aspect-ratio:auto;padding:36px 24px}
+  .paths{gap:36px}
+  .paths div{grid-template-columns:72px 1fr;gap:20px}
+  .paths i{width:72px;height:72px;font-size:20px}
+  .paths span{font-size:17px;line-height:28px}
+  .faq{padding:48px 0 64px}
+  .faq .fhead{text-align:left}
+  .faq .fitems{margin-top:40px;max-width:none}
+  summary{font-size:17px;line-height:26px;padding:20px 0}
+  details p{font-size:15px;line-height:27px;padding-bottom:20px}
+}
+@media (max-width:700px){
+  .contact .btns{flex-direction:column;gap:30px}
+  .contact .btn{width:100%;max-width:213px}
+  .finfo{flex-direction:column;align-items:flex-start;gap:23px}
+  .vline{display:none}
+}
 </style>
 </head>
 <body>
@@ -390,8 +504,9 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
   <div class="wrap">
     <div class="reveal">
       <div class="en-title">After Each Visit</div>
-      <h2 class="h-zh" style="margin-top:18px">每次療程之後，你會經歷什麼？</h2>
+      <h2 class="h-zh">每次療程之後，你會經歷什麼？</h2>
     </div>
+    <div class="timeline reveal" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="days reveal">
       <div class="day"><div class="d">DAY 1 – 3</div><h4>破壞 Disrupt</h4><p>微微泛紅、緊繃。<br>屬於預期中的反應。加強保濕與防曬，避免去角質與高溫環境。</p></div>
       <div class="day"><div class="d">DAY 3 – 14</div><h4>修復 Repair</h4><p>慢慢回到日常。<br>泛紅逐步退去，通常已能正常上妝、上班。這段時間的照顧，決定修復的品質。</p></div>
@@ -402,15 +517,16 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 
 <!-- 6. AFTER -->
 <section class="after">
-  <div class="wrap grid">
-    <img class="reveal" src="{{IMG}}space-3.jpg" alt="療程室">
-    <div class="reveal">
-      <blockquote>走完一輪，<br>你會知道自己的皮膚<br>對哪一種照顧最有感。</blockquote>
+  <div class="awrap">
+    <div class="acopy reveal">
+      <h2 class="h-zh">走完一輪，<br>你會知道自己的皮膚<br>對哪一種照顧最有感。</h2>
       <p class="lede">體驗不是終點。接下來，醫師會依你這三個月的變化，和你一起規劃之後的節奏。</p>
+    </div>
+    <div class="apaths reveal">
       <div class="paths">
-        <div><i>01</i>以最有感的項目為主，規律回訪</div>
-        <div><i>02</i>在養膚之外，加上電波或音波的支撐</div>
-        <div><i>03</i>依季節與膚況，輪替不同的照顧方式</div>
+        <div><i>01</i><span>以最有感的項目為主，規律回訪</span></div>
+        <div><i>02</i><span>在養膚之外，加上電波或音波的支撐</span></div>
+        <div><i>03</i><span>依季節與膚況，輪替不同的照顧方式</span></div>
       </div>
     </div>
   </div>
@@ -418,9 +534,9 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 
 <!-- 7. FAQ -->
 <section class="faq">
-  <div class="wrap grid">
-    <div class="reveal"><div class="en-title">FAQ</div></div>
-    <div class="reveal">
+  <div class="wrap">
+    <div class="fhead reveal"><div class="en-title">FAQ</div></div>
+    <div class="fitems reveal">
       <details><summary>不確定自己適不適合？</summary><p>沒關係。面診時醫師會先看過你的膚況，再建議適合的安排，也可以到現場再決定。</p></details>
       <details><summary>第一次來，就想加電波或音波可以嗎？</summary><p>可以。我們會安排在養膚療程之後，可以在最後一次療程的當天一起進行，或另外安排。</p></details>
       <details><summary>電波和音波有什麼不同？</summary><p>兩者作用的層次不同。電波以熱能作用在真皮層，著重整體緊緻；音波把能量聚焦在更深的筋膜層，著重輪廓與線條。適合哪一種，會由醫師依你的狀況評估。</p></details>
@@ -435,11 +551,20 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="en-title">Contact</div>
-    <p>初次來訪建議預約面診。我們會留足夠的時間了解你的膚況與想改善的地方，再一起決定要不要開始。</p>
-    <div class="btns"><a class="btn" href="https://neocore.hk/wa/da.0.2004262745.CHI.0.53" target="_blank" rel="noopener">線上預約</a><a class="btn ghost" href="https://lin.ee/RuzvvjN" target="_blank" rel="noopener">LINE 諮詢</a></div>
-    <div class="info">台北市大安區新生南路二段2號7樓　・　0987-167-852</div>
-    <div class="foot-logo">{{LOGO}}</div>
-    <p class="legal">本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。</p>
+    <div class="cbody">
+      <p class="intro">初次來訪建議預約面診。我們會留足夠的時間了解你的膚況與想改善的地方，再一起決定要不要開始。</p>
+      <div class="btns"><a class="btn" href="https://neocore.hk/wa/da.0.2004262745.CHI.0.53" target="_blank" rel="noopener">線上預約</a><a class="btn" href="https://lin.ee/RuzvvjN" target="_blank" rel="noopener">LINE諮詢</a></div>
+      <div class="finfo">
+        <div class="foot-logo">{{LOGO}}</div>
+        <div class="vline"></div>
+        <div class="info">
+          <div>台北市大安區新生南路二段2號7樓<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E6%96%B0%E7%94%9F%E5%8D%97%E8%B7%AF%E4%BA%8C%E6%AE%B52%E8%99%9F7%E6%A8%93" target="_blank" rel="noopener"><svg viewBox="0 0 11 14" fill="currentColor" aria-hidden="true"><path d="M5.5 0C2.46 0 0 2.46 0 5.5 0 9.62 5.5 14 5.5 14S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"/></svg>MAP</a></div>
+          <div>0987-167-852</div>
+          <div>週三至週日 11:00–17:00</div>
+        </div>
+      </div>
+      <p class="legal">本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。</p>
+    </div>
   </div>
 </section>
 
