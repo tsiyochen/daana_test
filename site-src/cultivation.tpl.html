@@ -208,34 +208,40 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
   font-size:18px;line-height:30px;letter-spacing:.04em;white-space:nowrap}
 .tag.lift{border:0;color:#fff}
 
-/* ── Programs：標題滿寬在上，卡片靠右（設計稿 x621–1363，寬 742）── */
-.programs .phead{margin-bottom:100px}
-.programs .phead .h-zh{margin:18px 0 10px}
+/* ── Programs：設計稿 987:1998（1435x1872）──────────────────────
+   標題 y20/220/287，卡片靠右 x621–1363 寬 742、y399 起。
+   區塊上下留白 20／118，不吃全站 section 的 150。 */
+.programs{padding:20px 0 118px}
+.programs .phead{margin-bottom:82px}
+.programs .phead .h-zh{margin:72px 0 9px}
+.programs .lede{font-size:18px;line-height:30px;letter-spacing:.01em;color:#4D4D4D;max-width:none}
 .programs .pbody{max-width:742px;margin-left:auto}
-.txgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.txgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .txc{position:relative;margin:0;overflow:hidden;aspect-ratio:366/302}
 .txc.wide{grid-column:1/-1;aspect-ratio:742/300}
 .txc img{width:100%;height:100%;object-fit:cover;display:block}
-/* 白字壓在照片上，底部加一層漸層確保任何照片都讀得到 */
-.txc::after{content:"";position:absolute;inset:auto 0 0 0;height:52%;
-  background:linear-gradient(to top,rgba(0,0,0,.42),rgba(0,0,0,0));pointer-events:none}
-.txc figcaption{position:absolute;left:20px;bottom:20px;z-index:1;color:#fff;
-  font-size:30px;line-height:36px;letter-spacing:.04em}
-.txc figcaption em{display:block;font-family:var(--util);font-style:normal;
-  font-size:16px;line-height:19px;letter-spacing:.1em;margin-top:12px}
-.programs .addon{border:0;padding:0;margin:40px 0 0;display:block}
-.programs .addon h4{font-family:var(--serif);font-weight:400;font-size:29px;line-height:35px;
-  letter-spacing:.06em;color:var(--clay);margin:0 0 24px}
-.programs .addon p{font-size:18px;line-height:30px;color:var(--ink-soft);margin:0}
-.programs .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:36px}
-.programs .opt{border:1px solid var(--line);padding:31px 21px}
-.programs .opt h5{font-family:var(--serif);font-weight:400;font-size:30px;line-height:36px;margin:0}
-.programs .opt em{display:block;font-family:var(--util);font-style:normal;font-size:16px;
-  line-height:19px;letter-spacing:.1em;color:var(--ink-soft);margin:8px 0 18px}
-.programs .opt p{font-size:18px;line-height:30px;color:var(--ink-soft);margin:0}
+/* 設計稿是整張照片壓一層 30% #4D4D4D，不是底部漸層 */
+.txc::after{content:"";position:absolute;inset:0;background:#4D4D4D;opacity:.30;pointer-events:none}
+.txc figcaption{position:absolute;left:20px;bottom:22px;z-index:1;color:#fff;
+  font-size:30px;line-height:36px;letter-spacing:0}
+.txc figcaption em{display:block;font-family:var(--num);font-style:normal;font-weight:700;
+  font-size:16px;line-height:19px;letter-spacing:0;margin-top:12px}
+.programs .addon{border:0;padding:0;margin:50px 0 0;display:block}
+.programs .addon h4{font-family:var(--sans);font-weight:400;font-size:29.17px;line-height:35px;
+  letter-spacing:.05em;color:var(--clay);margin:0 0 24px}
+.programs .addon p{font-size:18px;line-height:30px;letter-spacing:0;color:#4D4D4D;margin:0}
+.programs .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:50px}
+.programs .opt{border:1px solid var(--line);padding:31px 21px 1px}
+.programs .opt h5{font-family:var(--sans);font-weight:400;font-size:30px;line-height:36px;
+  letter-spacing:0;color:#4D4D4D;margin:0}
+.programs .opt em{display:block;font-family:var(--num);font-style:normal;font-weight:700;
+  font-size:16px;line-height:19px;letter-spacing:0;color:#4D4D4D;margin:12px 0 24px}
+.programs .opt p{font-size:18px;line-height:30px;letter-spacing:0;color:#4D4D4D;margin:0}
 
 @media (max-width:860px){
+  .programs{padding:48px 0}
   .programs .phead{margin-bottom:48px}
+  .programs .phead .h-zh{margin:18px 0 10px}
   .programs .pbody{max-width:none}
   .txgrid{grid-template-columns:1fr}
   .txc,.txc.wide{aspect-ratio:366/302}
