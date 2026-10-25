@@ -49,7 +49,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 /* 設計稿 1440x850（比例 1.694）。滿版照片、文字白色壓在左下，與首頁同一套 */
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .hero::after{content:"";position:absolute;inset:0;background:#000;opacity:.18;pointer-events:none}
-.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:11%}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:13%}
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,56px);letter-spacing:.24em;margin:4px 0 26px;color:#fff}
 .hero .en-title{font-size:clamp(64px,10vw,140px);color:#fff}
 .hero p{color:#fff;max-width:30em}
@@ -177,17 +177,59 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-/* ── Programs：依設計稿的兩欄版面（放在最後，避免被前面的 .tx 規則蓋掉）── */
-/* 設計稿：左標題（x84–608）／右卡片（x620–1365，寬 745）兩欄 */
-.programs .pgrid{display:grid;grid-template-columns:536fr 745fr;gap:12px;align-items:start}
-.programs .phead{position:sticky;top:120px}
-/* 卡片 370x305（比例 1.213），2x2 後接一張滿寬 */
-.plan.eye .tx{grid-template-columns:repeat(2,1fr);gap:8px}
-.plan.eye .tx .card{aspect-ratio:370/305}
-.plan.eye .tx .card.add{grid-column:1 / -1;aspect-ratio:745/304}
+
+/* ═══ 依設計稿 tDBBudTtmnMlCAVrMSA2f3 / 987:1967（1440x9721）══════════
+   數值皆取自節點樹，換算成相對於 1280 內容寬的百分比。 */
+
+/* ── 你是不是也這樣：左照片 592x771 / 右內容 546 寬，間距 100 ── */
+.foryou .grid{display:grid;grid-template-columns:592fr 546fr;gap:100px;align-items:start}
+.fy-photo img{width:100%;aspect-ratio:592/771;object-fit:cover;display:block}
+.fy-body .h-zh{margin:0 0 22px}
+.fy-body .lede{margin:0 0 46px}
+.foryou .checks{list-style:none;margin:0;padding:0}
+.foryou .checks li{display:grid;grid-template-columns:1fr auto;align-items:baseline;
+  gap:10px;padding:0 0 22px;font-size:24px;line-height:29px;color:var(--ink)}
+.foryou .checks .n{display:block;grid-column:1/-1;font-family:var(--en);font-style:italic;
+  font-size:36px;line-height:43px;color:var(--clay);opacity:.75;margin-bottom:4px}
+
+/* ── Programs：標題滿寬在上，卡片靠右（設計稿 x621–1363，寬 742）── */
+.programs .phead{margin-bottom:100px}
+.programs .phead .h-zh{margin:18px 0 10px}
+.programs .pbody{max-width:742px;margin-left:auto}
+.txgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.txc{position:relative;margin:0;overflow:hidden;aspect-ratio:366/302}
+.txc.wide{grid-column:1/-1;aspect-ratio:742/300}
+.txc img{width:100%;height:100%;object-fit:cover;display:block}
+/* 白字壓在照片上，底部加一層漸層確保任何照片都讀得到 */
+.txc::after{content:"";position:absolute;inset:auto 0 0 0;height:52%;
+  background:linear-gradient(to top,rgba(0,0,0,.42),rgba(0,0,0,0));pointer-events:none}
+.txc figcaption{position:absolute;left:20px;bottom:20px;z-index:1;color:#fff;
+  font-size:30px;line-height:36px;letter-spacing:.04em}
+.txc figcaption em{display:block;font-family:var(--util);font-style:normal;
+  font-size:16px;line-height:19px;letter-spacing:.1em;margin-top:12px}
+.programs .addon{border:0;padding:0;margin:40px 0 0;display:block}
+.programs .addon h4{font-family:var(--serif);font-weight:400;font-size:29px;line-height:35px;
+  letter-spacing:.06em;color:var(--clay);margin:0 0 24px}
+.programs .addon p{font-size:18px;line-height:30px;color:var(--ink-soft);margin:0}
+.programs .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:36px}
+.programs .opt{border:1px solid var(--line);padding:31px 21px}
+.programs .opt h5{font-family:var(--serif);font-weight:400;font-size:30px;line-height:36px;margin:0}
+.programs .opt em{display:block;font-family:var(--util);font-style:normal;font-size:16px;
+  line-height:19px;letter-spacing:.1em;color:var(--ink-soft);margin:8px 0 18px}
+.programs .opt p{font-size:18px;line-height:30px;color:var(--ink-soft);margin:0}
+
 @media (max-width:860px){
-  .programs .pgrid{grid-template-columns:1fr;gap:40px}
-  .programs .phead{position:static}
+  .foryou .grid{grid-template-columns:1fr;gap:40px}
+  .foryou .checks li{font-size:18px;line-height:26px}
+  .foryou .checks .n{font-size:26px;line-height:32px}
+  .programs .phead{margin-bottom:48px}
+  .programs .pbody{max-width:none}
+  .txgrid{grid-template-columns:1fr}
+  .txc,.txc.wide{aspect-ratio:366/302}
+  .txc figcaption{font-size:22px;line-height:28px}
+  .txc figcaption em{font-size:13px}
+  .programs .opts{grid-template-columns:1fr}
+  .programs .opt h5{font-size:22px}
 }
 </style>
 </head>
@@ -209,7 +251,7 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 
 <!-- 1. HERO -->
 <section class="hero">
-  <img class="hero-bg" src="{{IMG}}hero-portrait.jpg" alt="">
+  <img class="hero-bg" src="{{IMG}}cult-hero.webp" alt="">
   <div class="wrap">
     <div class="copy">
       <div class="en-title">Experience</div>
@@ -222,59 +264,50 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 <!-- 2. FOR YOU -->
 <section class="foryou">
   <div class="wrap grid">
-    <div class="reveal">
-      <div class="eyebrow">For You</div>
-      <h2 class="h-zh" style="margin:14px 0 18px">你是不是也這樣？</h2>
+    <div class="fy-photo reveal"><img src="{{IMG}}cult-leaf.webp" alt=""></div>
+    <div class="fy-body reveal">
+      <h2 class="h-zh">你是不是也這樣？</h2>
       <p class="lede">勾起來最多的那幾項，就是你的起點。標了加選的兩項，需要在養膚之外另外安排。</p>
+      <ul class="checks">
+        <li><span class="n">01</span>想開始養膚，但不知道從哪裡開始</li>
+        <li><span class="n">02</span>膚況說不上不好，總覺得少了一點光澤</li>
+        <li><span class="n">03</span>乾燥、粗糙，上妝不服貼</li>
+        <li><span class="n">04</span>毛孔、暗沉、膚色不均</li>
+        <li><span class="n">05</span>眼周開始有細紋，看起來比較疲倦</li>
+        <li><span class="n">06</span>臉部整體鬆弛，膚況不如以前緊實<span class="tag lift">＋電波</span></li>
+        <li><span class="n">07</span>下顎線、輪廓線條不如以前清楚<span class="tag lift">＋音波</span></li>
+      </ul>
     </div>
-    <ul class="checks reveal">
-      <li><span class="n">01</span>想開始養膚，但不知道從哪裡開始</li>
-      <li><span class="n">02</span>膚況說不上不好，總覺得少了一點光澤</li>
-      <li><span class="n">03</span>乾燥、粗糙，上妝不服貼</li>
-      <li><span class="n">04</span>毛孔、暗沉、膚色不均</li>
-      <li><span class="n">05</span>眼周開始有細紋，看起來比較疲倦</li>
-      <li><span class="n">06</span>臉部整體鬆弛，膚況不如以前緊實<span class="tag lift">＋電波</span></li>
-      <li><span class="n">07</span>下顎線、輪廓線條不如以前清楚<span class="tag lift">＋音波</span></li>
-    </ul>
   </div>
 </section>
 
 <!-- 3. PROGRAMS -->
 <section class="programs">
-  <div class="wrap pgrid">
+  <div class="wrap">
     <div class="phead reveal">
       <div class="en-title">Programs</div>
-      <h2 class="h-zh" style="margin-top:18px">四項養膚，加上眼周的照顧</h2>
+      <h2 class="h-zh">四項養膚，加上眼周的照顧</h2>
       <p class="lede">從保濕、膚色到膚質，四個層次一次照顧完整。</p>
     </div>
-    <div class="pbody">
 
-    <div class="plans reveal">
-      <article class="plan eye">
-        <h3>蘊膚計畫</h3>
-        <p class="for">四項療程之外，再加上專為眼周設計的音波。</p>
-        <div class="tx">
-          <div class="card"><img src="{{IMG}}device-hydra.webp" alt=""><span>海飛秀<em>Hydrafacial</em></span></div>
-          <div class="card"><img src="{{IMG}}device-pico.webp" alt=""><span>皮秒雷射<em>Picosecond</em></span></div>
-          <div class="card"><img src="{{IMG}}device-water.webp" alt=""><span>水光針<em>Skin Booster</em></span></div>
-          <div class="card"><img src="{{IMG}}device-dermapen.webp" alt=""><span>微針筆<em>Dermapen</em></span></div>
-          <div class="card add"><div class="ring"></div><span>海芙音波<em>Eye · 200</em></span></div>
-        </div>
-        <p class="note">眼周皮膚較薄，我們用專門的方式另外照顧，與全臉音波分開規劃。</p>
-      </article>
-    </div>
+    <div class="pbody reveal">
+      <div class="txgrid">
+        <figure class="txc"><img src="{{IMG}}cult-tx-hydra.webp" alt=""><figcaption>海飛秀<em>Hydrafacial</em></figcaption></figure>
+        <figure class="txc"><img src="{{IMG}}cult-tx-pico.webp" alt=""><figcaption>皮秒雷射<em>Picosecond</em></figcaption></figure>
+        <figure class="txc"><img src="{{IMG}}cult-tx-water.webp" alt=""><figcaption>水光針<em>Skin Booster</em></figcaption></figure>
+        <figure class="txc"><img src="{{IMG}}cult-tx-dermapen.webp" alt=""><figcaption>微針筆<em>Dermapen</em></figcaption></figure>
+        <figure class="txc wide"><img src="{{IMG}}cult-tx-eye.webp" alt=""><figcaption>海芙音波<em>Eye 200</em></figcaption></figure>
+      </div>
 
-    <div class="addon reveal">
-      <div class="plus">+</div>
-      <div class="addon-head">
+      <div class="addon">
         <h4>進階加選</h4>
         <p>如果你也很在意臉部，體驗之外還可以再加選電波或音波，安排在養膚療程之後——先把膚質養好，再加一層支撐。兩者作用的層次不同，適合哪一種，會由醫師面診評估。</p>
       </div>
+
       <div class="opts">
-        <div class="opt"><span class="tag lift">加選</span><h5>全臉電波</h5><em>RF Treatment</em><p>熱能作用在真皮層，著重整體的緊緻與膚質細緻度。適合在意臉部整體鬆弛的你。</p></div>
-        <div class="opt"><span class="tag lift">加選</span><h5>全臉音波</h5><em>Ultrasound</em><p>能量聚焦在更深的筋膜層，著重輪廓與線條的支撐。適合在意下顎線、輪廓的你。</p></div>
+        <div class="opt"><h5>全臉電波</h5><em>RF Treatment</em><p>熱能作用在真皮層，著重整體的緊緻與膚質細緻度。適合在意臉部整體鬆弛的你。</p></div>
+        <div class="opt"><h5>全臉音波</h5><em>Ultrasound</em><p>能量聚焦在更深的筋膜層，著重輪廓與線條的支撐。適合在意下顎線、輪廓的你。</p></div>
       </div>
-    </div>
     </div>
   </div>
 </section>
