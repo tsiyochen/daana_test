@@ -231,6 +231,30 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
   .programs .opts{grid-template-columns:1fr}
   .programs .opt h5{font-size:22px}
 }
+
+/* ── Rhythm：設計稿三欄 —— 橢圓 366 ／ 文字 322 ／ 照片 466，間距 65 ── */
+.rhythm .rhead{margin-bottom:60px}
+.rhythm .rhead .h-zh{margin:18px 0 10px}
+.rgrid{display:grid;grid-template-columns:366fr 322fr 466fr;gap:65px;align-items:start}
+.ovs svg{width:100%;height:auto;overflow:visible}
+.ovs .ov{fill:none;stroke:var(--line);stroke-width:1}
+.ovs .lbl-en{font-family:var(--en);font-size:32px;fill:var(--ink-soft)}
+.rhythm .visits{display:grid;gap:61px;padding-top:35px}
+.rhythm .visit .when{font-size:24px;line-height:29px;color:var(--clay);margin-bottom:16px}
+.rhythm .visit h4{font-family:var(--serif);font-weight:400;font-size:36px;line-height:40px;margin:0 0 16px}
+.rhythm .visit p{font-size:18px;line-height:30px;color:var(--ink-soft);margin:0}
+.rphoto img{width:100%;aspect-ratio:466/699;object-fit:cover;display:block}
+.rhythm .rules{margin-top:46px;border-top:0;padding-top:0;max-width:852px;margin-left:auto}
+@media (max-width:860px){
+  .rgrid{grid-template-columns:1fr;gap:36px}
+  .ovs{display:none}
+  .rhythm .visits{gap:32px;padding-top:0}
+  .rhythm .visit h4{font-size:26px;line-height:32px}
+  .rhythm .visit .when{font-size:17px;line-height:22px}
+  .rhythm .rules{margin-left:0}
+}
+/* 你是不是也這樣：設計稿 592+546，容器 1280 → 間距 142 才對得上 */
+.foryou .grid{gap:142px}
 </style>
 </head>
 <body>
@@ -315,38 +339,39 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 <!-- 4. RHYTHM -->
 <section class="rhythm" id="rhythm">
   <div class="wrap">
-    <div class="head reveal">
-      <div>
-        <div class="en-title">Rhythm</div>
-        <h2 class="h-zh" style="margin-top:18px">分兩到三次，約三個月完成</h2>
-      </div>
-      <div>
-        <p class="lede">每次間隔約一到兩個月，讓皮膚在兩次之間有時間修復。點選下方，看看你的體驗會怎麼排。</p>
-        <div class="switch" role="group" aria-label="切換體驗">
-          <button type="button" data-k="rf" class="lift" aria-pressed="false">＋電波</button>
-          <button type="button" data-k="hifu" class="lift" aria-pressed="false">＋音波</button>
-        </div>
+    <div class="rhead reveal">
+      <div class="en-title">Rhythm</div>
+      <h2 class="h-zh">分兩到三次，約三個月完成</h2>
+      <p class="lede">每次間隔約一到兩個月，讓皮膚在兩次之間有時間修復。點選下方，看看你的體驗會怎麼排。</p>
+      <div class="switch" role="group" aria-label="切換體驗">
+        <button type="button" data-k="rf" class="lift" aria-pressed="false">＋電波</button>
+        <button type="button" data-k="hifu" class="lift" aria-pressed="false">＋音波</button>
       </div>
     </div>
 
-    <div class="track reveal" id="track">
-      <svg viewBox="0 0 1200 220" aria-hidden="true">
-        <ellipse class="ov" cx="150" cy="110" rx="150" ry="100"/>
-        <ellipse class="ov" cx="450" cy="110" rx="150" ry="100"/>
-        <ellipse class="ov" cx="750" cy="110" rx="150" ry="100"/>
-        <ellipse class="ov lift fade hide" id="ovLift" cx="1050" cy="110" rx="150" ry="100"/>
-        <text class="lbl-en" x="150" y="120" text-anchor="middle">Visit 01</text>
-        <text class="lbl-en" x="450" y="120" text-anchor="middle">Visit 02</text>
-        <text class="lbl-en" x="750" y="120" text-anchor="middle">Visit 03</text>
-        <text class="lbl-en fade hide" id="txLift" x="1050" y="120" text-anchor="middle" style="fill:#B8624B">Support</text>
-      </svg>
+    <div class="rgrid reveal">
+      <!-- 設計稿 987:2047：三個垂直堆疊且互相重疊的橢圓（x56–466、y485–1170） -->
+      <div class="ovs">
+        <svg viewBox="0 0 410 905" aria-hidden="true">
+          <ellipse class="ov" cx="205" cy="135" rx="199" ry="134"/>
+          <ellipse class="ov" cx="205" cy="331" rx="202" ry="143"/>
+          <ellipse class="ov" cx="205" cy="533" rx="205" ry="152"/>
+          <ellipse class="ov lift fade hide" id="ovLift" cx="205" cy="745" rx="205" ry="152"/>
+          <text class="lbl-en" x="205" y="147" text-anchor="middle">Visit 1</text>
+          <text class="lbl-en" x="205" y="343" text-anchor="middle">Visit 2</text>
+          <text class="lbl-en" x="205" y="545" text-anchor="middle">Visit 3</text>
+          <text class="lbl-en fade hide" id="txLift" x="205" y="757" text-anchor="middle">Support</text>
+        </svg>
+      </div>
+
       <div class="visits">
         <div class="visit"><div class="when">第 1 次</div><h4>海飛秀＋雷射</h4><p>先清潔、整理膚色，作為接下來療程的基礎。</p></div>
         <div class="visit"><div class="when">第 2 次 · 約 1–2 個月後</div><h4>水光針＋眼周音波</h4><p>補充水分，讓肌底穩定下來。</p></div>
         <div class="visit"><div class="when">第 3 次 · 約 1–2 個月後</div><h4>微針筆</h4><p>處理膚質與毛孔，完成這一輪養膚。</p></div>
         <div class="visit lift fade hide" id="vLift"><div class="when">養膚之後</div><h4 id="liftName">電波</h4><p>可在第 3 次當天一起進行，或另外安排。</p></div>
       </div>
-      <p class="interval">也可以依你的時間合併成兩次：海飛秀＋雷射＋水光針 → 微針筆</p>
+
+      <div class="rphoto"><img src="{{IMG}}cult-rhythm.webp" alt=""></div>
     </div>
 
     <div class="rules reveal">
