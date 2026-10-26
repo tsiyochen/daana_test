@@ -422,6 +422,95 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   .finfo{flex-direction:column;align-items:flex-start;gap:23px}
   .vline{display:none}
 }
+
+/* ══ 手機版：依設計稿 1212:1083–1272（425 畫板）全面對齊 ═══════════════
+   字級以 425 為基準，窄螢幕用 clamp 收斂（55px ÷ 425 = 12.94vw）。
+   設計稿手機版的英文大標行高是 1.484（55/81.6、64/94.9、50/74.2）。 */
+@media (max-width:860px){
+  .en-title{font-size:clamp(44px,12.94vw,55px);line-height:1.484}
+  .h-zh{font-size:clamp(28px,8.47vw,36px);line-height:1.2;letter-spacing:.05em}
+
+  /* ── HERO 1212:1092（425x473）── */
+  .hero{aspect-ratio:425/473}
+  .hero .en-title{font-size:clamp(40px,11.76vw,50px);line-height:1.484}
+  .hero h1{font-size:clamp(16px,4.71vw,20px);line-height:1.2;letter-spacing:.2em;margin:6px 0 16px}
+  .hero p{font-size:clamp(9px,2.35vw,10px);line-height:1.5;letter-spacing:.05em;max-width:none}
+  .hero .wrap{padding-bottom:10px}
+
+  /* ── PROGRAMS 1212:1125（425x2747）卡片單欄，卡內字級與桌機相同 ── */
+  .programs{padding:20px 0 64px}
+  .programs .phead{margin-bottom:82px}
+  .programs .phead .h-zh{margin:10px 0 0}
+  .programs .h-zh{font-size:clamp(36px,11.29vw,48px)}
+  .programs .lede{margin-top:10px}
+  .txgrid{grid-template-columns:1fr;gap:10px}
+  .txc,.txc.wide{aspect-ratio:366/302}
+  .txc figcaption{font-size:30px;line-height:36px}
+  .txc figcaption em{font-size:16px;line-height:19px}
+  .programs .opts{grid-template-columns:1fr;gap:10px}
+  .programs .opt h5{font-size:30px;line-height:36px}
+
+  /* ── RHYTHM 1212:1175（425x1742）橢圓保留置中、沒有照片、文字在下方 ── */
+  .rhythm{padding:52px 0 81px}
+  .rhythm .rhead{margin-bottom:0}
+  .rhythm .rhead .h-zh{margin:10px 0 0}
+  .rhythm .lede{margin-top:10px}
+  .rgrid{grid-template-columns:1fr;gap:0}
+  .ovs{display:block;grid-column:1;padding-top:24px}
+  .rphoto{display:none}
+  .rhythm .visits{grid-column:1;max-width:70.6%;margin:0 auto;gap:61px;padding-top:34px}
+  .rhythm .visit h4{font-size:30px;line-height:40px}
+  .rhythm .visit .when{font-size:24px;line-height:28.8px}
+  .rhythm .rules{margin-top:46px;margin-left:0;max-width:none}
+  .rhythm .rules h4{font-size:30px;line-height:36px}
+
+  /* ── AFTER EACH VISIT 1212:1214（425x1288）時間軸改成垂直 ── */
+  .feel{padding:40px 0 40px}
+  .feel .h-zh{margin:10px 0 0 10px}
+  .feel .wrap{display:grid;grid-template-columns:20px 21px 42px 1fr;row-gap:114px}
+  .feel .wrap>.reveal:first-child{grid-column:1/-1}
+  .feel .timeline{display:block;grid-column:2;grid-row:2;width:21px;height:auto;margin:0}
+  .feel .timeline::before{content:"";position:absolute;left:10px;right:auto;
+    top:34px;bottom:34px;width:1px;height:auto;border-top:0;background:var(--sage)}
+  .feel .timeline i:nth-child(1){top:24px;left:0}
+  .feel .timeline i:nth-child(2){top:50%;left:0;margin:-10.5px 0 0}
+  .feel .timeline i:nth-child(3){top:auto;bottom:24px;left:0}
+  .days{grid-column:4;grid-row:2;grid-template-columns:1fr;gap:124px;margin:0;border-top:0}
+  .day h4{font-size:30px;line-height:40px;margin:21px 0 20px}
+
+  /* ── 走完一輪 1212:1246（425x975）圓圈維持 135，文字 18/28 ── */
+  .after .awrap{grid-template-columns:1fr;padding:60px 40px}
+  .after .acopy{padding:0 0 34px}
+  .after .acopy .lede{margin-top:34px;font-size:18px;line-height:30px}
+  .after .apaths{aspect-ratio:auto;padding:0;align-content:start;justify-content:start}
+  .paths{gap:min(80px,18.82vw)}
+  .paths div{grid-template-columns:min(135px,31.76vw) 1fr;gap:min(43px,10.12vw);align-items:center}
+  .paths i{width:min(135px,31.76vw);height:min(135px,31.76vw);font-size:30px;line-height:36px;
+    font-family:var(--num);font-style:italic;font-weight:200}
+  .paths span{font-size:18px;line-height:28px;letter-spacing:.05em}
+
+  /* ── FAQ 1212:1262（425x1159）標題 64、題 18/21.6、答 13/20 ── */
+  .faq{padding:30px 0 80px}
+  .faq .en-title{font-size:clamp(50px,15.06vw,64px)}
+  .faq .fitems{margin-top:43px}
+  summary{padding:31px 0;gap:4px;font-size:18px;line-height:21.6px;letter-spacing:0}
+  summary::after{font-size:18px;line-height:21.6px}
+  details[open] summary{padding-bottom:20px}
+  details p{padding:0 0 31px;font-size:13px;line-height:20px;letter-spacing:.01em;max-width:294px}
+
+  /* ── CONTACT 1212:1272（425x1094）── */
+  .contact{padding:30px 0 40px}
+  .contact .en-title{font-size:clamp(50px,15.06vw,64px)}
+  .cbody{padding-left:0;margin-top:44px}
+  .contact .intro{font-size:16px;line-height:30px;letter-spacing:.01em;max-width:none}
+  .contact .btns{margin:106px 0 0 50px;gap:30px}
+  .contact .btn{min-width:213px;height:64px;font-size:20px;letter-spacing:.1em}
+  .finfo{margin-top:106px;gap:23px}
+  .foot-logo .logo-svg{height:49px}
+  .info{font-size:20px;line-height:40px;letter-spacing:.01em}
+  .map{font-size:16px;line-height:25px}
+  .contact .legal{margin-top:116px;font-size:14px;line-height:25px;letter-spacing:.05em}
+}
 </style>
 </head>
 <body>
