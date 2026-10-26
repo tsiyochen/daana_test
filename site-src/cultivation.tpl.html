@@ -191,6 +191,7 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 .foryou .fy-photo{grid-column:1;grid-row:1/3;margin-top:80px;position:relative}
 .foryou .fy-head{grid-column:2;grid-row:1}
 .foryou .checks{grid-column:2;grid-row:2}
+.fy-photo picture{display:block}
 .fy-photo img{width:100%;aspect-ratio:592/771;object-fit:cover;display:block}
 .fy-photo::after{content:"";position:absolute;inset:0;background:#4D4D4D;opacity:.40;pointer-events:none}
 .fy-head .h-zh{margin:0 0 22px}
@@ -219,6 +220,7 @@ details p{padding:0 0 24px;font-size:14px;color:var(--ink-soft);max-width:38em}
 .txgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .txc{position:relative;margin:0;overflow:hidden;aspect-ratio:366/302}
 .txc.wide{grid-column:1/-1;aspect-ratio:742/300}
+.txc picture{display:block;width:100%;height:100%}
 .txc img{width:100%;height:100%;object-fit:cover;display:block}
 /* 設計稿是整張照片壓一層 30% #4D4D4D，不是底部漸層 */
 .txc::after{content:"";position:absolute;inset:0;background:#4D4D4D;opacity:.30;pointer-events:none}
@@ -458,7 +460,10 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   .rgrid{grid-template-columns:1fr;gap:0}
   .ovs{display:block;grid-column:1;padding-top:24px}
   .rphoto{display:none}
-  .rhythm .visits{grid-column:1;max-width:70.6%;margin:0 auto;gap:61px;padding-top:34px}
+  .rhythm .visits{grid-column:1;max-width:70.6%;margin:0 auto;gap:61px;padding-top:34px;
+    border-left:0}
+  .rhythm .visit{padding:0}
+  .rhythm .visit::before{display:none}
   .rhythm .visit h4{font-size:30px;line-height:40px}
   .rhythm .visit .when{font-size:24px;line-height:28.8px}
   .rhythm .rules{margin-top:46px;margin-left:0;max-width:none}
@@ -475,7 +480,8 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   .feel .timeline i:nth-child(1){top:24px;left:0}
   .feel .timeline i:nth-child(2){top:50%;left:0;margin:-10.5px 0 0}
   .feel .timeline i:nth-child(3){top:auto;bottom:24px;left:0}
-  .days{grid-column:4;grid-row:2;grid-template-columns:1fr;gap:124px;margin:0;border-top:0}
+  .days{grid-column:4;grid-row:2;grid-template-columns:1fr;gap:124px;margin:0;
+    border-top:0;border-left:0;padding-left:0}
   .day h4{font-size:30px;line-height:40px;margin:21px 0 20px}
 
   /* ── 走完一輪 1212:1246（425x975）圓圈維持 135，文字 18/28 ── */
@@ -531,7 +537,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
 
 <!-- 1. HERO -->
 <section class="hero">
-  <img class="hero-bg" src="{{IMG}}cult-hero.webp" alt="">
+  <picture><source media="(max-width:860px)" srcset="{{IMG}}cult-hero-m.webp"><img class="hero-bg" src="{{IMG}}cult-hero.webp" alt=""></picture>
   <div class="wrap">
     <div class="copy">
       <div class="en-title">Experience</div>
@@ -544,7 +550,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
 <!-- 2. FOR YOU -->
 <section class="foryou">
   <div class="wrap grid">
-    <div class="fy-photo reveal"><img src="{{IMG}}cult-leaf.webp" alt=""></div>
+    <div class="fy-photo reveal"><picture><source media="(max-width:860px)" srcset="{{IMG}}cult-leaf-m.webp"><img src="{{IMG}}cult-leaf.webp" alt=""></picture></div>
     <div class="fy-head reveal">
       <h2 class="h-zh">你是不是也這樣？</h2>
       <p class="lede">勾起來最多的那幾項，就是你的起點。標了加選的兩項，需要在養膚之外另外安排。</p>
@@ -576,7 +582,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
         <figure class="txc"><img src="{{IMG}}cult-tx-pico.webp" alt=""><figcaption>皮秒雷射<em>Picosecond</em></figcaption></figure>
         <figure class="txc"><img src="{{IMG}}cult-tx-water.webp" alt=""><figcaption>水光針<em>Skin Booster</em></figcaption></figure>
         <figure class="txc"><img src="{{IMG}}cult-tx-dermapen.webp" alt=""><figcaption>微針筆<em>Dermapen</em></figcaption></figure>
-        <figure class="txc wide"><img src="{{IMG}}cult-tx-eye.webp" alt=""><figcaption>海芙音波<em>Eye 200</em></figcaption></figure>
+        <figure class="txc wide"><picture><source media="(max-width:860px)" srcset="{{IMG}}cult-tx-eye-m.webp"><img src="{{IMG}}cult-tx-eye.webp" alt=""></picture><figcaption>海芙音波<em>Eye 200</em></figcaption></figure>
       </div>
 
       <div class="addon">
