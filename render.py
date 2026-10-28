@@ -104,9 +104,14 @@ def main():
         dst_img.mkdir(parents=True, exist_ok=True)
         n = 0
         for f in IMAGES.iterdir():
-            if f.suffix.lower() in {".jpg", ".png", ".webp", ".svg", ".ico"}:
-                shutil.copy2(f, dst_img / f.name)
-                n += 1
+            if f.suffix.lower() not in {".jpg", ".png", ".webp", ".svg", ".ico"}:
+                continue
+            # 蘊膚頁未上線時，它專用的圖（cult-*）不要跟著進正式站
+            if (dst_img == DIST / "images" and not CULTIVATION_LIVE
+                    and f.name.startswith("cult-")):
+                continue
+            shutil.copy2(f, dst_img / f.name)
+            n += 1
         print(f"── 複製 {n} 張圖片到 {dst_img.relative_to(ROOT)}/ ──")
 
     if PUBLISH:
