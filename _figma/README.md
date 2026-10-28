@@ -52,3 +52,23 @@ curl -s -G -H "X-Figma-Token: $(cat ~/.figma_token)" \
 匯出節點會**連陰影外擴一起算進去**。本專案卡片陰影是 `6/4/16`，
 模糊半徑外擴 32，所以 630×1142 的節點會匯出成 694×1206，
 裁 `(26, 28, 656, 1170)` 才是卡片本體。
+
+## 蘊膚體驗（新檔，2026-10-25 起）
+
+| 檔案 | 內容 |
+|---|---|
+| `cult_desktop.json` | 藴膚體驗 桌機 1440×9721（節點 `987:1967`）|
+| `cult_mobile.json`  | 藴膚體驗 mobile 425×10255（節點 `1212:1082`）|
+
+- fileKey **`tDBBudTtmnMlCAVrMSA2f3`**（舊的 `uqWZJrgq6h8xdkerHJNssf` 已搬走，Page 3 為空）
+- 兩個 frame 都在 Page `16:4` 底下
+
+**`/v1/files/{key}/nodes` 端點被限流到 10/29 18:13**（retry-after 370741 秒）。
+改用 `/v1/files/{key}?depth=N` 取整份文件再自己找節點——那是另一個額度，目前可用：
+
+```bash
+curl -s -H "X-Figma-Token: $(cat ~/.figma_token)" \
+  "https://api.figma.com/v1/files/tDBBudTtmnMlCAVrMSA2f3?depth=14" -o /tmp/d14.json
+```
+
+照片用 `/v1/files/{key}/images` 取 imageRef 對照表（712 張），同樣可用。
