@@ -104,10 +104,14 @@ def main():
         dst_img.mkdir(parents=True, exist_ok=True)
         n = 0
         for f in IMAGES.iterdir():
-            if f.suffix.lower() in {".jpg", ".png", ".webp", ".svg"}:
+            if f.suffix.lower() in {".jpg", ".png", ".webp", ".svg", ".ico"}:
                 shutil.copy2(f, dst_img / f.name)
                 n += 1
         print(f"── 複製 {n} 張圖片到 {dst_img.relative_to(ROOT)}/ ──")
+
+    if PUBLISH:
+        shutil.copy2(IMAGES / "favicon.ico", DIST / "favicon.ico")
+        print("── 複製 favicon.ico 到 dist/ 根目錄（瀏覽器的隱含請求）──")
 
     # 3. 渲染各頁面
     print("\n── 渲染頁面 ──")
