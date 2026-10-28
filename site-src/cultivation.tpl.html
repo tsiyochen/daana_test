@@ -37,7 +37,7 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* test bar + nav */
 .testbar{position:sticky;top:0;z-index:21;height:28px;line-height:16px;background:var(--ink);color:#fff;text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
-.nav{position:sticky;top:28px;z-index:20;background:rgba(233,233,233,.92);backdrop-filter:blur(8px)}
+.nav{background:var(--bg)}   /* 不固定在上方：隨頁面捲走，不遮住內容 */
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
