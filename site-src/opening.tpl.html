@@ -186,8 +186,10 @@ input::placeholder,textarea::placeholder{color:#BCB7B0}
 .wall ul{list-style:none;margin-top:30px;display:grid;gap:12px}
 .wall li{background:var(--cream-warm);padding:24px 24px 20px}
 .wall li p{font-size:14.5px;line-height:2.05;white-space:pre-wrap}
-.wall li cite{display:block;font-style:normal;font-size:10.5px;letter-spacing:var(--track);
-  color:var(--sage-deep);margin-top:16px;text-transform:uppercase}
+/* 署名是客人自己打的名字，不要轉大寫、字距也不要像標籤那麼開 ——
+   「Unaaa」被轉成「UNAAA」會變成在吼人。中文不受影響，英文名會。 */
+.wall li cite{display:block;font-style:normal;font-size:11.5px;letter-spacing:.14em;
+  color:var(--sage-deep);margin-top:16px}
 .wall li.mine{box-shadow:inset 0 0 0 1px var(--sage)}
 
 /* ── 頁尾 ───────────────────────────────── */
