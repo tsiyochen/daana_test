@@ -105,10 +105,6 @@ a{color:inherit}
 .space ul{list-style:none;margin-top:clamp(26px,5.5vw,36px);display:grid;gap:10px}
 .space figure{position:relative}
 .space img{width:100%;aspect-ratio:16/10;object-fit:cover}
-.space figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;
-  background:linear-gradient(to bottom,rgba(50,46,42,0),rgba(50,46,42,.42))}
-.space figcaption{position:absolute;z-index:1;left:14px;bottom:12px;color:#fff;
-  font-size:10.5px;letter-spacing:var(--track);text-shadow:0 1px 6px rgba(0,0,0,.5)}
 /* 單數張時最後一張自己跨滿一整列（跟 KOL 頁一致）。目前只有大門一張，靠這條跨滿 */
 @media (min-width:430px){
   .space ul{grid-template-columns:1fr 1fr}
@@ -245,7 +241,7 @@ footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
       <div class="en">The Space</div>
     </div>
     <ul>
-      <li><figure><img src="{{IMG}}invite-door.jpg" alt="大門"><figcaption>大門</figcaption></figure></li>
+      <li><figure><img src="{{IMG}}invite-door.jpg" alt="診所大門"></figure></li>
     </ul>
   </section>
 
