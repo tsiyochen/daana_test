@@ -352,8 +352,13 @@ const CONFIG = {
 
   // ② Google 表單備援（選填，留空就只走主通道）
   form: {
-    action: "",                      // .../formResponse
-    entry: { attend:"", guests:"", name:"", message:"" },
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSfWewrgYdsKjy11oKi6hoN-LLPwFF0tP5dkMMawdhh1O1wucA/formResponse",
+    entry: {
+      attend:  "entry.1686936176",   // 那天來得了嗎
+      guests:  "entry.1526298603",   // 人數
+      name:    "entry.1699403732",   // 稱呼
+      message: "entry.437091963",    // 留言
+    },
   },
 
   // ③ 舊路：發布成 CSV 的「上牆」分頁。CONFIG.api 有填就用不到。
