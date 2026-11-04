@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>蒔恩美學診所 開幕誌慶｜2026.11.26</title>
+<link rel="icon" href="{{IMG}}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{{IMG}}favicon.ico" sizes="48x48">
+<meta name="theme-color" content="#8CAAA0">
+
+<!-- LINE／社群分享預覽。og:image 必須是絕對網址，LINE 不吃相對路徑。
+     {{BASEURL}} 由 render.py 依環境替換。
+     Canva 的 1200×630 做好後存成 images/og-opening.jpg，把下面三行換掉。 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="蒔恩美學診所 開幕誌慶">
+<meta property="og:description" content="2026.11.26（四）18:30 — 想邀請你來看看我們把它做成了什麼樣子。">
+<meta property="og:image" content="{{BASEURL}}images/invite-cover.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1365">
+<meta property="og:url" content="{{BASEURL}}opening/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+TC:wght@200..400&display=swap" rel="stylesheet">
+<style>
+/* ──────────────────────────────────────────────────────────
+   版型語言取自品牌 IG（post 1-1／1-2）：
+   滿版影像、白字壓圖、頂部三欄小標、中文標題字重極細且字距很開。
+   ────────────────────────────────────────────────────────── */
+:root{
+  --sage:#8CAAA0; --sage-deep:#5B7A70; --sage-mist:#C7D4D0;
+  --cream:#F3ECE6; --cream-warm:#F9F4EF; --white:#fff;
+  --clay:#E39782; --ink:#33322F; --ink-soft:#6B6862;
+  --line:rgba(51,50,47,.13);
+  --sans:"Noto Sans TC",sans-serif;
+  --en:"Cormorant Garamond",serif;
+  --gut:clamp(28px,7.5vw,52px);
+  /* 壓在圖上的小標與標題共用的字距，IG 上是 .3em 上下 */
+  --track:.3em;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream-warm);color:var(--ink);font-family:var(--sans);
+  font-weight:300;font-size:15px;line-height:2.05;letter-spacing:.05em;
+  -webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* 手機是主場景：滿版、不加陰影、不做成「浮在灰底上的卡片」。
+   桌機只是把同一條直欄置中，不另外排版。 */
+.card{max-width:520px;margin:0 auto;background:var(--cream-warm)}
+.pad{padding-inline:var(--gut)}
+.testbar{height:28px;line-height:16px;background:var(--ink);color:#fff;
+  text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
+
+/* 中文標題：字重 250、字距 .24em。
+   字距會在最後一個字右邊多出一塊空白，置中時會看起來偏左 —— 用負 margin 補回來。 */
+.h-cn{font-weight:250;letter-spacing:.24em;line-height:1.8;
+  font-size:clamp(25px,6.8vw,31px)}
+.h-cn.center{text-align:center;margin-right:-.24em}
+
+/* 壓在圖上的頂部三欄小標 */
+.rail{position:absolute;inset:0 0 auto;display:flex;justify-content:space-between;
+  padding:22px var(--gut) 0;font-size:10px;letter-spacing:var(--track);
+  color:#fff;text-transform:uppercase;z-index:2;font-weight:300}
+.rail span:nth-child(2){opacity:.85}
+
+/* ── 封面 ───────────────────────────────── */
+.cover{position:relative;background:#6E7A62}
+.cover>img{width:100%;height:clamp(460px,86vh,760px);height:clamp(460px,86svh,760px);object-fit:cover;object-position:50% 50%}
+/* 下方加一層由透明到深的罩，白字才站得住。純 CSS，不動原圖。 */
+.cover .scrim{position:absolute;inset:auto 0 0;height:62%;
+  background:linear-gradient(to bottom,rgba(45,54,42,0) 0%,rgba(45,54,42,.42) 58%,rgba(45,54,42,.64) 100%)}
+.cover .fg{position:absolute;inset:auto 0 0;padding:0 var(--gut) clamp(38px,7vw,52px);
+  color:#fff;text-align:center;z-index:2}
+.cover .en{font-family:var(--en);font-size:12.5px;letter-spacing:var(--track);
+  text-transform:uppercase;opacity:.92}
+.cover h1{margin-top:12px}
+.cover .date{margin-top:20px;font-family:var(--en);font-size:25px;letter-spacing:.08em}
+.cover .date span{display:block;font-family:var(--sans);font-size:11.5px;
+  letter-spacing:var(--track);margin-top:8px;opacity:.9;margin-right:-.3em}
+
+/* ── 文字段落 ───────────────────────────── */
+.words{padding-block:clamp(52px,11vw,76px) clamp(48px,10vw,70px);color:var(--ink-soft)}
+.words p+p{margin-top:1.5em}
+.words .sign{margin-top:2.2em;color:var(--ink);letter-spacing:.14em}
+
+/* ── 品牌概念：滿版花瓣 + 白字 ──────────── */
+.concept{position:relative;background:#CBB8AC}
+.concept>img{width:100%;height:clamp(520px,78vh,680px);height:clamp(520px,78svh,680px);object-fit:cover;object-position:50% 42%}
+.concept .scrim{position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(70,58,50,.22) 0%,rgba(70,58,50,0) 34%,rgba(70,58,50,.5) 100%)}
+.concept .fg{position:absolute;inset:auto 0 0;padding:0 var(--gut) clamp(40px,8vw,56px);color:#fff;z-index:2}
+.concept p{margin-top:18px;font-size:14px;line-height:2.15;opacity:.95}
+
+/* ── 空間 ───────────────────────────────── */
+.space{padding:clamp(56px,12vw,80px) 0 clamp(40px,8vw,56px)}
+.space .lead{text-align:center}
+.space .lead .en{font-family:var(--en);font-size:12px;letter-spacing:var(--track);
+  color:var(--sage-deep);text-transform:uppercase;margin-right:-.3em}
+.space .lead h2{margin-top:8px}
+.space .lead p{margin-top:16px;font-size:14px;color:var(--ink-soft)}
+.space ul{list-style:none;margin-top:clamp(26px,5.5vw,36px);display:grid;gap:10px}
+.space figure{position:relative}
+.space img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.space figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;
+  background:linear-gradient(to bottom,rgba(50,46,42,0),rgba(50,46,42,.42))}
+.space figcaption{position:absolute;z-index:1;left:14px;bottom:12px;color:#fff;
+  font-size:10.5px;letter-spacing:var(--track);text-shadow:0 1px 6px rgba(0,0,0,.5)}
+/* 單數張時最後一張自己跨滿一整列（跟 KOL 頁一致）；目前是四張，用不到 */
+@media (min-width:430px){
+  .space ul{grid-template-columns:1fr 1fr}
+  .space li:last-child:nth-child(odd){grid-column:1/-1}
+  .space li:last-child:nth-child(odd) img{aspect-ratio:16/9}
+}
+
+/* ── 時間地點 ───────────────────────────── */
+/* 原本是 3.6em 標籤欄 + 內容的兩欄 grid，375px 寬時地址被擠成三行很難看。
+   改成標籤在上、內容在下，兩邊都有完整寬度。 */
+.when{margin-top:clamp(20px,5vw,32px);background:var(--cream);
+  padding:clamp(44px,9vw,60px) var(--gut)}
+.when .row+.row{margin-top:30px;padding-top:30px;border-top:1px solid var(--line)}
+.when .lbl{font-size:10.5px;letter-spacing:var(--track);color:var(--sage-deep);
+  text-transform:uppercase;margin-bottom:10px}
+.when .date{font-family:var(--en);font-size:34px;line-height:1.2;letter-spacing:.04em}
+.when .date span{font-family:var(--sans);font-size:13px;letter-spacing:.2em;
+  color:var(--ink-soft);margin-left:14px}
+.when .time b{font-weight:300;font-family:var(--en);font-size:24px;letter-spacing:.04em}
+.when .time i{font-style:normal;color:var(--ink-soft);font-size:13px;margin-left:.6em}
+.when .time em{font-style:normal;color:var(--line);margin:0 .9em;font-size:20px}
+.when .where{font-size:15px}
+.when .map{display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+  font-size:11px;letter-spacing:var(--track);color:var(--sage-deep);text-decoration:none;
+  border-bottom:1px solid var(--sage-mist);padding-bottom:4px}
+.when .map svg{width:9px;height:12px}
+.when .go{font-size:14px;color:var(--ink-soft)}
+.when .go b{display:block;font-weight:400;color:var(--ink);font-size:11px;
+  letter-spacing:var(--track);margin:18px 0 6px}
+
+/* ── 回覆表單 ───────────────────────────── */
+.rsvp{padding-block:clamp(56px,12vw,80px) clamp(52px,10vw,72px)}
+.rsvp .en{font-family:var(--en);font-size:12px;letter-spacing:var(--track);
+  color:var(--sage-deep);text-transform:uppercase}
+.rsvp h2{margin-top:8px}
+.rsvp .note{font-size:13.5px;color:var(--ink-soft);margin-top:14px}
+.field{margin-top:32px}
+.field>label{display:block;font-size:10.5px;letter-spacing:var(--track);
+  color:var(--sage-deep);text-transform:uppercase;margin-bottom:12px}
+.pills{display:flex;gap:10px}
+.pills label{flex:1}
+.pills input{position:absolute;opacity:0;pointer-events:none}
+.pills span{display:block;text-align:center;padding:16px 0;font-size:14px;letter-spacing:.14em;
+  background:var(--white);border:1px solid var(--line);border-radius:999px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s}
+.pills input:checked+span{background:var(--sage);border-color:var(--sage);color:#fff}
+.pills input:focus-visible+span{outline:2px solid var(--sage-deep);outline-offset:2px}
+input[type=text],input[type=number],textarea{width:100%;font:inherit;font-size:15px;
+  color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:3px;
+  padding:15px 16px;letter-spacing:.05em;line-height:1.9}
+textarea{min-height:140px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--sage)}
+input::placeholder,textarea::placeholder{color:#BCB7B0}
+#guests-field{display:none}
+#guests-field.on{display:block}
+.send{width:100%;margin-top:38px;padding:19px 0;font:inherit;font-weight:300;font-size:14px;
+  letter-spacing:var(--track);text-indent:var(--track);color:#fff;background:var(--clay);
+  border:0;border-radius:999px;cursor:pointer;transition:opacity .2s}
+.send:hover{opacity:.88}
+.send[disabled]{opacity:.5;cursor:default}
+.err{margin-top:16px;font-size:13px;color:#A8513C;display:none}
+.err.on{display:block}
+.thanks{display:none;text-align:center;padding:64px 0}
+.thanks.on{display:block}
+.thanks .en{font-family:var(--en);font-size:13px;letter-spacing:var(--track);
+  color:var(--sage-deep);margin-right:-.3em}
+.thanks p{font-size:15px;margin-top:16px;color:var(--ink-soft)}
+
+/* ── 留言牆 ─────────────────────────────── */
+.wall{background:var(--sage-mist);padding:clamp(52px,11vw,72px) var(--gut);display:none}
+.wall.on{display:block}
+.wall .en{font-family:var(--en);font-size:12px;letter-spacing:var(--track);
+  color:var(--sage-deep);text-transform:uppercase}
+.wall h2{margin-top:8px}
+.wall ul{list-style:none;margin-top:30px;display:grid;gap:12px}
+.wall li{background:var(--cream-warm);padding:24px 24px 20px}
+.wall li p{font-size:14.5px;line-height:2.05;white-space:pre-wrap}
+.wall li cite{display:block;font-style:normal;font-size:10.5px;letter-spacing:var(--track);
+  color:var(--sage-deep);margin-top:16px;text-transform:uppercase}
+.wall li.mine{box-shadow:inset 0 0 0 1px var(--sage)}
+
+/* ── 頁尾 ───────────────────────────────── */
+footer{text-align:center;padding:clamp(52px,11vw,72px) var(--gut) clamp(56px,12vw,76px)}
+footer .logo-svg{height:40px;width:auto;margin:0 auto;color:var(--sage-deep)}
+footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="testbar">這是測試站</div>
+
+<main class="card">
+
+  <!-- 封面 -->
+  <section class="cover">
+    <div class="rail"><span>Invitation</span><span>2026</span><span>She And</span></div>
+    <img src="{{IMG}}invite-cover.jpg" alt="">
+    <div class="scrim"></div>
+    <div class="fg">
+      <div class="en">Opening Celebration</div>
+      <h1 class="h-cn center">開幕誌慶</h1>
+      <div class="date">2026.11.26<span>星期四　18:30</span></div>
+    </div>
+  </section>
+
+  <!-- 邀請文：草稿，待確認 -->
+  <section class="words pad">
+    <p>這間診所從一張平面圖開始，到現在門推開是什麼味道、光落在哪裡，我們都想了很久。</p>
+    <p>11 月 26 日，我們想請你來看看它做成了什麼樣子。沒有儀式、沒有剪綵，就是一個晚上，和幾杯酒，和想謝的人。</p>
+    <p>如果你那天到不了，留一句話給我們也好。所有的留言我們會印下來，放進開幕當天的花籃裡。</p>
+    <p class="sign">蒔恩美學診所　敬邀</p>
+  </section>
+
+  <!-- 品牌概念：文字原樣取自品牌 IG post 1-2，不要改寫 -->
+  <section class="concept">
+    <div class="rail"><span>About</span><span>&nbsp;</span><span>She And</span></div>
+    <img src="{{IMG}}invite-bloom.jpg" alt="">
+    <div class="scrim"></div>
+    <div class="fg">
+      <h2 class="h-cn">讓美好慢慢長出來</h2>
+      <p>「蒔」是播下，也是培育。</p>
+      <p>好的狀態從來無需刻意用力，它更像一段被溫柔相待的過程 ——
+         每次見面，都比上一次更好一點。</p>
+    </div>
+  </section>
+
+  <!-- 空間 -->
+  <section class="space">
+    <div class="lead pad">
+      <div class="en">The Space</div>
+    </div>
+    <ul>
+      <li><figure><img src="{{IMG}}invite-door.jpg" alt="大門"><figcaption>大門</figcaption></figure></li>
+      <li><figure><img src="{{IMG}}space-2.jpg" alt="櫃檯"><figcaption>櫃檯</figcaption></figure></li>
+      <li><figure><img src="{{IMG}}space-1.jpg" alt="諮詢區"><figcaption>諮詢區</figcaption></figure></li>
+      <li><figure><img src="{{IMG}}space-3.jpg" alt="療程室"><figcaption>療程室</figcaption></figure></li>
+    </ul>
+  </section>
+
+  <!-- 時間地點 -->
+  <section class="when">
+    <div class="row">
+      <p class="lbl">Date</p>
+      <div class="date">2026.11.26<span>星期四</span></div>
+    </div>
+    <div class="row">
+      <p class="lbl">Time</p>
+      <div class="time"><b>18:30</b><i>進場</i><em>/</em><b>19:00</b><i>開始</i></div>
+    </div>
+    <div class="row">
+      <p class="lbl">Place</p>
+      <div class="where">
+        蒔恩美學診所<br>台北市大安區新生南路二段 2 號 7 樓
+        <a class="map" href="https://maps.app.goo.gl/psXZqMfxZtnFEqng8" target="_blank" rel="noopener"><svg viewBox="0 0 11 14" fill="currentColor" aria-hidden="true"><path d="M5.5 0C2.46 0 0 2.46 0 5.5 0 9.62 5.5 14 5.5 14S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"/></svg>開啟地圖</a>
+      </div>
+    </div>
+    <div class="row">
+      <p class="lbl">Access</p>
+      <div class="go">
+        捷運大安森林公園站　2 號出口<br>
+        捷運東門站　5 號出口
+        <b>Parking</b>
+        大樓無專屬車位，鄰近大安森林公園地下停車場。
+      </div>
+    </div>
+  </section>
+
+  <!-- 回覆與留言 -->
+  <section class="rsvp pad" id="rsvp">
+    <form id="form" novalidate>
+      <div class="en">RSVP</div>
+      <h2 class="h-cn">想請你回覆一下</h2>
+      <p class="note">11 月 20 日前回覆，方便我們準備座位與餐點。</p>
+
+      <div class="field">
+        <label>那天來得了嗎</label>
+        <div class="pills">
+          <label><input type="radio" name="attend" value="出席" required><span>我會到</span></label>
+          <label><input type="radio" name="attend" value="不出席"><span>到不了</span></label>
+        </div>
+      </div>
+
+      <div class="field" id="guests-field">
+        <label for="guests">含你一共幾位</label>
+        <input type="number" id="guests" name="guests" min="1" max="20" step="1" value="1" inputmode="numeric">
+      </div>
+
+      <div class="field">
+        <label for="name">你的稱呼（會印在卡片上）</label>
+        <input type="text" id="name" name="name" maxlength="20" placeholder="例：王小姐、蒔恩的老朋友 小陳" required>
+      </div>
+
+      <div class="field">
+        <label for="message">留一句話給蒔恩</label>
+        <textarea id="message" name="message" maxlength="200" placeholder="開幕當天，這段話會印成小卡放進花籃裡。"></textarea>
+      </div>
+
+      <button class="send" type="submit">送出</button>
+      <p class="err" id="err"></p>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <div class="en">Thank You</div>
+      <p id="thanks-msg"></p>
+    </div>
+  </section>
+
+  <!-- 留言牆：讀已發布的 Sheet CSV，只顯示勾選過要上牆的留言 -->
+  <section class="wall" id="wall">
+    <div class="en">Messages</div>
+    <h2 class="h-cn">大家的祝福</h2>
+    <ul id="wall-list"></ul>
+  </section>
+
+  <footer>
+    {{LOGO}}
+    <div class="f">
+      台北市大安區新生南路二段 2 號 7 樓<br>
+      0987-167-852
+    </div>
+  </footer>
+
+</main>
+
+<script>
+/* ──────────────────────────────────────────────────────────
+   送出這件事的原則：客人按一次就結束，不會被要求重打。
+
+   主通道  Apps Script（拿得到成功／失敗的回應，所以程式知道要不要補送）
+   備援    Google 表單（拿不到回應，純粹多送一份保險）
+   暫存    送出的當下先寫進 localStorage，確認送達才清掉；
+           沒送成的下次開頁自動補送，客人不知道發生過。
+
+   設定方式見「開幕邀請卡-設定說明.md」。
+   ────────────────────────────────────────────────────────── */
+const CONFIG = {
+  // ① Apps Script 網頁應用程式網址，/exec 結尾。主通道，也是留言牆的來源。
+  api: "https://script.google.com/macros/s/AKfycby3BtKFNOQVkcKZVf3NZuhYyDUZ6ITBn3zPoqDtKMFijvd70NqBv0n9WMWiXC7v2lXI/exec",
+
+  // ② Google 表單備援（選填，留空就只走主通道）
+  form: {
+    action: "",                      // .../formResponse
+    entry: { attend:"", guests:"", name:"", message:"" },
+  },
+
+  // ③ 舊路：發布成 CSV 的「上牆」分頁。CONFIG.api 有填就用不到。
+  wallCsv: "",
+};
+
+const OUTBOX = 'sheand-opening-outbox';
+const $ = (s) => document.querySelector(s);
+
+/* localStorage 在無痕視窗或封鎖 cookie 時會直接拋錯。
+   這時改用記憶體裡的替身：這次開著的頁面照樣送得出去，
+   只是關掉就補不了 —— 總比整筆當場消失好。 */
+let canStore = (() => {
+  try { localStorage.setItem('_t', '1'); localStorage.removeItem('_t'); return true; }
+  catch (_) { return false; }
+})();
+let memory = [];
+function outbox(v) {
+  if (v === undefined) {
+    if (!canStore) return memory;
+    try { return JSON.parse(localStorage.getItem(OUTBOX) || '[]'); } catch (_) { return memory; }
+  }
+  memory = v;
+  // 寫到一半才失敗（容量滿、使用者中途封鎖）就改走記憶體，讀的時候才不會拿到舊的
+  if (canStore) { try { localStorage.setItem(OUTBOX, JSON.stringify(v)); } catch (_) { canStore = false; } }
+  return v;
+}
+
+function uid() {
+  try { return crypto.randomUUID(); } catch (_) {}
+  return 'x' + Date.now() + Math.random().toString(36).slice(2, 10);
+}
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+/* ── 送出 ────────────────────────────────────────────── */
+
+/* text/plain 不會觸發 CORS 預檢；Apps Script 會 302 轉到 googleusercontent，
+   fetch 自己跟過去，最後那個回應才帶得回 JSON。 */
+async function postApi(item) {
+  const r = await fetch(CONFIG.api, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(item),
+    redirect: 'follow',
+  });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const d = await r.json();
+  if (!d.ok) throw new Error(d.error || 'bad response');
+}
+
+/* 備援只管丟出去，no-cors 拿不到回應，也不該擋住主通道 */
+function postFormBackup(item) {
+  const f = CONFIG.form;
+  if (!f.action || !f.entry.name) return;
+  const fd = new FormData();
+  fd.append(f.entry.attend,  item.attend);
+  fd.append(f.entry.guests,  item.guests);
+  fd.append(f.entry.name,    item.name);
+  fd.append(f.entry.message, item.message);
+  fetch(f.action, { method: 'POST', mode: 'no-cors', body: fd }).catch(() => {});
+}
+
+let flushing = false, again = false;
+/* 把暫存裡還沒送成的逐筆送出。每筆重試三次，間隔拉長；
+   第一次就失敗的話先把備援丟出去，不要等三輪都跑完才送。 */
+async function flush() {
+  if (!CONFIG.api) return;
+  if (flushing) { again = true; return; }   // 送出中又來一筆，等這輪跑完再跑一次
+  flushing = true;
+  try {
+    for (;;) {
+      const list = outbox();
+      if (!list.length) break;
+      const item = list[0];
+
+      let sent = false;
+      for (let i = 0; i < 3 && !sent; i++) {
+        try { await postApi(item); sent = true; }
+        catch (_) {
+          if (i === 0 && !item.backup) {
+            postFormBackup(item);
+            item.backup = true;
+            outbox(outbox().map(x => x.id === item.id ? item : x));
+          }
+          if (i < 2) await sleep(1200 * (i + 1));
+        }
+      }
+      // 確認送達才清掉。送不成就留著，下次開頁再試。
+      if (!sent) break;
+      outbox(outbox().filter(x => x.id !== item.id));
+    }
+  } finally {
+    flushing = false;
+    if (again) { again = false; flush(); }
+  }
+}
+
+/* 選了「到不了」就把人數收起來 —— 問一個不適用的問題會讓人停下來想 */
+document.querySelectorAll('input[name=attend]').forEach(r => {
+  r.addEventListener('change', () => {
+    $('#guests-field').classList.toggle('on', $('input[name=attend]:checked').value === '出席');
+  });
+});
+
+$('#form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const err = $('#err');
+  const attend = document.querySelector('input[name=attend]:checked');
+  const name = $('#name').value.trim();
+  const message = $('#message').value.trim();
+
+  const fail = (t) => { err.textContent = t; err.classList.add('on'); };
+  err.classList.remove('on');
+
+  if (!attend) return fail('先選一下那天來不來得了。');
+  if (!name)   return fail('留個稱呼吧，卡片上要印。');
+  if (!CONFIG.api && !CONFIG.form.action) {
+    return fail('後端還沒接上（CONFIG 是空的），這是預覽版。');
+  }
+
+  const item = {
+    id: uid(),
+    attend: attend.value,
+    guests: attend.value === '出席' ? $('#guests').value : '',
+    name: name,
+    message: message,
+    at: new Date().toISOString(),
+  };
+  outbox(outbox().concat([item]));
+
+  // 先給謝卡再送。網路慢、送失敗、按完就切去別的 App —— 客人都不必知道，
+  // 那筆東西在暫存裡，補得回來。
+  $('#form').style.display = 'none';
+  $('#thanks-msg').textContent = item.attend === '出席'
+    ? '收到了，11 月 26 日見。'
+    : '收到了，你的話我們會印下來，放進那天的花籃裡。';
+  $('#thanks').classList.add('on');
+  if (message) showWall([{ name: name, message: message, mine: true }], true);
+
+  flush();
+});
+
+/* ── 留言牆 ──────────────────────────────────────────── */
+
+/* CSV 解析：留言會有逗號、換行與引號，不能用 split(',') */
+function parseCsv(text) {
+  const rows = [];
+  let row = [], cell = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; }
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === ',') { row.push(cell); cell = ''; }
+    else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+    else if (c !== '\r') cell += c;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows.filter(r => r.some(c => c.trim()));
+}
+
+function showWall(items, prepend) {
+  if (!items.length) return;
+  const ul = $('#wall-list');
+  const nodes = items.map(it => {
+    const li = document.createElement('li');
+    if (it.mine) li.className = 'mine';
+    const p = document.createElement('p');
+    p.textContent = it.message;          // textContent，不用 innerHTML：留言是外來文字
+    const cite = document.createElement('cite');
+    cite.textContent = it.name;
+    li.append(p, cite);
+    return li;
+  });
+  nodes.forEach(li => prepend ? ul.prepend(li) : ul.append(li));
+  $('#wall').classList.add('on');
+  if (prepend) $('#wall').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function loadWall() {
+  if (CONFIG.api) {
+    try {
+      const d = await (await fetch(CONFIG.api)).json();
+      if (d.ok) { showWall(d.messages || []); return; }
+    } catch (_) { /* 掉到下面的 CSV */ }
+  }
+  if (!CONFIG.wallCsv) return;
+  try {
+    const rows = parseCsv(await (await fetch(CONFIG.wallCsv)).text());
+    const head = rows.shift() || [];
+    const iName = Math.max(0, head.findIndex(h => h.includes('署名')));
+    const iMsg  = Math.max(1, head.findIndex(h => h.includes('留言')));
+    showWall(rows
+      .map(r => ({ name: (r[iName] || '').trim(), message: (r[iMsg] || '').trim() }))
+      .filter(it => it.message)
+      .reverse());
+  } catch (_) { /* 抓不到就不顯示留言牆，不要讓邀請卡壞掉 */ }
+}
+
+loadWall();
+flush();        // 上次沒送成的，這次開頁靜靜補送
+</script>
+</body>
+</html>

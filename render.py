@@ -28,6 +28,10 @@ PUBLISH = "--publish" in sys.argv
 # 該頁定稿後把這裡改成 True，跑 python3 render.py --publish 即可。
 CULTIVATION_LIVE = False
 
+# 開幕邀請卡。活動頁，不進導覽列，只靠 LINE 傳連結。
+# 文案與 Google 表單都確認好之後再改成 True，跑 render.py --publish。
+OPENING_LIVE = False
+
 # ── 頁面定義 ────────────────────────────────────────────
 # tpl        site-src 底下的模板
 # test_out   測試站輸出路徑（相對 repo 根目錄）
@@ -35,6 +39,7 @@ CULTIVATION_LIVE = False
 PAGES = [
     dict(tpl="home.tpl.html",        route=""),              # 首頁
     dict(tpl="cultivation.tpl.html", route="cultivation/"),  # 蘊膚計畫
+    dict(tpl="opening.tpl.html",     route="opening/"),      # 開幕邀請卡
 ]
 
 # ── 路徑策略 ────────────────────────────────────────────
@@ -46,6 +51,12 @@ PAGES = [
 LINKS = {
     "index.html": "",
     "treatments.html": "cultivation/",
+}
+
+# og:image 與 og:url 必須是絕對網址（LINE、FB 都不接受相對路徑）
+BASEURL = {
+    "test": "https://tsiyochen.github.io/daana_test/",
+    "prod": "https://sheandclinic.com/",
 }
 
 
@@ -77,6 +88,7 @@ def render(tpl_text, env, depth=0):
     # DOCS 要先插入，它裡面也有 {{IMG}}；順序反了會留下沒換掉的佔位符
     s = s.replace("{{DOCS}}", docs_html())
     s = s.replace("{{IMG}}", up + "images/")
+    s = s.replace("{{BASEURL}}", BASEURL[env])
     s = re.sub(r"\{\{H:([a-z]+)\}\}", lambda m: heading_svg(m.group(1)), s)
     # 導覽連結改寫：換算成從目前頁面出發的相對路徑
     for src, route in LINKS.items():
@@ -106,9 +118,10 @@ def main():
         for f in IMAGES.iterdir():
             if f.suffix.lower() not in {".jpg", ".png", ".webp", ".svg", ".ico"}:
                 continue
-            # 蘊膚頁未上線時，它專用的圖（cult-*）不要跟著進正式站
-            if (dst_img == DIST / "images" and not CULTIVATION_LIVE
-                    and f.name.startswith("cult-")):
+            # 未上線頁面專用的圖不要跟著進正式站
+            if dst_img == DIST / "images" and (
+                    (not CULTIVATION_LIVE and f.name.startswith("cult-"))
+                    or (not OPENING_LIVE and f.name.startswith("invite-"))):
                 continue
             shutil.copy2(f, dst_img / f.name)
             n += 1
@@ -132,6 +145,8 @@ def main():
 
         if PUBLISH:
             if p["route"] == "cultivation/" and not CULTIVATION_LIVE:
+                continue
+            if p["route"] == "opening/" and not OPENING_LIVE:
                 continue
             out_prod = DIST / rel
             out_prod.parent.mkdir(parents=True, exist_ok=True)
