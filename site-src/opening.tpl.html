@@ -109,11 +109,11 @@ a{color:inherit}
   background:linear-gradient(to bottom,rgba(50,46,42,0),rgba(50,46,42,.42))}
 .space figcaption{position:absolute;z-index:1;left:14px;bottom:12px;color:#fff;
   font-size:10.5px;letter-spacing:var(--track);text-shadow:0 1px 6px rgba(0,0,0,.5)}
-/* 單數張時最後一張自己跨滿一整列（跟 KOL 頁一致）；目前是四張，用不到 */
+/* 單數張時最後一張自己跨滿一整列（跟 KOL 頁一致）。目前只有大門一張，靠這條跨滿 */
 @media (min-width:430px){
   .space ul{grid-template-columns:1fr 1fr}
   .space li:last-child:nth-child(odd){grid-column:1/-1}
-  .space li:last-child:nth-child(odd) img{aspect-ratio:16/9}
+  .space li:last-child:nth-child(odd) img{aspect-ratio:16/10}
 }
 
 /* ── 時間地點 ───────────────────────────── */
@@ -246,9 +246,6 @@ footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
     </div>
     <ul>
       <li><figure><img src="{{IMG}}invite-door.jpg" alt="大門"><figcaption>大門</figcaption></figure></li>
-      <li><figure><img src="{{IMG}}space-2.jpg" alt="櫃檯"><figcaption>櫃檯</figcaption></figure></li>
-      <li><figure><img src="{{IMG}}space-1.jpg" alt="諮詢區"><figcaption>諮詢區</figcaption></figure></li>
-      <li><figure><img src="{{IMG}}space-3.jpg" alt="療程室"><figcaption>療程室</figcaption></figure></li>
     </ul>
   </section>
 
