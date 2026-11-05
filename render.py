@@ -26,7 +26,7 @@ PUBLISH = "--publish" in sys.argv
 #   2. 不輸出 dist/cultivation/
 # 測試站不受影響，隨時可以繼續檢視該頁。
 # 該頁定稿後把這裡改成 True，跑 python3 render.py --publish 即可。
-CULTIVATION_LIVE = False
+CULTIVATION_LIVE = True
 
 # 開幕邀請卡。活動頁，不進導覽列，只靠 LINE 傳連結。
 # 文案與 Google 表單都確認好之後再改成 True，跑 render.py --publish。
