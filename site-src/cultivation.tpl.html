@@ -402,7 +402,10 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
 .map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;color:var(--clay);
   font-family:var(--num);font-weight:400;font-size:calc(16px * var(--k));line-height:25px;vertical-align:middle}
 .map svg{width:11px;height:14px;flex:none}
+.ig{position:relative}
 .ig svg{width:13px;height:13px}   /* IG 圖示是方的，跟 MAP 的地標針視覺上等高 */
+/* 只有圖示、沒有字，點擊範圍只剩 13px。用偽元素把感應區撐到 40px，不影響排版 */
+.ig::after{content:"";position:absolute;left:50%;top:50%;width:40px;height:40px;transform:translate(-50%,-50%)}
 .contact .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
   font-size:calc(clamp(14px,0.193vw + 13.23px,16px) * var(--k));line-height:1.56;letter-spacing:.05em}
 
@@ -505,7 +508,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   /* ── AFTER EACH VISIT 1212:1214（425x1288）時間軸改成垂直 ── */
   .feel{padding:40px 0 40px}
   .feel .h-zh{margin:10px 0 0 10px}
-  .feel .wrap{display:grid;grid-template-columns:8.3px 21px 35.7px 1fr;row-gap:114px}
+  .feel .wrap{display:grid;grid-template-columns:0.9px 21px 35.7px 1fr;row-gap:114px}
   .feel .wrap>.reveal:first-child{grid-column:1/-1}
   .feel .timeline{display:block;grid-column:2;grid-row:2;width:21px;height:auto;margin:0}
   .feel .timeline::before{content:"";position:absolute;left:10px;right:auto;
@@ -741,7 +744,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
         <div class="vline"></div>
         <div class="info">
           <div>台北市大安區新生南路二段2號7樓<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E6%96%B0%E7%94%9F%E5%8D%97%E8%B7%AF%E4%BA%8C%E6%AE%B52%E8%99%9F7%E6%A8%93" target="_blank" rel="noopener"><svg viewBox="0 0 11 14" fill="currentColor" aria-hidden="true"><path d="M5.5 0C2.46 0 0 2.46 0 5.5 0 9.62 5.5 14 5.5 14S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"/></svg>MAP</a></div>
-          <div>0987-167-852<a class="map ig" href="https://www.instagram.com/sheand_daan_clinic/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor" stroke="none"/></svg>IG</a></div>
+          <div>0987-167-852<a class="map ig" href="https://www.instagram.com/sheand_daan_clinic/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor" stroke="none"/></svg></a></div>
           <div>週三至週日 11:00–17:00</div>
         </div>
       </div>
