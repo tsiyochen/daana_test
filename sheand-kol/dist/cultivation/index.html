@@ -37,17 +37,46 @@ section{padding:clamp(80px,11vw,150px) 0}
 
 /* test bar + nav */
 .testbar{position:sticky;top:0;z-index:21;height:28px;line-height:16px;background:var(--ink);color:#fff;text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
-.nav{background:var(--bg)}   /* 不固定在上方：隨頁面捲走，不遮住內容 */
+/* 固定在上方：捲動時跟著走。測試站多一條 28px 的測試橫條，用 :has 讓 nav 讓位，
+   正式站沒有橫條就貼齊 0，不會留一條縫。手機版 header 是兩列、佔掉太多畫面，改回不固定。
+   錨點（#about、#contact）用 scroll-padding-top 補償浮動 header 的高度。 */
+.nav{position:sticky;top:0;z-index:20;background:rgba(233,233,233,.94);backdrop-filter:blur(8px)}
+body:has(.testbar) .nav{top:28px}
+html{scroll-padding-top:76px}
+html:has(.testbar){scroll-padding-top:104px}
+@media (max-width:620px){
+  .nav{position:static;backdrop-filter:none;background:var(--bg)}
+  html{scroll-padding-top:0}
+  html:has(.testbar){scroll-padding-top:28px}
+}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
-@media (max-width:860px){.logo-svg{height:32px}}
-.nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;font-size:13px;letter-spacing:.18em}
+.nav ul{display:flex;gap:44px;list-style:none;white-space:nowrap;
+  font-size:calc(clamp(14px,0.385vw + 12.45px,18px) * var(--k));line-height:1.22;letter-spacing:.2em}
 .nav ul a.on{color:var(--sage-deep);border-bottom:1px solid var(--sage)}
-.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;padding:10px 26px;font-size:13px;letter-spacing:.2em;transition:opacity .2s}
+.btn{display:inline-block;background:var(--clay);color:#fff;border-radius:99px;
+  padding:10px 26px;font-weight:500;font-size:calc(clamp(10px,0.578vw + 7.68px,16px) * var(--k));letter-spacing:.15em;transition:opacity .2s}
 .btn:hover{opacity:.85}
 .btn.ghost{background:#F6EFEB;color:var(--clay)}
-@media (max-width:860px){.nav ul{gap:20px;font-size:12px;letter-spacing:.1em}.nav .btn{display:none}}
+/* 手機版 header 與首頁同一套：860 以下縮間距與 logo、保留「線上預約」；
+   620 以下改為兩列 —— 上列 logo 與預約鈕，下列導覽項目四等分。 */
+@media (max-width:860px){
+  .nav ul{gap:20px;font-size:calc(clamp(14px,0.385vw + 12.45px,18px) * var(--k));line-height:1.22;letter-spacing:.2em}
+  .logo-svg{height:30px}
+  .nav .btn{padding:8px 18px}
+}
+@media (max-width:620px){
+  .nav .wrap{display:grid;grid-template-columns:1fr auto;
+    align-items:center;height:auto;padding-top:14px;padding-bottom:10px;row-gap:5px}
+  .logo{grid-column:1;grid-row:1}
+  .logo-svg{height:34px}
+  .nav .btn{grid-column:2;grid-row:1;padding:8px 20px}
+  .nav ul{grid-column:1 / -1;grid-row:2;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+  .nav ul a{display:block;padding:6px 0}
+  .nav ul a.on{display:inline-block}
+}
 
 /* hero */
 .hero{background:var(--bg);padding:0;overflow:hidden;position:relative;aspect-ratio:1440/850;display:flex;align-items:flex-end}
@@ -365,7 +394,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   background:var(--clay);color:#fff;font-family:var(--num);font-weight:400;
   font-size:calc(20px * var(--k));letter-spacing:.1em}
 .finfo{display:flex;align-items:center;gap:clamp(20px,3.75vw,54px);margin-top:clamp(56px,7.5vw,108px)}
-.foot-logo{flex:none;margin-top:0}
+.foot-logo{flex:none;margin-top:0;color:var(--sage-deep)}   /* footer logo 用綠色 */
 .foot-logo .logo-svg{height:calc(clamp(49px,2.120vw + 40.48px,71px) * var(--k))}
 .vline{flex:none;width:1px;height:calc(92px * var(--k));background:var(--sage)}
 .info{margin-top:0;font-weight:350;font-size:calc(clamp(16px,0.385vw + 14.45px,20px) * var(--k));
@@ -373,6 +402,11 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
 .map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;color:var(--clay);
   font-family:var(--num);font-weight:400;font-size:calc(16px * var(--k));line-height:25px;vertical-align:middle}
 .map svg{width:11px;height:14px;flex:none}
+.ig{position:relative}
+.ig svg{width:19px;height:19px}
+@media (max-width:700px){.ig svg{width:21px;height:21px}}
+/* 只有圖示、沒有字，點擊範圍只剩 13px。用偽元素把感應區撐到 40px，不影響排版 */
+.ig::after{content:"";position:absolute;left:50%;top:50%;width:40px;height:40px;transform:translate(-50%,-50%)}
 .contact .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
   font-size:calc(clamp(14px,0.193vw + 13.23px,16px) * var(--k));line-height:1.56;letter-spacing:.05em}
 
@@ -475,7 +509,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   /* ── AFTER EACH VISIT 1212:1214（425x1288）時間軸改成垂直 ── */
   .feel{padding:40px 0 40px}
   .feel .h-zh{margin:10px 0 0 10px}
-  .feel .wrap{display:grid;grid-template-columns:20px 21px 42px 1fr;row-gap:114px}
+  .feel .wrap{display:grid;grid-template-columns:0.9px 21px 30.3px 1fr;row-gap:114px}
   .feel .wrap>.reveal:first-child{grid-column:1/-1}
   .feel .timeline{display:block;grid-column:2;grid-row:2;width:21px;height:auto;margin:0}
   .feel .timeline::before{content:"";position:absolute;left:10px;right:auto;
@@ -688,12 +722,11 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
   <div class="wrap">
     <div class="fhead reveal"><div class="en-title">FAQ</div></div>
     <div class="fitems reveal">
-      <details><summary>不確定自己適不適合？</summary><p>沒關係。面診時醫師會先看過你的膚況，再建議適合的安排，也可以到現場再決定。</p></details>
+      <details><summary>不確定自己適不適合？</summary><p>沒關係。面診時醫師會先看過你的膚況，可以聽完後再決定，而蘊膚計劃也是我們希望你可以體驗養好皮膚的相關過程，嘗試後找到最適合的方式。</p></details>
       <details><summary>第一次來，就想加電波或音波可以嗎？</summary><p>可以。我們會安排在養膚療程之後，可以在最後一次療程的當天一起進行，或另外安排。</p></details>
       <details><summary>電波和音波有什麼不同？</summary><p>兩者作用的層次不同。電波以熱能作用在真皮層，著重整體緊緻；音波把能量聚焦在更深的筋膜層，著重輪廓與線條。適合哪一種，會由醫師依你的狀況評估。</p></details>
       <details><summary>眼周音波和全臉音波有什麼不同？</summary><p>眼周皮膚較薄、結構也和臉頰不同，所以使用專門針對眼周的方式與參數，與全臉音波分開規劃。</p></details>
-      <details><summary>做完會紅腫嗎？隔天可以上班嗎？</summary><p>依療程不同，可能有短暫泛紅或緊繃，多數人隔天即可正常上班。實際狀況會在療程前由醫師說明。</p></details>
-      <details><summary>體驗完之後，要怎麼接續？</summary><p>走完一輪後，醫師會依你的變化，建議之後的保養節奏與項目。</p></details>
+      <details><summary>中間有事，沒辦法照這個節奏回來怎麼辦？</summary><p>三個月是建議的間隔，不是硬性規定，中間拉長一兩週也可以，重點在於持續蘊膚，回來的時候，可以再討論決定那一次做什麼。</p></details>
     </div>
   </div>
 </section>
@@ -710,7 +743,7 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
         <div class="vline"></div>
         <div class="info">
           <div>台北市大安區新生南路二段2號7樓<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E6%96%B0%E7%94%9F%E5%8D%97%E8%B7%AF%E4%BA%8C%E6%AE%B52%E8%99%9F7%E6%A8%93" target="_blank" rel="noopener"><svg viewBox="0 0 11 14" fill="currentColor" aria-hidden="true"><path d="M5.5 0C2.46 0 0 2.46 0 5.5 0 9.62 5.5 14 5.5 14S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"/></svg>MAP</a></div>
-          <div>0987-167-852</div>
+          <div>0987-167-852<a class="map ig" href="https://www.instagram.com/sheand_daan_clinic/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor" stroke="none"/></svg></a></div>
           <div>週三至週日 11:00–17:00</div>
         </div>
       </div>
