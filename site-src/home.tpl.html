@@ -47,7 +47,18 @@ section{padding:0}
 
 /* test bar + nav */
 .testbar{position:sticky;top:0;z-index:21;height:28px;line-height:16px;background:var(--ink);color:#fff;text-align:center;font-size:12px;letter-spacing:.3em;padding:6px 0}
-.nav{background:var(--bg)}   /* 不固定在上方：隨頁面捲走，不遮住內容 */
+/* 固定在上方：捲動時跟著走。測試站多一條 28px 的測試橫條，用 :has 讓 nav 讓位，
+   正式站沒有橫條就貼齊 0，不會留一條縫。手機版 header 是兩列、佔掉太多畫面，改回不固定。
+   錨點（#about、#contact）用 scroll-padding-top 補償浮動 header 的高度。 */
+.nav{position:sticky;top:0;z-index:20;background:rgba(233,233,233,.94);backdrop-filter:blur(8px)}
+body:has(.testbar) .nav{top:28px}
+html{scroll-padding-top:76px}
+html:has(.testbar){scroll-padding-top:104px}
+@media (max-width:620px){
+  .nav{position:static;backdrop-filter:none;background:var(--bg)}
+  html{scroll-padding-top:0}
+  html:has(.testbar){scroll-padding-top:28px}
+}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
 .logo{display:flex;align-items:center;color:var(--ink)}
 .logo-svg{height:38px;width:auto;display:block}
@@ -316,6 +327,9 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
 .map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;
   font-family:var(--num);font-weight:400;font-size:calc(16px * var(--k));line-height:25px;vertical-align:middle}
 .map svg{width:11px;height:14px;flex:none}
+.ig{display:inline-flex;align-items:center;gap:7px;color:var(--clay);font-family:var(--num);font-weight:400;
+  font-size:calc(16px * var(--k));line-height:25px;letter-spacing:.02em}
+.ig svg{width:15px;height:15px;flex:none}
 .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
   font-size:calc(clamp(14px,0.193vw + 13.23px,16px) * var(--k));line-height:1.56;letter-spacing:.05em}
 /* 手機版：按鈕改直向堆疊、logo 移到資訊上方、不畫分隔線 */
@@ -514,6 +528,7 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
         <div>台北市大安區新生南路二段2號7樓<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E6%96%B0%E7%94%9F%E5%8D%97%E8%B7%AF%E4%BA%8C%E6%AE%B52%E8%99%9F7%E6%A8%93" target="_blank" rel="noopener"><svg viewBox="0 0 11 14" fill="currentColor" aria-hidden="true"><path d="M5.5 0C2.46 0 0 2.46 0 5.5 0 9.62 5.5 14 5.5 14S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"/></svg>MAP</a></div>
         <div>0987-167-852</div>
         <div>週三至週日 11:00–17:00</div>
+          <div><a class="ig" href="https://www.instagram.com/sheand_daan_clinic/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.2" y="2.2" width="19.6" height="19.6" rx="5.4"/><circle cx="12" cy="12" r="4.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@sheand_daan_clinic</a></div>
       </div>
     </div>
     <p class="legal">本網站內容僅供健康資訊參考，不作為診斷或治療之依據。任何療程之適用性、次數、間隔與結果均因個人體質、膚況與生活習慣而異，須經醫師親自面診評估後決定。<br>蒔恩美學診所｜台北市大安區新生南路二段2號7樓</p>
