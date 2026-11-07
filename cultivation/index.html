@@ -402,8 +402,10 @@ details p{padding:0 0 31px;font-size:18px;line-height:30px;color:#4D4D4D;max-wid
 .map{display:inline-flex;align-items:center;gap:3px;margin-left:20px;color:var(--clay);
   font-family:var(--num);font-weight:400;font-size:calc(16px * var(--k));line-height:25px;vertical-align:middle}
 .map svg{width:11px;height:14px;flex:none}
+/* 圖示跟電話號碼同級：font-size 不吃 .map 的 16px，改繼承 .info，svg 再用 1em 跟著走 */
 .ig{position:relative}
-.ig svg{width:13px;height:13px}   /* IG 圖示是方的，跟 MAP 的地標針視覺上等高 */
+.info .ig{font-size:inherit}   /* 比手機版 .map 的 16px 更明確，才不會被蓋掉 */
+.ig svg{width:1em;height:1em}
 /* 只有圖示、沒有字，點擊範圍只剩 13px。用偽元素把感應區撐到 40px，不影響排版 */
 .ig::after{content:"";position:absolute;left:50%;top:50%;width:40px;height:40px;transform:translate(-50%,-50%)}
 .contact .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
