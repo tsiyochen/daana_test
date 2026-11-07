@@ -329,8 +329,8 @@ details p{padding:0 40px 30px 0;font-size:calc(clamp(13px,0.482vw + 11.06px,18px
 .map svg{width:11px;height:14px;flex:none}
 /* 圖示跟電話號碼同級：font-size 不吃 .map 的 16px，改繼承 .info，svg 再用 1em 跟著走 */
 .ig{position:relative}
-.info .ig{font-size:inherit}   /* 比手機版 .map 的 16px 更明確，才不會被蓋掉 */
-.ig svg{width:1em;height:1em}
+.ig svg{width:19px;height:19px}
+@media (max-width:700px){.ig svg{width:21px;height:21px}}
 /* 只有圖示、沒有字，點擊範圍只剩 13px。用偽元素把感應區撐到 40px，不影響排版 */
 .ig::after{content:"";position:absolute;left:50%;top:50%;width:40px;height:40px;transform:translate(-50%,-50%)}
 .legal{margin-top:clamp(64px,10.2vw,147px);max-width:1070px;
