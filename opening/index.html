@@ -152,14 +152,14 @@ a{color:inherit}
   transition:background .2s,color .2s,border-color .2s}
 .pills input:checked+span{background:var(--sage);border-color:var(--sage);color:#fff}
 .pills input:focus-visible+span{outline:2px solid var(--sage-deep);outline-offset:2px}
-input[type=text],input[type=number],textarea{width:100%;font:inherit;font-size:15px;
+input[type=text],input[type=number],input[type=email],textarea{width:100%;font:inherit;font-size:15px;
   color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:3px;
   padding:15px 16px;letter-spacing:.05em;line-height:1.9}
 textarea{min-height:140px;resize:vertical}
 input:focus,textarea:focus{outline:none;border-color:var(--sage)}
 input::placeholder,textarea::placeholder{color:#BCB7B0}
-#guests-field{display:none}
-#guests-field.on{display:block}
+#guests-field,#email-field{display:none}
+#guests-field.on,#email-field.on{display:block}
 .send{width:100%;margin-top:38px;padding:19px 0;font:inherit;font-weight:300;font-size:14px;
   letter-spacing:var(--track);text-indent:var(--track);color:#fff;background:var(--clay);
   border:0;border-radius:999px;cursor:pointer;transition:opacity .2s}
@@ -172,6 +172,15 @@ input::placeholder,textarea::placeholder{color:#BCB7B0}
 .thanks .en{font-family:var(--en);font-size:13px;letter-spacing:var(--track);
   color:var(--sage-deep);margin-right:-.3em}
 .thanks p{font-size:15px;margin-top:16px;color:var(--ink-soft)}
+.cal{display:none;margin-top:30px}
+.cal.on{display:block}
+.cal a{text-decoration:none}
+.cal-btn{display:inline-block;padding:14px 32px;font-size:13px;letter-spacing:.16em;
+  text-indent:.16em;color:var(--sage-deep);background:var(--white);
+  border:1px solid var(--sage);border-radius:999px;transition:background .2s,color .2s}
+.cal-btn:hover{background:var(--sage);color:#fff}
+.cal-alt{display:inline-block;margin-top:16px;font-size:11.5px;letter-spacing:.12em;
+  color:var(--ink-soft);border-bottom:1px solid var(--sage-mist);padding-bottom:2px}
 
 /* ── 留言牆 ─────────────────────────────── */
 .wall{background:var(--sage-mist);padding:clamp(52px,11vw,72px) var(--gut);display:none}
@@ -217,7 +226,7 @@ footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
   <!-- 邀請文：草稿，待確認 -->
   <section class="words pad">
     <p>這間診所從一張平面圖開始，到現在門推開是什麼味道、光落在哪裡，我們都想了很久。</p>
-    <p>11 月 26 日，我們想請你來看看它做成了什麼樣子。沒有儀式、沒有剪綵，就是一個晚上，和幾杯酒，和想謝的人。</p>
+    <p>12 月 6 日，我們想請你來看看它做成了什麼樣子。沒有儀式、沒有剪綵，就是一個晚上，和幾杯酒，和想謝的人。</p>
     <p>如果你那天到不了，留一句話給我們也好。所有的留言我們會印下來，放進開幕當天的花籃裡。</p>
     <p class="sign">蒔恩美學診所　敬邀</p>
   </section>
@@ -298,6 +307,12 @@ footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
         <input type="text" id="name" name="name" maxlength="20" placeholder="例：王小姐、蒔恩的老朋友 小陳" required>
       </div>
 
+      <div class="field" id="email-field">
+        <label for="email">Email（開幕前我們會寄一次行前通知）</label>
+        <input type="email" id="email" name="email" maxlength="80"
+               inputmode="email" autocomplete="email" placeholder="you@example.com">
+      </div>
+
       <div class="field">
         <label for="message">留一句話給蒔恩</label>
         <textarea id="message" name="message" maxlength="200" placeholder="開幕當天，這段話會印成小卡放進花籃裡。"></textarea>
@@ -310,6 +325,10 @@ footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
     <div class="thanks" id="thanks">
       <div class="en">Thank You</div>
       <p id="thanks-msg"></p>
+      <div class="cal" id="cal">
+        <a class="cal-btn" href="sheand-opening.ics">加入行事曆</a><br>
+        <a class="cal-alt" id="gcal" href="#" target="_blank" rel="noopener">用 Google 日曆開</a>
+      </div>
     </div>
   </section>
 
@@ -353,6 +372,7 @@ const CONFIG = {
       guests:  "entry.1526298603",   // 人數
       name:    "entry.1699403732",   // 稱呼
       message: "entry.437091963",    // 留言
+      email:   "",                   // Email —— 表單加好第五題後把編號填進來
     },
   },
 
@@ -414,6 +434,7 @@ function postFormBackup(item) {
   fd.append(f.entry.guests,  item.guests);
   fd.append(f.entry.name,    item.name);
   fd.append(f.entry.message, item.message);
+  if (f.entry.email) fd.append(f.entry.email, item.email || '');
   fetch(f.action, { method: 'POST', mode: 'no-cors', body: fd }).catch(() => {});
 }
 
@@ -455,7 +476,9 @@ async function flush() {
 /* 選了「到不了」就把人數收起來 —— 問一個不適用的問題會讓人停下來想 */
 document.querySelectorAll('input[name=attend]').forEach(r => {
   r.addEventListener('change', () => {
-    $('#guests-field').classList.toggle('on', $('input[name=attend]:checked').value === '出席');
+    const go = $('input[name=attend]:checked').value === '出席';
+    $('#guests-field').classList.toggle('on', go);
+    $('#email-field').classList.toggle('on', go);
   });
 });
 
@@ -464,6 +487,7 @@ $('#form').addEventListener('submit', (e) => {
   const err = $('#err');
   const attend = document.querySelector('input[name=attend]:checked');
   const name = $('#name').value.trim();
+  const email = $('#email').value.trim();
   const message = $('#message').value.trim();
 
   const fail = (t) => { err.textContent = t; err.classList.add('on'); };
@@ -471,6 +495,14 @@ $('#form').addEventListener('submit', (e) => {
 
   if (!attend) return fail('先選一下那天來不來得了。');
   if (!name)   return fail('留個稱呼吧，卡片上要印。');
+  // Email 只對「我會到」的人要求 —— 來不了的人不需要收行前通知
+  if (attend.value === '出席') {
+    if (!email) return fail('留一下 Email，開幕前我們會寄一次行前通知。');
+    // 寬鬆的檢查，只擋掉明顯打錯的：沒有 @、沒有點、中間有空格
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      return fail('這個 Email 看起來怪怪的，再檢查一下。');
+    }
+  }
   if (!CONFIG.api && !CONFIG.form.action) {
     return fail('後端還沒接上（CONFIG 是空的），這是預覽版。');
   }
@@ -480,6 +512,7 @@ $('#form').addEventListener('submit', (e) => {
     attend: attend.value,
     guests: attend.value === '出席' ? $('#guests').value : '',
     name: name,
+    email: attend.value === '出席' ? email : '',
     message: message,
     at: new Date().toISOString(),
   };
@@ -489,8 +522,9 @@ $('#form').addEventListener('submit', (e) => {
   // 那筆東西在暫存裡，補得回來。
   $('#form').style.display = 'none';
   $('#thanks-msg').textContent = item.attend === '出席'
-    ? '收到了，11 月 26 日見。'
+    ? '收到了，12 月 6 日見。'
     : '收到了，你的話我們會印下來，放進那天的花籃裡。';
+  $('#cal').classList.toggle('on', item.attend === '出席');
   $('#thanks').classList.add('on');
   if (message) showWall([{ name: name, message: message, mine: true }], true);
 
@@ -554,6 +588,15 @@ async function loadWall() {
       .reverse());
   } catch (_) { /* 抓不到就不顯示留言牆，不要讓邀請卡壞掉 */ }
 }
+
+/* 「加入行事曆」：主按鈕給 .ics（iPhone 的行事曆、Outlook 都認這個格式），
+   底下小字給 Google 日曆的網頁版。日期 20261206T093000Z/20261206T123000Z 由 render.py 代入，
+   和 opening/sheand-opening.ics 同一個來源，不會兩邊各改各的。 */
+$('#gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+  + '&dates=20261206T093000Z/20261206T123000Z'
+  + '&text='     + encodeURIComponent('蒔恩美學診所 開幕邀請')
+  + '&location=' + encodeURIComponent('台北市大安區新生南路二段 2 號 7 樓')
+  + '&details='  + encodeURIComponent('17:30 進場，18:00 開始。');
 
 loadWall();
 flush();        // 上次沒送成的，這次開頁靜靜補送

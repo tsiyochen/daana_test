@@ -15,19 +15,30 @@
  */
 
 const TAB  = '回覆';
-const HEAD = ['時間', '出席', '人數', '署名', '留言', '上牆', '編號'];
+const HEAD = ['時間', '出席', '人數', '署名', 'Email', '留言', '上牆', '編號'];
 
 // 欄位位置（1 起算），改欄位順序時只要改這裡
-const COL = { time:1, attend:2, guests:3, name:4, message:5, wall:6, id:7 };
+const COL = { time:1, attend:2, guests:3, name:4, email:5, message:6, wall:7, id:8 };
 
 
 function sheet_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sh = ss.getSheetByName(TAB) || ss.insertSheet(TAB);
+
   if (sh.getLastRow() === 0) {
     sh.appendRow(HEAD);
     sh.setFrozenRows(1);
     sh.setColumnWidth(COL.message, 420);
+    return sh;
+  }
+
+  // 加 Email 欄之前就存在的分頁：插一欄進去，既有資料整批右移，
+  // 「上牆」的核取方塊也會跟著移到新的位置，不會和標題錯開。
+  const width = Math.max(sh.getLastColumn(), HEAD.length);
+  const head  = sh.getRange(1, 1, 1, width).getValues()[0].map(v => String(v).trim());
+  if (head.indexOf('Email') === -1) {
+    sh.insertColumnBefore(COL.email);
+    sh.getRange(1, COL.email).setValue('Email');
   }
   return sh;
 }
@@ -59,8 +70,8 @@ function doPost(e) {
       ? sh.getRange(2, COL.id, n, 1).getValues().map(r => String(r[0]))
       : [];
     if (seen.indexOf(id) === -1) {
-      sh.appendRow([new Date(), d.attend || '', d.guests || '',
-                    d.name || '', d.message || '', false, id]);
+      sh.appendRow([new Date(), d.attend || '', d.guests || '', d.name || '',
+                    d.email || '', d.message || '', false, id]);
       sh.getRange(sh.getLastRow(), COL.wall).insertCheckboxes();
     }
     return json_({ ok: true, id: id });
@@ -79,9 +90,12 @@ function doGet() {
     const n  = sh.getLastRow() - 1;
     const out = [];
     if (n > 0) {
-      sh.getRange(2, COL.name, n, 3).getValues().forEach(r => {   // 署名 / 留言 / 上牆
-        const name = String(r[0]).trim(), message = String(r[1]).trim();
-        if (r[2] === true && message) out.push({ name: name, message: message });
+      // 整列讀進來再挑欄位，以後欄位順序再動也不會錯位。
+      // 只回傳署名與留言 —— Email 和出席人數一個字都不往外送。
+      sh.getRange(2, 1, n, HEAD.length).getValues().forEach(r => {
+        const name    = String(r[COL.name - 1]).trim();
+        const message = String(r[COL.message - 1]).trim();
+        if (r[COL.wall - 1] === true && message) out.push({ name: name, message: message });
       });
     }
     return json_({ ok: true, messages: out.reverse() });          // 新的在前
@@ -95,7 +109,8 @@ function doGet() {
 function 測試寫入() {
   doPost({ postData: { contents: JSON.stringify({
     id: 'test-' + Date.now(), attend: '出席', guests: '2',
-    name: '測試用，可以刪掉', message: '這是一筆測試留言。'
+    name: '測試用，可以刪掉', email: 'test@example.com',
+    message: '這是一筆測試留言。'
   })}});
   Logger.log('寫好了，去「回覆」分頁看最後一列');
 }
