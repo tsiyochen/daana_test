@@ -530,7 +530,7 @@ $('#form').addEventListener('submit', (e) => {
   // 那筆東西在暫存裡，補得回來。
   $('#form').style.display = 'none';
   $('#thanks-msg').textContent = item.attend === '出席'
-    ? '收到了，12 月 6 日見。'
+    ? '收到你的回覆了，12 月 6 日見。'
     : '收到了，你的話我們會印下來，放進那天的花束裡。';
   $('#cal').classList.toggle('on', item.attend === '出席');
   $('#thanks').classList.add('on');
