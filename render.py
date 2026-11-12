@@ -30,7 +30,7 @@ CULTIVATION_LIVE = True
 
 # 開幕邀請卡。活動頁，不進導覽列，只靠 LINE 傳連結。
 # 文案與 Google 表單都確認好之後再改成 True，跑 render.py --publish。
-OPENING_LIVE = False
+OPENING_LIVE = True
 
 # 開幕活動的時間。這裡是行事曆檔與頁面上 Google 日曆連結「唯一的」來源。
 # 改日期：改這三行，模板裡印出來的中文日期也要一起改 ——
