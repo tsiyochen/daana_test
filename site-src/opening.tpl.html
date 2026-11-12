@@ -316,7 +316,7 @@ footer .f{margin-top:24px;font-size:13px;color:var(--ink-soft);line-height:2.3}
 
       <div class="field">
         <label for="message">留一句話給蒔恩</label>
-        <textarea id="message" name="message" maxlength="200" placeholder="開幕當天，這段話會印成小卡放進花籃裡。"></textarea>
+        <textarea id="message" name="message" maxlength="200" placeholder="開幕當天，這段話會印成小卡放進花束裡。"></textarea>
       </div>
 
       <button class="send" type="submit">送出</button>
@@ -377,7 +377,11 @@ const CONFIG = {
     },
   },
 
-  // ③ 舊路：發布成 CSV 的「上牆」分頁。CONFIG.api 有填就用不到。
+  // ③ 留言牆。2026-11-12 本人決定不公開別人的祝福，改成 false。
+  //    要放回來改成 true 就好，整段程式都還在，Sheet 的「上牆」欄位也還在。
+  wall: false,
+
+  // ④ 舊路：發布成 CSV 的「上牆」分頁。CONFIG.api 有填就用不到。
   wallCsv: "",
 };
 
@@ -524,10 +528,10 @@ $('#form').addEventListener('submit', (e) => {
   $('#form').style.display = 'none';
   $('#thanks-msg').textContent = item.attend === '出席'
     ? '收到了，12 月 6 日見。'
-    : '收到了，你的話我們會印下來，放進那天的花籃裡。';
+    : '收到了，你的話我們會印下來，放進那天的花束裡。';
   $('#cal').classList.toggle('on', item.attend === '出席');
   $('#thanks').classList.add('on');
-  if (message) showWall([{ name: name, message: message, mine: true }], true);
+  if (CONFIG.wall && message) showWall([{ name: name, message: message, mine: true }], true);
 
   flush();
 });
@@ -571,6 +575,7 @@ function showWall(items, prepend) {
 }
 
 async function loadWall() {
+  if (!CONFIG.wall) return;        // 關著就連抓都不抓，不浪費一次請求
   if (CONFIG.api) {
     try {
       const d = await (await fetch(CONFIG.api)).json();
