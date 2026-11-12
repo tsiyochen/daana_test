@@ -590,10 +590,10 @@ async function loadWall() {
 }
 
 /* 「加入行事曆」：主按鈕給 .ics（iPhone 的行事曆、Outlook 都認這個格式），
-   底下小字給 Google 日曆的網頁版。日期 20261206T093000Z/20261206T123000Z 由 render.py 代入，
+   底下小字給 Google 日曆的網頁版。日期 20261206T093000Z/20261206T120000Z 由 render.py 代入，
    和 opening/sheand-opening.ics 同一個來源，不會兩邊各改各的。 */
 $('#gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-  + '&dates=20261206T093000Z/20261206T123000Z'
+  + '&dates=20261206T093000Z/20261206T120000Z'
   + '&text='     + encodeURIComponent('蒔恩美學診所 開幕邀請')
   + '&location=' + encodeURIComponent('台北市大安區新生南路二段 2 號 7 樓')
   + '&details='  + encodeURIComponent('17:30 進場，18:00 開始。');
